@@ -1,0 +1,1 @@
+Cartella che useremo per il codice JAVA da utilizzare per creare l'applicativo.

@@ -1,0 +1,1 @@
+Cartella che useremo per inserire la documentazione necessaria al progetto (foto prova, codice esempio e altri documenti).
