@@ -823,7 +823,7 @@
 											"top": 279,
 											"width": 262,
 											"height": 13,
-											"text": "Locale"
+											"text": "Location"
 										},
 										{
 											"_type": "LabelView",
@@ -3533,6 +3533,23 @@
 									"subViews": [
 										{
 											"_type": "UMLAttributeView",
+											"_id": "AAAAAAFveyDkd5w0uM8=",
+											"_parent": {
+												"$ref": "AAAAAAFvdp8JBD0xi2Y="
+											},
+											"model": {
+												"$ref": "AAAAAAFveyDkH5woIzk="
+											},
+											"font": "Arial;13;0",
+											"left": 669,
+											"top": 710,
+											"width": 174,
+											"height": 13,
+											"text": "-Fast food: bool",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
 											"_id": "AAAAAAFvdqATXj+TMfE=",
 											"_parent": {
 												"$ref": "AAAAAAFvdp8JBD0xi2Y="
@@ -3542,7 +3559,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 669,
-											"top": 710,
+											"top": 725,
 											"width": 174,
 											"height": 13,
 											"text": "-Pizzeria: bool",
@@ -3559,7 +3576,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 669,
-											"top": 725,
+											"top": 740,
 											"width": 174,
 											"height": 13,
 											"text": "-Braceria: bool",
@@ -3576,7 +3593,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 669,
-											"top": 740,
+											"top": 755,
 											"width": 174,
 											"height": 13,
 											"text": "-Birreria: bool",
@@ -3593,7 +3610,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 669,
-											"top": 755,
+											"top": 770,
 											"width": 174,
 											"height": 13,
 											"text": "-Pub: bool",
@@ -3610,7 +3627,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 669,
-											"top": 770,
+											"top": 785,
 											"width": 174,
 											"height": 13,
 											"text": "-Diner: bool",
@@ -3627,7 +3644,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 669,
-											"top": 785,
+											"top": 800,
 											"width": 174,
 											"height": 13,
 											"text": "-Bar: bool",
@@ -3638,7 +3655,7 @@
 									"left": 664,
 									"top": 705,
 									"width": 184,
-									"height": 98
+									"height": 113
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -3651,7 +3668,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 664,
-									"top": 803,
+									"top": 818,
 									"width": 184,
 									"height": 10
 								},
@@ -3691,7 +3708,7 @@
 							"left": 664,
 							"top": 680,
 							"width": 184,
-							"height": 133,
+							"height": 148,
 							"nameCompartment": {
 								"$ref": "AAAAAAFvdp8JBD0sfZ8="
 							},
@@ -3992,7 +4009,7 @@
 							"top": 272,
 							"width": 129,
 							"height": 113,
-							"text": "Location: Via, Numero Civico, CAP, Comune"
+							"text": "Residenza: Via, Numero Civico, CAP, Comune"
 						},
 						{
 							"_type": "UMLNoteLinkView",
@@ -4616,7 +4633,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Locale",
+					"name": "Location",
 					"ownedElements": [
 						{
 							"_type": "UMLGeneralization",
@@ -5128,6 +5145,16 @@
 					},
 					"name": "Servizi Ristorazione",
 					"attributes": [
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAFveyDkH5woIzk=",
+							"_parent": {
+								"$ref": "AAAAAAFvdp8JAz0pwPE="
+							},
+							"name": "Fast food",
+							"visibility": "private",
+							"type": "bool"
+						},
 						{
 							"_type": "UMLAttribute",
 							"_id": "AAAAAAFvdqATED+H0T4=",
