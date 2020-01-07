@@ -1773,7 +1773,7 @@
 											"top": 595,
 											"width": 164.5185546875,
 											"height": 13,
-											"text": "-Stelle: Tinyint",
+											"text": "-Stelle: Smallint",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2082,7 +2082,7 @@
 							"left": 408,
 							"top": 536,
 							"width": 164.2861328125,
-							"height": 112,
+							"height": 88,
 							"nameCompartment": {
 								"$ref": "AAAAAAFvdmBtmgkDbiM="
 							},
@@ -2231,7 +2231,7 @@
 											"top": 549,
 											"width": 156.203125,
 											"height": 13,
-											"text": "+N_Post: Smallint",
+											"text": "+N_Posti: Smallint",
 											"horizontalAlignment": 0
 										},
 										{
@@ -6321,7 +6321,7 @@
 							},
 							"name": "Stelle",
 							"visibility": "private",
-							"type": "Tinyint"
+							"type": "Smallint"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6496,7 +6496,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFvdmCHeAlg45Q="
 							},
-							"name": "N_Post",
+							"name": "N_Posti",
 							"type": "Smallint"
 						},
 						{

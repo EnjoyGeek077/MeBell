@@ -14,11 +14,12 @@ create table attrazione(cod char(10), pagamento char(1) default 'n', tipo_attraz
 create table ristorante(cod char(10), n_posti smallint, tipo_cucina varchar(25), check(tipo_cucina='Fusion' OR tipo_cucina='Orientale' OR tipo_cucina='Occidentale') );
 create table servizi_ristorante(cod char(10), fast_food char(1) default 'n', pizzeria char(1) default 'n', braceria char(1) default 'n', birreria char(1) default 'n', pub char(1) default 'n', diner char(1) default 'n', bar char(1) default 'n' );
 
-  --Unique
-  alter table recensione add constraint uc_recensione unique (creatore,cod_locale);
-  alter table alloggio add constraint uc_cod_all unique(cod);
-  alter table ristorante add constraint uc_cod_rist unique(cod);
-  alter table attrazione add constraint uc_cod_att unique(cod);
+--Unique
+alter table recensione add constraint uc_recensione unique (creatore,cod_locale);
+
+alter table alloggio add constraint uc_cod_all unique(cod);
+alter table ristorante add constraint uc_cod_rist unique(cod);
+alter table attrazione add constraint uc_cod_att unique(cod);
 
 --Foreign key
 alter table recensione add constraint fk_recensione_creatore foreign key (creatore) references utente(nickname);
