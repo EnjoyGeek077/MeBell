@@ -1,19 +1,26 @@
 --Creazione tabelle
 create table utente(nickname char(15) primary key, nome varchar(25) not null, cognome varchar(25) not null, password varchar(15) not null);
 
-create table recensione(voto integer not null, lunghezza_max varchar(250), creatore char(15) not null, cod_locale char(10) not null;
+create table recensione(voto int not null, lunghezza_max varchar(250), creatore char(15) not null, cod_locale char(10) not null;
 
-create table location(cod char(10) primary key, nome varchar(25) not null, residenza ?*****? not null, città varchar(25) not null, tipo varchar(25) not null, partita_iva char(11), descrizione varchar(100));
+create table location(cod char(10) primary key, nome varchar(25) not null, residenza ?*****? not null, città varchar(25) not null, tipo varchar(25) not null, partita_iva char(11), descrizione varchar(100)); --!residenza!--
 
 create table hotel(cod char(10) not null, n_camere smallint, n_suite smallint, stelle tinyint);
-create table servizi_hotel(cod_hotel char(10), wi_fi bit, spa bit, piscina bit, aria_condizionata bit, accesso_disabili bit, accesso_animali bit, ascensore bit, servizio_lavanderia bit, tv_stereo bit, parcheggio bit);
+create table servizi_hotel(cod char(10), wi_fi bit, spa bit, piscina bit, aria_condizionata bit, accesso_disabili bit, accesso_animali bit, ascensore bit, servizio_lavanderia bit, tv_stereo bit, parcheggio bit);
 
 create table attrazione(cod char(10), pagamento bit, tipologoia varchar(25) );
 
 create table ristorante(cod char(10), tipo_cucina varchar(25) );
-create table servizi_ristorante(cod_ristorante(10), fast_food bit, pizzeria bit, braceria bit, birreria bit, pub bit, diner bit, bar bit);
+create table servizi_ristorante(cod(10), fast_food bit, pizzeria bit, braceria bit, birreria bit, pub bit, diner bit, bar bit);
 
 --Foreign key
+alter table recensione add contraint fk_recensione_creatore foreign key (creatore) references utente(nickname);
+alter table recensione add contraint fk_recensione_cod_locale foreign key (cod_locale) references location(cod);
+alter table hotel add contraint fk_hotel foreign key (cod) references location(cod);
+alter table attrazione add contraint fk_attrazione foreign key (cod) references location(cod);
+alter table ristorante add contraint fk_ristorante foreign key (cod) references location(cod);
+alter table servizi_hotel add contraint fk_servizi_hotel foreign key (cod_hotel) references hotel(cod);
+alter table servizi_ristorazione add contraint fk_servizi_ristorazione foreign key (cod_ristorante) references ristorante(cod);
 
-
-
+--Unique
+alter table recensione add constraint uc_recensione unique (creatore,cod_locale);
