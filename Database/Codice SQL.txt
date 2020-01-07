@@ -1,25 +1,31 @@
 --Creazione tabelle
-create table utente(nickname char(15) primary key, nome varchar(25) not null, cognome varchar(25) not null, password varchar(15) not null);
+create table utente(nickname char(15) primary key, nome varchar(25) not null, cognome varchar(25) not null, password varchar(15) not null );
 
-create table recensione(voto int not null, lunghezza_max varchar(250), creatore char(15) not null, cod_locale char(10) not null;
+create table recensione(voto int not null, lunghezza_max varchar(250), creatore char(15) not null, cod_locale char(10) not null );
 
-create table location(cod char(10) primary key, nome varchar(25) not null, residenza ?*****? not null, città varchar(25) not null, tipo varchar(25) not null, partita_iva char(11), descrizione varchar(100)); --!residenza!--
+create table location(cod char(10) primary key, nome varchar(25) not null, cod_res char(5) not null, città varchar(25) not null, tipo_location varchar(25) check in ('Alloggio', 'Attrazione', 'Ristorante'), partita_iva char(11), descrizione varchar(100) );
+create table redidenza(via varchar(25) not null, n_civico char(3) not null, cap char(5) not null, comune varchar(25) not null, cod_residenza char(5) primary key );
 
-create table hotel(cod char(10) not null, n_camere smallint, n_suite smallint, stelle tinyint);
-create table servizi_hotel(cod char(10), wi_fi bit, spa bit, piscina bit, aria_condizionata bit, accesso_disabili bit, accesso_animali bit, ascensore bit, servizio_lavanderia bit, tv_stereo bit, parcheggio bit);
+create table alloggio(cod char(10) not null, n_camere smallint, n_suite smallint, stelle tinyint, tipo_alloggio varchar(25) check in ('Hotel', 'B&B', 'Appartamento') );
+create table servizi_alloggio(cod char(10), wi_fi char(1) default 'n', spa char(1) default 'n', piscina char(1) default 'n', aria_condizionata char(1) default 'n', accesso_disabili char(1) default 'n', accesso_animali char(1) default 'n', ascensore char(1) default 'n', servizio_lavanderia char(1) default 'n', tv_stereo char(1) default 'n', parcheggio char(1) default 'n' );
 
-create table attrazione(cod char(10), pagamento bit, tipologoia varchar(25) );
+create table attrazione(cod char(10), pagamento char(1) default 'n', tipo_attrazione varchar(25) );
 
-create table ristorante(cod char(10), tipo_cucina varchar(25) );
-create table servizi_ristorante(cod(10), fast_food bit, pizzeria bit, braceria bit, birreria bit, pub bit, diner bit, bar bit);
+create table ristorante(cod char(10), n_posti smallit, tipo_cucina varchar(25) check in ('Fusion', 'Orientale', 'Occidentale') );
+create table servizi_ristorante(cod(10), fast_food char(1) default 'n', pizzeria char(1) default 'n', braceria char(1) default 'n', birreria char(1) default 'n', pub char(1) default 'n', diner char(1) default 'n', bar char(1) default 'n' );
 
 --Foreign key
 alter table recensione add contraint fk_recensione_creatore foreign key (creatore) references utente(nickname);
 alter table recensione add contraint fk_recensione_cod_locale foreign key (cod_locale) references location(cod);
-alter table hotel add contraint fk_hotel foreign key (cod) references location(cod);
+
+alter table location add contraint fk_residenza_cod_residenza foreign key (cod_res) references residenza(cod_residenza);
+
+alter table alloggio add contraint fk_alloggio foreign key (cod) references location(cod);
 alter table attrazione add contraint fk_attrazione foreign key (cod) references location(cod);
 alter table ristorante add contraint fk_ristorante foreign key (cod) references location(cod);
-alter table servizi_hotel add contraint fk_servizi_hotel foreign key (cod_hotel) references hotel(cod);
+
+alter table servizi_alloggio add contraint fk_servizi_hotel foreign key (cod_hotel) references alloggio(cod);
+alter table attrazione add contraint tipo_attrazione check in ('Chiesa', 'Museo', 'Parco', 'Monumento', 'Parco Giochi', 'Centro Sportivo', 'Teatro', 'Cinema', 'Acquario', 'Zona Balneare', 'Zoo');
 alter table servizi_ristorazione add contraint fk_servizi_ristorazione foreign key (cod_ristorante) references ristorante(cod);
 
 --Unique
