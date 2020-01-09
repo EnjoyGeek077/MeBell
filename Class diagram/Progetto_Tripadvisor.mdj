@@ -395,7 +395,7 @@
 											"top": 109,
 											"width": 186.5703125,
 											"height": 13,
-											"text": "-Lunghezza_max: VarChar[250]",
+											"text": "-Testo: VarChar[250]",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1719,7 +1719,7 @@
 											"top": 510,
 											"width": 164.5185546875,
 											"height": 13,
-											"text": "-N_Camere: Smallin",
+											"text": "-N_Camere: Smallint",
 											"horizontalAlignment": 0
 										},
 										{
@@ -4868,7 +4868,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFvdlNAfP+NVxk="
 							},
-							"name": "Lunghezza_max",
+							"name": "Testo",
 							"visibility": "private",
 							"type": "VarChar",
 							"multiplicity": "250"
@@ -5135,7 +5135,7 @@
 							},
 							"name": "N_Camere",
 							"visibility": "private",
-							"type": "Smallin"
+							"type": "Smallint"
 						},
 						{
 							"_type": "UMLAttribute",

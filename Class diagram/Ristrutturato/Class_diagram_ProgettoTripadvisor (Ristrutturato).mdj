@@ -398,7 +398,7 @@
 											"top": 109,
 											"width": 186.5703125,
 											"height": 13,
-											"text": "-Lunghezza_max: VarChar[250]",
+											"text": "-Testo: VarChar[250]",
 											"horizontalAlignment": 0
 										},
 										{
@@ -5994,7 +5994,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFvdlNAfP+NVxk="
 							},
-							"name": "Lunghezza_max",
+							"name": "Testo",
 							"visibility": "private",
 							"type": "VarChar",
 							"multiplicity": "250"
