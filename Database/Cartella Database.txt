@@ -1,1 +1,1 @@
-Cartella che useremo per i file .sql e relative a database.
+Cartella che useremo per i file .sql e relativi al database.

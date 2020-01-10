@@ -1,0 +1,1 @@
+Cartella che useremo per i mockup dell'interfaccia grafica JAVA/DBMS.

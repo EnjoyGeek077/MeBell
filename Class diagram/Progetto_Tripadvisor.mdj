@@ -383,6 +383,23 @@
 										},
 										{
 											"_type": "UMLAttributeView",
+											"_id": "AAAAAAFvj1pu32G/Bpk=",
+											"_parent": {
+												"$ref": "AAAAAAFvdlNAf/+VTcc="
+											},
+											"model": {
+												"$ref": "AAAAAAFvj1pus2G8Lbs="
+											},
+											"font": "Arial;13;0",
+											"left": 381,
+											"top": 109,
+											"width": 186.5703125,
+											"height": 13,
+											"text": "-Titolo: VarChar[25]",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
 											"_id": "AAAAAAFvdlNYPf+6ygI=",
 											"_parent": {
 												"$ref": "AAAAAAFvdlNAf/+VTcc="
@@ -392,7 +409,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 381,
-											"top": 109,
+											"top": 124,
 											"width": 186.5703125,
 											"height": 13,
 											"text": "-Testo: VarChar[250]",
@@ -409,7 +426,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 381,
-											"top": 124,
+											"top": 139,
 											"width": 186.5703125,
 											"height": 13,
 											"text": "-Creatore: Char[15]",
@@ -426,7 +443,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 381,
-											"top": 139,
+											"top": 154,
 											"width": 186.5703125,
 											"height": 13,
 											"text": "-Cod_Locale: Char[10]",
@@ -437,7 +454,7 @@
 									"left": 376,
 									"top": 89,
 									"width": 196.5703125,
-									"height": 68
+									"height": 83
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -450,7 +467,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 376,
-									"top": 157,
+									"top": 172,
 									"width": 196.5703125,
 									"height": 10
 								},
@@ -4861,6 +4878,17 @@
 							"name": "Voto",
 							"visibility": "private",
 							"type": "INT"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAFvj1pus2G8Lbs=",
+							"_parent": {
+								"$ref": "AAAAAAFvdlNAfP+NVxk="
+							},
+							"name": "Titolo",
+							"visibility": "private",
+							"type": "VarChar",
+							"multiplicity": "25"
 						},
 						{
 							"_type": "UMLAttribute",
