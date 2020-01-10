@@ -1,0 +1,80 @@
+--TRIGGER
+create trigger update_utente
+  after update of nickname on utente
+  for each row 
+
+begin 
+
+   update recensione r
+   set r.creatore=:new.nickname 
+   where r.creatore=:old.nickname;
+
+END;
+
+--
+
+create trigger update_cod_locale
+  after update of cod on location
+  for each row 
+
+begin 
+
+  update recensione r
+  set r.cod_locale=:new.cod 
+  where r.cod_locale=:old.cod;
+
+  update attrazione a
+  set a.cod=:new.cod
+  where a.cod=:old.cod;
+
+  update alloggio al
+  set al.cod=:new.cod
+  where al.cod=:old.cod;
+
+  update ristorante ri
+  set ri.cod=:new.cod
+  where ri.cod=:old.cod;
+
+END;
+
+--
+
+create trigger update_cod_residenza
+  after update of cod_residenza on residenza
+  for each row
+
+begin
+
+   update location l
+   set l.cod_res=:new.cod_residenza
+   where l.cod_res=:old.cod_residenza;
+
+END;
+
+--
+
+create trigger update_servizi_ristorante
+  after update of cod on ristorante
+  for each row 
+
+begin 
+
+   update servizi_ristorante sr
+   set sr.cod=:new.cod 
+   where sr.cod=:old.cod;
+
+END;
+
+--
+
+create trigger update_sevizi_alloggio
+  after update of cod on alloggio
+  for each row 
+
+begin 
+
+   update servizi_alloggio sa
+   set sa.cod=:new.cod 
+   where sa.cod=:old.cod;
+
+END;
