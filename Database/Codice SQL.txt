@@ -52,36 +52,24 @@ END;
 create trigger update_cod_locale
   after update of cod on location
   for each row 
-  
-Declare
-tipo VARCHAR2(25):='';
 
 begin 
+
   update recensione r
   set r.cod_locale=:new.cod 
   where r.cod_locale=:old.cod;
-  
-  select tipo_location into tipo from location l where l.cod=:old.cod;
-  
-IF tipo='Attrazione'  THEN
 
-    update attrazione a
-    set a.cod=:new.cod
-    where a.cod=:old.cod;
+  update attrazione a
+  set a.cod=:new.cod
+  where a.cod=:old.cod;
 
-ELSIF tipo='Alloggio' THEN
+  update alloggio al
+  set al.cod=:new.cod
+  where al.cod=:old.cod;
 
-    update alloggio al
-    set al.cod=:new.cod
-    where al.cod=:old.cod;
-
-ELSE
-
-   update ristorante ri
-   set ri.cod=:new.cod
-   where ri.cod=:old.cod;
-
-END IF;
+  update ristorante ri
+  set ri.cod=:new.cod
+  where ri.cod=:old.cod;
 
 END;
 
@@ -126,3 +114,43 @@ begin
    where sa.cod=:old.cod;
 
 END;
+
+--Quarantena
+
+create trigger update_cod_locale
+  after update of cod on location
+  for each row 
+  
+declare
+tipo VARCHAR2(25):='';
+
+begin 
+  update recensione r
+  set r.cod_locale=:new.cod 
+  where r.cod_locale=:old.cod;
+  
+  select tipo_location into tipo from location l where l.cod=:old.cod;
+  
+IF tipo='Attrazione'  THEN
+
+    update attrazione a
+    set a.cod=:new.cod
+    where a.cod=:old.cod;
+
+ELSIF tipo='Alloggio' THEN
+
+    update alloggio al
+    set al.cod=:new.cod
+    where al.cod=:old.cod;
+
+ELSE
+
+   update ristorante ri
+   set ri.cod=:new.cod
+   where ri.cod=:old.cod;
+
+END IF;
+
+END;
+
+--
