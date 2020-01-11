@@ -34,8 +34,56 @@ alter table servizi_alloggio add constraint fk_servizi_alloggio foreign key (cod
 alter table attrazione add constraint tipo_attrazione check(tipo_attrazione='Chiesa' OR tipo_attrazione='Museo' OR tipo_attrazione='Parco' OR tipo_attrazione='Monumento' OR tipo_attrazione='Parco Giochi' OR tipo_attrazione='Centro Sportivo' OR tipo_attrazione='Teatro' OR tipo_attrazione='Cinema' OR tipo_attrazione='Acquario' OR tipo_attrazione='Zona Balneare' OR tipo_attrazione='Zoo');
 alter table servizi_ristorante add constraint fk_servizi_ristorazione foreign key (cod) references ristorante(cod) ON DELETE CASCADE;
 
+--SEQUENCE
+
+Create sequence Cod_Location
+start with 1000
+increment by 1
+minvalue 1000
+maxvalue 9999
+nocache
+nocycle;
+
+Create sequence Cod_Residenza
+start with 1000
+increment by 1
+minvalue 1000
+maxvalue 9999
+nocache
+nocycle;
+
+create or replace TRIGGER Seq_Cod_Location
+before insert on location
+for each row
+
+declare
+prefisso char(3):='LOC';
+codice char(7):='';
+
+begin
+
+codice:=COD_LOCATION.nextval;
+:new.cod:=prefisso||codice;
+
+END;
+
+create or replace TRIGGER Seq_Cod_Residenza
+before insert on residenza
+for each row
+
+declare
+prefisso char(1):='R';
+codice char(4):='';
+
+begin
+
+codice:=COD_RESIDENZA.nextval;
+:new.cod_residenza:=prefisso||codice;
+
+END;
+
 --TRIGGER
-create trigger update_utente
+create trigger or replace update_utente
   after update of nickname on utente
   for each row 
 
@@ -49,7 +97,7 @@ END;
 
 --
 
-create trigger update_cod_locale
+create trigger or replace update_cod_locale
   after update of cod on location
   for each row 
 
@@ -88,7 +136,7 @@ END;
 
 --
 
-create trigger update_cod_residenza
+create trigger or replace update_cod_residenza
   after update of cod_residenza on residenza
   for each row
 
@@ -144,7 +192,7 @@ END;
 
 --
 
-create trigger insert_new_location
+create trigger or replace insert_new_location
   after insert on location
   for each row
 
@@ -171,7 +219,7 @@ END;
 
 --
 
-create trigger update_servizi_ristorante
+create trigger or replace update_servizi_ristorante
   after update of cod on ristorante
   for each row 
 
@@ -185,7 +233,7 @@ END;
 
 --
 
-create trigger update_sevizi_alloggio
+create trigger or replace update_sevizi_alloggio
   after update of cod on alloggio
   for each row 
 
