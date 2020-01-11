@@ -1,6 +1,0 @@
---Unique
-alter table recensione add constraint uc_recensione unique (creatore,cod_locale);
-
-alter table alloggio add constraint uc_cod_all unique(cod);
-alter table ristorante add constraint uc_cod_rist unique(cod);
-alter table attrazione add constraint uc_cod_att unique(cod);
