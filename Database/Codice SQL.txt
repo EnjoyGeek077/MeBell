@@ -44,6 +44,8 @@ maxvalue 9999
 nocache
 nocycle;
 
+--
+
 Create sequence Cod_Residenza
 start with 1000
 increment by 1
@@ -51,6 +53,8 @@ minvalue 1000
 maxvalue 9999
 nocache
 nocycle;
+
+--TRIGGER
 
 create or replace TRIGGER Seq_Cod_Location
 before insert on location
@@ -67,6 +71,8 @@ codice:=COD_LOCATION.nextval;
 
 END;
 
+--
+
 create or replace TRIGGER Seq_Cod_Residenza
 before insert on residenza
 for each row
@@ -82,7 +88,8 @@ codice:=COD_RESIDENZA.nextval;
 
 END;
 
---TRIGGER
+--
+
 create trigger or replace update_utente
   after update of nickname on utente
   for each row 
@@ -97,7 +104,7 @@ END;
 
 --
 
-create trigger or replace update_cod_locale
+create or replace trigger update_cod_locale
   after update of cod on location
   for each row 
 
@@ -136,7 +143,7 @@ END;
 
 --
 
-create trigger or replace update_cod_residenza
+create or replace trigger update_cod_residenza
   after update of cod_residenza on residenza
   for each row
 
@@ -192,7 +199,7 @@ END;
 
 --
 
-create trigger or replace insert_new_location
+create or replace trigger insert_new_location
   after insert on location
   for each row
 
@@ -219,7 +226,7 @@ END;
 
 --
 
-create trigger or replace update_servizi_ristorante
+create or replace trigger update_servizi_ristorante
   after update of cod on ristorante
   for each row 
 
@@ -233,7 +240,7 @@ END;
 
 --
 
-create trigger or replace update_sevizi_alloggio
+create or replace trigger update_sevizi_alloggio
   after update of cod on alloggio
   for each row 
 
