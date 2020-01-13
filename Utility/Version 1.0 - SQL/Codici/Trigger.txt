@@ -1,0 +1,162 @@
+--TRIGGER
+create trigger update_utente
+  after update of nickname on utente
+  for each row 
+
+begin 
+
+   update recensione r
+   set r.creatore=:new.nickname 
+   where r.creatore=:old.nickname;
+
+END;
+
+--
+
+create trigger update_cod_locale
+  after update of cod on location
+  for each row 
+
+declare
+tipo VARCHAR2(25):='';
+
+begin 
+    
+  update recensione r
+  set r.cod_locale=:new.cod 
+  where r.cod_locale=:old.cod;
+  
+  tipo:=:old.tipo_location;
+
+IF tipo='Attrazione'  THEN
+
+    update attrazione a
+    set a.cod=:new.cod
+    where a.cod=:old.cod;
+
+ELSIF tipo='Alloggio' THEN
+
+    update alloggio al
+    set al.cod=:new.cod
+    where al.cod=:old.cod;
+
+ELSE
+
+   update ristorante ri
+   set ri.cod=:new.cod
+   where ri.cod=:old.cod;
+
+END IF;
+
+END;
+
+--
+
+create trigger update_cod_residenza
+  after update of cod_residenza on residenza
+  for each row
+
+begin
+
+   update location l
+   set l.cod_res=:new.cod_residenza
+   where l.cod_res=:old.cod_residenza;
+
+END;
+
+--
+
+create trigger update_tipo_location
+  after update of tipo_location on location
+  for each row
+
+begin
+
+IF :old.tipo_location='Alloggio' AND :old.tipo_location<>:new.tipo_location THEN
+
+	delete from alloggio where alloggio.cod=:old.cod;
+	delete from servizi_alloggio where servizi_alloggio.cod=:old.cod;
+    
+ELSIF :old.tipo_location='Ristorante' AND :old.tipo_location<>:new.tipo_location THEN
+
+	delete from ristorante where ristorante.cod=:old.cod;
+	delete from servizi_ristorante where servizi_ristorante.cod=:old.cod;
+
+ELSIF :old.tipo_location='Attrazione' AND :old.tipo_location<>:new.tipo_location THEN
+
+	delete from attrazione where attrazione.cod=:old.cod;
+
+END IF;
+
+IF :new.tipo_location='Alloggio' AND  :old.tipo_location<>:new.tipo_location THEN
+
+	insert into alloggio values (:old.cod, null, null, null, null);
+	insert into servizi_alloggio(cod) values (:old.cod);
+
+ELSIF  :new.tipo_location='Ristorante' AND :old.tipo_location<>:new.tipo_location THEN
+
+	insert into ristorante values (:old.cod, null, null);
+	insert into servizi_ristorante(cod) values (:old.cod);
+
+ELSIF  :new.tipo_location='Attrazione' AND  :old.tipo_location<>:new.tipo_location THEN
+
+	insert into attrazione values (:old.cod, null, null);
+   
+END IF;
+
+END;
+
+--
+
+create trigger insert_new_location
+  after insert on location
+  for each row
+
+begin
+
+IF :new.tipo_location='Alloggio' THEN
+
+	insert into alloggio(cod) values (:new.cod);
+	Insert into servizi_alloggio(cod) values (:new.cod);
+
+ELSIF :new.tipo_location='Ristorante' THEN
+
+	insert into ristorante(cod) values (:new.cod);
+	Insert into servizi_ristorante(cod) values (:new.cod);
+
+ELSIF :new.tipo_location='Attrazione' THEN
+
+	insert into attrazione(cod) values (:new.cod);
+
+
+END IF;
+
+END;
+
+--
+
+create trigger update_servizi_ristorante
+  after update of cod on ristorante
+  for each row 
+
+begin 
+
+   update servizi_ristorante sr
+   set sr.cod=:new.cod 
+   where sr.cod=:old.cod;
+
+END;
+
+--
+
+create trigger update_sevizi_alloggio
+  after update of cod on alloggio
+  for each row 
+
+begin 
+
+   update servizi_alloggio sa
+   set sa.cod=:new.cod 
+   where sa.cod=:old.cod;
+
+END;

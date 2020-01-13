@@ -1,0 +1,53 @@
+--SEQUENCE
+
+Create sequence Cod_Location
+start with 1000
+increment by 1
+minvalue 1000
+maxvalue 9999
+nocache
+nocycle;
+
+--
+
+Create sequence Cod_Residenza
+start with 1000
+increment by 1
+minvalue 1000
+maxvalue 9999
+nocache
+nocycle;
+
+--TRIGGER
+
+create or replace TRIGGER Seq_Cod_Location
+before insert on location
+for each row
+
+declare
+prefisso char(3):='LOC';
+codice char(7):='';
+
+begin
+
+codice:=COD_LOCATION.nextval;
+:new.cod:=prefisso||codice;
+
+END;
+
+--
+
+create or replace TRIGGER Seq_Cod_Residenza
+before insert on residenza
+for each row
+
+declare
+prefisso char(1):='R';
+codice char(4):='';
+
+begin
+
+codice:=COD_RESIDENZA.nextval;
+:new.cod_residenza:=prefisso||codice;
+
+END;
