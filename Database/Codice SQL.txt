@@ -90,7 +90,7 @@ END;
 
 --
 
-create trigger or replace update_utente
+create or replace trigger update_utente
   after update of nickname on utente
   for each row 
 
