@@ -18,9 +18,9 @@ maxvalue 9999
 nocache
 nocycle;
 
---TRIGGER
+--TRIGGER SEQ
 
-create or replace TRIGGER Seq_Cod_Location
+create TRIGGER Seq_Cod_Location
 before insert on location
 for each row
 
@@ -37,7 +37,7 @@ END;
 
 --
 
-create or replace TRIGGER Seq_Cod_Residenza
+create TRIGGER Seq_Cod_Residenza
 before insert on residenza
 for each row
 

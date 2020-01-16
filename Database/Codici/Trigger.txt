@@ -133,6 +133,86 @@ END;
 
 --
 
+create trigger update_tipo_ristorazione
+  after update of tipo_ristorazione on ristorazione
+  for each row
+
+begin
+
+IF :old.tipo_ristorazione='Elenco completo' AND :old.tipo_ristorazione<>:new.tipo_ristorazione THEN
+
+    delete from braceria where braceria.cod=:old.cod;
+    delete from sushibar where sushibar.cod=:old.cod;
+    delete from pizzeria where pizzeria.cod=:old.cod;
+
+ELSIF :old.tipo_ristorazione='Braceria' AND :old.tipo_ristorazione<>:new.tipo_ristorazione THEN
+
+     delete from braceria where braceria.cod=:old.cod;
+
+ELSIF :old.tipo_ristorazione='SushiBar' AND :old.tipo_ristorazione<>:new.tipo_ristorazione THEN
+
+    delete from sushibar where sushibar.cod=:old.cod;
+
+ELSIF :old.tipo_ristorazione='Pizzeria' AND :old.tipo_ristorazione<>:new.tipo_ristorazione THEN
+
+    delete from pizzeria where pizzeria.cod=:old.cod;
+
+ELSIF :old.tipo_ristorazione='Pizza e Brace' AND :old.tipo_ristorazione<>:new.tipo_ristorazione THEN
+
+    delete from pizzeria where pizzeria.cod=:old.cod;
+    delete from braceria where braceria.cod=:old.cod;
+
+ELSIF :old.tipo_ristorazione='Pizza e Sushi' AND :old.tipo_ristorazione<>:new.tipo_ristorazione THEN
+
+    delete from pizzeria where pizzeria.cod=:old.cod;
+    delete from sushibar where sushibar.cod=:old.cod;
+
+ELSIF :old.tipo_ristorazione='Brace e Sushi' AND :old.tipo_ristorazione<>:new.tipo_ristorazione THEN
+
+    delete from braceria where braceria.cod=:old.cod;
+    delete from sushibar where sushibar.cod=:old.cod;
+
+END IF;
+
+IF :new.tipo_ristorazione='Elenco completo' AND  :old.tipo_ristorazione<>:new.tipo_ristorazione THEN
+
+    insert into braceria(cod) values (:new.cod);
+    insert into sushibar(cod) values (:new.cod);
+    insert into pizzeria(cod) values (:new.cod);
+
+ELSIF  :new.tipo_ristorazione='Braceria' AND :old.tipo_ristorazione<>:new.tipo_ristorazione THEN
+
+    insert into braceria(cod) values (:new.cod);
+
+ELSIF  :new.tipo_ristorazione='SushiBar' AND  :old.tipo_ristorazione<>:new.tipo_ristorazione THEN
+
+    insert into sushibar(cod) values (:new.cod);
+
+ELSIF  :new.tipo_ristorazione='Pizzeria' AND  :old.tipo_ristorazione<>:new.tipo_ristorazione THEN
+
+    insert into pizzeria(cod) values (:new.cod);
+
+ELSIF  :new.tipo_ristorazione='Pizza e Brace' AND  :old.tipo_ristorazione<>:new.tipo_ristorazione THEN
+
+    insert into pizzeria(cod) values (:new.cod);
+    insert into braceria(cod) values (:new.cod);
+
+ELSIF  :new.tipo_ristorazione='Pizza e Sushi' AND  :old.tipo_ristorazione<>:new.tipo_ristorazione THEN
+
+    insert into pizzeria(cod) values (:new.cod);
+    insert into sushibar(cod) values (:new.cod);
+
+ELSIF  :new.tipo_ristorazione='Brace e Sushi' AND  :old.tipo_ristorazione<>:new.tipo_ristorazione THEN
+
+    insert into braceria(cod) values (:new.cod);
+    insert into sushibar(cod) values (:new.cod);
+
+END IF;
+
+END;
+
+--
+
 create trigger update_cod_locale
   after update of cod on location
   for each row 
@@ -167,6 +247,122 @@ ELSIF tipo='Ristorazione' THEN
    where ri.cod=:old.cod;
 
 END IF;
+
+END;
+
+--
+
+create trigger update_cod_alloggio
+  after update of cod on alloggio
+  for each row 
+
+declare
+tipo VARCHAR2(25):='';
+
+begin 
+
+  tipo:=:old.tipo_alloggio;
+
+IF tipo='Hotel'  THEN
+
+    update hotel h
+    set h.cod=:new.cod
+    where h.cod=:old.cod;
+
+ELSIF tipo='BeB' THEN
+
+    update beb bb
+    set bb.cod=:new.cod
+    where bb.cod=:old.cod;
+
+ELSIF tipo='Appartamento' THEN
+
+   update appartamento ap
+   set ap.cod=:new.cod
+   where ap.cod=:old.cod;
+
+END IF;
+
+END;
+
+--
+
+create trigger update_cod_ristorazione
+  after update of cod on ristorazione
+  for each row 
+
+declare
+tipo VARCHAR2(25):='';
+
+begin 
+
+  tipo:=:old.tipo_ristorazione;
+
+IF tipo='Elenco completo'  THEN
+
+    update braceria b
+    set b.cod=:new.cod
+    where b.cod=:old.cod;
+    
+    update sushibar sh
+    set sh.cod=:new.cod
+    where sh.cod=:old.cod;
+    
+    update pizzeria p
+    set p.cod=:new.cod
+    where p.cod=:old.cod;
+
+ELSIF tipo='Braceria' THEN
+
+    update braceria b
+    set b.cod=:new.cod
+    where b.cod=:old.cod;
+
+ELSIF tipo='SushiBar' THEN
+
+    update sushibar sh
+    set sh.cod=:new.cod
+    where sh.cod=:old.cod;
+
+ELSIF tipo='Pizzeria' THEN
+    
+    update pizzeria p
+    set p.cod=:new.cod
+    where p.cod=:old.cod;
+
+ELSIF tipo='Pizza e Brace' THEN
+
+    update pizzeria p
+    set p.cod=:new.cod
+    where p.cod=:old.cod;
+    
+    update braceria b
+    set b.cod=:new.cod
+    where b.cod=:old.cod;
+
+ELSIF tipo='Pizza e Sushi' THEN
+
+    update pizzeria p
+    set p.cod=:new.cod
+    where p.cod=:old.cod;
+    
+    update sushibar sh
+    set sh.cod=:new.cod
+    where sh.cod=:old.cod;
+
+ELSIF tipo='Brace e Sushi' THEN
+
+    update braceria b
+    set b.cod=:new.cod
+    where b.cod=:old.cod;
+
+    update sushibar sh
+    set sh.cod=:new.cod
+    where sh.cod=:old.cod;
+
+END IF;
+
+END;
 
 --
 
