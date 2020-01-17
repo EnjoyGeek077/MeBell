@@ -28,10 +28,10 @@ public class Register extends JFrame {
 	private JPasswordField passwordField;
 	private JPasswordField passwordFieldR;
 	private Controller controller;
-	
+
 	public Register(Controller ctrl) {
 	    	controller = ctrl;
-	    	
+
 		setMinimumSize(new Dimension(400, 430));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 430);
@@ -68,16 +68,16 @@ public class Register extends JFrame {
 		JButton btnIscriviti = new JButton("Iscriviti");
 		btnIscriviti.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			    
-			    if(textFirstN.getText()!="" && textLastN.getText()!="" && textUserN.getText()!="")
-				if(controller.isPassEqual(passwordField.getPassword(),passwordFieldR.getPassword())){
-					String pass = new String(passwordField.getPassword());
-					controller.aggiungiUtente(textFirstN.getText(),textLastN.getText(),textUserN.getText(),pass);
-					setVisible(false);
-					controller.openLogin();
-				}else {
-					JOptionPane.showMessageDialog(null, "Le password non corrispondono", "Error", JOptionPane.ERROR_MESSAGE);
-				}
+
+					if(controller.isPassEqual(passwordField.getPassword(),passwordFieldR.getPassword())){
+				    		String pass = new String(passwordField.getPassword());
+						controller.aggiungiUtente(textFirstN.getText(),textLastN.getText(),textUserN.getText(),pass);
+						setVisible(false);
+						controller.openLogin();
+					}else {
+					    	JOptionPane.showMessageDialog(null, "Le password non corrispondono", "Error", JOptionPane.ERROR_MESSAGE);
+					}
+
 			}
 		});
 
@@ -146,5 +146,3 @@ public class Register extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 
 	}
-
-}
