@@ -6,71 +6,68 @@ import java.sql.SQLIntegrityConstraintViolationException;
 
 import javax.swing.JOptionPane;
 
+import Connessione.DatabaseConnection;
 import swing.Login;
 import swing.Register;
-import testPerProgetto.DatabaseConnection;
 
 public class Controller {
-	Login log;
+	Login login;
 	Register register;
-	DatabaseConnection datConn;
+	
 	private Utente utente=null;
 
 	public static void main(String[] args) {
-		Login frame = new Login();
-		frame.setVisible(true);
-
+	    
+		Controller ctrl = new Controller();
+		
 	}
-
-	public void registrati() {
-		if(register==null) {
-			register = new Register();
-		}
-		register.setVisible(true);
+	
+	public Controller() {
+	  
+	  login = new Login(this);
+	  login.setVisible(true);
+	  register = new Register(this);
+	    
 	}
+	
+//-------------------------------------------------------------------------------------------------
 
-	public void login() {
-		if (log==null){
-			log = new Login();
-		}
-		log.setVisible(true);
-	}
-	public Connection getConn() {
-		try {
-			return DatabaseConnection.Connessione();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
-
-	}
 
 	public void aggiungiUtente(String first, String last, String user, String pass) {
 		Utente utente = new Utente(first,last,user,pass);
 		UtenteDAO stdDAO = new UtenteDAO();
 		try {
-			stdDAO.inserisciUser(utente);
+			stdDAO.inserisciUtente(utente);
 		} catch (SQLIntegrityConstraintViolationException e) {
-			JOptionPane.showMessageDialog(null, "ERRORE", "Il nome utente risulta già registrato", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Il nome utente risulta già registrato", "Error", JOptionPane.ERROR_MESSAGE);
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "ERRORE");
+			JOptionPane.showMessageDialog(null, "Errore con il database", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
-	public void log(String user, String pass) {
+	public void loginTry(String user, String pass) {
 		UtenteDAO stdDAO = new UtenteDAO();
 		utente = stdDAO.trovaUtente(user);
 		if (utente!=null && utente.getPassword().equals(pass)) {
-			JOptionPane.showMessageDialog(null, "Log effettuato");
+			JOptionPane.showMessageDialog(null, "Login effettuato");
 		}else {
-			JOptionPane.showMessageDialog(null, "ERRORE", "Username o password errate", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Username o password errate", "Errore", JOptionPane.ERROR_MESSAGE);
 			utente=null;
 		}
+	}
+	
+	public boolean isPassEqual(char[] password, char[] password2) {
+		String psw = new String(password);
+		String psw2 = new String(password2);
+		if(psw.equals(psw2)) {
+			return true;
+		}
+		return false;
 	}
 
 
 
-//getter e setter
+//Getter e setter utente loggato
 	public Utente getUtente() {
 		return utente;
 	}
@@ -78,4 +75,16 @@ public class Controller {
 	public void setUtente(Utente utente) {
 		this.utente = utente;
 	}
+
+//Open frame
+	
+	public void openRegister() {
+	        register.setVisible(true);
+	    }
+	
+	public void openLogin() {
+	        login.setVisible(true);
+	    }
+	
+	
 }

@@ -28,12 +28,11 @@ public class Register extends JFrame {
 	private JPasswordField passwordField;
 	private JPasswordField passwordFieldR;
 	private Controller controller;
-	/**
-	 * Create the frame.
-	 */
-	public Register() {
+	
+	public Register(Controller ctrl) {
+	    	controller = ctrl;
+	    	
 		setMinimumSize(new Dimension(400, 430));
-		controller = new Controller();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 430);
 		contentPane = new JPanel();
@@ -49,7 +48,7 @@ public class Register extends JFrame {
 
 		JLabel lblPassword = new JLabel("Password");
 
-		JLabel lblRepeetPassword = new JLabel("Repeet password");
+		JLabel lblReinsertPassword = new JLabel("Reinsert password");
 
 		textFirstN = new JTextField();
 		textFirstN.setColumns(10);
@@ -69,13 +68,15 @@ public class Register extends JFrame {
 		JButton btnIscriviti = new JButton("Iscriviti");
 		btnIscriviti.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(isPswEq(passwordField.getPassword(),passwordFieldR.getPassword())){
+			    
+			    if(textFirstN.getText()!="" && textLastN.getText()!="" && textUserN.getText()!="" && passwordField.getText()!="")
+				if(controller.isPassEqual(passwordField.getPassword(),passwordFieldR.getPassword())){
 					String pass = new String(passwordField.getPassword());
 					controller.aggiungiUtente(textFirstN.getText(),textLastN.getText(),textUserN.getText(),pass);
 					setVisible(false);
-					controller.login();
+					controller.openLogin();
 				}else {
-					JOptionPane.showMessageDialog(null, "Le password non corrispondono");
+					JOptionPane.showMessageDialog(null, "Le password non corrispondono", "Error", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
@@ -84,7 +85,7 @@ public class Register extends JFrame {
 		btnAnnulla.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				controller.login();
+				controller.openLogin();
 			}
 		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
@@ -99,7 +100,7 @@ public class Register extends JFrame {
 								.addComponent(lblLastName)
 								.addComponent(lblUsername)
 								.addComponent(lblPassword)
-								.addComponent(lblRepeetPassword))
+								.addComponent(lblReinsertPassword))
 							.addGap(50)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addComponent(passwordFieldR, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
@@ -134,7 +135,7 @@ public class Register extends JFrame {
 						.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblRepeetPassword)
+						.addComponent(lblReinsertPassword)
 						.addComponent(passwordFieldR, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)

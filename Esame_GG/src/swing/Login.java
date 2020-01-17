@@ -29,8 +29,8 @@ public class Login extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Login() {
-		controller= new Controller();
+	public Login(Controller ctrl) {
+		controller= ctrl;
 
 		setMinimumSize(new Dimension(400, 320));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -52,7 +52,7 @@ public class Login extends JFrame {
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String pass = new String(textPassword.getPassword());
-				controller.log(textUsername.getText(),pass);
+				controller.loginTry(textUsername.getText(),pass);
 			}
 		});
 
@@ -62,7 +62,7 @@ public class Login extends JFrame {
 		btnRegistrati.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				controller.registrati();
+				controller.openRegister();
 			}
 		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
