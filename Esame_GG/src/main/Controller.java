@@ -35,9 +35,11 @@ public class Controller {
 
 	public void aggiungiUtente(String first, String last, String user, String pass) {
 		Utente utente = new Utente(first,last,user,pass);
-		UtenteDAO stdDAO = new UtenteDAO();
+		UtenteDAO utenteDAO = new UtenteDAO();
 		try {
-			stdDAO.inserisciUtente(utente);
+			utenteDAO.inserisciUtente(utente);
+			JOptionPane.showMessageDialog(null, "Registrazione effettuata con successo");
+			
 		} catch (SQLIntegrityConstraintViolationException e) {
 			JOptionPane.showMessageDialog(null, "Il nome utente risulta già registrato", "Error", JOptionPane.ERROR_MESSAGE);
 		} catch (Exception e) {
@@ -64,8 +66,6 @@ public class Controller {
 		}
 		return false;
 	}
-
-
 
 //Getter e setter utente loggato
 	public Utente getUtente() {

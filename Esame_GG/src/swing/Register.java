@@ -68,16 +68,15 @@ public class Register extends JFrame {
 		JButton btnIscriviti = new JButton("Iscriviti");
 		btnIscriviti.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			    
-			    if(textFirstN.getText()!="" && textLastN.getText()!="" && textUserN.getText()!="" && passwordField.getText()!="")
-				if(controller.isPassEqual(passwordField.getPassword(),passwordFieldR.getPassword())){
-					String pass = new String(passwordField.getPassword());
-					controller.aggiungiUtente(textFirstN.getText(),textLastN.getText(),textUserN.getText(),pass);
-					setVisible(false);
-					controller.openLogin();
-				}else {
-					JOptionPane.showMessageDialog(null, "Le password non corrispondono", "Error", JOptionPane.ERROR_MESSAGE);
-				}
+			    	    
+					if(controller.isPassEqual(passwordField.getPassword(),passwordFieldR.getPassword())){
+				    		String pass = new String(passwordField.getPassword());
+						controller.aggiungiUtente(textFirstN.getText(),textLastN.getText(),textUserN.getText(),pass);
+						setVisible(false);
+						controller.openLogin();
+					}else {
+					    	JOptionPane.showMessageDialog(null, "Le password non corrispondono", "Error", JOptionPane.ERROR_MESSAGE);
+					}
 			}
 		});
 
@@ -146,13 +145,4 @@ public class Register extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 
 	}
-	private boolean isPswEq(char[] password, char[] password2) {
-		String psw = new String(password);
-		String psw2 = new String(password2);
-		if(psw.equals(psw2)) {
-			return true;
-		}
-		return false;
-	}
-
 }
