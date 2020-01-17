@@ -9,6 +9,7 @@ import main.Controller;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -30,32 +31,33 @@ public class Login extends JFrame {
 	 */
 	public Login() {
 		controller= new Controller();
-		
+
 		setMinimumSize(new Dimension(400, 320));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 398, 326);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		
+
 		JLabel lblUsername = new JLabel("Username");
-		
+
 		JLabel lblPassword = new JLabel("Password");
-		
+
 		textUsername = new JTextField();
 		textUsername.setColumns(10);
-		
+
 		textPassword = new JPasswordField();
-		
+
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				String pass = new String(textPassword.getPassword());
+				controller.log(textUsername.getText(),pass);
 			}
 		});
-		
+
 		JLabel lblNonSeiRegistrato = new JLabel("Non sei registrato?");
-		
+
 		JButton btnRegistrati = new JButton("Registrati!");
 		btnRegistrati.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

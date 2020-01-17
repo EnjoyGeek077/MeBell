@@ -4,35 +4,51 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 
+import javax.swing.JOptionPane;
+
+import com.sun.corba.se.spi.orbutil.fsm.Guard.Result;
+
+import testPerProgetto.DatabaseConnection;
+
+
 public class UtenteDAO {
-	private Connection conn;
-	private Controller controller;
-	
-	
-	public UtenteDAO(Controller ctrl) {
-		controller = ctrl;
+
+	public void inserisciUser(Utente utente) throws SQLException {
+		Connection conn = null;
+		String query ="INSERT into utente values(?,?,?,?)";
+			try {
+				conn=DatabaseConnection.Connessione();
+				PreparedStatement inserisciUtente = conn.prepareStatement(query);
+				inserisciUtente.setString(1, utente.getNickname());
+				inserisciUtente.setString(2, utente.getNome());
+				inserisciUtente.setString(3, utente.getCognome());
+				inserisciUtente.setString(4, utente.getPassword());
+				inserisciUtente.executeUpdate();
+			} catch (SQLException e) {
+				throw(e);
+			}
 	}
-
-
-	public void inserisciStd(Utente utente) {
-		conn=controller.getConn();
+	public Utente trovaUtente(String user) {
+		Connection conn = null;
+		String query = "SELECT * FROM utente WHERE username = ?";
 		try {
-			/*PreparedStatement inserisciUtente = conn.prepareStatement("INSERT into utente values(?,?,?,?);");
-			inserisciUtente.setString(1,"'ciao'");//utente.getNome());
-			inserisciUtente.setString(2, "'ciao'");//utente.getCognome());
-			inserisciUtente.setString(3, "'ciao'");//utente.getNickname());
-			inserisciUtente.setString(4, "'ciao'");//utente.getPassword());
-			inserisciUtente.executeUpdate();*/
-			Statement st = conn.createStatement();
-			String query="SELECT * FROM utente;";
-			ResultSet rs = st.executeQuery(query);
-			
+			conn=DatabaseConnection.Connessione();
+			PreparedStatement inserisciUtente = conn.prepareStatement(query);
+			inserisciUtente.setString(1, user);
+			ResultSet rs = inserisciUtente.executeQuery();
+
+			while(rs.next()) {
+				Utente usr = new Utente(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
+				return usr;
+			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+		return null;
 	}
-	
+
 }

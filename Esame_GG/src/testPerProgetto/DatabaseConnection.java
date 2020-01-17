@@ -6,29 +6,46 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class DatabaseConnection {
-private Connection conn=null;
+private static Connection connect;
 
-	
-	public Connection getConnection() {
-		if(conn==null) {
-			try {
-				Class.forName("oracle.jdbc.driver.OracleDriver");
-				String url = "jdbc:oracle:thin:@localhost:1521:xe";
-				Properties props = new Properties();
-				props.setProperty("user","C##Utente");
-				props.setProperty("password","OracleADMIN");
-				
-				conn = DriverManager.getConnection(url,props);
-				
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
-		return conn;
-	}
+    private DatabaseConnection() {}
+
+
+    public static Connection Connessione() throws SQLException {
+
+  if(connect==null) {
+
+      try {
+
+    System.out.println("Connessione al DB...");
+    Class.forName("oracle.jdbc.driver.OracleDriver");
+
+      }catch(ClassNotFoundException e){
+
+    System.err.println("Errore, driver non trovato.");
+        System.out.println(e.getMessage());
+
+      }
+        String url = "jdbc:oracle:thin:@localhost:1521:xe";
+        String user = "C##Utente";
+        String Password = "OracleADMIN";
+
+        connect = DriverManager.getConnection(url,user,Password);
+        System.out.println("Connessione al database riuscita.");
+  }
+
+
+  return connect;
+    }
+
+
+    public static Connection Disconnessione () throws SQLException{
+
+  System.out.println("Chiusura connessione...");
+  connect.close();
+  System.out.println("Chiusura riuschita.");
+
+  return connect;
+    }
+
 }
