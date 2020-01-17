@@ -19,9 +19,9 @@ public class Controller {
 	private Utente utente=null;
 
 	public static void main(String[] args) {
-	    
-		Controller ctrl = new Controller();
 		
+	    Controller ctrl = new Controller();
+	    
 	}
 	
 	public Controller() {
@@ -63,7 +63,7 @@ public class Controller {
 	public boolean isPassEqual(char[] password, char[] password2) {
 		String psw = new String(password);
 		String psw2 = new String(password2);
-		if(psw.equals(psw2)) {
+		if(psw.equals(psw2) && psw!="") {
 			return true;
 		}
 		return false;
