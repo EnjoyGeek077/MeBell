@@ -13,7 +13,7 @@ private String password;
     	cognome=last;
     	nickname=user;
     	password=string;
-}
+}//
 	public String getNome() {
 		return nome;
 	}
