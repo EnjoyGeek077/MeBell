@@ -1,16 +1,16 @@
 --Creazione tabelle
 create table utente(username varchar(15) primary key, nome varchar(25) not null, cognome varchar(25) not null, password varchar(15) not null );
 create table recensione(voto int not null, titolo varchar(25) not null, testo varchar(250), creatore varchar(15) not null, cod_locale char(7) not null );
-create table location(cod char(7) primary key, nome varchar(25) not null, cod_res char(5) not null, tipo_location varchar(25) not null, check (tipo_location='Alloggio' OR tipo_location='Attrazione' OR tipo_location='Ristorante'), partita_iva char(11), descrizione varchar(100) );
+create table location(cod char(7) primary key, nome varchar(25) not null, cod_res char(5) not null, tipo_location varchar(25) not null, check (tipo_location='Alloggio' OR tipo_location='Attrazione' OR tipo_location='Ristorante'), partita_iva char(11) not null, descrizione varchar(100) );
 
 create table residenza(via varchar(25) not null, n_civico varchar(5) not null, cap char(5) not null, comune varchar(25) not null, cod_residenza char(5) primary key );
 
-create table alloggio(cod char(7) not null, prezzo_medio int, tipo_alloggio varchar(25) default 'Non Specificato', check(tipo_alloggio='Hotel' OR  tipo_alloggio='BeB' OR  tipo_alloggio='Appartamento' OR tipo_alloggio='Non Specificato') );
+create table alloggio(cod char(7) primary key, prezzo_medio int, tipo_alloggio varchar(25) default 'Non Specificato', check(tipo_alloggio='Hotel' OR  tipo_alloggio='BeB' OR  tipo_alloggio='Appartamento' OR tipo_alloggio='Non Specificato') );
 create table servizi_alloggio(cod char(7) not null, wi_fi char(2) default 'ns', dayuse char(2) default 'ns', spa char(2) default 'ns', piscina char(2) default 'ns', aria_condizionata char(2) default 'ns', accesso_disabili char(2) default 'ns', accesso_animali char(2) default 'ns', ascensore char(2) default 'ns', servizio_lavanderia char(2) default 'ns', tv_stereo char(2) default 'ns', parcheggio char(2) default 'ns' );
 
 create table attrazione(cod char(7) not null, pagamento char(2) default 'ns', tipo_attrazione varchar(25) );
 
-create table ristorazione(cod char(7) not null, prezzo_medio int, n_posti smallint, tipo_ristorazione varchar(25) default 'Non Specificato', check(tipo_ristorazione='Elenco completo' OR tipo_ristorazione='Pizzeria' OR tipo_ristorazione='Braceria' OR tipo_ristorazione='SushiBar' OR tipo_ristorazione='Pizza e Brace' OR tipo_ristorazione='Pizza e Sushi' OR tipo_ristorazione='Brace e Sushi' OR tipo_ristorazione='Non Specificato') );
+create table ristorazione(cod char(7) primary key, prezzo_medio int, n_posti smallint, tipo_ristorazione varchar(25) default 'Non Specificato', check(tipo_ristorazione='Elenco completo' OR tipo_ristorazione='Pizzeria' OR tipo_ristorazione='Braceria' OR tipo_ristorazione='SushiBar' OR tipo_ristorazione='Pizza e Brace' OR tipo_ristorazione='Pizza e Sushi' OR tipo_ristorazione='Brace e Sushi' OR tipo_ristorazione='Non Specificato') );
 
 create table hotel(cod char(7) not null, n_camere smallint, n_suite smallint, stelle smallint );
 create table beb(cod char(7) not null, n_camere smallint, stelle smallint, bagno_comune char(2) default 'ns', check(bagno_comune='si' OR bagno_comune='no' OR bagno_comune='ns') );
@@ -21,10 +21,10 @@ create table sushibar(cod char(7) not null, allyoucaneat char(2) default 'ns', t
 create table pizzeria(cod char(7) not null, asporto char(2) default 'ns', tipo_forno varchar(20) default 'Non Specificato', check(tipo_forno='Entrambi' OR tipo_forno='A legna' OR tipo_forno='Elettrico' OR tipo_forno='Non Specificato') );
 
 --Unique
-alter table recensione add constraint uc_recensione unique (creatore,cod_locale);
+alter table recensione add constraint uc_recensione unique(creatore,cod_locale);
 
-alter table alloggio add constraint uc_cod_all unique(cod);
-alter table ristorazione add constraint uc_cod_rist unique(cod);
+alter table location add constraint uc_partita_iva unique(partita_iva);
+
 alter table attrazione add constraint uc_cod_att unique(cod);
 
 alter table servizi_alloggio add constraint uc_cod_sall unique(cod);
