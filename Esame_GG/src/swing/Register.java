@@ -69,7 +69,7 @@ public class Register extends JFrame {
 		btnIscriviti.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			    
-			    if(textFirstN.getText()!="" && textLastN.getText()!="" && textUserN.getText()!="" && passwordField.getText()!="")
+			    if(textFirstN.getText()!="" && textLastN.getText()!="" && textUserN.getText()!="")
 				if(controller.isPassEqual(passwordField.getPassword(),passwordFieldR.getPassword())){
 					String pass = new String(passwordField.getPassword());
 					controller.aggiungiUtente(textFirstN.getText(),textLastN.getText(),textUserN.getText(),pass);
@@ -145,14 +145,6 @@ public class Register extends JFrame {
 		);
 		contentPane.setLayout(gl_contentPane);
 
-	}
-	private boolean isPswEq(char[] password, char[] password2) {
-		String psw = new String(password);
-		String psw2 = new String(password2);
-		if(psw.equals(psw2)) {
-			return true;
-		}
-		return false;
 	}
 
 }
