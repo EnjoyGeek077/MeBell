@@ -1,10 +1,10 @@
-package swing;
+package Swing;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import main.Controller;
+import Controller.Controller;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;

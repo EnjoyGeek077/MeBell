@@ -1,10 +1,10 @@
-package swing;
+package Swing;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import main.Controller;
+import Controller.Controller;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -58,7 +58,7 @@ public class Login extends JFrame {
 
 		JLabel lblNonSeiRegistrato = new JLabel("Non sei registrato?");
 
-		JButton btnRegistrati = new JButton("Registrati!");
+		JButton btnRegistrati = new JButton("Registrati");
 		btnRegistrati.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);

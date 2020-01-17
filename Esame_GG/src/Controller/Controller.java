@@ -1,4 +1,4 @@
-package main;
+package Controller;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -7,8 +7,10 @@ import java.sql.SQLIntegrityConstraintViolationException;
 import javax.swing.JOptionPane;
 
 import Connessione.DatabaseConnection;
-import swing.Login;
-import swing.Register;
+import DAO.UtenteDAO;
+import Entità.Utente;
+import Swing.Login;
+import Swing.Register;
 
 public class Controller {
 	Login login;

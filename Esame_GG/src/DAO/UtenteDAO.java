@@ -1,4 +1,4 @@
-package main;
+package DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,6 +10,7 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 import Connessione.DatabaseConnection;
+import Entità.Utente;
 
 
 public class UtenteDAO {
