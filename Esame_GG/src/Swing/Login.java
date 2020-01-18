@@ -25,10 +25,6 @@ public class Login extends JFrame {
 	private JPasswordField textPassword;
 	private Controller controller;
 
-
-	/**
-	 * Create the frame.
-	 */
 	public Login(Controller ctrl) {
 		controller= ctrl;
 

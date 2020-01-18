@@ -68,17 +68,16 @@ public class Controller {
 		}
 		return false;
 	}
-	
-	//Get connessone
+
+
+//Get connessione
 	public Connection getConnection() {
 		try {
 			return DatabaseConnection.Connessione();
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, "Connessione non riuscita. Controllare il collegamento", "Errore", JOptionPane.ERROR_MESSAGE);
 			return null;
-		}
-		
-		
+		}	
 	}
 
 //Getter e setter utente loggato
