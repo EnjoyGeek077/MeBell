@@ -37,7 +37,7 @@ public class Controller {
 
 	public void aggiungiUtente(String first, String last, String user, String pass) {
 		Utente utente = new Utente(first,last,user,pass);
-		UtenteDAO utenteDAO = new UtenteDAO();
+		UtenteDAO utenteDAO = new UtenteDAO(this);
 		try {
 			utenteDAO.inserisciUtente(utente);
 			JOptionPane.showMessageDialog(null, "Registrazione effettuata con successo");
@@ -50,7 +50,7 @@ public class Controller {
 	}
 
 	public void loginTry(String user, String pass) {
-		UtenteDAO stdDAO = new UtenteDAO();
+		UtenteDAO stdDAO = new UtenteDAO(this);
 		utente = stdDAO.trovaUtente(user);
 		if (utente!=null && utente.getPassword().equals(pass)) {
 			JOptionPane.showMessageDialog(null, "Login effettuato");
@@ -67,6 +67,18 @@ public class Controller {
 			return true;
 		}
 		return false;
+	}
+	
+	//Get connessone
+	public Connection getConnection() {
+		try {
+			return DatabaseConnection.Connessione();
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "Connessione non riuscita. Controllare il collegamento", "Errore", JOptionPane.ERROR_MESSAGE);
+			return null;
+		}
+		
+		
 	}
 
 //Getter e setter utente loggato

@@ -10,20 +10,24 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 import Connessione.DatabaseConnection;
+import Controller.Controller;
 import Entità.Utente;
 
 
 public class UtenteDAO {
+	Controller controller;
+	public UtenteDAO(Controller ctrl) {
+		controller = ctrl;
+		
+	}
 
     	public void inserisciUtente(Utente utente) throws SQLException {
 	    
-		Connection conn = null;
 		String query ="INSERT into utente values(?,?,?,?)";
 		
 			try {
 			    
-				conn=DatabaseConnection.Connessione();
-				PreparedStatement inserisciUtente = conn.prepareStatement(query);
+				PreparedStatement inserisciUtente = controller.getConnection().prepareStatement(query);
 				inserisciUtente.setString(1, utente.getUsername());
 				inserisciUtente.setString(2, utente.getNome());
 				inserisciUtente.setString(3, utente.getCognome());
@@ -37,13 +41,11 @@ public class UtenteDAO {
 	
 	public Utente trovaUtente(String user) {
 	    
-		Connection conn = null;
 		String query = "SELECT * FROM utente WHERE username = ?";
 		
 		try {
 		    
-			conn=DatabaseConnection.Connessione();
-			PreparedStatement inserisciUtente = conn.prepareStatement(query);
+			PreparedStatement inserisciUtente = controller.getConnection().prepareStatement(query);
 			inserisciUtente.setString(1, user);
 			ResultSet rs = inserisciUtente.executeQuery();
 

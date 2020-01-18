@@ -146,3 +146,4 @@ public class Register extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 
 	}
+}
