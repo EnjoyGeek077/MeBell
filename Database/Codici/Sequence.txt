@@ -26,7 +26,7 @@ for each row
 
 declare
 prefisso char(3):='LOC';
-codice char(7):='';
+codice char(4):='';
 
 begin
 
