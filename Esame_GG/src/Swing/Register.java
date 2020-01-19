@@ -244,7 +244,7 @@ public class Register extends JFrame {
 					.addGap(104))
 		);
 		
-		JLabel lblRegister = new JLabel("Register");
+		JLabel lblRegister = new JLabel("REGISTER");
 		lblRegister.setForeground(new Color(255, 255, 255));
 		lblRegister.setFont(new Font("Arial", Font.BOLD, 18));
 		GroupLayout gl_panel = new GroupLayout(panel);
@@ -253,14 +253,13 @@ public class Register extends JFrame {
 				.addGroup(gl_panel.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(lblRegister)
-					.addContainerGap(324, Short.MAX_VALUE))
+					.addContainerGap(290, Short.MAX_VALUE))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap()
 					.addComponent(lblRegister)
-					.addContainerGap(83, Short.MAX_VALUE))
+					.addContainerGap(61, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
 		contentPane.setLayout(gl_contentPane);
