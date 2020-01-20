@@ -23,6 +23,7 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Cursor;
 
 public class Login extends JFrame {
 
@@ -54,6 +55,7 @@ public class Login extends JFrame {
 		textPassword = new JPasswordField();
 		
 		JButton btnLogin = new JButton("");
+		btnLogin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnLogin.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
@@ -85,6 +87,7 @@ public class Login extends JFrame {
 		JLabel lblNonSeiRegistrato = new JLabel("Non sei registrato?");
 
 		JButton btnRegistrati = new JButton("");
+		btnRegistrati.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnRegistrati.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {

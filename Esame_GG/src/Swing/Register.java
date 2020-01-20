@@ -23,6 +23,7 @@ import java.awt.Font;
 import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Cursor;
 
 public class Register extends JFrame {
 
@@ -72,6 +73,7 @@ public class Register extends JFrame {
 		passwordFieldR.setToolTipText("");
 
 		JButton btnIscriviti = new JButton("");
+		btnIscriviti.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnIscriviti.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -109,6 +111,7 @@ public class Register extends JFrame {
 		});
 
 		JButton btnAnnulla = new JButton("");
+		btnAnnulla.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnAnnulla.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
