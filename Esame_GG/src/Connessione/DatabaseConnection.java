@@ -42,6 +42,16 @@ public class DatabaseConnection {
     }
 
 
+    public static Connection getConnect() {
+        return connect;
+    }
+
+
+    public static void setConnect(Connection connect) {
+        DatabaseConnection.connect = connect;
+    }
+
+
     public static Connection Disconnessione () throws SQLException{
 
 	connect.close();
