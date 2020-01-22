@@ -165,7 +165,7 @@ public class Login extends JFrame {
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
 						.addComponent(lblPassword, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
 						.addComponent(labelPassICON, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(textPassword))
+						.addComponent(textPassword, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(33)
 					.addComponent(lblNonSeiRegistrato)
 					.addPreferredGap(ComponentPlacement.RELATED)
@@ -186,24 +186,24 @@ public class Login extends JFrame {
 			    JOptionPane.showMessageDialog(null, "<html>Editor:<br/>Federico Gargiulo<br/>Antonio Garofalo</html>", "Informazioni", JOptionPane.WARNING_MESSAGE);		    
 			}
 		});
-		label.setIcon(new ImageIcon(Login.class.getResource("/Icons/FlagItICON.png")));
+		label.setIcon(new ImageIcon(Login.class.getResource("/Icons/InfoICON.png")));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
+			gl_panel.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(lblLogin)
-					.addPreferredGap(ComponentPlacement.RELATED, 265, Short.MAX_VALUE)
-					.addComponent(label, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
+					.addContainerGap(307, Short.MAX_VALUE))
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap(350, Short.MAX_VALUE)
+					.addComponent(label))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(label)
-						.addComponent(lblLogin))
-					.addContainerGap(42, Short.MAX_VALUE))
+					.addComponent(lblLogin)
+					.addPreferredGap(ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+					.addComponent(label))
 		);
 		panel.setLayout(gl_panel);
 		contentPane.setLayout(gl_contentPane);

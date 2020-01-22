@@ -16,9 +16,9 @@ import Entità.Utente;
 
 public class UtenteDAO {
 	Controller controller;
+	
 	public UtenteDAO(Controller ctrl) {
 		controller = ctrl;
-		
 	}
 
     	public void inserisciUtente(Utente utente) throws SQLException {
