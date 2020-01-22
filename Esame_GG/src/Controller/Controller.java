@@ -1,10 +1,16 @@
 package Controller;
 
 import java.sql.Connection;
+
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import Connessione.DatabaseConnection;
 import DAO.UtenteDAO;
@@ -69,7 +75,26 @@ public class Controller {
 		return false;
 	}
 
-
+	
+	public boolean controlloPass(JPasswordField passField) {
+	    
+	    String password = new String(passField.getPassword());
+	    Pattern path = Pattern.compile("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,15})");
+	    Matcher m = path.matcher(password);
+	    boolean controllo = m.matches();
+	    return controllo;
+	}
+	
+	public boolean controlloUsername(JTextField utenteField) {
+	    
+	    String Username = utenteField.getText();
+	    Pattern path = Pattern.compile("^[a-zA-Z0-9_-]{3,15}$");
+	    Matcher m = path.matcher(Username);
+	    boolean controllo = m.matches();
+	    return controllo;
+	   
+	}
+	
 //Get connessione
 	public Connection getConnection() {
 	    

@@ -24,6 +24,8 @@ import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Cursor;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Register extends JFrame {
 
@@ -34,16 +36,19 @@ public class Register extends JFrame {
 	private JPasswordField passwordField;
 	private JPasswordField passwordFieldR;
 	private Controller controller;
+	
+	private boolean controlloUsername=false;
+	private boolean controlloPassword=false;
 
 	public Register(Controller ctrl) {
 		setTitle("Register");
 	    	controller = ctrl;
 
-		setMinimumSize(new Dimension(400, 430));
+		setMinimumSize(new Dimension(550, 430));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 400, 430);
+		setBounds(100, 100, 550, 430);
 		contentPane = new JPanel();
-		contentPane.setMinimumSize(new Dimension(530, 430));
+		contentPane.setMinimumSize(new Dimension(533, 430));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
@@ -56,6 +61,10 @@ public class Register extends JFrame {
 		JLabel lblPassword = new JLabel("Password");
 
 		JLabel lblReinsertPassword = new JLabel("Repat password");
+		
+		JLabel lblControlloUsername = new JLabel("Il campo conterr\u00E0 una lunghezza da 3 a 15 char alfanumerici.");
+		
+		JLabel lblControlloPassword = new JLabel("Il campo conterrà A-Z, a-z, 0-9 e almeno un @#$%.");
 
 		textFirstN = new JTextField();
 		textFirstN.setColumns(10);
@@ -64,9 +73,40 @@ public class Register extends JFrame {
 		textLastN.setColumns(10);
 
 		textUserN = new JTextField();
+		textUserN.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+			
+			  	 if(!controller.controlloUsername(textUserN)) {
+    			  	     lblControlloUsername.setForeground(Color.RED); 
+    			  	     lblControlloUsername.setText("Errore, l'username non rispetta gli standard.");
+    			  	     controlloUsername=false;
+			  	 }else {
+			  	     lblControlloUsername.setForeground(Color.GREEN); 
+			  	     lblControlloUsername.setText("L'username rispetta gli standard.");
+			  	     controlloUsername=true;
+			  	 }
+			  
+			}
+		});
 		textUserN.setColumns(10);
 
 		passwordField = new JPasswordField();
+		passwordField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+			    
+			    if(!controller.controlloPass(passwordField)) {
+				lblControlloPassword.setForeground(Color.RED); 
+				lblControlloPassword.setText("Errore, la password non rispetta gli standard.");
+				controlloPassword=false;
+			    }else {
+				lblControlloPassword.setForeground(Color.GREEN); 
+				lblControlloPassword.setText("La password rispetta gli standard.");
+				controlloPassword=true;
+			    }
+			}
+		});
 		passwordField.setToolTipText("");
 
 		passwordFieldR = new JPasswordField();
@@ -96,18 +136,26 @@ public class Register extends JFrame {
 		btnIscriviti.setBorder(null);
 		btnIscriviti.setContentAreaFilled(false);
 		btnIscriviti.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		    public void actionPerformed(ActionEvent e) {
+			if(!textFirstN.getText().isEmpty() && !textLastN.getText().isEmpty()) {
+			    if(controlloUsername && controlloPassword) {
+				if(controller.isPassEqual(passwordField.getPassword(),passwordFieldR.getPassword())){
+				    String pass = new String(passwordField.getPassword());
+				    controller.aggiungiUtente(textFirstN.getText(),textLastN.getText(),textUserN.getText(),pass);
+				    setVisible(false);
+				    controller.openLogin();
+				}else {
+				    JOptionPane.showMessageDialog(null, "Le password non corrispondono", "Errore corrispondenza password", JOptionPane.ERROR_MESSAGE);
+				}
+			    }else {
+				JOptionPane.showMessageDialog(null, "Campi username o password non rispettano gli standard.", "Errore Username o Password", JOptionPane.ERROR_MESSAGE);
+			    }
+			}else {
 
-					if(controller.isPassEqual(passwordField.getPassword(),passwordFieldR.getPassword())){
-				    		String pass = new String(passwordField.getPassword());
-						controller.aggiungiUtente(textFirstN.getText(),textLastN.getText(),textUserN.getText(),pass);
-						setVisible(false);
-						controller.openLogin();
-					}else {
-					    	JOptionPane.showMessageDialog(null, "Le password non corrispondono", "Error", JOptionPane.ERROR_MESSAGE);
-					}
-
+			    JOptionPane.showMessageDialog(null, "Campi nome e cognome non possono essere vuoti.", "Errore Anagrafico", JOptionPane.ERROR_MESSAGE);
 			}
+		    }
+
 		});
 
 		JButton btnAnnulla = new JButton("");
@@ -146,10 +194,6 @@ public class Register extends JFrame {
 		JLabel labelUsernameICON = new JLabel("");
 		labelUsernameICON.setIcon(new ImageIcon(Register.class.getResource("/Icons/UserICON.png")));
 		
-		JLabel lblControlloUsername = new JLabel("Controllo Username");
-		
-		JLabel lblControlloPassword = new JLabel("Controllo Password");
-		
 		JLabel lblPassICON = new JLabel("");
 		lblPassICON.setIcon(new ImageIcon(Register.class.getResource("/Icons/PassICON.png")));
 		
@@ -161,10 +205,10 @@ public class Register extends JFrame {
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(btnAnnulla)
-					.addPreferredGap(ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 217, Short.MAX_VALUE)
 					.addComponent(btnIscriviti)
 					.addContainerGap())
-				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
+				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -188,21 +232,21 @@ public class Register extends JFrame {
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(4)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(textUserN, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
-								.addComponent(textLastN, GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
-								.addComponent(textFirstN, GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
-								.addComponent(lblControlloUsername)))
+								.addComponent(textLastN, GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+								.addComponent(textFirstN, GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+								.addComponent(lblControlloUsername)
+								.addComponent(textUserN, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(passwordField, GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
-								.addComponent(passwordFieldR, GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+								.addComponent(passwordField, GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+								.addComponent(passwordFieldR, GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
 								.addComponent(lblControlloPassword))))
 					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_contentPane.createSequentialGroup()
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
@@ -216,35 +260,33 @@ public class Register extends JFrame {
 					.addComponent(lblControlloUsername)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-							.addComponent(lblUsername)
-							.addComponent(textUserN, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(labelUsernameICON)
-							.addGap(47)))
-					.addPreferredGap(ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addComponent(lblPassICON)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(lblPassword)
-							.addGap(6))
-						.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(10)
+						.addComponent(lblUsername)
+						.addComponent(labelUsernameICON)
+						.addComponent(textUserN, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
+						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+								.addComponent(lblPassICON)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addComponent(lblPassword)
+									.addGap(6))
+								.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addGap(10)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblReinsertPassword)
-								.addComponent(passwordFieldR, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE))
-							.addGap(11)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(btnAnnulla)
-								.addComponent(btnIscriviti)))
-						.addComponent(labelPassRepatICON, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap())
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-					.addContainerGap(270, Short.MAX_VALUE)
-					.addComponent(lblControlloPassword)
-					.addGap(104))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addComponent(lblReinsertPassword)
+										.addComponent(passwordFieldR, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE))
+									.addGap(11)
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addComponent(btnAnnulla)
+										.addComponent(btnIscriviti)))
+								.addComponent(labelPassRepatICON, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
+							.addContainerGap())
+						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+							.addComponent(lblControlloPassword)
+							.addGap(104))))
 		);
 		
 		JLabel lblRegister = new JLabel("REGISTER");
