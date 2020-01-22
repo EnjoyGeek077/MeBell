@@ -187,23 +187,32 @@ public class Login extends JFrame {
 			}
 		});
 		label.setIcon(new ImageIcon(Login.class.getResource("/Icons/InfoICON.png")));
+		
+		JLabel label_1 = new JLabel("");
+		label_1.setIcon(new ImageIcon(Login.class.getResource("/Icons/MeBell.png")));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(lblLogin)
-					.addContainerGap(307, Short.MAX_VALUE))
+					.addGap(28)
+					.addComponent(label_1)
+					.addContainerGap(79, Short.MAX_VALUE))
 				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap(350, Short.MAX_VALUE)
+					.addContainerGap(374, Short.MAX_VALUE)
 					.addComponent(label))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addComponent(lblLogin)
-					.addPreferredGap(ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
 					.addComponent(label))
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(11)
+					.addComponent(label_1)
+					.addGap(11))
 		);
 		panel.setLayout(gl_panel);
 		contentPane.setLayout(gl_contentPane);
