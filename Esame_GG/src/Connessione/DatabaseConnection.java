@@ -26,7 +26,7 @@ public class DatabaseConnection {
 
 	    }
 	    String url = "jdbc:oracle:thin:@localhost:1521:xe";
-	    String user = "Utente";
+	    String user = "C##Utente";
 	    String Password = "OracleADMIN";
 
 	    try {
