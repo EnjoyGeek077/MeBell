@@ -78,16 +78,16 @@ END IF;
 
 IF :new.tipo_location='Alloggio' AND  :old.tipo_location<>:new.tipo_location THEN
 
-	insert into alloggio values (:old.cod, null, null);
+	insert into alloggio(cod) values (:old.cod);
 	insert into servizi_alloggio(cod) values (:old.cod);
 
 ELSIF  :new.tipo_location='Ristorazione' AND :old.tipo_location<>:new.tipo_location THEN
 
-	insert into ristorazione values (:old.cod, null, null, null);
+	insert into ristorazione(cod) values (:old.cod);
 
 ELSIF  :new.tipo_location='Attrazione' AND  :old.tipo_location<>:new.tipo_location THEN
 
-	insert into attrazione values (:old.cod, null, null);
+	insert into attrazione(cod) values (:old.cod);
    
 END IF;
 
@@ -117,15 +117,15 @@ END IF;
 
 IF :new.tipo_alloggio='Hotel' AND  :old.tipo_alloggio<>:new.tipo_alloggio THEN
 
-	insert into hotel values (:old.cod, null, null, null);
+	insert into hotel(cod) values (:old.cod);
 
 ELSIF  :new.tipo_alloggio='BeB' AND :old.tipo_alloggio<>:new.tipo_alloggio THEN
 
-	insert into beb values (:old.cod, null, null, null);
+	insert into beb(cod) values (:old.cod);
 
 ELSIF  :new.tipo_alloggio='Appartamento' AND  :old.tipo_alloggio<>:new.tipo_alloggio THEN
 
-	insert into appartamento values (:old.cod, null, null, null);
+	insert into appartamento(cod) values (:old.cod);
    
 END IF;
 
