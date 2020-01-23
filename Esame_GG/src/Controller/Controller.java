@@ -38,8 +38,8 @@ public class Controller {
 	DefaultTableModel model;
 	   
 	private Utente utente=null;
-	private ArrayList<Location> location;
-
+	private ArrayList<Location> location;	
+	
 	public static void main(String[] args) {
 		
 	    Controller ctrl = new Controller();
@@ -115,27 +115,45 @@ public class Controller {
 	    return controllo;
 	   
 	}
+	  
+	public void getLocations(String tipologia,String comune,String nome) {
+		LocationDAO locDAO = new LocationDAO(this);
+		locDAO.getLocations(tipologia,comune,nome);
+	}
 	
-	  public void insertLocationInTable(DefaultTableModel modello) {
-		
+	 public void aggiornaTable(DefaultTableModel modello) {
+	     
 		modello.getDataVector().removeAllElements();
 		
-		Icon Icona = new ImageIcon(getClass().getResource("/Icons/UserICON.png"));
-		JLabel labelIMG = new JLabel();
-		labelIMG.setIcon(Icona);
+		for(Location l : location) {
+		    if(l.getTipo().equals("Alloggio")) {
+			Icon Icona = new ImageIcon(getClass().getResource("/Icons/HotelICON.png"));
+			JLabel labelIMG = new JLabel();
+			labelIMG.setIcon(Icona);
+			
+			modello.addRow(new Object[] {labelIMG,l.getCod(),l.getNome(),"Comune","Media Voti"});
+			
+		    }else if(l.getTipo().equals("Attrazione")) {
+			Icon Icona = new ImageIcon(getClass().getResource("/Icons/AttrazioneICON.png"));
+			JLabel labelIMG = new JLabel();
+			labelIMG.setIcon(Icona);
+			
+			modello.addRow(new Object[] {labelIMG,l.getCod(),l.getNome(),"Comune","Media Voti"});
+			
+		    }else if(l.getTipo().equals("Ristorante")) {
+			Icon Icona = new ImageIcon(getClass().getResource("/Icons/RestaurantICON.png"));
+			JLabel labelIMG = new JLabel();
+			labelIMG.setIcon(Icona);
+			
+			modello.addRow(new Object[] {labelIMG,l.getCod(),l.getNome(),"Comune","Media Voti"});
+			
+		    }
+		}
 		
-		modello.addRow(new Object[] {labelIMG});
 		   
 		modello.fireTableDataChanged();
-
+		
 	    }
-	  
-	public void GetLocations(String tipologia,String xx,String cod) {
-		LocationDAO locDAO = new LocationDAO(this);
-		locDAO.GetLocations(tipologia,xx,cod);
-		
-		
-	}
 
 //Get connessione
 	public Connection getConnection() {
