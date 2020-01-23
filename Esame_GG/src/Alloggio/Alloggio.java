@@ -3,13 +3,17 @@ package Alloggio;
 import Entità.Location;
 
 public class Alloggio extends Location{
+	public Alloggio(String codi, String nom, String cod_res, String tip, String partitaIv, String descrizion) {
+		super(codi, nom, cod_res, tip, partitaIv, descrizion);
+		serviziAlloggio = new ServiziAlloggio();
+		
+	}
+
 	private int prezzoMedio;
 	private String tipoAlloggio;
 	ServiziAlloggio serviziAlloggio;
 	
-	public Alloggio() {
-		serviziAlloggio = new ServiziAlloggio(); 
-	}
+	
 	
 
 	public int getPrezzoMedio() {

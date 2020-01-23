@@ -9,11 +9,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import Connessione.DatabaseConnection;
+import DAO.LocationDAO;
 import DAO.UtenteDAO;
+import Entità.Location;
 import Entità.Utente;
 import Swing.Login;
 import Swing.Register;
@@ -35,7 +38,9 @@ public class Controller {
 	  login = new Login(this);
 	  login.setVisible(true);
 	  register = new Register(this);
-	    
+	  
+	  
+	  
 	}
 	
 //-------------------------------------------------------------------------------------------------
@@ -93,6 +98,13 @@ public class Controller {
 	    boolean controllo = m.matches();
 	    return controllo;
 	   
+	}
+	
+	public void GetLocations(String tipologia,String xx,String cod) {
+		LocationDAO locDAO = new LocationDAO(this);
+		locDAO.GetLocations(tipologia,xx,cod);
+		
+		
 	}
 	
 //Get connessione
