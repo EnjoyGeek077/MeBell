@@ -19,9 +19,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import Connessione.DatabaseConnection;
-import DAO.UtenteDAO;
+import DAO.*;
+
 import Entità.*;
 import Swing.HomePage;
+
+import Entità.Location;
+import Entità.Utente;
+
 import Swing.Login;
 import Swing.Register;
 
@@ -124,7 +129,14 @@ public class Controller {
 		modello.fireTableDataChanged();
 
 	    }
-	
+	  
+	public void GetLocations(String tipologia,String xx,String cod) {
+		LocationDAO locDAO = new LocationDAO(this);
+		locDAO.GetLocations(tipologia,xx,cod);
+		
+		
+	}
+
 //Get connessione
 	public Connection getConnection() {
 	    
@@ -169,7 +181,6 @@ public class Controller {
 	public void openRegister() {
 	        register.setVisible(true);
 	    }
-	
 	public void openLogin() {
 	        login.setVisible(true);
 	    }
