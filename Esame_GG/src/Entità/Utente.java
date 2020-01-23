@@ -2,16 +2,16 @@ package Entità;
 
 
 public class Utente {
+private String username;
 private String nome;
 private String cognome;
-private String username;
 private String password;
 
 
-    public Utente(String first, String last, String user, String string) {
+    public Utente(String user, String first, String last, String string) {
+	username=user;
     	nome=first;
     	cognome=last;
-    	username=user;
     	password=string;
     	}
     

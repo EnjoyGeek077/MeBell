@@ -3,6 +3,7 @@ package Swing;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
 import Controller.Controller;
 
@@ -31,7 +32,7 @@ public class Login extends JFrame {
 	private JTextField textUsername;
 	private JPasswordField textPassword;
 	private Controller controller;
-
+	
 	public Login(Controller ctrl) {
 		setTitle("Login");
 		controller= ctrl;
