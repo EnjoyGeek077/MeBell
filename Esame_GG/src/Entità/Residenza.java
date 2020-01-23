@@ -11,7 +11,16 @@ public class Residenza {
     private String cod_res;
     
     private ArrayList<Location> location_in_res;
-
+    
+    public Residenza(String via, String n_civico, String cap, String comune, String cod_res) {
+	
+	this.setVia(via);
+	this.setN_civico(n_civico);
+	this.setCap(cap);
+	this.setComune(comune);
+	this.setCod_res(cod_res);
+    }
+    
     public String getVia() {
         return via;
     }

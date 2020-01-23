@@ -1,6 +1,7 @@
 package Controller;
 
 import java.awt.Image;
+import java.lang.reflect.Array;
 import java.sql.Connection;
 
 import java.sql.SQLException;
@@ -39,6 +40,7 @@ public class Controller {
 	   
 	private Utente utente=null;
 	private ArrayList<Location> location;	
+	private ArrayList<Residenza> residenze;
 	
 	public static void main(String[] args) {
 		
@@ -116,39 +118,51 @@ public class Controller {
 	   
 	}
 	  
-	public void getLocations(String tipologia,String comune,String nome) {
-		LocationDAO locDAO = new LocationDAO(this);
-		locDAO.getLocations(tipologia,comune,nome);
+	public void getFilterLocation(String tipologia, String comune, String nome) {
+	    
+	    LocationDAO locDAO = new LocationDAO(this);
+	    ResidenzaDAO resDAO = new ResidenzaDAO(this);
+	    
+	    this.residenze=resDAO.getResidenze(comune);
+	    this.location=locDAO.getLocations(tipologia, comune, nome);
 	}
 	
-	 public void aggiornaTable(DefaultTableModel modello) {
-	     
-		modello.getDataVector().removeAllElements();
-		
-		for(Location l : location) {
-		    if(l.getTipo().equals("Alloggio")) {
-			Icon Icona = new ImageIcon(getClass().getResource("/Icons/HotelICON.png"));
-			JLabel labelIMG = new JLabel();
-			labelIMG.setIcon(Icona);
+	
+	public void aggiornaTable(DefaultTableModel modello) {
+
+	    modello.getDataVector().removeAllElements();
+
+	    for(Location l : location) {
+
+		for(Residenza r : residenze) {
+		    
+		    if(l.getCod_residenza()==r.getComune()) {
 			
-			modello.addRow(new Object[] {labelIMG,l.getCod(),l.getNome(),"Comune","Media Voti"});
-			
-		    }else if(l.getTipo().equals("Attrazione")) {
-			Icon Icona = new ImageIcon(getClass().getResource("/Icons/AttrazioneICON.png"));
-			JLabel labelIMG = new JLabel();
-			labelIMG.setIcon(Icona);
-			
-			modello.addRow(new Object[] {labelIMG,l.getCod(),l.getNome(),"Comune","Media Voti"});
-			
-		    }else if(l.getTipo().equals("Ristorante")) {
-			Icon Icona = new ImageIcon(getClass().getResource("/Icons/RestaurantICON.png"));
-			JLabel labelIMG = new JLabel();
-			labelIMG.setIcon(Icona);
-			
-			modello.addRow(new Object[] {labelIMG,l.getCod(),l.getNome(),"Comune","Media Voti"});
-			
+			if(l.getTipo().equals("Alloggio")) {
+			    Icon Icona = new ImageIcon(getClass().getResource("/Icons/HotelICON.png"));
+			    JLabel labelIMG = new JLabel();
+			    labelIMG.setIcon(Icona);
+
+			    modello.addRow(new Object[] {labelIMG,l.getCod(),l.getNome(),r.getComune(),"Media Voti"});
+
+			}else if(l.getTipo().equals("Attrazione")) {
+			    Icon Icona = new ImageIcon(getClass().getResource("/Icons/AttrazioneICON.png"));
+			    JLabel labelIMG = new JLabel();
+			    labelIMG.setIcon(Icona);
+
+			    modello.addRow(new Object[] {labelIMG,l.getCod(),l.getNome(),r.getComune(),"Media Voti"});
+
+			}else if(l.getTipo().equals("Ristorante")) {
+			    Icon Icona = new ImageIcon(getClass().getResource("/Icons/RestaurantICON.png"));
+			    JLabel labelIMG = new JLabel();
+			    labelIMG.setIcon(Icona);
+
+			    modello.addRow(new Object[] {labelIMG,l.getCod(),l.getNome(),r.getComune(),"Media Voti"});
+
+			}
 		    }
 		}
+	    }
 		
 		   
 		modello.fireTableDataChanged();

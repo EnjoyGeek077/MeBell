@@ -21,19 +21,17 @@ public class LocationDAO {
 	String query = "SELECT * FROM location";
 	
 	if(tipologia!="Tutti" && comune=="Tutti" && nome=="") {
-	    query = query+" where tipologia_location="+tipologia;
-	    
+	    query = query+" WHERE tipologia_location="+tipologia;
 	}else if(tipologia=="Tutti" && comune!="Tutti" && nome=="") {
-	    query = query+" where tipologia_location="+comune;
+	    query = query+" JOIN residenza on residenza.comune="+comune;
 	}else if(tipologia=="Tutti" && comune=="Tutti" && nome!="") {
-	    query = query+" where tipologia_location="+nome;
+	    query = query+" WHERE tipologia_location="+nome;
 	}else if(tipologia!="Tutti" && comune!="Tutti" && nome=="") {
-	    query = query+" where tipologia_location="+tipologia+" AND "+"cod_res="+comune;
+	    query = query+" JOIN residenza on residenza.comune="+comune+" WHERE tipologia_location="+tipologia;
 	}else if(tipologia=="Tutti" && comune!="Tutti" && nome!="") {
-	    query = query+" where cod_res="+comune+" AND "+"nome="+nome;
+	    query = query+" JOIN residenza on residenza.comune="+comune+" WHERE nome="+nome;
 	}else if(tipologia!="Tutti" && comune!="Tutti" && nome!="") {
-	    query = query+" where tipologia_location="+tipologia+" AND "+"cod_res="+comune+" AND "+"nome="+nome;
-	    
+	    query = query+" JOIN residenza on residenza.comune="+comune+" WHERE nome="+nome+" AND tipologia_location="+tipologia;
 	}
 
 	ArrayList<Location> locations = new ArrayList<Location>();
