@@ -8,11 +8,11 @@ private String cognome;
 private String password;
 
 
-    public Utente(String user, String first, String last, String string) {
+    public Utente(String user, String first, String last, String passw) {
 	username=user;
     	nome=first;
     	cognome=last;
-    	password=string;
+    	password=passw;
     	}
     
 	public String getNome() {

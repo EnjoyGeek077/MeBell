@@ -20,20 +20,19 @@ public class LocationDAO {
 	
 	String query = "SELECT * FROM location";
 	
-	if(tipologia!="Tutti" && comune=="Tutti" && nome=="") {
-	    query = query+" WHERE tipologia_location="+tipologia;
-	}else if(tipologia=="Tutti" && comune!="Tutti" && nome=="") {
-	    query = query+" JOIN residenza on residenza.comune="+comune;
-	}else if(tipologia=="Tutti" && comune=="Tutti" && nome!="") {
-	    query = query+" WHERE tipologia_location="+nome;
-	}else if(tipologia!="Tutti" && comune!="Tutti" && nome=="") {
-	    query = query+" JOIN residenza on residenza.comune="+comune+" WHERE tipologia_location="+tipologia;
-	}else if(tipologia=="Tutti" && comune!="Tutti" && nome!="") {
-	    query = query+" JOIN residenza on residenza.comune="+comune+" WHERE nome="+nome;
-	}else if(tipologia!="Tutti" && comune!="Tutti" && nome!="") {
-	    query = query+" JOIN residenza on residenza.comune="+comune+" WHERE nome="+nome+" AND tipologia_location="+tipologia;
+	if(!tipologia.equals("Tutti") && comune.equals("Tutti") && nome.equals("")) {
+	    query = query+" WHERE tipo_location='"+tipologia+"'";
+	}else if(tipologia.equals("Tutti") && !comune.equals("Tutti") && nome.equals("")) {
+	    query = query+" JOIN residenza on residenza.comune='"+comune+"'";
+	}else if(tipologia.equals("Tutti") && comune.equals("Tutti") && !nome.equals("")) {
+	    query = query+" WHERE tipo_location='"+nome+"'";
+	}else if(!tipologia.equals("Tutti") && !comune.equals("Tutti") && nome.equals("")) {
+	    query = query+" JOIN residenza on residenza.comune='"+comune+"' WHERE tipo_location='"+tipologia+"'";
+	}else if(tipologia.equals("Tutti") && !comune.equals("Tutti") && !nome.equals("")) {
+	    query = query+" JOIN residenza on residenza.comune='"+comune+"' WHERE nome='"+nome+"'";
+	}else if(!tipologia.equals("Tutti") && !comune.equals("Tutti") && !nome.equals("")) {
+	    query = query+" JOIN residenza on residenza.comune='"+comune+"' WHERE nome='"+nome+"' AND tipo_location='"+tipologia+"'";
 	}
-
 	ArrayList<Location> locations = new ArrayList<Location>();
 
 	try {

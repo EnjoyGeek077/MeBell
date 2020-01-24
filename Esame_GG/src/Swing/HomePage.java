@@ -34,7 +34,7 @@ public class HomePage extends JFrame {
     private JPanel contentPane;
     private Controller controller;
     DefaultTableModel model= new DefaultTableModel();
-    private JTextField textField;
+    private JTextField textNomeLocale;
     private final ButtonGroup buttonGroup = new ButtonGroup();
    
     public HomePage(Controller ctrl) {
@@ -63,8 +63,8 @@ public class HomePage extends JFrame {
 	JComboBox comboBox_FiltroTipologia = new JComboBox();
 	comboBox_FiltroTipologia.setModel(new DefaultComboBoxModel(new String[] {"Tutti", "Alloggio", "Attrazione", "Ristorante"}));
 	
-	textField = new JTextField();
-	textField.setColumns(10);
+	textNomeLocale = new JTextField();
+	textNomeLocale.setColumns(10);
 	
 	JLabel lblComune = new JLabel("Comune");
 	
@@ -75,6 +75,9 @@ public class HomePage extends JFrame {
 	JButton btnCerca = new JButton("Cerca");
 	btnCerca.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
+			
+			controller.getFilterLocation(comboBox_FiltroTipologia.getModel().getElementAt(comboBox_FiltroTipologia.getSelectedIndex()).toString(), comboBox_FiltroComune.getModel().getElementAt(comboBox_FiltroComune.getSelectedIndex()).toString(),textNomeLocale.getText());
+
 		    controller.aggiornaTable(model);
 		}
 	});
@@ -108,7 +111,7 @@ public class HomePage extends JFrame {
 								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 									.addComponent(comboBox_FiltroTipologia, 0, 149, Short.MAX_VALUE)
 									.addComponent(comboBox_FiltroComune, Alignment.TRAILING, 0, 149, Short.MAX_VALUE)
-									.addComponent(textField, GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)))
+									.addComponent(textNomeLocale, GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)))
 							.addComponent(chckbxCrescente)
 							.addComponent(chckbxDecrescente)))
 					.addGroup(gl_contentPane.createSequentialGroup()
@@ -134,7 +137,7 @@ public class HomePage extends JFrame {
 								.addGap(18)
 								.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 									.addComponent(lblNomeLocale)
-									.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+									.addComponent(textNomeLocale, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 							.addGroup(gl_contentPane.createSequentialGroup()
 								.addGap(16)
 								.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)

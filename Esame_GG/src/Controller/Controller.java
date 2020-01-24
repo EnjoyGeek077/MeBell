@@ -62,8 +62,8 @@ public class Controller {
 //-------------------------------------------------------------------------------------------------
 
 
-	public void aggiungiUtente(String first, String last, String user, String pass) {
-		Utente utente = new Utente(first,last,user,pass);
+	public void aggiungiUtente(String user, String first, String last, String pass) {
+		Utente utente = new Utente(user,first,last,pass);
 		UtenteDAO utenteDAO = new UtenteDAO(this);
 		try {
 			utenteDAO.inserisciUtente(utente);
@@ -92,7 +92,7 @@ public class Controller {
 	public boolean isPassEqual(char[] password, char[] password2) {
 		String psw = new String(password);
 		String psw2 = new String(password2);
-		if(psw.equals(psw2) && psw!="") {
+		if(psw.equals(psw2)) {
 			return true;
 		}
 		return false;
@@ -131,12 +131,14 @@ public class Controller {
 	public void aggiornaTable(DefaultTableModel modello) {
 
 	    modello.getDataVector().removeAllElements();
+	    
+	    
 
 	    for(Location l : location) {
 
 		for(Residenza r : residenze) {
 		    
-		    if(l.getCod_residenza()==r.getComune()) {
+		    if(l.getCod_residenza().equals(r.getCod_res())) {
 			
 			if(l.getTipo().equals("Alloggio")) {
 			    Icon Icona = new ImageIcon(getClass().getResource("/Icons/HotelICON.png"));

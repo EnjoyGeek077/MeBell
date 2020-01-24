@@ -101,7 +101,7 @@ public class Register extends JFrame {
 				lblControlloPassword.setText("Errore, la password non rispetta gli standard.");
 				controlloPassword=false;
 			    }else {
-				lblControlloPassword.setForeground(Color.GREEN); 
+				lblControlloPassword.setForeground(Color.GREEN);
 				lblControlloPassword.setText("La password rispetta gli standard.");
 				controlloPassword=true;
 			    }
@@ -141,7 +141,7 @@ public class Register extends JFrame {
 			    if(controlloUsername && controlloPassword) {
 				if(controller.isPassEqual(passwordField.getPassword(),passwordFieldR.getPassword())){
 				    String pass = new String(passwordField.getPassword());
-				    controller.aggiungiUtente(textFirstN.getText(),textLastN.getText(),textUserN.getText(),pass);
+				    controller.aggiungiUtente(textUserN.getText(),textFirstN.getText(),textLastN.getText(),pass);
 				    setVisible(false);
 				    controller.openLogin();
 				}else {

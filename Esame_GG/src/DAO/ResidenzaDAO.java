@@ -22,10 +22,10 @@ public class ResidenzaDAO {
 	String query ="";
 	ArrayList<Residenza> residenze_trovate = new ArrayList<Residenza>();
 
-	if(comune=="Tutti") {
+	if(comune.equals("Tutti")) {
 	    query="Select * from residenza";  
 	}else {
-	    query="Select * from residenza where comune="+comune;
+	    query="Select * from residenza where comune='"+comune+"'";
 	}
 	
 	try {
@@ -34,8 +34,8 @@ public class ResidenzaDAO {
 	    ResultSet rs = getRes.executeQuery();
 
 	    while(rs.next()) {
-		Residenza res = new Residenza(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
-		residenze_trovate.add(res);
+	    	Residenza res = new Residenza(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
+	    	residenze_trovate.add(res);
 	    }
 
 	} catch (SQLException e) {
