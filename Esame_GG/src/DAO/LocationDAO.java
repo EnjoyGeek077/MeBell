@@ -23,13 +23,15 @@ public class LocationDAO {
 	if(!tipologia.equals("Tutti") && comune.equals("Tutti") && nome.equals("")) {
 	    query = query+" WHERE tipo_location='"+tipologia+"'";
 	}else if(tipologia.equals("Tutti") && !comune.equals("Tutti") && nome.equals("")) {
-	    query = query+" JOIN residenza on residenza.comune='"+comune+"'";
+	    query = query+" JOIN residenza on residenza.comune='"+comune+"' AND location.cod_res=residenza.cod_residenza";
 	}else if(tipologia.equals("Tutti") && comune.equals("Tutti") && !nome.equals("")) {
-	    query = query+" WHERE tipo_location='"+nome+"'";
+	    query = query+" WHERE nome='"+nome+"'";
 	}else if(!tipologia.equals("Tutti") && !comune.equals("Tutti") && nome.equals("")) {
-	    query = query+" JOIN residenza on residenza.comune='"+comune+"' WHERE tipo_location='"+tipologia+"'";
+	    query = query+" JOIN residenza on residenza.comune='"+comune+"' AND location.cod_res=residenza.cod_residenza WHERE tipo_location='"+tipologia+"'";
+	}else if(!tipologia.equals("Tutti") && comune.equals("Tutti") && !nome.equals("")) {
+	    query = query+" WHERE tipo_location='"+tipologia+"'"+" AND nome='"+nome+"'";
 	}else if(tipologia.equals("Tutti") && !comune.equals("Tutti") && !nome.equals("")) {
-	    query = query+" JOIN residenza on residenza.comune='"+comune+"' WHERE nome='"+nome+"'";
+	    query = query+" JOIN residenza on residenza.comune='"+comune+"'  AND location.cod_res=residenza.cod_residenza WHERE nome='"+nome+"'";
 	}else if(!tipologia.equals("Tutti") && !comune.equals("Tutti") && !nome.equals("")) {
 	    query = query+" JOIN residenza on residenza.comune='"+comune+"' WHERE nome='"+nome+"' AND tipo_location='"+tipologia+"'";
 	}
@@ -40,9 +42,11 @@ public class LocationDAO {
 	    PreparedStatement getLoc = controller.getConnection().prepareStatement(query);
 	    ResultSet rs = getLoc.executeQuery();
 
-	    while(rs.next()) {
-		Location loc = new Location(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
-		locations.add(loc);
+	    if(rs!=null) {
+		while(rs.next()) {
+		    Location loc = new Location(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
+		    locations.add(loc);
+		}
 	    }
 
 	} catch (SQLException e) {

@@ -28,6 +28,7 @@ import javax.swing.JTextField;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JCheckBox;
 import javax.swing.ButtonGroup;
+import javax.swing.JRadioButton;
 
 public class HomePage extends JFrame {
 
@@ -57,10 +58,10 @@ public class HomePage extends JFrame {
 	JLabel lblFiltri = new JLabel("Filtri:");
 	lblFiltri.setFont(new Font("Arial Black", Font.BOLD, 18));
 	
-	JComboBox comboBox_FiltroComune = new JComboBox();
-	comboBox_FiltroComune.setModel(new DefaultComboBoxModel(new String[] {"Tutti"}));
+	JComboBox<String> comboBox_FiltroComune = new JComboBox<String>();
+	comboBox_FiltroComune.setModel(new DefaultComboBoxModel(new String[] {"Tutti", "Napoli", "Caserta"}));
 	
-	JComboBox comboBox_FiltroTipologia = new JComboBox();
+	JComboBox<String> comboBox_FiltroTipologia = new JComboBox<String>();
 	comboBox_FiltroTipologia.setModel(new DefaultComboBoxModel(new String[] {"Tutti", "Alloggio", "Attrazione", "Ristorante"}));
 	
 	textNomeLocale = new JTextField();
@@ -76,19 +77,31 @@ public class HomePage extends JFrame {
 	btnCerca.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			
-			controller.getFilterLocation(comboBox_FiltroTipologia.getModel().getElementAt(comboBox_FiltroTipologia.getSelectedIndex()).toString(), comboBox_FiltroComune.getModel().getElementAt(comboBox_FiltroComune.getSelectedIndex()).toString(),textNomeLocale.getText());
-
-		    controller.aggiornaTable(model);
+		    String filtro_tipologia=comboBox_FiltroTipologia.getSelectedItem().toString();
+		    String filtro_comune=comboBox_FiltroComune.getSelectedItem().toString();
+		    String filtro_nome=textNomeLocale.getText();
+		    
+		    int filtro_media_voto=5;
+		    
+		    controller.getFilterLocation(filtro_tipologia, filtro_comune, filtro_nome);
+		    controller.aggiornaTable(model,filtro_media_voto);
 		}
 	});
 	
 	JLabel lblMediaVoti = new JLabel("Media voti");
 	
-	JCheckBox chckbxCrescente = new JCheckBox("Crescente");
-	buttonGroup.add(chckbxCrescente);
+	JCheckBox chckbxStelle = new JCheckBox("5 Stelle");
 	
-	JCheckBox chckbxDecrescente = new JCheckBox("Decrescente");
-	buttonGroup.add(chckbxDecrescente);
+	JCheckBox chckbxStelle_1 = new JCheckBox("4 Stelle");
+	
+	JCheckBox chckbxStelle_2 = new JCheckBox("3 Stelle");
+	
+	JCheckBox chckbxStelle_3 = new JCheckBox("2 Stelle");
+	
+	JCheckBox chckbxStelle_4 = new JCheckBox("1 Stelle");
+	
+	JCheckBox chckbxNessunaRecensione = new JCheckBox("Nessuna Recensione");
+	
 	GroupLayout gl_contentPane = new GroupLayout(contentPane);
 	gl_contentPane.setHorizontalGroup(
 		gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -96,28 +109,36 @@ public class HomePage extends JFrame {
 			.addGroup(gl_contentPane.createSequentialGroup()
 				.addGap(10)
 				.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 359, GroupLayout.PREFERRED_SIZE)
+				.addGap(18)
 				.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+					.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+						.addComponent(chckbxStelle_4)
+						.addPreferredGap(ComponentPlacement.UNRELATED)
+						.addComponent(chckbxNessunaRecensione))
 					.addGroup(gl_contentPane.createSequentialGroup()
-						.addGap(18)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+							.addComponent(lblComune)
+							.addComponent(lblFiltri)
+							.addComponent(lblTipologia)
+							.addComponent(lblNomeLocale, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(lblMediaVoti, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+						.addGap(19)
 						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-							.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-									.addComponent(lblComune)
-									.addComponent(lblFiltri)
-									.addComponent(lblTipologia)
-									.addComponent(lblNomeLocale, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addComponent(lblMediaVoti, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-								.addGap(19)
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-									.addComponent(comboBox_FiltroTipologia, 0, 149, Short.MAX_VALUE)
-									.addComponent(comboBox_FiltroComune, Alignment.TRAILING, 0, 149, Short.MAX_VALUE)
-									.addComponent(textNomeLocale, GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)))
-							.addComponent(chckbxCrescente)
-							.addComponent(chckbxDecrescente)))
-					.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(comboBox_FiltroTipologia, 0, 149, Short.MAX_VALUE)
+							.addComponent(comboBox_FiltroComune, Alignment.TRAILING, 0, 149, Short.MAX_VALUE)
+							.addComponent(textNomeLocale, GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)))
+					.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+						.addComponent(chckbxStelle)
 						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(btnCerca, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)))
+						.addComponent(chckbxStelle_1))
+					.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+						.addComponent(chckbxStelle_2)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(chckbxStelle_3)))
 				.addContainerGap())
+			.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+				.addContainerGap()
+				.addComponent(btnCerca, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE))
 	);
 	gl_contentPane.setVerticalGroup(
 		gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -125,7 +146,7 @@ public class HomePage extends JFrame {
 				.addComponent(panel, GroupLayout.PREFERRED_SIZE, 64, GroupLayout.PREFERRED_SIZE)
 				.addPreferredGap(ComponentPlacement.UNRELATED)
 				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createSequentialGroup()
 						.addComponent(lblFiltri)
 						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -143,15 +164,22 @@ public class HomePage extends JFrame {
 								.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 									.addComponent(lblComune)
 									.addComponent(comboBox_FiltroComune, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
-						.addPreferredGap(ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+						.addPreferredGap(ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
 						.addComponent(lblMediaVoti)
-						.addGap(8)
-						.addComponent(chckbxCrescente)
-						.addGap(1)
-						.addComponent(chckbxDecrescente)
-						.addGap(24)
-						.addComponent(btnCerca)))
-				.addContainerGap())
+						.addGap(6)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+							.addComponent(chckbxStelle)
+							.addComponent(chckbxStelle_1))
+						.addGap(9)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+							.addComponent(chckbxStelle_2)
+							.addComponent(chckbxStelle_3))
+						.addGap(6)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+							.addComponent(chckbxStelle_4)
+							.addComponent(chckbxNessunaRecensione))))
+				.addPreferredGap(ComponentPlacement.RELATED)
+				.addComponent(btnCerca))
 	);
 	
 	JTable table = new JTable();
