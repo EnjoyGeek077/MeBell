@@ -1,5 +1,6 @@
 package Controller;
 
+import java.awt.Color;
 import java.awt.Image;
 import java.lang.reflect.Array;
 import java.sql.Connection;
@@ -185,6 +186,19 @@ public class Controller {
 	textUserN.setText("");
 	passwordField.setText("");
 	passwordFieldR.setText("");
+
+    }
+    
+    public void resetControlliReg(boolean controlloUsername, boolean controlloPassword, JLabel controlloUser, JLabel  controlloPass) {
+	
+	controlloUsername=false;
+	controlloPassword=false;
+	
+	controlloUser.setForeground(Color.BLACK);
+	controlloUser.setText("Il campo conterrà una lunghezza da 3 a 15 char alfanumerici.");
+	
+	controlloPass.setForeground(Color.BLACK);
+	controlloPass.setText("Il campo conterrà A-Z, a-z, 0-9 e almeno un @#$%.");
 
     }
 

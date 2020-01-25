@@ -62,7 +62,7 @@ public class Register extends JFrame {
 
 		JLabel lblReinsertPassword = new JLabel("Repat password");
 		
-		JLabel lblControlloUsername = new JLabel("Il campo conterr\u00E0 una lunghezza da 3 a 15 char alfanumerici.");
+		JLabel lblControlloUsername = new JLabel("Il campo conterrà una lunghezza da 3 a 15 char alfanumerici.");
 		
 		JLabel lblControlloPassword = new JLabel("Il campo conterrà A-Z, a-z, 0-9 e almeno un @#$%.");
 
@@ -146,6 +146,7 @@ public class Register extends JFrame {
 				    
 				    setVisible(false);
 				    controller.resetCampiReg(textFirstN,textLastN,textUserN,passwordField,passwordFieldR);
+				    controller.resetControlliReg(controlloUsername, controlloPassword, lblControlloUsername, lblControlloPassword);
 				    controller.openLogin();
 				}else {
 				    JOptionPane.showMessageDialog(null, "Le password non corrispondono", "Errore corrispondenza password", JOptionPane.ERROR_MESSAGE);
