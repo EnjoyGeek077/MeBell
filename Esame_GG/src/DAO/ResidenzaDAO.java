@@ -33,12 +33,13 @@ public class ResidenzaDAO {
 	    PreparedStatement getRes= controller.getConnection().prepareStatement(query);
 	    ResultSet rs = getRes.executeQuery();
 	    
-	    if(rs!=null) {
 		while(rs.next()) {
 		    Residenza res = new Residenza(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
 		    residenze_trovate.add(res);
 		}
-	    }
+		
+		rs.close();
+		getRes.close();
 
 	} catch (SQLException e) {
 	    e.printStackTrace();

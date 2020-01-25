@@ -137,12 +137,15 @@ public class Register extends JFrame {
 		btnIscriviti.setContentAreaFilled(false);
 		btnIscriviti.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
+			
 			if(!textFirstN.getText().isEmpty() && !textLastN.getText().isEmpty()) {
 			    if(controlloUsername && controlloPassword) {
 				if(controller.isPassEqual(passwordField.getPassword(),passwordFieldR.getPassword())){
 				    String pass = new String(passwordField.getPassword());
 				    controller.aggiungiUtente(textUserN.getText(),textFirstN.getText(),textLastN.getText(),pass);
+				    
 				    setVisible(false);
+				    controller.resetCampiReg(textFirstN,textLastN,textUserN,passwordField,passwordFieldR);
 				    controller.openLogin();
 				}else {
 				    JOptionPane.showMessageDialog(null, "Le password non corrispondono", "Errore corrispondenza password", JOptionPane.ERROR_MESSAGE);

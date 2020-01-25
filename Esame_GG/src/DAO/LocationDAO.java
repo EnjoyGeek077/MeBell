@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import Controller.Controller;
 import Entità.Location;
 import Entità.Utente;
@@ -17,37 +19,56 @@ public class LocationDAO {
     }
 
     public ArrayList<Location> getLocations(String tipologia, String comune, String nome) {
-	
+
+	boolean SqlInjectionRisk=false;
 	String query = "SELECT * FROM location";
-	
+	ArrayList<Location> locations = new ArrayList<Location>();
+
 	if(!tipologia.equals("Tutti") && comune.equals("Tutti") && nome.equals("")) {
 	    query = query+" WHERE tipo_location='"+tipologia+"'";
+
 	}else if(tipologia.equals("Tutti") && !comune.equals("Tutti") && nome.equals("")) {
 	    query = query+" JOIN residenza on residenza.comune='"+comune+"' AND location.cod_res=residenza.cod_residenza";
+
 	}else if(tipologia.equals("Tutti") && comune.equals("Tutti") && !nome.equals("")) {
-	    query = query+" WHERE nome='"+nome+"'";
+	    SqlInjectionRisk=true;
+	    query = query+" WHERE nome= ?";
+
 	}else if(!tipologia.equals("Tutti") && !comune.equals("Tutti") && nome.equals("")) {
 	    query = query+" JOIN residenza on residenza.comune='"+comune+"' AND location.cod_res=residenza.cod_residenza WHERE tipo_location='"+tipologia+"'";
+
 	}else if(!tipologia.equals("Tutti") && comune.equals("Tutti") && !nome.equals("")) {
-	    query = query+" WHERE tipo_location='"+tipologia+"'"+" AND nome='"+nome+"'";
+	    SqlInjectionRisk=true;
+	    query = query+" WHERE tipo_location='"+tipologia+"'"+" AND nome= ?";
+
 	}else if(tipologia.equals("Tutti") && !comune.equals("Tutti") && !nome.equals("")) {
-	    query = query+" JOIN residenza on residenza.comune='"+comune+"'  AND location.cod_res=residenza.cod_residenza WHERE nome='"+nome+"'";
+	    SqlInjectionRisk=true;
+	    query = query+" JOIN residenza on residenza.comune='"+comune+"'  AND location.cod_res=residenza.cod_residenza WHERE nome= ?";
+
 	}else if(!tipologia.equals("Tutti") && !comune.equals("Tutti") && !nome.equals("")) {
-	    query = query+" JOIN residenza on residenza.comune='"+comune+"' WHERE nome='"+nome+"' AND tipo_location='"+tipologia+"'";
+	    SqlInjectionRisk=true;
+	    query = query+" JOIN residenza on residenza.comune='"+comune+"' WHERE nome= ? AND tipo_location='"+tipologia+"'";
+	    
 	}
-	ArrayList<Location> locations = new ArrayList<Location>();
+
 
 	try {
 
 	    PreparedStatement getLoc = controller.getConnection().prepareStatement(query);
+
+	    if(SqlInjectionRisk) {
+		getLoc.setString(1, nome);
+	    }
+
 	    ResultSet rs = getLoc.executeQuery();
 
-	    if(rs!=null) {
-		while(rs.next()) {
-		    Location loc = new Location(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
-		    locations.add(loc);
-		}
+	    while(rs.next()) {
+		Location loc = new Location(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
+		locations.add(loc);
 	    }
+	    
+	    rs.close();
+	    getLoc.close();
 
 	} catch (SQLException e) {
 	    e.printStackTrace();
@@ -56,3 +77,4 @@ public class LocationDAO {
 	return locations;
     }
 }
+

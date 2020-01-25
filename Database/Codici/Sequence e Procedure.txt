@@ -18,6 +18,15 @@ maxvalue 9999
 nocache
 nocycle;
 
+--STORED PROCEDURE
+CREATE PROCEDURE getMediaVoto (cod in VARCHAR2, media out float) as
+
+BEGIN
+
+select AVG(voto) into media from recensione where recensione.cod_locale=cod;
+
+END;
+
 --TRIGGER SEQ
 
 create TRIGGER Seq_Cod_Location

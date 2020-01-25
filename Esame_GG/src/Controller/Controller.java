@@ -67,7 +67,7 @@ public class Controller {
 	UtenteDAO utenteDAO = new UtenteDAO(this);
 	try {
 	    utenteDAO.inserisciUtente(utente);
-	    JOptionPane.showMessageDialog(null, "Registrazione effettuata con successo");
+	    JOptionPane.showMessageDialog(null, "Il nome utente risulta già registrato", "Esito registrazione", JOptionPane.INFORMATION_MESSAGE);
 
 	} catch (SQLIntegrityConstraintViolationException e) {
 	    JOptionPane.showMessageDialog(null, "Il nome utente risulta già registrato", "Error", JOptionPane.ERROR_MESSAGE);
@@ -175,6 +175,16 @@ public class Controller {
 
 
 	modello.fireTableDataChanged();
+
+    }
+
+    public void resetCampiReg(JTextField textFirstN, JTextField textLastN, JTextField textUserN, JPasswordField passwordField, JPasswordField passwordFieldR) {
+
+	textFirstN.setText("");
+	textLastN.setText("");
+	textUserN.setText("");
+	passwordField.setText("");
+	passwordFieldR.setText("");
 
     }
 

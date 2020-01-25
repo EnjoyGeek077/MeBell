@@ -17,17 +17,18 @@ public class RecensioneDAO {
     
     public float getMediaVotoLocale(String codLocale) {
 	
-	String query="Select AVG(voto) from recensione where cod_locale='"+codLocale+"'";
+	
 	float mediaLocale=0.0f;
 	
 	try {
 	    
-	    PreparedStatement getRes= controller.getConnection().prepareStatement(query);
-	    ResultSet rs = getRes.executeQuery();
-	   
-	    while(rs.next()) {
-		mediaLocale=rs.getFloat(1);
-	    }
+	    CallableStatement cst = controller.getConnection().prepareCall("{CALL getmedia(?,?)}");
+	    cst.registerOutParameter(2, Types.FLOAT);
+	    cst.setString(1, codLocale);
+	    cst.execute();
+	    
+	    mediaLocale = cst.getFloat(2);
+	    cst.close();
 	    
 	} catch (SQLException e) {
 	    e.printStackTrace();
