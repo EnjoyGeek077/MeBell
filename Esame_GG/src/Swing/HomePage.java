@@ -22,6 +22,8 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
@@ -31,6 +33,7 @@ import javax.swing.JCheckBox;
 import javax.swing.ButtonGroup;
 import javax.swing.ButtonModel;
 import javax.swing.JRadioButton;
+import javax.swing.ImageIcon;
 
 public class HomePage extends JFrame {
 
@@ -75,7 +78,10 @@ public class HomePage extends JFrame {
 
 	JLabel lblNomeLocale = new JLabel("Nome Locale");
 
-	JButton btnCerca = new JButton("Cerca");
+	JButton btnCerca = new JButton("");
+	btnCerca.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/CercaICON1.png")));
+	btnCerca.setBorder(null);
+	btnCerca.setContentAreaFilled(false);
 	btnCerca.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
 
@@ -89,8 +95,31 @@ public class HomePage extends JFrame {
 		controller.aggiornaTable(model,filtro_media_voto);
 	    }
 	});
+	btnCerca.addMouseListener(new MouseAdapter() {
+		@Override
+		public void mousePressed(MouseEvent e) {
+			btnCerca.setIcon(new ImageIcon(Login.class.getResource("/ButtonIcon/CercaICON3.png")));
+		}
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			btnCerca.setIcon(new ImageIcon(Login.class.getResource("/ButtonIcon/CercaICON1.png")));
+		}
+		@Override
+		public void mouseExited(MouseEvent e) {
+			btnCerca.setIcon(new ImageIcon(Login.class.getResource("/ButtonIcon/CercaICON1.png")));
+		}
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			btnCerca.setIcon(new ImageIcon(Login.class.getResource("/ButtonIcon/CercaICON2.png")));
+		}
+	});
 
 	JLabel lblMediaVoti = new JLabel("Media voti");
+	
+	JButton btnNewButton = new JButton("New button");
+	btnCerca.setBorder(null);
+	btnCerca.setContentAreaFilled(false);
+	
 	
 	GroupLayout gl_contentPane = new GroupLayout(contentPane);
 	gl_contentPane.setHorizontalGroup(
@@ -108,13 +137,16 @@ public class HomePage extends JFrame {
 					.addComponent(lblMediaVoti, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 				.addGap(19)
 				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-					.addComponent(comboBox_FiltroTipologia, 0, 149, Short.MAX_VALUE)
-					.addComponent(comboBox_FiltroComune, Alignment.TRAILING, 0, 149, Short.MAX_VALUE)
-					.addComponent(textNomeLocale, GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))
+					.addComponent(comboBox_FiltroTipologia, 0, 133, Short.MAX_VALUE)
+					.addComponent(comboBox_FiltroComune, Alignment.TRAILING, 0, 133, Short.MAX_VALUE)
+					.addComponent(textNomeLocale, GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE))
 				.addContainerGap())
 			.addGroup(gl_contentPane.createSequentialGroup()
-				.addContainerGap()
-				.addComponent(btnCerca, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE))
+				.addContainerGap(397, Short.MAX_VALUE)
+				.addComponent(btnNewButton)
+				.addGap(35)
+				.addComponent(btnCerca)
+				.addContainerGap())
 	);
 	gl_contentPane.setVerticalGroup(
 		gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -122,7 +154,7 @@ public class HomePage extends JFrame {
 				.addComponent(panel, GroupLayout.PREFERRED_SIZE, 64, GroupLayout.PREFERRED_SIZE)
 				.addPreferredGap(ComponentPlacement.UNRELATED)
 				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createSequentialGroup()
 						.addComponent(lblFiltri)
 						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -140,11 +172,14 @@ public class HomePage extends JFrame {
 								.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 									.addComponent(lblComune)
 									.addComponent(comboBox_FiltroComune, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
-						.addPreferredGap(ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+						.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(lblMediaVoti)
 						.addGap(90)))
 				.addPreferredGap(ComponentPlacement.RELATED)
-				.addComponent(btnCerca))
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+					.addComponent(btnCerca)
+					.addComponent(btnNewButton))
+				.addGap(5))
 	);
 
 	JTable table = new JTable();
