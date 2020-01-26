@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import Controller.Controller;
+import Utility.ModelloTabella;
 import Utility.myTableCellRenderer;
 
 import javax.swing.GroupLayout;
@@ -39,7 +40,7 @@ public class HomePage extends JFrame {
 
     private JPanel contentPane;
     private Controller controller;
-    DefaultTableModel model= new DefaultTableModel();
+    ModelloTabella model= new ModelloTabella();
     private JTextField textNomeLocale;
     private final ButtonGroup buttonGroup = new ButtonGroup();
 
@@ -183,6 +184,12 @@ public class HomePage extends JFrame {
 	);
 
 	JTable table = new JTable();
+	table.addMouseListener(new MouseAdapter() {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+		    controller.setCellNotEditable(table, model);
+		}
+	});
 	model.addColumn("Location");
 	model.addColumn("ID");
 	model.addColumn("Nome");

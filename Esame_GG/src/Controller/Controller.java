@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
@@ -31,13 +32,14 @@ import Entità.Utente;
 
 import Swing.Login;
 import Swing.Register;
+import Utility.ModelloTabella;
 
 public class Controller {
     Login login;
     Register register;
     HomePage homepage;
 
-    DefaultTableModel model;
+    ModelloTabella model;
 
     private Utente utente=null;
     private ArrayList<Location> location;	
@@ -201,6 +203,17 @@ public class Controller {
 	controlloPass.setText("Il campo conterrà A-Z, a-z, 0-9 e almeno un @#$%.");
 
     }
+    
+    public void setCellNotEditable(JTable tabella, ModelloTabella modello) {
+	
+	int indice_riga;
+	int indice_colonna;
+	
+	indice_riga=tabella.getSelectedRow();
+	indice_colonna=tabella.getSelectedColumn();
+	modello.isCellEditable(indice_riga, indice_colonna);
+	
+    }
 
     //Get connessione
     public Connection getConnection() {
@@ -228,18 +241,6 @@ public class Controller {
 	this.utente = utente;
     }
 
-    //Getter e setter TableModel
-
-    public void setModel(DefaultTableModel modello) {
-	this.model=modello;
-
-    }
-
-    public DefaultTableModel getModel() {
-
-	return this.model;
-
-    }
 
     //Open frame
 
