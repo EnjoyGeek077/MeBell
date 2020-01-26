@@ -22,7 +22,7 @@ public class RecensioneDAO {
 	
 	try {
 	    
-	    CallableStatement cst = controller.getConnection().prepareCall("{CALL getmedia(?,?)}");
+	    CallableStatement cst = controller.getConnection().prepareCall("{CALL getMediaVoto(?,?)}");
 	    cst.registerOutParameter(2, Types.FLOAT);
 	    cst.setString(1, codLocale);
 	    cst.execute();

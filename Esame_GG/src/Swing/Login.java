@@ -182,6 +182,7 @@ public class Login extends JFrame {
 		lblLogin.setFont(new Font("Arial", Font.BOLD, 18));
 		
 		JLabel label = new JLabel("");
+		label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		label.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
