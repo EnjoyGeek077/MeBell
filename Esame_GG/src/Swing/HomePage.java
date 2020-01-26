@@ -46,7 +46,6 @@ public class HomePage extends JFrame {
     int filtro_media_voto=5;
     
     private JTextField textNomeLocale;
-    private final ButtonGroup buttonGroup = new ButtonGroup();
 
     public HomePage(Controller ctrl) {
 	setMinimumSize(new Dimension(651, 413));
@@ -60,6 +59,14 @@ public class HomePage extends JFrame {
 	contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 	setContentPane(contentPane);
 
+	JTable table = new JTable();
+	table.addMouseListener(new MouseAdapter() {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+		    controller.setCellNotEditable(table, model);
+		}
+	}); 
+	
 	JPanel panel = new JPanel();
 	panel.setBackground(new Color(255, 102, 0));
 
@@ -121,6 +128,11 @@ public class HomePage extends JFrame {
 	JLabel lblMediaVoti = new JLabel("Media voti");
 	
 	JButton btnVAI = new JButton("");
+	btnVAI.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+		    controller.getLocationFromTable(table);
+		}
+	});
 	btnVAI.addMouseListener(new MouseAdapter() {
 		@Override
 		public void mouseEntered(MouseEvent e) {
@@ -331,13 +343,7 @@ public class HomePage extends JFrame {
 				.addGap(5))
 	);
 
-	JTable table = new JTable();
-	table.addMouseListener(new MouseAdapter() {
-		@Override
-		public void mouseClicked(MouseEvent e) {
-		    controller.setCellNotEditable(table, model);
-		}
-	}); 
+	
 	model.addColumn("Location");
 	model.addColumn("ID");
 	model.addColumn("Nome");

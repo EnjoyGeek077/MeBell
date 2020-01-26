@@ -10,6 +10,7 @@ import java.sql.SQLIntegrityConstraintViolationException;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
@@ -40,8 +41,9 @@ public class Controller {
     HomePage homepage;
 
     ModelloTabella model;
-
+    
     private Utente utente=null;
+    private String locationScelta;
     private ArrayList<Location> location;	
     private ArrayList<Residenza> residenze;
 
@@ -180,39 +182,21 @@ public class Controller {
 	modello.fireTableDataChanged();
 
     }
-
-    public void resetCampiReg(JTextField textFirstN, JTextField textLastN, JTextField textUserN, JPasswordField passwordField, JPasswordField passwordFieldR) {
-
-	textFirstN.setText("");
-	textLastN.setText("");
-	textUserN.setText("");
-	passwordField.setText("");
-	passwordFieldR.setText("");
-
-    }
     
-    public void resetControlliReg(boolean controlloUsername, boolean controlloPassword, JLabel controlloUser, JLabel  controlloPass) {
+    public void getLocationFromTable(JTable tabella) {
 	
-	controlloUsername=false;
-	controlloPassword=false;
-	
-	controlloUser.setForeground(Color.BLACK);
-	controlloUser.setText("Il campo conterrà una lunghezza da 3 a 15 char alfanumerici.");
-	
-	controlloPass.setForeground(Color.BLACK);
-	controlloPass.setText("Il campo conterrà A-Z, a-z, 0-9 e almeno un @#$%.");
+	String cod_locale;
+	int rowSelected;
 
-    }
-    
-    public void setCellNotEditable(JTable tabella, ModelloTabella modello) {
+	if(!tabella.getSelectionModel().isSelectionEmpty()) {
+	    
+	rowSelected=tabella.getSelectedRow();
+	cod_locale=(String) tabella.getValueAt(rowSelected, 1);
+	this.setLocationScelta(locationScelta);
 	
-	int indice_riga;
-	int indice_colonna;
-	
-	indice_riga=tabella.getSelectedRow();
-	indice_colonna=tabella.getSelectedColumn();
-	modello.isCellEditable(indice_riga, indice_colonna);
-	
+	}else {
+	    JOptionPane.showMessageDialog(null, "Selzeziona una riga", "Error", JOptionPane.ERROR_MESSAGE);
+	}
     }
 
     //Get connessione
@@ -227,7 +211,7 @@ public class Controller {
 	    }
 
 	} catch (SQLException e) {
-	    JOptionPane.showMessageDialog(null, "Connessione non riuscita. Controllare il collegamento", "Errore SQL", JOptionPane.ERROR_MESSAGE);
+	    JOptionPane.showMessageDialog(null, "Connessione non riuscita, controllare il collegamento", "Errore SQL", JOptionPane.ERROR_MESSAGE);
 	    return null;
 	}	
     }
@@ -240,7 +224,50 @@ public class Controller {
     public void setUtente(Utente utente) {
 	this.utente = utente;
     }
+    
+    //Getter e setter location scelta
+    public String getLocationScelta() {
+        return locationScelta;
+    }
 
+    public void setLocationScelta(String locationScelta) {
+        this.locationScelta = locationScelta;
+    }
+    
+    //Reset e utility
+    public void resetCampiReg(JTextField textFirstN, JTextField textLastN, JTextField textUserN, JPasswordField passwordField, JPasswordField passwordFieldR) {
+
+	textFirstN.setText("");
+	textLastN.setText("");
+	textUserN.setText("");
+	passwordField.setText("");
+	passwordFieldR.setText("");
+
+    }
+
+    public void resetControlliReg(boolean controlloUsername, boolean controlloPassword, JLabel controlloUser, JLabel  controlloPass) {
+
+	controlloUsername=false;
+	controlloPassword=false;
+
+	controlloUser.setForeground(Color.BLACK);
+	controlloUser.setText("Il campo conterrà una lunghezza da 3 a 15 char alfanumerici.");
+
+	controlloPass.setForeground(Color.BLACK);
+	controlloPass.setText("Il campo conterrà A-Z, a-z, 0-9 e almeno un @#$%.");
+
+    }
+
+    public void setCellNotEditable(JTable tabella, ModelloTabella modello) {
+
+	int indice_riga;
+	int indice_colonna;
+
+	indice_riga=tabella.getSelectedRow();
+	indice_colonna=tabella.getSelectedColumn();
+	modello.isCellEditable(indice_riga, indice_colonna);
+
+    }
 
     //Open frame
 
