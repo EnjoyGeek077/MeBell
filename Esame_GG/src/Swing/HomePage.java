@@ -35,12 +35,16 @@ import javax.swing.ButtonGroup;
 import javax.swing.ButtonModel;
 import javax.swing.JRadioButton;
 import javax.swing.ImageIcon;
+import java.awt.Cursor;
 
 public class HomePage extends JFrame {
 
     private JPanel contentPane;
     private Controller controller;
+    
     ModelloTabella model= new ModelloTabella();
+    int filtro_media_voto=5;
+    
     private JTextField textNomeLocale;
     private final ButtonGroup buttonGroup = new ButtonGroup();
 
@@ -80,6 +84,7 @@ public class HomePage extends JFrame {
 	JLabel lblNomeLocale = new JLabel("Nome Locale");
 
 	JButton btnCerca = new JButton("");
+	btnCerca.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	btnCerca.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/CercaICON1.png")));
 	btnCerca.setBorder(null);
 	btnCerca.setContentAreaFilled(false);
@@ -89,8 +94,6 @@ public class HomePage extends JFrame {
 		String filtro_tipologia=comboBox_FiltroTipologia.getSelectedItem().toString();
 		String filtro_comune=comboBox_FiltroComune.getSelectedItem().toString();
 		String filtro_nome=textNomeLocale.getText();
-
-		int filtro_media_voto=5;
 
 		controller.getFilterLocation(filtro_tipologia, filtro_comune, filtro_nome);
 		controller.aggiornaTable(model,filtro_media_voto);
@@ -117,10 +120,127 @@ public class HomePage extends JFrame {
 
 	JLabel lblMediaVoti = new JLabel("Media voti");
 	
-	JButton btnNewButton = new JButton("New button");
+	JButton btnVAI = new JButton("");
+	btnVAI.addMouseListener(new MouseAdapter() {
+		@Override
+		public void mouseEntered(MouseEvent e) {
+		    btnVAI.setIcon(new ImageIcon(Login.class.getResource("/ButtonIcon/VaiICON2.png")));
+		}
+		@Override
+		public void mouseExited(MouseEvent e) {
+		    btnVAI.setIcon(new ImageIcon(Login.class.getResource("/ButtonIcon/VaiICON1.png")));
+		}
+		@Override
+		public void mousePressed(MouseEvent e) {
+		    btnVAI.setIcon(new ImageIcon(Login.class.getResource("/ButtonIcon/VaiICON3.png")));
+		}
+		@Override
+		public void mouseReleased(MouseEvent e) {
+		    btnVAI.setIcon(new ImageIcon(Login.class.getResource("/ButtonIcon/VaiICON1.png")));
+		}
+	});
+	btnVAI.setBorder(null);
+	btnVAI.setContentAreaFilled(false);
+	btnVAI.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/VaiICON1.png")));
+	btnVAI.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	btnCerca.setBorder(null);
 	btnCerca.setContentAreaFilled(false);
 	
+	JButton btnStella1 = new JButton("");
+	JButton btnStella2 = new JButton("");
+	JButton btnStella3 = new JButton("");
+	JButton btnStella4 = new JButton("");
+	JButton btnStella5 = new JButton("");
+	
+	btnStella1.addMouseListener(new MouseAdapter() {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+		    btnStella2.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
+		    btnStella3.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
+		    btnStella4.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
+		    btnStella5.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
+		    
+		   filtro_media_voto=1;
+			
+		}
+	});
+
+	btnStella2.addMouseListener(new MouseAdapter() {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+		    btnStella2.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
+		    btnStella3.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
+		    btnStella4.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
+		    btnStella5.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
+		    
+		    filtro_media_voto=2;
+			
+		}
+	});
+
+	btnStella3.addMouseListener(new MouseAdapter() {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+		    btnStella2.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
+		    btnStella3.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
+		    btnStella4.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
+		    btnStella5.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
+		    
+		    filtro_media_voto=3;
+			
+		}
+	});
+	
+
+	btnStella4.addMouseListener(new MouseAdapter() {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+		    btnStella2.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
+		    btnStella3.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
+		    btnStella4.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
+		    btnStella5.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
+		    
+		    filtro_media_voto=4;
+			
+		}
+	});
+
+	btnStella5.addMouseListener(new MouseAdapter() {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+		    btnStella2.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
+		    btnStella3.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
+		    btnStella4.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
+		    btnStella5.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
+		    
+		    filtro_media_voto=5;
+			
+		}
+	});
+	btnStella1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+	btnStella1.setBorder(null);
+	btnStella1.setContentAreaFilled(false);
+	btnStella1.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
+
+	btnStella2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+	btnStella2.setBorder(null);
+	btnStella2.setContentAreaFilled(false);
+	btnStella2.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
+	
+	btnStella3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+	btnStella3.setBorder(null);
+	btnStella3.setContentAreaFilled(false);
+	btnStella3.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
+	
+	btnStella4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+	btnStella4.setBorder(null);
+	btnStella4.setContentAreaFilled(false);
+	btnStella4.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
+
+	btnStella5.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+	btnStella5.setBorder(null);
+	btnStella5.setContentAreaFilled(false);
+	btnStella5.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
 	
 	GroupLayout gl_contentPane = new GroupLayout(contentPane);
 	gl_contentPane.setHorizontalGroup(
@@ -128,23 +248,39 @@ public class HomePage extends JFrame {
 			.addComponent(panel, GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)
 			.addGroup(gl_contentPane.createSequentialGroup()
 				.addGap(10)
-				.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 359, GroupLayout.PREFERRED_SIZE)
+				.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
 				.addGap(18)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-					.addComponent(lblComune)
-					.addComponent(lblFiltri)
-					.addComponent(lblTipologia)
-					.addComponent(lblNomeLocale, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addComponent(lblMediaVoti, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-				.addGap(19)
 				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-					.addComponent(comboBox_FiltroTipologia, 0, 133, Short.MAX_VALUE)
-					.addComponent(comboBox_FiltroComune, Alignment.TRAILING, 0, 133, Short.MAX_VALUE)
-					.addComponent(textNomeLocale, GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE))
+					.addGroup(gl_contentPane.createSequentialGroup()
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+							.addComponent(lblComune)
+							.addComponent(lblFiltri)
+							.addComponent(lblTipologia)
+							.addComponent(lblNomeLocale, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+						.addGap(19)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+							.addComponent(comboBox_FiltroTipologia, 0, 149, Short.MAX_VALUE)
+							.addComponent(comboBox_FiltroComune, Alignment.TRAILING, 0, 149, Short.MAX_VALUE)
+							.addComponent(textNomeLocale, GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)))
+					.addGroup(gl_contentPane.createSequentialGroup()
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+							.addComponent(lblMediaVoti, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(btnStella1)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(btnStella2)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(btnStella3)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(btnStella4)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(btnStella5)))
+						.addGap(99)))
 				.addContainerGap())
 			.addGroup(gl_contentPane.createSequentialGroup()
-				.addContainerGap(397, Short.MAX_VALUE)
-				.addComponent(btnNewButton)
+				.addContainerGap(414, Short.MAX_VALUE)
+				.addComponent(btnVAI)
 				.addGap(35)
 				.addComponent(btnCerca)
 				.addContainerGap())
@@ -155,7 +291,7 @@ public class HomePage extends JFrame {
 				.addComponent(panel, GroupLayout.PREFERRED_SIZE, 64, GroupLayout.PREFERRED_SIZE)
 				.addPreferredGap(ComponentPlacement.UNRELATED)
 				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createSequentialGroup()
 						.addComponent(lblFiltri)
 						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -173,13 +309,25 @@ public class HomePage extends JFrame {
 								.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 									.addComponent(lblComune)
 									.addComponent(comboBox_FiltroComune, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
-						.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addGap(11)
 						.addComponent(lblMediaVoti)
-						.addGap(90)))
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+							.addGroup(gl_contentPane.createSequentialGroup()
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
+									.addComponent(btnStella2)
+									.addComponent(btnStella3)
+									.addGroup(gl_contentPane.createSequentialGroup()
+										.addComponent(btnStella1)
+										.addPreferredGap(ComponentPlacement.RELATED)))
+								.addGap(0, 0, Short.MAX_VALUE))
+							.addComponent(btnStella4)
+							.addComponent(btnStella5))
+						.addPreferredGap(ComponentPlacement.RELATED, 71, Short.MAX_VALUE)))
 				.addPreferredGap(ComponentPlacement.RELATED)
 				.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 					.addComponent(btnCerca)
-					.addComponent(btnNewButton))
+					.addComponent(btnVAI))
 				.addGap(5))
 	);
 
@@ -189,7 +337,7 @@ public class HomePage extends JFrame {
 		public void mouseClicked(MouseEvent e) {
 		    controller.setCellNotEditable(table, model);
 		}
-	});
+	}); 
 	model.addColumn("Location");
 	model.addColumn("ID");
 	model.addColumn("Nome");
