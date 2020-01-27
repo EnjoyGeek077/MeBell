@@ -44,9 +44,9 @@ public class Register extends JFrame {
 		setTitle("Register");
 	    	controller = ctrl;
 
-		setMinimumSize(new Dimension(550, 430));
+		setMinimumSize(new Dimension(590, 430));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 586, 430);
+		setBounds(100, 100, 590, 430);
 		contentPane = new JPanel();
 		contentPane.setMinimumSize(new Dimension(533, 430));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
