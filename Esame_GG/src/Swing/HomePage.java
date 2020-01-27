@@ -51,7 +51,8 @@ public class HomePage extends JFrame {
 	setMinimumSize(new Dimension(651, 413));
 	setTitle("HomePage");
 	controller = ctrl;
-
+	
+	
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	setBounds(100, 100, 651, 413);
 	contentPane = new JPanel();
@@ -76,7 +77,14 @@ public class HomePage extends JFrame {
 	lblFiltri.setFont(new Font("Arial Black", Font.BOLD, 18));
 
 	JComboBox<String> comboBox_FiltroComune = new JComboBox<String>();
-	comboBox_FiltroComune.setModel(new DefaultComboBoxModel(new String[] {"Tutti", "Napoli"}));
+	comboBox_FiltroComune.setModel(new DefaultComboBoxModel(new String[] {}));
+	int i=1;
+	for(String c: controller.getComuni()) {
+		comboBox_FiltroComune.insertItemAt(c, i);
+		System.out.println(c);
+		i++;
+	}
+	
 
 	JComboBox<String> comboBox_FiltroTipologia = new JComboBox<String>();
 	comboBox_FiltroTipologia.setModel(new DefaultComboBoxModel(new String[] {"Tutti", "Alloggio", "Attrazione", "Ristorante"}));

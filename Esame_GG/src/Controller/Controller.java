@@ -292,5 +292,10 @@ public class Controller {
 	homepage.setVisible(true);
     }
 
+	public ArrayList<String> getComuni() {
+		ResidenzaDAO resDAO = new ResidenzaDAO(this);
+		return resDAO.getAllComuni();
+	}
+
 
 }

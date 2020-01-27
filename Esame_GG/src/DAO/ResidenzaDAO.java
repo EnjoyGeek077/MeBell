@@ -62,8 +62,8 @@ public class ResidenzaDAO {
 
 	    while(rs.next()) {
 
-		String comuneDaAggiungere= rs.getString(1);
-		Comuni.add(comuneDaAggiungere);
+	    	String comuneDaAggiungere= rs.getString(1);
+	    	Comuni.add(comuneDaAggiungere);
 
 	    }
 	    
