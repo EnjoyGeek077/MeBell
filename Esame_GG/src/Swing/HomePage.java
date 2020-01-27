@@ -102,8 +102,8 @@ public class HomePage extends JFrame {
 		String filtro_comune=comboBox_FiltroComune.getSelectedItem().toString();
 		String filtro_nome=textNomeLocale.getText();
 
-		controller.getFilterLocation(filtro_tipologia, filtro_comune, filtro_nome);
-		controller.aggiornaTable(model,filtro_media_voto);
+		controller.getFilterLocation(filtro_tipologia, filtro_comune, filtro_nome, filtro_media_voto);
+		controller.aggiornaTable(model);
 	    }
 	});
 	btnCerca.addMouseListener(new MouseAdapter() {

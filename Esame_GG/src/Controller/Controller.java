@@ -44,6 +44,7 @@ public class Controller {
     
     private Utente utente=null;
     private String locationScelta;
+    private int filtroMediaVoto;
     private ArrayList<Location> location;	
     private ArrayList<Residenza> residenze;
 
@@ -123,19 +124,20 @@ public class Controller {
 
     }
 
-    public void getFilterLocation(String tipologia, String comune, String nome) {
+    public void getFilterLocation(String tipologia, String comune, String nome, int mediaVoto) {
 
 	LocationDAO locDAO = new LocationDAO(this);
 	ResidenzaDAO resDAO = new ResidenzaDAO(this);
-
+	
+	this.filtroMediaVoto=mediaVoto;
 	this.residenze=resDAO.getResidenze(comune);
 	this.location=locDAO.getLocations(tipologia, comune, nome);
     }
 
 
-    public void aggiornaTable(DefaultTableModel modello, int filtro_media_voto) {
+    public void aggiornaTable(DefaultTableModel modello) {
 
-	int filtro= filtro_media_voto;
+	int filtro= this.filtroMediaVoto;
 	float media = 0.0f;
 
 	RecensioneDAO recDAO = new RecensioneDAO(this);
@@ -234,6 +236,15 @@ public class Controller {
         this.locationScelta = locationScelta;
     }
     
+    //Getter e setter filtro media voto
+    public int getFiltroMediaVoto() {
+        return filtroMediaVoto;
+    }
+
+    public void setFiltroMediaVoto(int filtroMediaVoto) {
+        this.filtroMediaVoto = filtroMediaVoto;
+    }
+
     //Reset e utility
     public void resetCampiReg(JTextField textFirstN, JTextField textLastN, JTextField textUserN, JPasswordField passwordField, JPasswordField passwordFieldR) {
 

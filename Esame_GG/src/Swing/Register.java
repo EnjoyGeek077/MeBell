@@ -46,25 +46,31 @@ public class Register extends JFrame {
 
 		setMinimumSize(new Dimension(550, 430));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 550, 430);
+		setBounds(100, 100, 586, 430);
 		contentPane = new JPanel();
 		contentPane.setMinimumSize(new Dimension(533, 430));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
 		JLabel lblFirstName = new JLabel("First name");
+		lblFirstName.setFont(new Font("Arial", Font.BOLD, 13));
 
 		JLabel lblLastName = new JLabel("Last name");
+		lblLastName.setFont(new Font("Arial", Font.BOLD, 13));
 
 		JLabel lblUsername = new JLabel("Username");
+		lblUsername.setFont(new Font("Arial", Font.BOLD, 13));
 
 		JLabel lblPassword = new JLabel("Password");
+		lblPassword.setFont(new Font("Arial", Font.BOLD, 13));
 
 		JLabel lblReinsertPassword = new JLabel("Repat password");
+		lblReinsertPassword.setFont(new Font("Arial", Font.BOLD, 13));
 		
 		JLabel lblControlloUsername = new JLabel("Il campo conterrà una lunghezza da 3 a 15 char alfanumerici.");
-		
+		lblControlloUsername.setForeground(Color.BLACK);
 		JLabel lblControlloPassword = new JLabel("Il campo conterrà A-Z, a-z, 0-9 e almeno un @#$%.");
+		lblControlloPassword.setForeground(Color.BLACK);
 
 		textFirstN = new JTextField();
 		textFirstN.setColumns(10);
@@ -203,94 +209,113 @@ public class Register extends JFrame {
 		
 		JLabel labelPassRepatICON = new JLabel("");
 		labelPassRepatICON.setIcon(new ImageIcon(Register.class.getResource("/Icons/PassICON.png")));
+		
+		JLabel labelFirstNameICON = new JLabel("");
+		labelFirstNameICON.setIcon(new ImageIcon(Register.class.getResource("/Icons/FirstSecondNameICON.png")));
+		
+		JLabel labelSecondNameICON = new JLabel("");
+		labelSecondNameICON.setIcon(new ImageIcon(Register.class.getResource("/Icons/FirstSecondNameICON.png")));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(btnAnnulla)
-					.addPreferredGap(ComponentPlacement.RELATED, 217, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 384, Short.MAX_VALUE)
 					.addComponent(btnIscriviti)
 					.addContainerGap())
-				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
+				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblFirstName)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-							.addGroup(gl_contentPane.createSequentialGroup()
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-									.addComponent(lblPassword)
-									.addComponent(lblReinsertPassword))
-								.addGap(27)
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-									.addComponent(lblPassICON)
-									.addComponent(labelPassRepatICON, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)))
-							.addGroup(gl_contentPane.createSequentialGroup()
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-									.addComponent(lblLastName)
-									.addComponent(lblUsername))
-								.addGap(56)
-								.addComponent(labelUsernameICON))))
+						.addComponent(lblLastName)
+						.addComponent(lblUsername)
+						.addComponent(lblPassword)
+						.addComponent(lblReinsertPassword)
+						.addComponent(lblFirstName))
+					.addGap(97)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(labelFirstNameICON)
+								.addComponent(labelUsernameICON)
+								.addComponent(labelSecondNameICON))
+							.addGap(23))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(labelPassRepatICON, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblPassICON))
+							.addGap(18)))
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(passwordFieldR, GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE))
+								.addComponent(passwordField)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(lblControlloPassword, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+							.addGap(44))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(4)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(textLastN, GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-								.addComponent(textFirstN, GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-								.addComponent(lblControlloUsername)
-								.addComponent(textUserN, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(passwordField, GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
-								.addComponent(passwordFieldR, GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
-								.addComponent(lblControlloPassword))))
-					.addContainerGap())
+								.addComponent(textFirstN, GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+								.addComponent(lblControlloUsername, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(textUserN, GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+								.addComponent(textLastN, GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE))))
+					.addGap(19))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textFirstN, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblFirstName))
-					.addGap(18)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblLastName)
-						.addComponent(textLastN, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE))
-					.addGap(24)
-					.addComponent(lblControlloUsername)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblUsername)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+							.addComponent(textFirstN, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+							.addComponent(lblFirstName))
+						.addComponent(labelFirstNameICON))
+					.addGap(14)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(labelSecondNameICON)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblLastName)
+								.addComponent(textLastN, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
+							.addGap(24)
+							.addComponent(lblControlloUsername)))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 						.addComponent(labelUsernameICON)
+						.addComponent(lblUsername)
 						.addComponent(textUserN, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+					.addGap(39)
+					.addComponent(lblControlloPassword)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+							.addComponent(lblPassword)
+							.addGap(4))
+						.addComponent(lblPassICON, Alignment.TRAILING)
+						.addComponent(passwordField, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(labelPassRepatICON, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+							.addGroup(gl_contentPane.createSequentialGroup()
+								.addGap(7)
+								.addComponent(passwordFieldR, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+								.addGap(0, 0, Short.MAX_VALUE))
+							.addGroup(gl_contentPane.createSequentialGroup()
+								.addGap(8)
+								.addComponent(lblReinsertPassword))))
+					.addGap(11)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-								.addComponent(lblPassICON)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(lblPassword)
-									.addGap(6))
-								.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-							.addGap(10)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addComponent(lblReinsertPassword)
-										.addComponent(passwordFieldR, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE))
-									.addGap(11)
-									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addComponent(btnAnnulla)
-										.addComponent(btnIscriviti)))
-								.addComponent(labelPassRepatICON, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
-							.addContainerGap())
-						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-							.addComponent(lblControlloPassword)
-							.addGap(104))))
+						.addComponent(btnAnnulla)
+						.addComponent(btnIscriviti))
+					.addContainerGap())
 		);
 		
 		JLabel lblRegister = new JLabel("REGISTER");
