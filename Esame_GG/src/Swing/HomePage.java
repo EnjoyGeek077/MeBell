@@ -77,15 +77,13 @@ public class HomePage extends JFrame {
 	lblFiltri.setFont(new Font("Arial Black", Font.BOLD, 18));
 
 	JComboBox<String> comboBox_FiltroComune = new JComboBox<String>();
-	comboBox_FiltroComune.setModel(new DefaultComboBoxModel(new String[] {}));
+	comboBox_FiltroComune.setModel(new DefaultComboBoxModel(new String[] {"Tutti"}));
 	int i=1;
 	for(String c: controller.getComuni()) {
 		comboBox_FiltroComune.insertItemAt(c, i);
-		System.out.println(c);
 		i++;
 	}
 	
-
 	JComboBox<String> comboBox_FiltroTipologia = new JComboBox<String>();
 	comboBox_FiltroTipologia.setModel(new DefaultComboBoxModel(new String[] {"Tutti", "Alloggio", "Attrazione", "Ristorante"}));
 

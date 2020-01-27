@@ -52,9 +52,7 @@ public class ResidenzaDAO {
 
 	String query = "SELECT comune from residenza";
 	ArrayList<String> Comuni = new ArrayList<String>();
-
-	Comuni.add("Tutti");
-
+	
 	try {
 	    PreparedStatement getCom;
 	    getCom = controller.getConnection().prepareStatement(query);
