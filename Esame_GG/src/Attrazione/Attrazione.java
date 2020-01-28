@@ -1,10 +1,17 @@
 package Attrazione;
 
-public class Attrazione {
+import Entità.Location;
+
+public class Attrazione extends Location{
     
     private String cod;
     private boolean pagamento;
     private String tipoAttrazione;
+    
+    public Attrazione(String cod, String nome, String cod_res, String tipo, String partitaIva, String descrizione) {
+   	super(cod, nome, cod_res, tipo, partitaIva, descrizione);
+   	// TODO Auto-generated constructor stub
+       }
     
     public String getCod() {
         return cod;
