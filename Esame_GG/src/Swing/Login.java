@@ -196,25 +196,29 @@ public class Login extends JFrame {
 	GroupLayout gl_panel = new GroupLayout(panel);
 	gl_panel.setHorizontalGroup(
 		gl_panel.createParallelGroup(Alignment.LEADING)
-		.addGroup(gl_panel.createSequentialGroup()
-			.addContainerGap()
-			.addComponent(lblLogin)
-			.addGap(27)
-			.addComponent(label_1)
-			.addPreferredGap(ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-			.addComponent(label))
-		);
+			.addGroup(gl_panel.createSequentialGroup()
+				.addContainerGap()
+				.addComponent(lblLogin)
+				.addGap(27)
+				.addComponent(label_1)
+				.addPreferredGap(ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+				.addComponent(label)
+				.addContainerGap())
+	);
 	gl_panel.setVerticalGroup(
-		gl_panel.createParallelGroup(Alignment.LEADING)
-		.addGroup(gl_panel.createSequentialGroup()
-			.addComponent(lblLogin)
-			.addPreferredGap(ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-			.addComponent(label))
-		.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
-			.addContainerGap(13, Short.MAX_VALUE)
-			.addComponent(label_1)
-			.addContainerGap())
-		);
+		gl_panel.createParallelGroup(Alignment.TRAILING)
+			.addGroup(gl_panel.createSequentialGroup()
+				.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
+					.addGroup(gl_panel.createSequentialGroup()
+						.addContainerGap()
+						.addComponent(label))
+					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
+						.addComponent(lblLogin, Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(label_1))))
+				.addContainerGap())
+	);
 	panel.setLayout(gl_panel);
 	contentPane.setLayout(gl_contentPane);
     }
