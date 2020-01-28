@@ -158,21 +158,21 @@ public class Controller {
 			    JLabel labelIMG = new JLabel();
 			    labelIMG.setIcon(Icona);
 
-			    modello.addRow(new Object[] {labelIMG,l.getCod(),l.getNome(),r.getComune(),media});
+			    modello.addRow(new Object[] {labelIMG,l.getCod(),l.getNome(),r.getVia(),r.getComune(),media});
 
 			}else if(l.getTipo().equals("Attrazione")) {
 			    Icon Icona = new ImageIcon(getClass().getResource("/Icons/AttrazioneICON.png"));
 			    JLabel labelIMG = new JLabel();
 			    labelIMG.setIcon(Icona);
 
-			    modello.addRow(new Object[] {labelIMG,l.getCod(),l.getNome(),r.getComune(),media});
+			    modello.addRow(new Object[] {labelIMG,l.getCod(),l.getNome(),r.getVia(),r.getComune(),media});
 
 			}else if(l.getTipo().equals("Ristorante")) {
 			    Icon Icona = new ImageIcon(getClass().getResource("/Icons/RestaurantICON.png"));
 			    JLabel labelIMG = new JLabel();
 			    labelIMG.setIcon(Icona);
 
-			    modello.addRow(new Object[] {labelIMG,l.getCod(),l.getNome(),r.getComune(),media});
+			    modello.addRow(new Object[] {labelIMG,l.getCod(),l.getNome(),r.getVia(),r.getComune(),media});
 
 			}
 		    }

@@ -50,7 +50,7 @@ public class ResidenzaDAO {
 
     public ArrayList<String> getAllComuni(){
 
-	String query = "SELECT comune from residenza";
+	String query = "SELECT DISTINCT comune from residenza";
 	ArrayList<String> Comuni = new ArrayList<String>();
 	
 	try {

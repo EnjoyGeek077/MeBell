@@ -48,13 +48,13 @@ public class HomePage extends JFrame {
     private JTextField textNomeLocale;
 
     public HomePage(Controller ctrl) {
-	setMinimumSize(new Dimension(651, 413));
+	setMinimumSize(new Dimension(780, 413));
 	setTitle("HomePage");
 	controller = ctrl;
 	
 	
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	setBounds(100, 100, 651, 413);
+	setBounds(100, 100, 780, 413);
 	contentPane = new JPanel();
 	contentPane.setMinimumSize(new Dimension(651, 413));
 	contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -353,13 +353,12 @@ public class HomePage extends JFrame {
 	model.addColumn("Location");
 	model.addColumn("ID");
 	model.addColumn("Nome");
+	model.addColumn("Via");
 	model.addColumn("Comune");
 	model.addColumn("Media Voti");
 	
-	
 	table.setModel(model);
 	table.setRowHeight(25);
-	
 	table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 	table.getColumn("Location").setCellRenderer(new myTableCellRenderer());
 	scrollPane.setViewportView(table);
