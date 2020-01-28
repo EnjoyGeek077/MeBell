@@ -1,12 +1,12 @@
 package Alloggio;
 
-public class bEb extends Alloggio{
+public class BeB extends Alloggio{
 
 	private int nCamere;
 	private int stelle;
 	private boolean bagnoInComune;
 	
-	public bEb(String cod, String nome, String cod_res, String tipo, String partitaIva, String descrizione) {
+	public BeB(String cod, String nome, String cod_res, String tipo, String partitaIva, String descrizione) {
 		super(cod, nome, cod_res, tipo, partitaIva, descrizione);
 		// TODO Auto-generated constructor stub
 	    }
