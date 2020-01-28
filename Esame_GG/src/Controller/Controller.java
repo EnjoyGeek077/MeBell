@@ -73,7 +73,7 @@ public class Controller {
 	UtenteDAO utenteDAO = new UtenteDAO(this);
 	try {
 	    utenteDAO.inserisciUtente(utente);
-	    JOptionPane.showMessageDialog(null, "Il nome utente risulta già registrato", "Esito registrazione", JOptionPane.INFORMATION_MESSAGE);
+	    JOptionPane.showMessageDialog(null, "Registrazione avvenuta con successo", "Esito registrazione", JOptionPane.INFORMATION_MESSAGE);
 
 	} catch (SQLIntegrityConstraintViolationException e) {
 	    JOptionPane.showMessageDialog(null, "Il nome utente risulta già registrato", "Error", JOptionPane.ERROR_MESSAGE);

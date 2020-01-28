@@ -28,194 +28,194 @@ import java.awt.Cursor;
 
 public class Login extends JFrame {
 
-	private JPanel contentPane;
-	private JTextField textUsername;
-	private JPasswordField textPassword;
-	private Controller controller;
-	
-	public Login(Controller ctrl) {
-		setTitle("Login");
-		controller= ctrl;
+    private JPanel contentPane;
+    private JTextField textUsername;
+    private JPasswordField textPassword;
+    private Controller controller;
 
-		setMinimumSize(new Dimension(400, 320));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 400, 320);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
+    public Login(Controller ctrl) {
+	setTitle("Login");
+	controller= ctrl;
 
-		JLabel lblUsername = new JLabel("Username");
-		lblUsername.setFont(new Font("Tahoma", Font.PLAIN, 13));
+	setMinimumSize(new Dimension(400, 320));
+	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	setBounds(100, 100, 400, 320);
+	contentPane = new JPanel();
+	contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+	setContentPane(contentPane);
 
-		JLabel lblPassword = new JLabel("Password");
-		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 13));
+	JLabel lblUsername = new JLabel("Username");
+	lblUsername.setFont(new Font("Tahoma", Font.PLAIN, 13));
 
-		textUsername = new JTextField();
-		textUsername.setColumns(10);
+	JLabel lblPassword = new JLabel("Password");
+	lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 13));
 
-		textPassword = new JPasswordField();
-		
-		JButton btnLogin = new JButton("");
-		btnLogin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnLogin.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent e) {
-			    btnLogin.setIcon(new ImageIcon(Login.class.getResource("/ButtonIcon/LoginICON3.png")));
-			}
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				btnLogin.setIcon(new ImageIcon(Login.class.getResource("/ButtonIcon/LoginICON1.png")));
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				btnLogin.setIcon(new ImageIcon(Login.class.getResource("/ButtonIcon/LoginICON2.png")));
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				btnLogin.setIcon(new ImageIcon(Login.class.getResource("/ButtonIcon/LoginICON1.png")));
-			}
-		});
+	textUsername = new JTextField();
+	textUsername.setColumns(10);
+
+	textPassword = new JPasswordField();
+
+	JButton btnLogin = new JButton("");
+	btnLogin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+	btnLogin.addMouseListener(new MouseAdapter() {
+	    @Override
+	    public void mousePressed(MouseEvent e) {
+		btnLogin.setIcon(new ImageIcon(Login.class.getResource("/ButtonIcon/LoginICON3.png")));
+	    }
+	    @Override
+	    public void mouseReleased(MouseEvent e) {
 		btnLogin.setIcon(new ImageIcon(Login.class.getResource("/ButtonIcon/LoginICON1.png")));
-		btnLogin.setBorder(null);
-		btnLogin.setContentAreaFilled(false);
-		btnLogin.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				String pass = new String(textPassword.getPassword());
-				controller.loginTry(textUsername.getText(),pass);
-			}
-		});
+	    }
+	    @Override
+	    public void mouseEntered(MouseEvent e) {
+		btnLogin.setIcon(new ImageIcon(Login.class.getResource("/ButtonIcon/LoginICON2.png")));
+	    }
+	    @Override
+	    public void mouseExited(MouseEvent e) {
+		btnLogin.setIcon(new ImageIcon(Login.class.getResource("/ButtonIcon/LoginICON1.png")));
+	    }
+	});
+	btnLogin.setIcon(new ImageIcon(Login.class.getResource("/ButtonIcon/LoginICON1.png")));
+	btnLogin.setBorder(null);
+	btnLogin.setContentAreaFilled(false);
+	btnLogin.addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent arg0) {
+		String pass = new String(textPassword.getPassword());
+		controller.loginTry(textUsername.getText(),pass);
+	    }
+	});
 
-		JLabel lblNonSeiRegistrato = new JLabel("Non sei registrato?");
+	JLabel lblNonSeiRegistrato = new JLabel("Non sei registrato?");
 
-		JButton btnRegistrati = new JButton("");
-		btnRegistrati.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnRegistrati.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent e) {
-			    btnRegistrati.setIcon(new ImageIcon(Login.class.getResource("/ButtonIcon/RegisterICON3.png")));
-			}
-			@Override
-			public void mouseReleased(MouseEvent e) {
-			    btnRegistrati.setIcon(new ImageIcon(Login.class.getResource("/ButtonIcon/RegisterICON1.png")));
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-			    btnRegistrati.setIcon(new ImageIcon(Login.class.getResource("/ButtonIcon/RegisterICON1.png")));
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-			    btnRegistrati.setIcon(new ImageIcon(Login.class.getResource("/ButtonIcon/RegisterICON2.png")));
-			}
-		});
+	JButton btnRegistrati = new JButton("");
+	btnRegistrati.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+	btnRegistrati.addMouseListener(new MouseAdapter() {
+	    @Override
+	    public void mousePressed(MouseEvent e) {
+		btnRegistrati.setIcon(new ImageIcon(Login.class.getResource("/ButtonIcon/RegisterICON3.png")));
+	    }
+	    @Override
+	    public void mouseReleased(MouseEvent e) {
 		btnRegistrati.setIcon(new ImageIcon(Login.class.getResource("/ButtonIcon/RegisterICON1.png")));
-		btnRegistrati.setBorder(null);
-		btnRegistrati.setContentAreaFilled(false);
-		btnRegistrati.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				controller.openRegister();
-			}
-		});
-		
-		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 102, 0));
-		
-		JLabel lblUserICON = new JLabel("");
-		lblUserICON.setIcon(new ImageIcon(Login.class.getResource("/Icons/UserICON.png")));
-		
-		JLabel labelPassICON = new JLabel("");
-		labelPassICON.setIcon(new ImageIcon(Login.class.getResource("/Icons/PassICON.png")));
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addComponent(lblUsername)
-										.addComponent(lblPassword, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE))
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addComponent(lblUserICON)
-										.addComponent(labelPassICON)))
-								.addComponent(lblNonSeiRegistrato))
-							.addGap(18)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(textPassword, GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
-								.addComponent(textUsername, GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(btnRegistrati, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
-							.addComponent(btnLogin, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap())
-				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
+	    }
+	    @Override
+	    public void mouseExited(MouseEvent e) {
+		btnRegistrati.setIcon(new ImageIcon(Login.class.getResource("/ButtonIcon/RegisterICON1.png")));
+	    }
+	    @Override
+	    public void mouseEntered(MouseEvent e) {
+		btnRegistrati.setIcon(new ImageIcon(Login.class.getResource("/ButtonIcon/RegisterICON2.png")));
+	    }
+	});
+	btnRegistrati.setIcon(new ImageIcon(Login.class.getResource("/ButtonIcon/RegisterICON1.png")));
+	btnRegistrati.setBorder(null);
+	btnRegistrati.setContentAreaFilled(false);
+	btnRegistrati.addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent e) {
+		setVisible(false);
+		controller.openRegister();
+	    }
+	});
+
+	JPanel panel = new JPanel();
+	panel.setBackground(new Color(255, 102, 0));
+
+	JLabel lblUserICON = new JLabel("");
+	lblUserICON.setIcon(new ImageIcon(Login.class.getResource("/Icons/UserICON.png")));
+
+	JLabel labelPassICON = new JLabel("");
+	labelPassICON.setIcon(new ImageIcon(Login.class.getResource("/Icons/PassICON.png")));
+	GroupLayout gl_contentPane = new GroupLayout(contentPane);
+	gl_contentPane.setHorizontalGroup(
+		gl_contentPane.createParallelGroup(Alignment.LEADING)
+			.addGroup(gl_contentPane.createSequentialGroup()
+				.addContainerGap()
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_contentPane.createSequentialGroup()
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+							.addComponent(lblUsername)
+							.addComponent(lblPassword, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE))
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+							.addComponent(lblUserICON)
+							.addComponent(labelPassICON))
+						.addGap(18)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+							.addComponent(textPassword, GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+							.addComponent(textUsername, GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)))
+					.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+						.addComponent(btnRegistrati, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
+						.addComponent(btnLogin, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)))
+				.addContainerGap())
+			.addComponent(panel, GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
+			.addGroup(gl_contentPane.createSequentialGroup()
+				.addContainerGap()
+				.addComponent(lblNonSeiRegistrato)
+				.addContainerGap(274, Short.MAX_VALUE))
+	);
+	gl_contentPane.setVerticalGroup(
+		gl_contentPane.createParallelGroup(Alignment.TRAILING)
+			.addGroup(gl_contentPane.createSequentialGroup()
+				.addComponent(panel, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE)
+				.addGap(31)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE, false)
+					.addComponent(lblUsername, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
+					.addComponent(textUsername, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+					.addComponent(lblUserICON))
+				.addGap(32)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
+					.addComponent(lblPassword, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
+					.addComponent(labelPassICON, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(textPassword))
+				.addPreferredGap(ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+				.addComponent(lblNonSeiRegistrato)
+				.addPreferredGap(ComponentPlacement.RELATED)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+					.addComponent(btnLogin)
+					.addComponent(btnRegistrati))
+				.addContainerGap())
+	);
+
+	JLabel lblLogin = new JLabel("LOGIN");
+	lblLogin.setForeground(new Color(255, 255, 255));
+	lblLogin.setFont(new Font("Arial", Font.BOLD, 18));
+
+	JLabel label = new JLabel("");
+	label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+	label.addMouseListener(new MouseAdapter() {
+	    @Override
+	    public void mouseClicked(MouseEvent e) {
+		JOptionPane.showMessageDialog(null, "<html>Editor:<br/>Federico Gargiulo<br/>Antonio Garofalo</html>", "Informazioni", JOptionPane.WARNING_MESSAGE);		    
+	    }
+	});
+	label.setIcon(new ImageIcon(Login.class.getResource("/Icons/InfoICON.png")));
+
+	JLabel label_1 = new JLabel("");
+	label_1.setIcon(new ImageIcon(Login.class.getResource("/Icons/MeBell.png")));
+	GroupLayout gl_panel = new GroupLayout(panel);
+	gl_panel.setHorizontalGroup(
+		gl_panel.createParallelGroup(Alignment.LEADING)
+		.addGroup(gl_panel.createSequentialGroup()
+			.addContainerGap()
+			.addComponent(lblLogin)
+			.addGap(27)
+			.addComponent(label_1)
+			.addPreferredGap(ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+			.addComponent(label))
 		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE, false)
-						.addComponent(lblUsername, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textUsername, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblUserICON))
-					.addGap(32)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
-						.addComponent(lblPassword, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
-						.addComponent(labelPassICON, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(textPassword, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(33)
-					.addComponent(lblNonSeiRegistrato)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnRegistrati)
-						.addComponent(btnLogin))
-					.addGap(13))
+	gl_panel.setVerticalGroup(
+		gl_panel.createParallelGroup(Alignment.LEADING)
+		.addGroup(gl_panel.createSequentialGroup()
+			.addComponent(lblLogin)
+			.addPreferredGap(ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+			.addComponent(label))
+		.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
+			.addContainerGap(13, Short.MAX_VALUE)
+			.addComponent(label_1)
+			.addContainerGap())
 		);
-		
-		JLabel lblLogin = new JLabel("LOGIN");
-		lblLogin.setForeground(new Color(255, 255, 255));
-		lblLogin.setFont(new Font("Arial", Font.BOLD, 18));
-		
-		JLabel label = new JLabel("");
-		label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		label.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-			    JOptionPane.showMessageDialog(null, "<html>Editor:<br/>Federico Gargiulo<br/>Antonio Garofalo</html>", "Informazioni", JOptionPane.WARNING_MESSAGE);		    
-			}
-		});
-		label.setIcon(new ImageIcon(Login.class.getResource("/Icons/InfoICON.png")));
-		
-		JLabel label_1 = new JLabel("");
-		label_1.setIcon(new ImageIcon(Login.class.getResource("/Icons/MeBell.png")));
-		GroupLayout gl_panel = new GroupLayout(panel);
-		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblLogin)
-					.addGap(27)
-					.addComponent(label_1)
-					.addPreferredGap(ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-					.addComponent(label))
-		);
-		gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addComponent(lblLogin)
-					.addPreferredGap(ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-					.addComponent(label))
-				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
-					.addContainerGap(13, Short.MAX_VALUE)
-					.addComponent(label_1)
-					.addContainerGap())
-		);
-		panel.setLayout(gl_panel);
-		contentPane.setLayout(gl_contentPane);
-	}
+	panel.setLayout(gl_panel);
+	contentPane.setLayout(gl_contentPane);
+    }
 }
