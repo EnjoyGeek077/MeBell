@@ -199,8 +199,9 @@ public class Controller {
 
 	    rowSelected=tabella.getSelectedRow();
 	    cod_locale=(String) tabella.getValueAt(rowSelected, 1);
-	    this.setLocationScelta(IDlocationScelta);
+	    this.setLocationScelta(cod_locale);
 	    this.homepage.setVisible(false);
+	    this.openLocationPage();
 	    return true;
 
 	}else {
@@ -219,16 +220,16 @@ public class Controller {
 	LocationDAO locDAO = new LocationDAO(this);
 	this.locationDaVedere=locDAO.getLocationFromID(this.IDlocationScelta);
 
-
     }
 
     public void aggiornaLocationPage(){
 	if(this.locationDaVedere.getTipo().equals("Alloggio")) {
-		
+
 
 	}else if(this.locationDaVedere.getTipo().equals("Attrazione")) {
-		AttrazioneDAO attDAO = new AttrazioneDAO(this);
-		Attrazione att = attDAO.getAttrazione(this.IDlocationScelta, this.locationDaVedere);
+	    AttrazioneDAO attDAO = new AttrazioneDAO(this);
+	    Attrazione att = attDAO.getAttrazione(this.IDlocationScelta, this.locationDaVedere);
+	    //locationpage.setLabel();
 
 	}else if(this.locationDaVedere.getTipo().equals("Ristorante")) {
 

@@ -12,6 +12,7 @@ public class Attrazione extends Location{
    	super(loc.getCod(), loc.getNome(), loc.getCod_residenza(), loc.getTipo(), loc.getPartitaIva(), loc.getDescrizione());
    	
    	this.tipoAttrazione=tipoatt;
+   	
    	if(pagamento.equals("si")) {
    		this.pagamento=true;
    	}else {

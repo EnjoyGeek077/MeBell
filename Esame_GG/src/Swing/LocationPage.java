@@ -18,6 +18,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Dimension;
 
 public class LocationPage extends JFrame {
 
@@ -27,9 +28,10 @@ public class LocationPage extends JFrame {
      * Create the frame.
      */
     public LocationPage(Controller ctrl) {
+    	setMinimumSize(new Dimension(659, 482));
 	controller=ctrl;
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	setBounds(100, 100, 653, 482);
+	setBounds(100, 100, 659, 482);
 	contentPane = new JPanel();
 	contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 	setContentPane(contentPane);
@@ -55,9 +57,8 @@ public class LocationPage extends JFrame {
 				.addComponent(panelIMG, GroupLayout.PREFERRED_SIZE, 196, GroupLayout.PREFERRED_SIZE)
 				.addContainerGap(431, Short.MAX_VALUE))
 			.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
-				.addContainerGap()
 				.addComponent(btnBack, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE)
-				.addContainerGap(536, Short.MAX_VALUE))
+				.addContainerGap())
 	);
 	gl_contentPane.setVerticalGroup(
 		gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -65,16 +66,15 @@ public class LocationPage extends JFrame {
 				.addComponent(panel, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
 				.addPreferredGap(ComponentPlacement.RELATED)
 				.addComponent(panelIMG, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
-				.addGap(152)
-				.addComponent(btnBack)
-				.addContainerGap())
+				.addPreferredGap(ComponentPlacement.RELATED, 163, Short.MAX_VALUE)
+				.addComponent(btnBack))
 	);
 	panelIMG.setLayout(null);
 	
-	JLabel labelImagineLocation = new JLabel("");
-	labelImagineLocation.setBounds(10, 11, 176, 161);
-	panelIMG.add(labelImagineLocation);
-	labelImagineLocation.setIcon(new ImageIcon("C:\\Users\\Universit\u00E0 A.G\\Downloads\\test.png"));
+	JLabel labelImmagineLocation = new JLabel("");
+	labelImmagineLocation.setBounds(10, 11, 176, 161);
+	panelIMG.add(labelImmagineLocation);
+	labelImmagineLocation.setIcon(new ImageIcon("C:\\Users\\Universit\u00E0 A.G\\Downloads\\test.png"));
 	
 	JLabel lblLocationPage = new JLabel("Location Page");
 	lblLocationPage.setForeground(new Color(255, 255, 255));
@@ -96,4 +96,5 @@ public class LocationPage extends JFrame {
 	panel.setLayout(gl_panel);
 	contentPane.setLayout(gl_contentPane);
     }
+ 
 }

@@ -80,15 +80,18 @@ public class LocationDAO {
     public Location getLocationFromID(String ID) {
 
 	Location location=null;
-	String query="SELECT * FROM location WHERE cod="+ID;
+	String query="SELECT * FROM location WHERE cod=?";
 
 	try {
+
 	    PreparedStatement getLoc = controller.getConnection().prepareStatement(query);
+	    getLoc.setString(1, ID);
 	    ResultSet rs = getLoc.executeQuery();
 
 	    while(rs.next()) {
 		location = new Location(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
 	    }
+
 	} catch (SQLException e) {
 	    e.printStackTrace();
 	}

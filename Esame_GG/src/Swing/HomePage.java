@@ -135,7 +135,8 @@ public class HomePage extends JFrame {
 	JButton btnVAI = new JButton("");
 	btnVAI.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
-		if(controller.getLocationFromTable(table)) {
+		boolean controllo = controller.getLocationFromTable(table);
+		if(controllo) {
 		    controller.getLocationInformation();
 		    controller.aggiornaLocationPage();
 		}
