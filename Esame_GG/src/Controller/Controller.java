@@ -44,7 +44,8 @@ public class Controller {
     ModelloTabella model;
 
     private Utente utente=null;
-    private String locationScelta;
+    private String IDlocationScelta;
+    private Location locationDaVedere;
     private int filtroMediaVoto;
     private ArrayList<Location> location;	
     private ArrayList<Residenza> residenze;
@@ -187,7 +188,7 @@ public class Controller {
 
     }
 
-    public void getLocationFromTable(JTable tabella) {
+    public boolean getLocationFromTable(JTable tabella) {
 
 	String cod_locale;
 	int rowSelected;
@@ -196,18 +197,38 @@ public class Controller {
 
 	    rowSelected=tabella.getSelectedRow();
 	    cod_locale=(String) tabella.getValueAt(rowSelected, 1);
-	    this.setLocationScelta(locationScelta);
-	    this.openLocationPage();
+	    this.setLocationScelta(IDlocationScelta);
 	    this.homepage.setVisible(false);
+	    return true;
 
 	}else {
 	    JOptionPane.showMessageDialog(null, "Selzeziona una riga", "Error", JOptionPane.ERROR_MESSAGE);
+	    return false;
 	}
     }
 
     public ArrayList<String> getComuni() {
 	ResidenzaDAO resDAO = new ResidenzaDAO(this);
 	return resDAO.getAllComuni();
+    }
+
+    public void getLocationInformation() {
+
+	LocationDAO locDAO = new LocationDAO(this);
+	this.locationDaVedere=locDAO.getLocationFromID(this.IDlocationScelta);
+
+
+    }
+
+    public void aggiornaLocationPage(){
+	if(this.locationDaVedere.getTipo().equals("Alloggio")) {
+
+	}else if(this.locationDaVedere.getTipo().equals("Attrazione")) {
+
+	}else if(this.locationDaVedere.getTipo().equals("Ristorante")) {
+
+	}
+
     }
 
     //Get connessione
@@ -238,11 +259,11 @@ public class Controller {
 
     //Getter e setter location scelta
     public String getLocationScelta() {
-	return locationScelta;
+	return IDlocationScelta;
     }
 
     public void setLocationScelta(String locationScelta) {
-	this.locationScelta = locationScelta;
+	this.IDlocationScelta = locationScelta;
     }
 
     //Getter e setter filtro media voto
@@ -253,6 +274,16 @@ public class Controller {
     public void setFiltroMediaVoto(int filtroMediaVoto) {
 	this.filtroMediaVoto = filtroMediaVoto;
     }
+
+    //Getter e setter location da vedere
+    public Location getLocationDaVedere() {
+	return locationDaVedere;
+    }
+
+    public void setLocationDaVedere(Location locationDaVedere) {
+	this.locationDaVedere = locationDaVedere;
+    }
+
 
     //Reset e utility
     public void resetCampiReg(JTextField textFirstN, JTextField textLastN, JTextField textUserN, JPasswordField passwordField, JPasswordField passwordFieldR) {

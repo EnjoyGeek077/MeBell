@@ -135,7 +135,10 @@ public class HomePage extends JFrame {
 	JButton btnVAI = new JButton("");
 	btnVAI.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
-		controller.getLocationFromTable(table);
+		if(controller.getLocationFromTable(table)) {
+		    controller.getLocationInformation();
+		    controller.aggiornaLocationPage();
+		}
 	    }
 	});
 	btnVAI.addMouseListener(new MouseAdapter() {

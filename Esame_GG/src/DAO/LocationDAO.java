@@ -48,7 +48,7 @@ public class LocationDAO {
 	}else if(!tipologia.equals("Tutti") && !comune.equals("Tutti") && !nome.equals("")) {
 	    SqlInjectionRisk=true;
 	    query = query+" JOIN residenza on residenza.comune='"+comune+"' WHERE nome= ? AND tipo_location='"+tipologia+"'";
-	    
+
 	}
 
 
@@ -66,7 +66,7 @@ public class LocationDAO {
 		Location loc = new Location(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
 		locations.add(loc);
 	    }
-	    
+
 	    rs.close();
 	    getLoc.close();
 
@@ -75,6 +75,25 @@ public class LocationDAO {
 	}
 
 	return locations;
+    }
+
+    public Location getLocationFromID(String ID) {
+
+	Location location=null;
+	String query="SELECT * FROM location WHERE cod="+ID;
+
+	try {
+	    PreparedStatement getLoc = controller.getConnection().prepareStatement(query);
+	    ResultSet rs = getLoc.executeQuery();
+
+	    while(rs.next()) {
+		location = new Location(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
+	    }
+	} catch (SQLException e) {
+	    e.printStackTrace();
+	}
+
+	return location;
     }
 }
 
