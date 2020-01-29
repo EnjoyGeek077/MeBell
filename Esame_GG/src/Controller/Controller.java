@@ -27,7 +27,7 @@ import DAO.*;
 
 import Entità.*;
 import Swing.HomePage;
-
+import Swing.LocationPage;
 import Entità.Location;
 import Entità.Utente;
 
@@ -39,9 +39,10 @@ public class Controller {
     Login login;
     Register register;
     HomePage homepage;
+    LocationPage locationpage;
 
     ModelloTabella model;
-    
+
     private Utente utente=null;
     private String locationScelta;
     private int filtroMediaVoto;
@@ -60,6 +61,7 @@ public class Controller {
 	login.setVisible(true);
 	register = new Register(this);
 	homepage = new HomePage(this);
+	locationpage = new LocationPage(this);
 
 	location = new ArrayList<Location>();
 
@@ -128,7 +130,7 @@ public class Controller {
 
 	LocationDAO locDAO = new LocationDAO(this);
 	ResidenzaDAO resDAO = new ResidenzaDAO(this);
-	
+
 	this.filtroMediaVoto=mediaVoto;
 	this.residenze=resDAO.getResidenze(comune);
 	this.location=locDAO.getLocations(tipologia, comune, nome);
@@ -184,21 +186,28 @@ public class Controller {
 	modello.fireTableDataChanged();
 
     }
-    
+
     public void getLocationFromTable(JTable tabella) {
-	
+
 	String cod_locale;
 	int rowSelected;
 
 	if(!tabella.getSelectionModel().isSelectionEmpty()) {
-	    
-	rowSelected=tabella.getSelectedRow();
-	cod_locale=(String) tabella.getValueAt(rowSelected, 1);
-	this.setLocationScelta(locationScelta);
-	
+
+	    rowSelected=tabella.getSelectedRow();
+	    cod_locale=(String) tabella.getValueAt(rowSelected, 1);
+	    this.setLocationScelta(locationScelta);
+	    this.openLocationPage();
+	    this.homepage.setVisible(false);
+
 	}else {
 	    JOptionPane.showMessageDialog(null, "Selzeziona una riga", "Error", JOptionPane.ERROR_MESSAGE);
 	}
+    }
+
+    public ArrayList<String> getComuni() {
+	ResidenzaDAO resDAO = new ResidenzaDAO(this);
+	return resDAO.getAllComuni();
     }
 
     //Get connessione
@@ -226,23 +235,23 @@ public class Controller {
     public void setUtente(Utente utente) {
 	this.utente = utente;
     }
-    
+
     //Getter e setter location scelta
     public String getLocationScelta() {
-        return locationScelta;
+	return locationScelta;
     }
 
     public void setLocationScelta(String locationScelta) {
-        this.locationScelta = locationScelta;
+	this.locationScelta = locationScelta;
     }
-    
+
     //Getter e setter filtro media voto
     public int getFiltroMediaVoto() {
-        return filtroMediaVoto;
+	return filtroMediaVoto;
     }
 
     public void setFiltroMediaVoto(int filtroMediaVoto) {
-        this.filtroMediaVoto = filtroMediaVoto;
+	this.filtroMediaVoto = filtroMediaVoto;
     }
 
     //Reset e utility
@@ -291,11 +300,7 @@ public class Controller {
     public void openHomePage() {
 	homepage.setVisible(true);
     }
-
-	public ArrayList<String> getComuni() {
-		ResidenzaDAO resDAO = new ResidenzaDAO(this);
-		return resDAO.getAllComuni();
-	}
-
-
+    public void openLocationPage() {
+	locationpage.setVisible(true);
+    }
 }
