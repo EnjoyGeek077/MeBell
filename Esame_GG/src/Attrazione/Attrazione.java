@@ -4,21 +4,28 @@ import Entità.Location;
 
 public class Attrazione extends Location{
     
-    private String cod;
+    
     private boolean pagamento;
     private String tipoAttrazione;
     
-    public Attrazione(String cod, String nome, String cod_res, String tipo, String partitaIva, String descrizione) {
-   	super(cod, nome, cod_res, tipo, partitaIva, descrizione);
-   	// TODO Auto-generated constructor stub
+    public Attrazione(Location loc,String pagamento, String tipoatt) {
+   	super(loc.getCod(), loc.getNome(), loc.getCod_residenza(), loc.getTipo(), loc.getPartitaIva(), loc.getDescrizione());
+   	
+   	this.tipoAttrazione=tipoatt;
+   	if(pagamento.equals("si")) {
+   		this.pagamento=true;
+   	}else {
+   		this.pagamento=false;
+   	}
+   	
        }
     
-    public String getCod() {
-        return cod;
-    }
-    public void setCod(String cod) {
-        this.cod = cod;
-    }
+    
+    
+		
+	
+
+
     public boolean isPagamento() {
         return pagamento;
     }

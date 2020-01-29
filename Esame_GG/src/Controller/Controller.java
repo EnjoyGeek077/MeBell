@@ -18,6 +18,8 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import Attrazione.Attrazione;
+
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -222,8 +224,11 @@ public class Controller {
 
     public void aggiornaLocationPage(){
 	if(this.locationDaVedere.getTipo().equals("Alloggio")) {
+		
 
 	}else if(this.locationDaVedere.getTipo().equals("Attrazione")) {
+		AttrazioneDAO attDAO = new AttrazioneDAO(this);
+		Attrazione att = attDAO.getAttrazione(this.IDlocationScelta, this.locationDaVedere);
 
 	}else if(this.locationDaVedere.getTipo().equals("Ristorante")) {
 
