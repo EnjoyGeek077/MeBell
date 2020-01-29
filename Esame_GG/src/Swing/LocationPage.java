@@ -74,7 +74,6 @@ public class LocationPage extends JFrame {
 	JLabel labelImmagineLocation = new JLabel("");
 	labelImmagineLocation.setBounds(10, 11, 176, 161);
 	panelIMG.add(labelImmagineLocation);
-	labelImmagineLocation.setIcon(new ImageIcon("C:\\Users\\Universit\u00E0 A.G\\Downloads\\test.png"));
 	
 	JLabel lblLocationPage = new JLabel("Location Page");
 	lblLocationPage.setForeground(new Color(255, 255, 255));
