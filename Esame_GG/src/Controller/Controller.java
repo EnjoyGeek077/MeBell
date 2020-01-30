@@ -225,11 +225,10 @@ public class Controller {
     public void aggiornaLocationPage(){
 	if(this.locationDaVedere.getTipo().equals("Alloggio")) {
 
-
 	}else if(this.locationDaVedere.getTipo().equals("Attrazione")) {
 	    AttrazioneDAO attDAO = new AttrazioneDAO(this);
 	    Attrazione att = attDAO.getAttrazione(this.IDlocationScelta, this.locationDaVedere);
-	    //locationpage.setLabel();
+	    locationpage.setLocationPage(att.getNome(), "via xx n xx Città xx cap xxxxx", 4, att.getDescrizione(), "servizi");
 
 	}else if(this.locationDaVedere.getTipo().equals("Ristorante")) {
 
