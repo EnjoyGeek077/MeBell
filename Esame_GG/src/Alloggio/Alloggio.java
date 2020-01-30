@@ -4,15 +4,19 @@ import Entità.Location;
 
 public class Alloggio extends Location{
     
-	public Alloggio(String cod, String nome, String cod_res, String tipo, String partitaIva, String descrizione) {
-		super(cod, nome, cod_res, tipo, partitaIva, descrizione);
-		serviziAlloggio = new ServiziAlloggio();
-	}
+	
 
 	private int prezzoMedio;
 	private String tipoAlloggio;
-	ServiziAlloggio serviziAlloggio;
+	private ServiziAlloggio serviziAlloggio;
 	
+	public Alloggio(Location mainLoc, ServiziAlloggio serAlloggio, int prezzomedio,String tipoall) {
+		super(mainLoc.getCod(), mainLoc.getNome(), mainLoc.getCod_residenza(), mainLoc.getTipo(), mainLoc.getPartitaIva(), mainLoc.getDescrizione());
+		this.prezzoMedio=prezzomedio;
+		this.tipoAlloggio=tipoall;
+		
+	}
+
 	public int getPrezzoMedio() {
 		return prezzoMedio;
 	}

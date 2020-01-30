@@ -1,15 +1,21 @@
 package Alloggio;
 
+import Entità.Location;
+
 public class Hotel extends Alloggio{
-   
+	
 	private int nCamere;
 	private int Nsuite;
 	private int stelle;
-	
-	public Hotel(String cod, String nome, String cod_res, String tipo, String partitaIva, String descrizione) {
-		super(cod, nome, cod_res, tipo, partitaIva, descrizione);
+	private ServiziAlloggio serviziAlloggio;
+   
+	public Hotel(Location mainLoc, int prezzomedio, String tipoall) {
+		super(mainLoc, serviziAlloggio, prezzomedio, tipoall);
 		// TODO Auto-generated constructor stub
-	    }
+	}
+	
+	
+	
 	
 	public int getnCamere() {
 		return nCamere;
