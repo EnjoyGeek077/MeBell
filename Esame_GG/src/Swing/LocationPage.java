@@ -29,15 +29,16 @@ public class LocationPage extends JFrame {
     private JPanel contentPane;
     private Controller controller;
     
-    JLabel lblNomeLoc;
-    JLabel lblIndirizzo;
-    JTextArea txtrDescrizione;
-    JTextArea txtrServizi;
-    JLabel stella1;
-    JLabel stella2;
-    JLabel stella3;
-    JLabel stella4;
-    JLabel stella5;
+    private JLabel lblNomeLoc;
+    private JLabel lblCategoria;
+    private JLabel lblIndirizzo;
+    private JTextArea txtrDescrizione;
+    private JTextArea txtrServizi;
+    private JLabel stella1;
+    private JLabel stella2;
+    private JLabel stella3;
+    private JLabel stella4;
+    private JLabel stella5;
     
     /**
      * Create the frame.
@@ -141,35 +142,38 @@ public class LocationPage extends JFrame {
 	
 	stella5 = new JLabel("");
 	stella5.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/Stella0.png")));
+	
+	lblCategoria = new JLabel("Categoria:");
 	GroupLayout gl_contentPane = new GroupLayout(contentPane);
 	gl_contentPane.setHorizontalGroup(
-		gl_contentPane.createParallelGroup(Alignment.LEADING)
+		gl_contentPane.createParallelGroup(Alignment.TRAILING)
 			.addComponent(panel, GroupLayout.DEFAULT_SIZE, 633, Short.MAX_VALUE)
 			.addGroup(gl_contentPane.createSequentialGroup()
 				.addComponent(panelIMG, GroupLayout.PREFERRED_SIZE, 196, GroupLayout.PREFERRED_SIZE)
 				.addPreferredGap(ComponentPlacement.RELATED)
 				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_contentPane.createSequentialGroup()
+						.addComponent(lblIndirizzo, GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
+						.addContainerGap())
 					.addComponent(lblNomeLoc, GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createSequentialGroup()
+						.addComponent(stella1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(stella2, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(stella3, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(stella4, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(stella5, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
 						.addGap(18)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-							.addGroup(gl_contentPane.createSequentialGroup()
-								.addComponent(stella1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(stella2, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(stella3, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(stella4, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(stella5, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
-							.addComponent(lblIndirizzo, GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE))
-						.addContainerGap())))
+						.addComponent(lblCategoria)
+						.addGap(240))))
 			.addGroup(gl_contentPane.createSequentialGroup()
 				.addComponent(btnBack, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE)
 				.addPreferredGap(ComponentPlacement.RELATED, 424, Short.MAX_VALUE)
 				.addComponent(btnVediRecensioni, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE))
-			.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+			.addGroup(gl_contentPane.createSequentialGroup()
 				.addContainerGap()
 				.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 					.addComponent(txtrServizi, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE)
@@ -188,17 +192,19 @@ public class LocationPage extends JFrame {
 						.addPreferredGap(ComponentPlacement.RELATED)
 						.addComponent(lblIndirizzo, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
 						.addGap(18)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-							.addComponent(stella5, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
-							.addComponent(stella4, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
-							.addComponent(stella3, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
-							.addComponent(stella2, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
-							.addComponent(stella1))))
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(stella5, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+								.addComponent(stella4, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+								.addComponent(stella3, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+								.addComponent(stella2, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+								.addComponent(stella1))
+							.addComponent(lblCategoria))))
 				.addPreferredGap(ComponentPlacement.RELATED)
 				.addComponent(txtrDescrizione, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
 				.addPreferredGap(ComponentPlacement.RELATED)
 				.addComponent(txtrServizi, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
-				.addPreferredGap(ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+				.addPreferredGap(ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
 				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 					.addComponent(btnBack)
 					.addComponent(btnVediRecensioni)))
@@ -229,8 +235,9 @@ public class LocationPage extends JFrame {
 	panel.setLayout(gl_panel);
 	contentPane.setLayout(gl_contentPane);
     }
-    public void setLocationPage(String nome,String indirizzo,int voto,String descrizione,String servizi) {
+    public void setLocationPage(String nome,String categoria,String indirizzo,int voto,String descrizione,String servizi) {
     	lblNomeLoc.setText(nome);
+    	lblCategoria.setText(categoria);
     	lblIndirizzo.setText(indirizzo);
     	txtrDescrizione.setText(descrizione);
         txtrServizi.setText(servizi);
