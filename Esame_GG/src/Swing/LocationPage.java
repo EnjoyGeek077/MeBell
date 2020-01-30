@@ -17,10 +17,12 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import java.awt.Dimension;
 import javax.swing.JTextPane;
 import javax.swing.JTextArea;
+import java.awt.event.MouseAdapter;
 
 public class LocationPage extends JFrame {
 
@@ -55,7 +57,28 @@ public class LocationPage extends JFrame {
 	JPanel panelIMG = new JPanel();
 	panelIMG.setBackground(new Color(0, 0, 0));
 	
-	JButton btnBack = new JButton("Indietro");
+	JButton btnBack = new JButton("");
+	btnBack.addMouseListener(new MouseAdapter() {
+		@Override
+		public void mousePressed(MouseEvent e) {
+			btnBack.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/IndietroICO3.png")));
+		}
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			btnBack.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/IndietroICO1.png")));
+		}
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			btnBack.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/IndietroICO2.png")));
+		}
+		@Override
+		public void mouseExited(MouseEvent e) {
+			btnBack.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/IndietroICO1.png")));
+		}
+	});
+	btnBack.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/IndietroICO1.png")));
+	btnBack.setBorder(null);
+	btnBack.setContentAreaFilled(false);
 	btnBack.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 		    setVisible(false);
@@ -66,7 +89,28 @@ public class LocationPage extends JFrame {
 	lblNomeLoc = new JLabel("Location");
 	lblNomeLoc.setFont(new Font("Arial", Font.BOLD, 20));
 	
-	JButton btnVediRecensioni = new JButton("Vedi recensioni");
+	JButton btnVediRecensioni = new JButton("");
+	btnVediRecensioni.addMouseListener(new MouseAdapter() {
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			btnVediRecensioni.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/VediRecensioniICO2.png")));
+		}
+		@Override
+		public void mouseExited(MouseEvent e) {
+			btnVediRecensioni.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/VediRecensioniICO1.png")));
+		}
+		@Override
+		public void mousePressed(MouseEvent e) {
+			btnVediRecensioni.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/VediRecensioniICO3.png")));
+		}
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			btnVediRecensioni.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/VediRecensioniICO1.png")));
+		}
+	});
+	btnVediRecensioni.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/VediRecensioniICO1.png")));
+	btnVediRecensioni.setBorder(null);
+	btnVediRecensioni.setContentAreaFilled(false);
 	
 	txtrDescrizione = new JTextArea();
 	txtrDescrizione.setRows(2);
