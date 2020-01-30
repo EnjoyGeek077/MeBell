@@ -4,14 +4,18 @@ import Entità.Location;
 
 public class Appartemento extends Alloggio{
     	
-    	public Appartemento(Location mainLoc, int prezzomedio, String tipoall) {
-		super(mainLoc, serviziAlloggio, prezzomedio, tipoall);
-		// TODO Auto-generated constructor stub
+	public Appartemento(Alloggio all,int nVani, int NBagni, boolean veranda,boolean cucina) {
+		super(all);
+		this.n_bagni=NBagni;
+		this.n_vani=nVani;
+		this.veranda=veranda;
+		this.cucina=cucina;
 	}
 
 		private int n_vani;
     	private int n_bagni;
     	private boolean veranda;
+    	private boolean cucina;
     	
 	
 
@@ -37,6 +41,14 @@ public class Appartemento extends Alloggio{
 
 	public void setVeranda(boolean veranda) {
 	    this.veranda = veranda;
+	}
+
+	public boolean isCucina() {
+		return cucina;
+	}
+
+	public void setCucina(boolean cucina) {
+		this.cucina = cucina;
 	}
 	
 }

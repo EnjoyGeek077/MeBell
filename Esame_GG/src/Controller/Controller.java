@@ -229,9 +229,11 @@ public class Controller {
     public float getMediaRecensioni() {
 	int i = 0;
 	float media = 0.0f;
+	
+	
 	for(Recensione r : this.locationDaVedere.getRecensiondiLocation()) {
 	    i++;
-	    media=media+(float)r.getVoto();	    
+	    media=media+r.getVoto();	    
 	}
 	
 	media=media/i;

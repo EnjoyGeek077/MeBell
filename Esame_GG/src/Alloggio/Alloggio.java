@@ -14,6 +14,14 @@ public class Alloggio extends Location{
 		super(mainLoc.getCod(), mainLoc.getNome(), mainLoc.getCod_residenza(), mainLoc.getTipo(), mainLoc.getPartitaIva(), mainLoc.getDescrizione());
 		this.prezzoMedio=prezzomedio;
 		this.tipoAlloggio=tipoall;
+		this.setServiziAlloggio(serAlloggio);
+	}
+	
+	public Alloggio(Alloggio all) {
+		super(all.getCod(), all.getNome(), all.getCod_residenza(), all.getTipo(), all.getPartitaIva(), all.getDescrizione());
+		this.prezzoMedio=all.getPrezzoMedio();
+		this.tipoAlloggio=all.getTipoAlloggio();
+		this.setServiziAlloggio(all.getServiziAlloggio());
 		
 	}
 

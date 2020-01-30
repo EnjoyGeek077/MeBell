@@ -7,12 +7,16 @@ public class Hotel extends Alloggio{
 	private int nCamere;
 	private int Nsuite;
 	private int stelle;
-	private ServiziAlloggio serviziAlloggio;
-   
-	public Hotel(Location mainLoc, int prezzomedio, String tipoall) {
-		super(mainLoc, serviziAlloggio, prezzomedio, tipoall);
-		// TODO Auto-generated constructor stub
+	
+	public Hotel(Alloggio all,int camere,int Nsuite, int stelle) {
+		super(all);
+		this.nCamere=camere;
+		this.Nsuite=Nsuite;
+		this.stelle=stelle;
 	}
+	
+   
+	
 	
 	
 	
