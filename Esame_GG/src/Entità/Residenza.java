@@ -21,6 +21,12 @@ public class Residenza {
 	this.setCod_res(cod_res);
     }
     
+    
+    @Override
+    public String toString() {
+	return this.via+","+this.n_civico+","+this.cap+","+this.comune;
+    }
+
     public String getVia() {
         return via;
     }

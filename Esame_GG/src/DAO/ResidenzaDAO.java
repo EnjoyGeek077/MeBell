@@ -69,13 +69,39 @@ public class ResidenzaDAO {
 	    getCom.close();
 
 	} catch (SQLException e) {
-	    // TODO Auto-generated catch block
 	    e.printStackTrace();
 	}
 
 	return Comuni;
 
     }
+    
+   public Residenza getResidenzaFromID(String ID) {
+       String query="Select * From residenza WHERE=?";
+       Residenza residenzaGet = null;
+       
+       try {
+	    PreparedStatement getRes;
+	    getRes = controller.getConnection().prepareStatement(query);
+	    getRes.setString(1, ID);
+	    ResultSet rs= getRes.executeQuery();
+
+	    while(rs.next()) {
+
+	    	residenzaGet= new Residenza(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
+
+	    }
+	    
+	    rs.close();
+	    getRes.close();
+
+	} catch (SQLException e) {
+	    e.printStackTrace();
+	}
+       
+       return residenzaGet;
+       
+   }
 
 
 }
