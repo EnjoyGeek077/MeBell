@@ -4,10 +4,14 @@ import Entità.Location;
 
 public class BeB extends Alloggio{
 
-	public BeB(Location mainLoc, int prezzomedio, String tipoall) {
-		super(mainLoc, serviziAlloggio, prezzomedio, tipoall);
-		// TODO Auto-generated constructor stub
+	public BeB(Alloggio all,int nCamere, int stelle, boolean bagnoInComune) {
+		super(all);
+		this.nCamere=nCamere;
+		this.bagnoInComune=bagnoInComune;
+		this.stelle=stelle;
 	}
+	
+	
 	private int nCamere;
 	private int stelle;
 	private boolean bagnoInComune;

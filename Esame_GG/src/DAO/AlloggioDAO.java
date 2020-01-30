@@ -25,7 +25,7 @@ public class AlloggioDAO {
 		    ResultSet rs = getAttrazione.executeQuery();
 
 		    while(rs.next()) {
-			att = new Alloggio(mainLoc, rs.getInt(2), rs.getString(3));
+			att = new Alloggio(mainLoc,null, rs.getInt(2), rs.getString(3));
 		    }
 
 		} catch (SQLException e) {
