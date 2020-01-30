@@ -4446,6 +4446,23 @@
 										},
 										{
 											"_type": "UMLAttributeView",
+											"_id": "AAAAAAFv9/pbbp2O5eI=",
+											"_parent": {
+												"$ref": "AAAAAAFvn2AqdhlJFBA="
+											},
+											"model": {
+												"$ref": "AAAAAAFv9/pbO52CTXs="
+											},
+											"font": "Arial;13;0",
+											"left": 109,
+											"top": 780,
+											"width": 110.9189453125,
+											"height": 13,
+											"text": "-Cucina: bool",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
 											"_id": "AAAAAAFvn2BjbRopYP0=",
 											"_parent": {
 												"$ref": "AAAAAAFvn2AqdhlJFBA="
@@ -4455,7 +4472,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 109,
-											"top": 780,
+											"top": 795,
 											"width": 110.9189453125,
 											"height": 13,
 											"text": "-Veranda: bool",
@@ -4466,7 +4483,7 @@
 									"left": 104,
 									"top": 745,
 									"width": 120.9189453125,
-									"height": 53
+									"height": 68
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -4479,7 +4496,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 104,
-									"top": 798,
+									"top": 813,
 									"width": 120.9189453125,
 									"height": 10
 								},
@@ -4521,7 +4538,7 @@
 							"left": 104,
 							"top": 720,
 							"width": 120.9189453125,
-							"height": 88,
+							"height": 103,
 							"nameCompartment": {
 								"$ref": "AAAAAAFvn2AqdRlEsd4="
 							},
@@ -8086,6 +8103,16 @@
 							"name": "N_Bagni",
 							"visibility": "private",
 							"type": "Smallint"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAFv9/pbO52CTXs=",
+							"_parent": {
+								"$ref": "AAAAAAFvn2AqdRlB3QA="
+							},
+							"name": "Cucina",
+							"visibility": "private",
+							"type": "bool"
 						},
 						{
 							"_type": "UMLAttribute",

@@ -222,20 +222,20 @@ public class Controller {
 	RecensioneDAO recDAO = new RecensioneDAO(this);
 	this.locationDaVedere=locDAO.getLocationFromID(IDlocationScelta);
 	this.locationDaVedere.setResidenzaLocation(resDAO.getResidenzaFromID(this.locationDaVedere.getCod_residenza()));
-	this.locationDaVedere.setRecensiondiLocation(recDAO.getAllRecensioniDiLocatio(IDlocationScelta));
-	
+	this.locationDaVedere.setRecensiondiLocation(recDAO.getAllRecensioniDiLocation(IDlocationScelta));
+
     }
-    
+
     public float getMediaRecensioni() {
 	int i = 0;
 	float media = 0.0f;
-	
-	
+
+
 	for(Recensione r : this.locationDaVedere.getRecensiondiLocation()) {
 	    i++;
 	    media=media+r.getVoto();	    
 	}
-	
+
 	media=media/i;
 	return media;
     }
@@ -244,18 +244,19 @@ public class Controller {
 	if(this.locationDaVedere.getTipo().equals("Alloggio")) {
 
 	}else if(this.locationDaVedere.getTipo().equals("Attrazione")) {
-	    
+
 	    AttrazioneDAO attDAO = new AttrazioneDAO(this);
 	    Attrazione att = attDAO.getAttrazione(this.IDlocationScelta, this.locationDaVedere);
-	    
+
 	    String pagamento;
 
 	    if(att.isPagamento()) {
-	    	pagamento="L'attrazione è a pagamento.";
+		pagamento="L'attrazione è a pagamento.";
 	    }else {
-	    	pagamento="L'attrazione non è a pagamento.";
+		pagamento="L'attrazione non è a pagamento.";
 	    }
-	    locationpage.setLocationPage(att.getNome(),att.getTipo()+","+att.getTipoAttrazione(),att.getResidenzaLocation().toString(),this.getMediaRecensioni(), att.getDescrizione(), pagamento);
+
+	    locationpage.setLocationPage(att.getNome(),att.getTipo()+", "+att.getTipoAttrazione(),att.getResidenzaLocation().toString(),this.getMediaRecensioni(), att.getDescrizione(), pagamento);
 
 	}else if(this.locationDaVedere.getTipo().equals("Ristorante")) {
 

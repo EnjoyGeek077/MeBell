@@ -13,34 +13,34 @@ import Entità.Recensione;
 
 public class RecensioneDAO {
     Controller controller;
-    
+
     public RecensioneDAO(Controller ctrl) {
-  	controller = ctrl;
-      }
-    
+	controller = ctrl;
+    }
+
     public float getMediaVotoLocale(String codLocale) {
-	
+
 	float mediaLocale=0.0f;
-	
+
 	try {
-	    
+
 	    CallableStatement cst = controller.getConnection().prepareCall("{CALL getMediaVoto(?,?)}");
 	    cst.registerOutParameter(2, Types.FLOAT);
 	    cst.setString(1, codLocale);
 	    cst.execute();
-	    
+
 	    mediaLocale = cst.getFloat(2);
 	    cst.close();
-	    
+
 	} catch (SQLException e) {
 	    e.printStackTrace();
 	}
-	
+
 	return mediaLocale;
     }
-    
+
     public ArrayList<Recensione> getAllRecensioniDiLocation(String ID){
-	
+
 	String query = "SELECT * FROM recensione WHERE cod_locale=?";
 	ArrayList<Recensione> recensioniLocation = new ArrayList<Recensione>();
 
@@ -54,11 +54,14 @@ public class RecensioneDAO {
 		recensioniLocation.add(recensioneGet);
 	    }
 
+	    rs.close();
+	    getRecensioni.close();
+
 	} catch (SQLException e) {
 	    e.printStackTrace();
 	}
 	return recensioniLocation;
-	
+
     }
 
 }

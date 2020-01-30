@@ -29,10 +29,12 @@ public class AttrazioneDAO {
 		att = new Attrazione(mainLoc,rs.getString(2),rs.getString(3));
 	    }
 
+	    rs.close();
+	    getAttrazione.close();
+
 	} catch (SQLException e) {
 	    e.printStackTrace();
 	}
-
 
 	return att;
     }

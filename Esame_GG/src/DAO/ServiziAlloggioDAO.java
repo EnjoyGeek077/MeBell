@@ -9,31 +9,34 @@ import Controller.Controller;
 import Entità.Location;
 
 public class ServiziAlloggioDAO {
-Controller controller;
-	
-	public ServiziAlloggioDAO(Controller ctrl) {
-		controller=ctrl;
-	}
-	
-	public ServiziAlloggio getAlloggio(String cod, Location mainLoc) {
-		String query = "SELECT * FROM attrazione WHERE cod=?";
-		ServiziAlloggio att=null;
+    Controller controller;
 
-		try {
-		    PreparedStatement getAttrazione = controller.getConnection().prepareStatement(query);
-		    getAttrazione.setString(1, cod);
-		    ResultSet rs = getAttrazione.executeQuery();
+    public ServiziAlloggioDAO(Controller ctrl) {
+	controller=ctrl;
+    }
 
-		    while(rs.next()) {
-			att = new ServiziAlloggio(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11),rs.getString(12));
-		    }
+    public ServiziAlloggio getAlloggio(String cod, Location mainLoc) {
+	String query = "SELECT * FROM attrazione WHERE cod=?";
+	ServiziAlloggio att=null;
 
-		} catch (SQLException e) {
-		    e.printStackTrace();
-		}
+	try {
+	    PreparedStatement getAttrazione = controller.getConnection().prepareStatement(query);
+	    getAttrazione.setString(1, cod);
+	    ResultSet rs = getAttrazione.executeQuery();
 
-
-		return att;
+	    while(rs.next()) {
+		att = new ServiziAlloggio(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11),rs.getString(12));
 	    }
+
+	    rs.close();
+	    getAttrazione.close();
+
+	} catch (SQLException e) {
+	    e.printStackTrace();
+	}
+
+
+	return att;
+    }
 
 }

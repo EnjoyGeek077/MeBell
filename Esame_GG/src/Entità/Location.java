@@ -9,7 +9,7 @@ public class Location {
     private String tipo;
     private String partitaIva;
     private String descrizione;
-    
+
     private Residenza residenzaLocation;
     private ArrayList<Recensione> recensiondiLocation;
 
@@ -21,23 +21,22 @@ public class Location {
 	this.setTipo(tipo);
 	this.setPartitaIva(partitaIva);
 	this.setDescrizione(descrizione);
-	
+
 	this.setResidenzaLocation(residenzaLocation);
 	this.setRecensiondiLocation(recensioniLoc);
 
     }
-    
+
     public Location(String cod, String nome, String cod_res, String tipo, String partitaIva, String descrizione) {
 
-  	this.setCod(cod);
-  	this.setNome(nome);
-  	this.setCod_residenza(cod_res);
-  	this.setTipo(tipo);
-  	this.setPartitaIva(partitaIva);
-  	this.setDescrizione(descrizione);
+	this.setCod(cod);
+	this.setNome(nome);
+	this.setCod_residenza(cod_res);
+	this.setTipo(tipo);
+	this.setPartitaIva(partitaIva);
+	this.setDescrizione(descrizione);
 
-
-      }
+    }
 
 
 
@@ -99,25 +98,25 @@ public class Location {
     public void setDescrizione(String descrizione) {
 	this.descrizione = descrizione;
     }
-    
+
 
     public Residenza getResidenzaLocation() {
-        return residenzaLocation;
+	return residenzaLocation;
     }
 
 
     public void setResidenzaLocation(Residenza residenzaLocation) {
-        this.residenzaLocation = residenzaLocation;
+	this.residenzaLocation = residenzaLocation;
     }
-    
-    
+
+
     public ArrayList<Recensione> getRecensiondiLocation() {
-        return recensiondiLocation;
+	return recensiondiLocation;
     }
 
 
     public void setRecensiondiLocation(ArrayList<Recensione> recensiondiLocation) {
-        this.recensiondiLocation = recensiondiLocation;
+	this.recensiondiLocation = recensiondiLocation;
     }
 
 

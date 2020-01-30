@@ -14,7 +14,7 @@ create table ristorazione(cod char(7) primary key, prezzo_medio int, n_posti sma
 
 create table hotel(cod char(7) not null, n_camere smallint, n_suite smallint, stelle smallint );
 create table beb(cod char(7) not null, n_camere smallint, stelle smallint, bagno_comune char(2) default 'ns', check(bagno_comune='si' OR bagno_comune='no' OR bagno_comune='ns') );
-create table appartamento(cod char (7) not null, n_vani smallint, n_bagni smallint, veranda char(2) default 'ns', check(veranda='si' OR veranda='no' OR veranda='ns') );
+create table appartamento(cod char (7) not null, n_vani smallint, n_bagni smallint, cucina char(2) default 'ns', check(cucina='si' OR cucina='no' OR cucina='ns'), veranda char(2) default 'ns', check(veranda='si' OR veranda='no' OR veranda='ns') );
 
 create table braceria(cod char(7) not null, asporto char(2) default 'ns', alcolici_artigianali char(2) default 'ns', tipo_carne varchar(20) default 'Non Specificato', check(tipo_carne='Entrambe' OR tipo_carne='Importata' OR tipo_carne='Italiana' OR tipo_carne='Non Specificato') );
 create table sushibar(cod char(7) not null, allyoucaneat char(2) default 'ns', tipo_sushi varchar(20) default 'Non Specificato', check(tipo_sushi='Fusion' OR tipo_sushi='Giapponese' OR tipo_sushi='Cinese' OR tipo_sushi='Non Specificato') );

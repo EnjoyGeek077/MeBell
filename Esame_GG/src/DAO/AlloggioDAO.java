@@ -9,31 +9,34 @@ import Controller.Controller;
 import Entità.Location;
 
 public class AlloggioDAO {
-	
-	Controller controller;
-	
-	public AlloggioDAO(Controller ctrl) {
-		controller=ctrl;
-	}
-	public Alloggio getAlloggio(String cod, Location mainLoc) {
-		String query = "SELECT * FROM attrazione WHERE cod=?";
-		Alloggio att=null;
 
-		try {
-		    PreparedStatement getAttrazione = controller.getConnection().prepareStatement(query);
-		    getAttrazione.setString(1, cod);
-		    ResultSet rs = getAttrazione.executeQuery();
+    Controller controller;
 
-		    while(rs.next()) {
-			att = new Alloggio(mainLoc,null, rs.getInt(2), rs.getString(3));
-		    }
+    public AlloggioDAO(Controller ctrl) {
+	controller=ctrl;
+    }
+    
+    public Alloggio getAlloggio(String cod, Location mainLoc) {
+	String query = "SELECT * FROM attrazione WHERE cod=?";
+	Alloggio att=null;
 
-		} catch (SQLException e) {
-		    e.printStackTrace();
-		}
+	try {
+	    PreparedStatement getAttrazione = controller.getConnection().prepareStatement(query);
+	    getAttrazione.setString(1, cod);
+	    ResultSet rs = getAttrazione.executeQuery();
 
-
-		return att;
+	    while(rs.next()) {
+		att = new Alloggio(mainLoc,null, rs.getInt(2), rs.getString(3));
 	    }
-	
+
+	    rs.close();
+	    getAttrazione.close();
+
+	} catch (SQLException e) {
+	    e.printStackTrace();
+	}
+
+	return att;
+    }
+
 }

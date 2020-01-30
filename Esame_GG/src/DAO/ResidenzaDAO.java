@@ -52,7 +52,7 @@ public class ResidenzaDAO {
 
 	String query = "SELECT DISTINCT comune from residenza";
 	ArrayList<String> Comuni = new ArrayList<String>();
-	
+
 	try {
 	    PreparedStatement getCom;
 	    getCom = controller.getConnection().prepareStatement(query);
@@ -60,11 +60,11 @@ public class ResidenzaDAO {
 
 	    while(rs.next()) {
 
-	    	String comuneDaAggiungere= rs.getString(1);
-	    	Comuni.add(comuneDaAggiungere);
+		String comuneDaAggiungere= rs.getString(1);
+		Comuni.add(comuneDaAggiungere);
 
 	    }
-	    
+
 	    rs.close();
 	    getCom.close();
 
@@ -75,12 +75,12 @@ public class ResidenzaDAO {
 	return Comuni;
 
     }
-    
-   public Residenza getResidenzaFromID(String cod_res) {
-       String query="SELECT * FROM residenza WHERE cod_residenza=?";
-       Residenza residenzaGet = null;
-       
-       try {
+
+    public Residenza getResidenzaFromID(String cod_res) {
+	String query="SELECT * FROM residenza WHERE cod_residenza=?";
+	Residenza residenzaGet = null;
+
+	try {
 	    PreparedStatement getRes;
 	    getRes = controller.getConnection().prepareStatement(query);
 	    getRes.setString(1, cod_res);
@@ -88,20 +88,20 @@ public class ResidenzaDAO {
 
 	    while(rs.next()) {
 
-	    	residenzaGet= new Residenza(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
+		residenzaGet= new Residenza(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
 
 	    }
-	    
+
 	    rs.close();
 	    getRes.close();
 
 	} catch (SQLException e) {
 	    e.printStackTrace();
 	}
-       
-       return residenzaGet;
-       
-   }
+
+	return residenzaGet;
+
+    }
 
 
 }

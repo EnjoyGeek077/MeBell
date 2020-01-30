@@ -26,15 +26,15 @@ public class DatabaseConnection {
 
 	    }
 	    String url = "jdbc:oracle:thin:@localhost:1521:xe";
-	    String user = "C##Utente";
+	    String user = "Utente";
 	    String Password = "OracleADMIN";
 
 	    try {
-			connect = DriverManager.getConnection(url,user,Password);
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw(e);
-		}
+		connect = DriverManager.getConnection(url,user,Password);
+	    } catch (Exception e) {
+		e.printStackTrace();
+		throw(e);
+	    }
 	}
 
 
@@ -43,12 +43,12 @@ public class DatabaseConnection {
 
 
     public static Connection getConnect() {
-        return connect;
+	return connect;
     }
 
 
     public static void setConnect(Connection connect) {
-        DatabaseConnection.connect = connect;
+	DatabaseConnection.connect = connect;
     }
 
 
