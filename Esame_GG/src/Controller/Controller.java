@@ -218,23 +218,31 @@ public class Controller {
     public void getLocationInformation() {
 
 	LocationDAO locDAO = new LocationDAO(this);
+	ResidenzaDAO resDAO = new ResidenzaDAO(this);
+	RecensioneDAO recDAO = new RecensioneDAO(this);
 	this.locationDaVedere=locDAO.getLocationFromID(this.IDlocationScelta);
-
+	this.locationDaVedere.setResidenzaLocation(resDAO.getResidenzaFromID(IDlocationScelta));
+	this.locationDaVedere.setRecensiondiLocation(recDAO.getAllRecensioniDiLocatio(IDlocationScelta));
+	
     }
 
     public void aggiornaLocationPage(){
 	if(this.locationDaVedere.getTipo().equals("Alloggio")) {
 
 	}else if(this.locationDaVedere.getTipo().equals("Attrazione")) {
+	    
 	    AttrazioneDAO attDAO = new AttrazioneDAO(this);
 	    Attrazione att = attDAO.getAttrazione(this.IDlocationScelta, this.locationDaVedere);
+	    
 	    String pagamento;
+
 	    if(att.isPagamento()) {
 	    	pagamento="L'attrazione è a pagamento.";
 	    }else {
 	    	pagamento="L'attrazione non è a pagamento.";
 	    }
-	    locationpage.setLocationPage(att.getNome(),att.getTipo()+","+att.getTipoAttrazione(),"via xx n xx Città xx cap xxxxx", 4, att.getDescrizione(), pagamento);
+	    
+	    locationpage.setLocationPage(att.getNome(),att.getTipo()+","+att.getTipoAttrazione(),att.getResidenzaLocation().toString(), 4, att.getDescrizione(), pagamento);
 
 	}else if(this.locationDaVedere.getTipo().equals("Ristorante")) {
 

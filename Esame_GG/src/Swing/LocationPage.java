@@ -235,7 +235,7 @@ public class LocationPage extends JFrame {
 	panel.setLayout(gl_panel);
 	contentPane.setLayout(gl_contentPane);
     }
-    public void setLocationPage(String nome,String categoria,String indirizzo,int voto,String descrizione,String servizi) {
+    public void setLocationPage(String nome,String categoria,String indirizzo,float voto,String descrizione,String servizi) {
     	lblNomeLoc.setText(nome);
     	lblCategoria.setText(categoria);
     	lblIndirizzo.setText(indirizzo);

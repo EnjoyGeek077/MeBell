@@ -7,7 +7,15 @@ public class Recensione {
 	private String titolo;
 	private String testo;
 	
-
+	public Recensione(String cod, String creatore, int voto, String titolo, String testo) {
+	    
+	    this.setCod(cod);
+	    this.setCreatore(creatore);
+	    this.setVoto(voto);
+	    this.setTitolo(titolo);
+	    this.setTesto(testo);
+	    
+	}
 	public String getCod() {
 		return cod;
 	}

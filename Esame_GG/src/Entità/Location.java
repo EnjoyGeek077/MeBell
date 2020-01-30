@@ -1,5 +1,7 @@
 package Entità;
 
+import java.util.ArrayList;
+
 public class Location {
     private String cod;
     private String nome;
@@ -7,7 +9,9 @@ public class Location {
     private String tipo;
     private String partitaIva;
     private String descrizione;
-
+    
+    private Residenza residenzaLocation;
+    private ArrayList<Recensione> recensiondiLocation;
 
     public Location(String cod, String nome, String cod_res, String tipo, String partitaIva, String descrizione) {
 
@@ -19,6 +23,7 @@ public class Location {
 	this.setDescrizione(descrizione);
 
     }
+
 
 
     public String getCod() {
@@ -79,5 +84,26 @@ public class Location {
     public void setDescrizione(String descrizione) {
 	this.descrizione = descrizione;
     }
+    
+
+    public Residenza getResidenzaLocation() {
+        return residenzaLocation;
+    }
+
+
+    public void setResidenzaLocation(Residenza residenzaLocation) {
+        this.residenzaLocation = residenzaLocation;
+    }
+    
+    
+    public ArrayList<Recensione> getRecensiondiLocation() {
+        return recensiondiLocation;
+    }
+
+
+    public void setRecensiondiLocation(ArrayList<Recensione> recensiondiLocation) {
+        this.recensiondiLocation = recensiondiLocation;
+    }
+
 
 }
