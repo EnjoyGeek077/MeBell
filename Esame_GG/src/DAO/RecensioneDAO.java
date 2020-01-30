@@ -20,7 +20,6 @@ public class RecensioneDAO {
     
     public float getMediaVotoLocale(String codLocale) {
 	
-	
 	float mediaLocale=0.0f;
 	
 	try {
@@ -40,7 +39,7 @@ public class RecensioneDAO {
 	return mediaLocale;
     }
     
-    public ArrayList<Recensione> getAllRecensioniDiLocatio(String ID){
+    public ArrayList<Recensione> getAllRecensioniDiLocation(String ID){
 	
 	String query = "SELECT * FROM recensione WHERE cod_locale=?";
 	ArrayList<Recensione> recensioniLocation = new ArrayList<Recensione>();
