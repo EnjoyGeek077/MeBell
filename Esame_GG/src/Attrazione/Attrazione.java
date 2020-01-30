@@ -13,12 +13,6 @@ public class Attrazione extends Location{
    	
    	this.tipoAttrazione=tipoatt;
    	
-   	if(pagamento.equals("si")) {
-   		this.pagamento=true;
-   	}else {
-   		this.pagamento=false;
-   	}
-   	
        }
     
     

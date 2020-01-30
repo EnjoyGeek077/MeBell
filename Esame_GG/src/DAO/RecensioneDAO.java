@@ -42,7 +42,7 @@ public class RecensioneDAO {
     
     public ArrayList<Recensione> getAllRecensioniDiLocatio(String ID){
 	
-	String query = "SELECT * FROM recensione WHERE cod=?";
+	String query = "SELECT * FROM recensione WHERE cod_locale=?";
 	ArrayList<Recensione> recensioniLocation = new ArrayList<Recensione>();
 
 	try {

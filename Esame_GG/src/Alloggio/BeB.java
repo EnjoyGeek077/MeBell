@@ -1,15 +1,18 @@
 package Alloggio;
 
+import Entità.Location;
+
 public class BeB extends Alloggio{
 
+	public BeB(Location mainLoc, int prezzomedio, String tipoall) {
+		super(mainLoc, serviziAlloggio, prezzomedio, tipoall);
+		// TODO Auto-generated constructor stub
+	}
 	private int nCamere;
 	private int stelle;
 	private boolean bagnoInComune;
 	
-	public BeB(String cod, String nome, String cod_res, String tipo, String partitaIva, String descrizione) {
-		super(cod, nome, cod_res, tipo, partitaIva, descrizione);
-		// TODO Auto-generated constructor stub
-	    }
+	
 	
 	public int getnCamere() {
 		return nCamere;

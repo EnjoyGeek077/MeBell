@@ -1,15 +1,19 @@
 package Alloggio;
 
+import Entità.Location;
+
 public class Appartemento extends Alloggio{
     	
-    	private int n_vani;
+    	public Appartemento(Location mainLoc, int prezzomedio, String tipoall) {
+		super(mainLoc, serviziAlloggio, prezzomedio, tipoall);
+		// TODO Auto-generated constructor stub
+	}
+
+		private int n_vani;
     	private int n_bagni;
     	private boolean veranda;
     	
-	public Appartemento(String cod, String nome, String cod_res, String tipo, String partitaIva, String descrizione) {
-	super(cod, nome, cod_res, tipo, partitaIva, descrizione);
-	// TODO Auto-generated constructor stub
-    }
+	
 
 	public int getN_vani() {
 	    return n_vani;

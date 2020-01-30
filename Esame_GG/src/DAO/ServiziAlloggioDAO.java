@@ -4,20 +4,20 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import Alloggio.Alloggio;
+import Alloggio.ServiziAlloggio;
 import Controller.Controller;
 import Entità.Location;
 
-public class AlloggioDAO {
+public class ServiziAlloggioDAO {
+Controller controller;
 	
-	Controller controller;
-	
-	public AlloggioDAO(Controller ctrl) {
+	public ServiziAlloggioDAO(Controller ctrl) {
 		controller=ctrl;
 	}
-	public Alloggio getAlloggio(String cod, Location mainLoc) {
+	
+	public ServiziAlloggio getAlloggio(String cod, Location mainLoc) {
 		String query = "SELECT * FROM attrazione WHERE cod=?";
-		Alloggio att=null;
+		ServiziAlloggio att=null;
 
 		try {
 		    PreparedStatement getAttrazione = controller.getConnection().prepareStatement(query);
@@ -25,7 +25,7 @@ public class AlloggioDAO {
 		    ResultSet rs = getAttrazione.executeQuery();
 
 		    while(rs.next()) {
-			att = new Alloggio(mainLoc, rs.getInt(2), rs.getString(3));
+			att = new ServiziAlloggio(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11),rs.getString(12));
 		    }
 
 		} catch (SQLException e) {
@@ -35,5 +35,5 @@ public class AlloggioDAO {
 
 		return att;
 	    }
-	
+
 }

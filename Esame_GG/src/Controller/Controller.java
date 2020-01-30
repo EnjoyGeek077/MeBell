@@ -231,7 +231,7 @@ public class Controller {
 	float media = 0.0f;
 	for(Recensione r : this.locationDaVedere.getRecensiondiLocation()) {
 	    i++;
-	    media=media+r.getVoto();	    
+	    media=media+(float)r.getVoto();	    
 	}
 	
 	media=media/i;
@@ -253,7 +253,6 @@ public class Controller {
 	    }else {
 	    	pagamento="L'attrazione non è a pagamento.";
 	    }
-	    
 	    locationpage.setLocationPage(att.getNome(),att.getTipo()+","+att.getTipoAttrazione(),att.getResidenzaLocation().toString(),this.getMediaRecensioni(), att.getDescrizione(), pagamento);
 
 	}else if(this.locationDaVedere.getTipo().equals("Ristorante")) {
