@@ -9,7 +9,7 @@ public class Attrazione extends Location{
     private String tipoAttrazione;
     
     public Attrazione(Location loc,String pagamento, String tipoatt) {
-   	super(loc.getCod(), loc.getNome(), loc.getCod_residenza(), loc.getTipo(), loc.getPartitaIva(), loc.getDescrizione());
+   	super(loc.getCod(), loc.getNome(), loc.getCod_residenza(), loc.getTipo(), loc.getPartitaIva(), loc.getDescrizione(), loc.getResidenzaLocation(), loc.getRecensiondiLocation());
    	
    	this.tipoAttrazione=tipoatt;
    	
@@ -20,11 +20,6 @@ public class Attrazione extends Location{
    	}
    	
        }
-    
-    
-    
-		
-	
 
 
     public boolean isPagamento() {

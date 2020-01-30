@@ -13,7 +13,7 @@ public class Location {
     private Residenza residenzaLocation;
     private ArrayList<Recensione> recensiondiLocation;
 
-    public Location(String cod, String nome, String cod_res, String tipo, String partitaIva, String descrizione) {
+    public Location(String cod, String nome, String cod_res, String tipo, String partitaIva, String descrizione, Residenza residenzaLocation, ArrayList<Recensione> recensioniLoc) {
 
 	this.setCod(cod);
 	this.setNome(nome);
@@ -21,8 +21,23 @@ public class Location {
 	this.setTipo(tipo);
 	this.setPartitaIva(partitaIva);
 	this.setDescrizione(descrizione);
+	
+	this.setResidenzaLocation(residenzaLocation);
+	this.setRecensiondiLocation(recensioniLoc);
 
     }
+    
+    public Location(String cod, String nome, String cod_res, String tipo, String partitaIva, String descrizione) {
+
+  	this.setCod(cod);
+  	this.setNome(nome);
+  	this.setCod_residenza(cod_res);
+  	this.setTipo(tipo);
+  	this.setPartitaIva(partitaIva);
+  	this.setDescrizione(descrizione);
+
+
+      }
 
 
 
