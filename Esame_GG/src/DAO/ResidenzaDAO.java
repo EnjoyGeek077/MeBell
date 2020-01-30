@@ -76,14 +76,14 @@ public class ResidenzaDAO {
 
     }
     
-   public Residenza getResidenzaFromID(String ID) {
-       String query="Select * From residenza WHERE=?";
+   public Residenza getResidenzaFromID(String cod_res) {
+       String query="SELECT * FROM residenza WHERE cod_residenza=?";
        Residenza residenzaGet = null;
        
        try {
 	    PreparedStatement getRes;
 	    getRes = controller.getConnection().prepareStatement(query);
-	    getRes.setString(1, ID);
+	    getRes.setString(1, cod_res);
 	    ResultSet rs= getRes.executeQuery();
 
 	    while(rs.next()) {
