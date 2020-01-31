@@ -270,7 +270,9 @@ public class Controller {
 
 	Object alloggioSpecializzato = this.getAlloggiosSpecializzato(all);
 
+	locationpage.setLocationPage(all.getNome(), all.getTipo()+", "+all.getTipoAlloggio(), all.getResidenzaLocation().toString(), all.getPartitaIva(), this.getMediaRecensioni(), all.getDescrizione(), "Informazioni", "hahah");
     }
+    
     
     private void setAttrazioneInLabel() {
 	
