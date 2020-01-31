@@ -6,7 +6,7 @@ create table location(cod char(7) primary key, nome varchar(25) not null, cod_re
 create table residenza(via varchar(25) not null, n_civico varchar(5) not null, cap char(5) not null, comune varchar(25) not null, cod_residenza char(5) primary key );
 
 create table alloggio(cod char(7) primary key, prezzo_medio int, tipo_alloggio varchar(25) default 'Non Specificato', check(tipo_alloggio='Hotel' OR  tipo_alloggio='BeB' OR  tipo_alloggio='Appartamento' OR tipo_alloggio='Non Specificato') );
-create table servizi_alloggio(cod char(7) not null, wi_fi char(2) default 'ns', dayuse char(2) default 'ns', spa char(2) default 'ns', piscina char(2) default 'ns', aria_condizionata char(2) default 'ns', accesso_disabili char(2) default 'ns', accesso_animali char(2) default 'ns', ascensore char(2) default 'ns', servizio_lavanderia char(2) default 'ns', tv_stereo char(2) default 'ns', parcheggio char(2) default 'ns' );
+create table servizi_alloggio(cod char(7) not null, wi_fi char(2) default 'ns', dayuse char(2) default 'ns', spa char(2) default 'ns', piscina char(2) default 'ns', aria_condizionata char(2) default 'ns', accesso_disabili char(2) default 'ns', accesso_animali char(2) default 'ns', ascensore char(2) default 'ns', servizio_lavanderia char(2) default 'ns', servizio_ristorazione char(2) default 'ns', tv_stereo char(2) default 'ns', parcheggio char(2) default 'ns' );
 
 create table attrazione(cod char(7) not null, pagamento char(2) default 'ns', tipo_attrazione varchar(25) );
 

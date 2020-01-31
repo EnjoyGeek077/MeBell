@@ -263,14 +263,13 @@ public class Controller {
 	
 	AlloggioDAO allDAO = new AlloggioDAO(this);
 	ServiziAlloggioDAO serviziAll = new ServiziAlloggioDAO(this);
-	Alloggio all = allDAO.getAlloggio(IDlocationScelta, locationDaVedere);
-	ServiziAlloggio serviziAlloggio = serviziAll.getAlloggio(IDlocationScelta, locationDaVedere);
+	Alloggio all = allDAO.getAlloggio(this.IDlocationScelta, this.locationDaVedere);
+	ServiziAlloggio serviziAlloggio = serviziAll.getAlloggio(this.IDlocationScelta, this.locationDaVedere);
 
 	all.setServiziAlloggio(serviziAlloggio);
 
 	Object alloggioSpecializzato = this.getAlloggiosSpecializzato(all);
 	
-	locationpage.setLocationPage(all.getNome(), all.getTipo()+", "+all.getTipoAlloggio(), all.getResidenzaLocation().toString(), all.getPartitaIva(), this.getMediaRecensioni(), all.getDescrizione(), "Informazioni", "hahah");
     }
 
     private void setAttrazioneInLabel() {

@@ -47,16 +47,16 @@ public class AlloggioDAO {
 	Hotel hotel=null;
 
 	try {
-	    PreparedStatement getAttrazione = controller.getConnection().prepareStatement(query);
-	    getAttrazione.setString(1, alloggio.getCod());
-	    ResultSet rs = getAttrazione.executeQuery();
+	    PreparedStatement getHotel = controller.getConnection().prepareStatement(query);
+	    getHotel.setString(1, alloggio.getCod());
+	    ResultSet rs = getHotel.executeQuery();
 
 	    while(rs.next()) {
 		hotel = new Hotel(alloggio, rs.getInt(2), rs.getInt(3), rs.getInt(4));
 	    }
 
 	    rs.close();
-	    getAttrazione.close();
+	    getHotel.close();
 
 	} catch (SQLException e) {
 	    e.printStackTrace();
@@ -70,16 +70,16 @@ public class AlloggioDAO {
 	BeB beb=null;
 
 	try {
-	    PreparedStatement getAttrazione = controller.getConnection().prepareStatement(query);
-	    getAttrazione.setString(1, alloggio.getCod());
-	    ResultSet rs = getAttrazione.executeQuery();
+	    PreparedStatement getBEB = controller.getConnection().prepareStatement(query);
+	    getBEB.setString(1, alloggio.getCod());
+	    ResultSet rs = getBEB.executeQuery();
 
 	    while(rs.next()) {
 		beb = new BeB(alloggio, rs.getInt(2), rs.getInt(3), rs.getString(4));
 	    }
 
 	    rs.close();
-	    getAttrazione.close();
+	    getBEB.close();
 
 	} catch (SQLException e) {
 	    e.printStackTrace();
@@ -93,16 +93,16 @@ public class AlloggioDAO {
 	Appartemento appartamento=null;
 
 	try {
-	    PreparedStatement getAttrazione = controller.getConnection().prepareStatement(query);
-	    getAttrazione.setString(1, alloggio.getCod());
-	    ResultSet rs = getAttrazione.executeQuery();
+	    PreparedStatement getAppartamento = controller.getConnection().prepareStatement(query);
+	    getAppartamento.setString(1, alloggio.getCod());
+	    ResultSet rs = getAppartamento.executeQuery();
 
 	    while(rs.next()) {
 		appartamento = new Appartemento(alloggio,rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5));
 	    }
 
 	    rs.close();
-	    getAttrazione.close();
+	    getAppartamento.close();
 
 	} catch (SQLException e) {
 	    e.printStackTrace();
