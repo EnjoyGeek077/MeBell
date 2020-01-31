@@ -269,8 +269,9 @@ public class Controller {
 	all.setServiziAlloggio(serviziAlloggio);
 
 	Object alloggioSpecializzato = this.getAlloggiosSpecializzato(all);
-	
-	locationpage.setLocationPage(all.getNome(), all.getTipo()+", "+all.getTipoAlloggio(), all.getResidenzaLocation().toString(), all.getPartitaIva(), this.getMediaRecensioni(), all.getDescrizione(), "Informazioni", "hahah");
+	//System.out.println(all.getResidenzaLocation().toString());
+	//System.out.println(all.getPartitaIva());
+	locationpage.setLocationPage(all.getNome(), all.getTipo()+", "+all.getTipoAlloggio(), all.getResidenzaLocation().toString(), all.getPartitaIva(), this.getMediaRecensioni(), all.getDescrizione(), "Informazioni", all.getServiziAlloggio().toString());
     }
 
     private void setAttrazioneInLabel() {
