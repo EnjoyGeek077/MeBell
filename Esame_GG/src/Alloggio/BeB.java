@@ -8,10 +8,16 @@ public class BeB extends Alloggio{
     private int stelle;
     private boolean bagnoInComune;
 
-    public BeB(Alloggio all,int nCamere, int stelle, boolean bagnoInComune) {
+    public BeB(Alloggio all,int nCamere, int stelle, String bagnoInComune) {
 	super(all);
 	this.nCamere=nCamere;
-	this.bagnoInComune=bagnoInComune;
+
+	if(bagnoInComune.equals("si")) {
+	    this.bagnoInComune=true;
+	}else {
+	    this.bagnoInComune=false;
+	}
+	
 	this.stelle=stelle;
     }
 

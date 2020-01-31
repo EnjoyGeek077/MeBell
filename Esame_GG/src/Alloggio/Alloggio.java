@@ -8,12 +8,12 @@ public class Alloggio extends Location{
     private String tipoAlloggio;
     private ServiziAlloggio serviziAlloggio;
 
-    public Alloggio(Location mainLoc, ServiziAlloggio serAlloggio, int prezzomedio,String tipoall) {
+    public Alloggio(Location mainLoc, int prezzomedio,String tipoall) {
 	super(mainLoc.getCod(), mainLoc.getNome(), mainLoc.getCod_residenza(), mainLoc.getTipo(), mainLoc.getPartitaIva(), mainLoc.getDescrizione());
 
 	this.prezzoMedio=prezzomedio;
 	this.tipoAlloggio=tipoall;
-	this.setServiziAlloggio(serAlloggio);
+	this.setServiziAlloggio(null);
     }
 
     public Alloggio(Alloggio all) {

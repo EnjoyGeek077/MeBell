@@ -18,6 +18,8 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import Alloggio.Alloggio;
+import Alloggio.ServiziAlloggio;
 import Attrazione.Attrazione;
 
 import java.util.ArrayList;
@@ -245,25 +247,65 @@ public class Controller {
     public void aggiornaLocationPage(){
 	if(this.locationDaVedere.getTipo().equals("Alloggio")) {
 
+	    this.setAlloggioLabel();
+
 	}else if(this.locationDaVedere.getTipo().equals("Attrazione")) {
 
-	    AttrazioneDAO attDAO = new AttrazioneDAO(this);
-	    Attrazione att = attDAO.getAttrazione(this.IDlocationScelta, this.locationDaVedere);
-
-	    String pagamento;
-
-	    if(att.isPagamento()) {
-		pagamento="L'attrazione è a pagamento.";
-	    }else {
-		pagamento="L'attrazione non è a pagamento.";
-	    }
-	    System.out.println(this.getMediaRecensioni());
-	    locationpage.setLocationPage(att.getNome(),att.getTipo()+", "+att.getTipoAttrazione(),att.getResidenzaLocation().toString(),att.getPartitaIva(),this.getMediaRecensioni(), att.getDescrizione(), pagamento);
+	    this.setAttrazioneInLabel();
 
 	}else if(this.locationDaVedere.getTipo().equals("Ristorante")) {
 
 	}
 
+    }
+
+    private void setAlloggioLabel() {
+	
+	AlloggioDAO allDAO = new AlloggioDAO(this);
+	ServiziAlloggioDAO serviziAll = new ServiziAlloggioDAO(this);
+	Alloggio all = allDAO.getAlloggio(IDlocationScelta, locationDaVedere);
+	ServiziAlloggio serviziAlloggio = serviziAll.getAlloggio(IDlocationScelta, locationDaVedere);
+
+	all.setServiziAlloggio(serviziAlloggio);
+
+	Object alloggioSpecializzato = this.getAlloggiosSpecializzato(all);
+	
+	locationpage.setLocationPage(all.getNome(), all.getTipo()+", "+all.getTipoAlloggio(), all.getResidenzaLocation().toString(), all.getPartitaIva(), this.getMediaRecensioni(), all.getDescrizione(), "Informazioni", "hahah");
+    }
+
+    private void setAttrazioneInLabel() {
+	
+	AttrazioneDAO attDAO = new AttrazioneDAO(this);
+	Attrazione att = attDAO.getAttrazione(this.IDlocationScelta, this.locationDaVedere);
+
+	String pagamento;
+
+	if(att.isPagamento()) {
+	    pagamento="L'attrazione è a pagamento.";
+	}else {
+	    pagamento="L'attrazione non è a pagamento.";
+	}
+
+	locationpage.setLocationPage(att.getNome(),att.getTipo()+", "+att.getTipoAttrazione(),att.getResidenzaLocation().toString(),att.getPartitaIva(),this.getMediaRecensioni(), att.getDescrizione(), pagamento, "Nessun servizio");
+    }
+
+    public Object getAlloggiosSpecializzato(Alloggio alloggioScelto) {
+
+	Object tipoAlloggio = null;
+	AlloggioDAO alloggioDaSpecificare = new AlloggioDAO(this);
+
+	if(alloggioScelto.getTipoAlloggio().equals("Hotel")) {
+	    tipoAlloggio=alloggioDaSpecificare.getAlloggioHotel(alloggioScelto);
+
+	}else if(alloggioScelto.getTipoAlloggio().equals("BeB")) {
+	    tipoAlloggio=alloggioDaSpecificare.getAlloggioBeB(alloggioScelto);
+
+	}else if(alloggioScelto.getTipoAlloggio().equals("Appartamento")) {
+	    tipoAlloggio=alloggioDaSpecificare.getAlloggioAppartamento(alloggioScelto);
+
+	}
+
+	return tipoAlloggio;
     }
 
     //Get connessione

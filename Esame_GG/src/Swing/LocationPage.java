@@ -34,7 +34,7 @@ public class LocationPage extends JFrame {
     private JLabel lblIndirizzo;
     private JLabel lblPiva;
     private JTextArea txtrDescrizione;
-    private JTextArea txtrServizi;
+    private JTextArea txtrInfoServizi;
     private JLabel stella1;
     private JLabel stella2;
     private JLabel stella3;
@@ -90,6 +90,7 @@ public class LocationPage extends JFrame {
 	});
 
 	lblNomeLoc = new JLabel("Location Name");
+	lblNomeLoc.setForeground(Color.RED);
 	lblNomeLoc.setFont(new Font("Arial", Font.BOLD, 20));
 
 	JButton btnVediRecensioni = new JButton("");
@@ -126,9 +127,9 @@ public class LocationPage extends JFrame {
 	lblIndirizzo = new JLabel("Via, Civico, CAP, Comune");
 	lblIndirizzo.setFont(new Font("Arial", Font.PLAIN, 16));
 
-	txtrServizi = new JTextArea();
-	txtrServizi.setFont(new Font("Arial", Font.PLAIN, 16));
-	txtrServizi.setText("Servizi...");
+	txtrInfoServizi = new JTextArea();
+	txtrInfoServizi.setFont(new Font("Arial", Font.PLAIN, 16));
+	txtrInfoServizi.setText("Informazioni e servizi...");
 
 	stella1 = new JLabel("");
 	stella1.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/Stella1.png")));
@@ -181,11 +182,12 @@ public class LocationPage extends JFrame {
 				.addContainerGap()
 				.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 					.addComponent(txtrDescrizione, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addComponent(txtrServizi, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 758, Short.MAX_VALUE)
-					.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+					.addComponent(txtrInfoServizi, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 758, Short.MAX_VALUE)
+					.addGroup(gl_contentPane.createSequentialGroup()
 						.addComponent(btnBack, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED, 549, Short.MAX_VALUE)
-						.addComponent(btnVediRecensioni, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE)))
+						.addPreferredGap(ComponentPlacement.RELATED, 528, Short.MAX_VALUE)
+						.addComponent(btnVediRecensioni, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE)
+						.addGap(21)))
 				.addGap(26))
 	);
 	gl_contentPane.setVerticalGroup(
@@ -213,11 +215,11 @@ public class LocationPage extends JFrame {
 				.addPreferredGap(ComponentPlacement.RELATED)
 				.addComponent(txtrDescrizione, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
 				.addPreferredGap(ComponentPlacement.RELATED)
-				.addComponent(txtrServizi, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
+				.addComponent(txtrInfoServizi, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
 				.addPreferredGap(ComponentPlacement.RELATED)
 				.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-					.addComponent(btnBack)
-					.addComponent(btnVediRecensioni))
+					.addComponent(btnVediRecensioni)
+					.addComponent(btnBack))
 				.addGap(13))
 	);
 	panelIMG.setLayout(null);
@@ -246,13 +248,14 @@ public class LocationPage extends JFrame {
 	panel.setLayout(gl_panel);
 	contentPane.setLayout(gl_contentPane);
     }
-    public void setLocationPage(String nome,String categoria,String indirizzo,String piva,float voto,String descrizione,String servizi) {
+    
+    public void setLocationPage(String nome,String categoria,String indirizzo,String piva,float voto,String descrizione,String informazioni,String servizi) {
 	lblNomeLoc.setText(nome);
 	lblCategoria.setText("Categoria: "+categoria);
 	lblIndirizzo.setText(indirizzo);
 	lblPiva.setText("P.IVA: "+piva);
 	txtrDescrizione.setText(descrizione);
-	txtrServizi.setText(servizi);
+	txtrInfoServizi.setText(informazioni+"\n"+servizi);
 	
 	if(voto<1) {
 	    stella1.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/Stella0.png")));

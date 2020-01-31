@@ -9,7 +9,7 @@ public class ServiziAlloggio {
     private boolean ariaCondizionata;
     private boolean accessoDisabili;
     private boolean accessoAnimali;
-    private boolean ascenzore;
+    private boolean ascensore;
     private boolean servizioLavanderia;
     private boolean servizioRistorazione;
     private boolean tv_stereo;
@@ -29,8 +29,8 @@ public class ServiziAlloggio {
 	    dayUse=true;
 	}else {
 	    dayUse=false;
-	}
-
+	} 
+	
 	if(string3=="si") {
 	    spa=true;
 	}else {
@@ -62,9 +62,9 @@ public class ServiziAlloggio {
 	}
 
 	if(string8=="si") {
-	    ascenzore=true;
+	    ascensore=true;
 	}else {
-	    ascenzore=false;
+	    ascensore=false;
 	}
 
 	if(string9=="si") {
@@ -91,6 +91,24 @@ public class ServiziAlloggio {
 	    parcheggio=false;
 	}
     }
+    
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("ServiziAlloggio [Wi_fi=").append(wi_fi).append(", dayUse=").append(dayUse).append(", spa=")
+                .append(spa).append(", piscina=").append(piscina).append(", ariaCondizionata=").append(ariaCondizionata)
+                .append(", accessoDisabili=").append(accessoDisabili).append(", accessoAnimali=").append(accessoAnimali)
+                .append(", ascensore=").append(ascensore).append(", servizioLavanderia=").append(servizioLavanderia)
+                .append(", servizioRistorazione=").append(servizioRistorazione).append(", tv_stereo=").append(tv_stereo)
+                .append(", parcheggio=").append(parcheggio).append("]");
+
+        String s = builder.toString();
+        s = s.replace("true", "disponibile");
+        s = s.replace("false", "non disponibile");
+        return s;
+    }
+    
+
     public boolean isWi_fi() {
 	return wi_fi;
     }
@@ -134,10 +152,10 @@ public class ServiziAlloggio {
 	this.accessoAnimali = accessoAnimali;
     }
     public boolean isAcenzore() {
-	return ascenzore;
+	return ascensore;
     }
     public void setAcenzore(boolean acenzore) {
-	this.ascenzore = acenzore;
+	this.ascensore = acenzore;
     }
     public boolean isServizioLavanderia() {
 	return servizioLavanderia;

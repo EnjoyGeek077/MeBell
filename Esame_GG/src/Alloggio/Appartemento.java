@@ -4,12 +4,22 @@ import Entità.Location;
 
 public class Appartemento extends Alloggio{
 
-    public Appartemento(Alloggio all,int nVani, int nBagni, boolean veranda,boolean cucina) {
+    public Appartemento(Alloggio all,int nVani, int nBagni, String veranda, String cucina) {
 	super(all);
 	this.n_bagni=nBagni;
 	this.n_vani=nVani;
-	this.cucina=cucina;
-	this.veranda=veranda;
+
+	if(cucina.equals("si")) {
+	    this.cucina=true;
+	}else {
+	    this.cucina=false;
+	}
+
+	if(veranda.equals("si")) {
+	    this.veranda=true;
+	}else {
+	    this.veranda=false;
+	}
     }
 
     private int n_vani;
