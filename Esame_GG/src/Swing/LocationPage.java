@@ -46,10 +46,10 @@ public class LocationPage extends JFrame {
      */
     public LocationPage(Controller ctrl) {
 	setTitle("Location Page");
-	setMinimumSize(new Dimension(660, 482));
+	setMinimumSize(new Dimension(820, 482));
 	controller=ctrl;
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	setBounds(100, 100, 658, 467);
+	setBounds(100, 100, 820, 482);
 	contentPane = new JPanel();
 	contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 	setContentPane(contentPane);
@@ -152,19 +152,19 @@ public class LocationPage extends JFrame {
 	GroupLayout gl_contentPane = new GroupLayout(contentPane);
 	gl_contentPane.setHorizontalGroup(
 		gl_contentPane.createParallelGroup(Alignment.TRAILING)
-			.addComponent(panel, GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)
+			.addComponent(panel, GroupLayout.DEFAULT_SIZE, 794, Short.MAX_VALUE)
 			.addGroup(gl_contentPane.createSequentialGroup()
 				.addComponent(panelIMG, GroupLayout.PREFERRED_SIZE, 196, GroupLayout.PREFERRED_SIZE)
 				.addPreferredGap(ComponentPlacement.UNRELATED)
 				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_contentPane.createSequentialGroup()
-						.addComponent(lblIndirizzo, GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE)
+						.addComponent(lblIndirizzo, GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
 						.addContainerGap())
-					.addComponent(lblNomeLoc, GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
+					.addComponent(lblNomeLoc, GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createSequentialGroup()
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
-							.addComponent(lblPiva, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+							.addComponent(lblPiva, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addGroup(gl_contentPane.createSequentialGroup()
 								.addComponent(stella1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
 								.addPreferredGap(ComponentPlacement.RELATED)
 								.addComponent(stella2, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
@@ -179,13 +179,13 @@ public class LocationPage extends JFrame {
 						.addGap(240))))
 			.addGroup(gl_contentPane.createSequentialGroup()
 				.addContainerGap()
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-					.addGroup(gl_contentPane.createSequentialGroup()
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+					.addComponent(txtrDescrizione, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(txtrServizi, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 758, Short.MAX_VALUE)
+					.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
 						.addComponent(btnBack, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED, 414, Short.MAX_VALUE)
-						.addComponent(btnVediRecensioni, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE))
-					.addComponent(txtrServizi, GroupLayout.DEFAULT_SIZE, 623, Short.MAX_VALUE)
-					.addComponent(txtrDescrizione, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+						.addPreferredGap(ComponentPlacement.RELATED, 549, Short.MAX_VALUE)
+						.addComponent(btnVediRecensioni, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE)))
 				.addGap(26))
 	);
 	gl_contentPane.setVerticalGroup(
@@ -215,7 +215,7 @@ public class LocationPage extends JFrame {
 				.addPreferredGap(ComponentPlacement.RELATED)
 				.addComponent(txtrServizi, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
 				.addPreferredGap(ComponentPlacement.RELATED)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 					.addComponent(btnBack)
 					.addComponent(btnVediRecensioni))
 				.addGap(13))
@@ -248,9 +248,9 @@ public class LocationPage extends JFrame {
     }
     public void setLocationPage(String nome,String categoria,String indirizzo,String piva,float voto,String descrizione,String servizi) {
 	lblNomeLoc.setText(nome);
-	lblCategoria.setText(categoria);
+	lblCategoria.setText("Categoria: "+categoria);
 	lblIndirizzo.setText(indirizzo);
-	lblPiva.setText("P.IVA:"+piva);
+	lblPiva.setText("P.IVA: "+piva);
 	txtrDescrizione.setText(descrizione);
 	txtrServizi.setText(servizi);
 	

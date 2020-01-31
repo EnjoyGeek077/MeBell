@@ -25,7 +25,7 @@ public class Residenza {
 
     @Override
     public String toString() {
-	return this.via+","+this.n_civico+","+this.cap+","+this.comune;
+	return this.via+", "+this.n_civico+", "+this.cap+", "+this.comune;
     }
 
     public String getVia() {

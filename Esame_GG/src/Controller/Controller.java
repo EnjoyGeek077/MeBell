@@ -230,13 +230,15 @@ public class Controller {
 	int i = 0;
 	float media = 0.0f;
 
+	if(!this.locationDaVedere.getRecensiondiLocation().isEmpty()){
 
-	for(Recensione r : this.locationDaVedere.getRecensiondiLocation()) {
-	    i++;
-	    media=media+r.getVoto();	    
+	    for(Recensione r : this.locationDaVedere.getRecensiondiLocation()) {
+		i++;
+		media=media+r.getVoto();	    
+	    }
+
+	    media=media/i;
 	}
-
-	media=media/i;
 	return media;
     }
 
@@ -255,7 +257,7 @@ public class Controller {
 	    }else {
 		pagamento="L'attrazione non è a pagamento.";
 	    }
-
+	    System.out.println(this.getMediaRecensioni());
 	    locationpage.setLocationPage(att.getNome(),att.getTipo()+", "+att.getTipoAttrazione(),att.getResidenzaLocation().toString(),att.getPartitaIva(),this.getMediaRecensioni(), att.getDescrizione(), pagamento);
 
 	}else if(this.locationDaVedere.getTipo().equals("Ristorante")) {
