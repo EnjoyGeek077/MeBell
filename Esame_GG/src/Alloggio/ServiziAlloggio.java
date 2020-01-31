@@ -95,12 +95,12 @@ public class ServiziAlloggio {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("ServiziAlloggio [Wi_fi=").append(wi_fi).append(", dayUse=").append(dayUse).append(", spa=")
+        builder.append("Servizi: Wi_fi=").append(wi_fi).append(", dayUse=").append(dayUse).append(", spa=")
                 .append(spa).append(", piscina=").append(piscina).append(", ariaCondizionata=").append(ariaCondizionata)
                 .append(", accessoDisabili=").append(accessoDisabili).append(", accessoAnimali=").append(accessoAnimali)
                 .append(", ascensore=").append(ascensore).append(", servizioLavanderia=").append(servizioLavanderia)
                 .append(", servizioRistorazione=").append(servizioRistorazione).append(", tv_stereo=").append(tv_stereo)
-                .append(", parcheggio=").append(parcheggio).append("]");
+                .append(", parcheggio=").append(parcheggio).append(".");
 
         String s = builder.toString();
         s = s.replace("true", "disponibile");

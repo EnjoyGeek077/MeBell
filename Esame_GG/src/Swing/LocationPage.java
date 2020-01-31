@@ -23,12 +23,15 @@ import java.awt.Dimension;
 import javax.swing.JTextPane;
 import javax.swing.JTextArea;
 import java.awt.event.MouseAdapter;
+import javax.swing.JScrollPane;
+import java.awt.Cursor;
 
 public class LocationPage extends JFrame {
 
     private JPanel contentPane;
     private Controller controller;
 
+    private JLabel labelImmagineLocation;
     private JLabel lblNomeLoc;
     private JLabel lblCategoria;
     private JLabel lblIndirizzo;
@@ -61,6 +64,7 @@ public class LocationPage extends JFrame {
 	panelIMG.setBackground(new Color(0, 0, 0));
 
 	JButton btnBack = new JButton("");
+	btnBack.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	btnBack.addMouseListener(new MouseAdapter() {
 	    @Override
 	    public void mousePressed(MouseEvent e) {
@@ -94,6 +98,7 @@ public class LocationPage extends JFrame {
 	lblNomeLoc.setFont(new Font("Arial", Font.BOLD, 20));
 
 	JButton btnVediRecensioni = new JButton("");
+	btnVediRecensioni.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	btnVediRecensioni.addMouseListener(new MouseAdapter() {
 	    @Override
 	    public void mouseEntered(MouseEvent e) {
@@ -116,20 +121,8 @@ public class LocationPage extends JFrame {
 	btnVediRecensioni.setBorder(null);
 	btnVediRecensioni.setContentAreaFilled(false);
 
-	txtrDescrizione = new JTextArea();
-	txtrDescrizione.setRows(2);
-	txtrDescrizione.setBackground(Color.WHITE);
-	txtrDescrizione.setEditable(false);
-	txtrDescrizione.setLineWrap(true);
-	txtrDescrizione.setFont(new Font("Arial", Font.PLAIN, 16));
-	txtrDescrizione.setText("Descrizione...");
-
 	lblIndirizzo = new JLabel("Via, Civico, CAP, Comune");
 	lblIndirizzo.setFont(new Font("Arial", Font.PLAIN, 16));
-
-	txtrInfoServizi = new JTextArea();
-	txtrInfoServizi.setFont(new Font("Arial", Font.PLAIN, 16));
-	txtrInfoServizi.setText("Informazioni e servizi...");
 
 	stella1 = new JLabel("");
 	stella1.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/Stella1.png")));
@@ -150,45 +143,51 @@ public class LocationPage extends JFrame {
 	lblCategoria.setFont(new Font("Arial", Font.BOLD, 14));
 	
 	lblPiva = new JLabel("P.IVA");
+	
+	JScrollPane scrollPaneInfo = new JScrollPane();
+	JScrollPane scrollPaneDescrizione = new JScrollPane();
+
 	GroupLayout gl_contentPane = new GroupLayout(contentPane);
 	gl_contentPane.setHorizontalGroup(
-		gl_contentPane.createParallelGroup(Alignment.TRAILING)
+		gl_contentPane.createParallelGroup(Alignment.LEADING)
 			.addComponent(panel, GroupLayout.DEFAULT_SIZE, 794, Short.MAX_VALUE)
 			.addGroup(gl_contentPane.createSequentialGroup()
 				.addComponent(panelIMG, GroupLayout.PREFERRED_SIZE, 196, GroupLayout.PREFERRED_SIZE)
 				.addPreferredGap(ComponentPlacement.UNRELATED)
 				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(lblPiva, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(stella1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(stella2, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(stella3, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(stella4, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(stella5, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(lblCategoria)))
 					.addGroup(gl_contentPane.createSequentialGroup()
-						.addComponent(lblIndirizzo, GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
-						.addContainerGap())
-					.addComponent(lblNomeLoc, GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
-					.addGroup(gl_contentPane.createSequentialGroup()
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-							.addComponent(lblPiva, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addGroup(gl_contentPane.createSequentialGroup()
-								.addComponent(stella1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(stella2, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(stella3, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(stella4, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(stella5, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-								.addGap(18)
-								.addComponent(lblCategoria)))
-						.addGap(240))))
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+							.addComponent(lblIndirizzo, GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
+							.addComponent(lblNomeLoc, GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE))
+						.addGap(175)))
+				.addGap(46))
 			.addGroup(gl_contentPane.createSequentialGroup()
 				.addContainerGap()
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-					.addComponent(txtrDescrizione, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addComponent(txtrInfoServizi, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 758, Short.MAX_VALUE)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+					.addComponent(scrollPaneDescrizione, GroupLayout.DEFAULT_SIZE, 774, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createSequentialGroup()
 						.addComponent(btnBack, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED, 528, Short.MAX_VALUE)
-						.addComponent(btnVediRecensioni, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE)
-						.addGap(21)))
-				.addGap(26))
+						.addPreferredGap(ComponentPlacement.RELATED, 565, Short.MAX_VALUE)
+						.addComponent(btnVediRecensioni, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE)))
+				.addContainerGap())
+			.addGroup(gl_contentPane.createSequentialGroup()
+				.addContainerGap()
+				.addComponent(scrollPaneInfo, GroupLayout.DEFAULT_SIZE, 774, Short.MAX_VALUE)
+				.addContainerGap())
 	);
 	gl_contentPane.setVerticalGroup(
 		gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -212,19 +211,36 @@ public class LocationPage extends JFrame {
 							.addComponent(lblCategoria))
 						.addGap(23)
 						.addComponent(lblPiva)))
+				.addPreferredGap(ComponentPlacement.UNRELATED)
+				.addComponent(scrollPaneInfo, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
 				.addPreferredGap(ComponentPlacement.RELATED)
-				.addComponent(txtrDescrizione, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
-				.addPreferredGap(ComponentPlacement.RELATED)
-				.addComponent(txtrInfoServizi, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
+				.addComponent(scrollPaneDescrizione, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
 				.addPreferredGap(ComponentPlacement.RELATED)
 				.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-					.addComponent(btnVediRecensioni)
-					.addComponent(btnBack))
+					.addComponent(btnBack)
+					.addComponent(btnVediRecensioni))
 				.addGap(13))
 	);
+	
+		txtrDescrizione = new JTextArea();
+		scrollPaneDescrizione.setViewportView(txtrDescrizione);
+		txtrDescrizione.setEditable(false);
+		txtrDescrizione.setRows(5);
+		txtrDescrizione.setBackground(Color.WHITE);
+		txtrDescrizione.setLineWrap(true);
+		txtrDescrizione.setFont(new Font("Arial", Font.PLAIN, 16));
+		txtrDescrizione.setText("Descrizione...");
+	
+		txtrInfoServizi = new JTextArea();
+		scrollPaneInfo.setViewportView(txtrInfoServizi);
+		txtrInfoServizi.setLineWrap(true);
+		txtrInfoServizi.setRows(10);
+		txtrInfoServizi.setEditable(false);
+		txtrInfoServizi.setFont(new Font("Arial", Font.PLAIN, 16));
+		txtrInfoServizi.setText("Informazioni e servizi...");
 	panelIMG.setLayout(null);
 
-	JLabel labelImmagineLocation = new JLabel("");
+	labelImmagineLocation = new JLabel("");
 	labelImmagineLocation.setBounds(10, 11, 176, 161);
 	panelIMG.add(labelImmagineLocation);
 

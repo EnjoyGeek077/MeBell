@@ -4,6 +4,12 @@ import Entità.Location;
 
 public class Appartemento extends Alloggio{
 
+    private int n_vani;
+    private int n_bagni;
+    private boolean cucina;
+    private boolean veranda;
+
+
     public Appartemento(Alloggio all,int nVani, int nBagni, String veranda, String cucina) {
 	super(all);
 	this.n_bagni=nBagni;
@@ -22,10 +28,18 @@ public class Appartemento extends Alloggio{
 	}
     }
 
-    private int n_vani;
-    private int n_bagni;
-    private boolean cucina;
-    private boolean veranda;
+
+    @Override
+    public String toString() {
+	String s="Informazioni: \n Numero vani:"+n_vani+", Numero Bagni:"+n_bagni+", Cucina:"+cucina+", Veranda:"+veranda;
+
+	s = s.replace("true", "si");
+	s = s.replace("false", "no");
+
+	return s;
+    }
+
+
 
     public int getN_vani() {
 	return n_vani;

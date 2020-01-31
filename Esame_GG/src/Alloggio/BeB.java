@@ -17,9 +17,22 @@ public class BeB extends Alloggio{
 	}else {
 	    this.bagnoInComune=false;
 	}
-	
+
 	this.stelle=stelle;
     }
+
+
+    @Override
+    public String toString() {
+	
+	String s="Informazioni \n Numero Camere:"+nCamere+", Stelle:"+stelle+", Bagno in coumune:"+bagnoInComune;
+	s = s.replace("true", "si");
+	s = s.replace("false", "no");
+
+	return s;
+    }
+
+
 
     public int getnCamere() {
 	return nCamere;
