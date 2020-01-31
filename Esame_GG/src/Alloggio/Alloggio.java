@@ -9,7 +9,7 @@ public class Alloggio extends Location{
     private ServiziAlloggio serviziAlloggio;
 
     public Alloggio(Location mainLoc, int prezzomedio,String tipoall) {
-	super(mainLoc.getCod(), mainLoc.getNome(), mainLoc.getCod_residenza(), mainLoc.getTipo(), mainLoc.getPartitaIva(), mainLoc.getDescrizione());
+	super(mainLoc.getCod(), mainLoc.getNome(), mainLoc.getCod_residenza(), mainLoc.getTipo(), mainLoc.getPartitaIva(), mainLoc.getDescrizione(), mainLoc.getResidenzaLocation(), mainLoc.getRecensiondiLocation());
 
 	this.prezzoMedio=prezzomedio;
 	this.tipoAlloggio=tipoall;

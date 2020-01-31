@@ -269,9 +269,9 @@ public class Controller {
 	all.setServiziAlloggio(serviziAlloggio);
 
 	Object alloggioSpecializzato = this.getAlloggiosSpecializzato(all);
-	
-    }
 
+    }
+    
     private void setAttrazioneInLabel() {
 	
 	AttrazioneDAO attDAO = new AttrazioneDAO(this);

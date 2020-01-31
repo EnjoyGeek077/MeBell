@@ -128,6 +128,10 @@ public class LocationPage extends JFrame {
 	lblIndirizzo.setFont(new Font("Arial", Font.PLAIN, 16));
 
 	txtrInfoServizi = new JTextArea();
+	txtrInfoServizi.setColumns(30);
+	txtrInfoServizi.setTabSize(2);
+	txtrInfoServizi.setLineWrap(true);
+	txtrInfoServizi.setRows(4);
 	txtrInfoServizi.setFont(new Font("Arial", Font.PLAIN, 16));
 	txtrInfoServizi.setText("Informazioni e servizi...");
 
