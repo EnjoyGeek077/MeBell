@@ -40,7 +40,7 @@ IF :new.tipo_location='Alloggio' THEN
 	insert into servizi_alloggio(cod) values (:new.cod);
 	
 
-ELSIF :new.tipo_location='Ristorazione' THEN
+ELSIF :new.tipo_location='Ristorante' THEN
 
 	insert into ristorazione(cod) values (:new.cod);
 

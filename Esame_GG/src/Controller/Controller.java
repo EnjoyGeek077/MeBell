@@ -256,7 +256,7 @@ public class Controller {
 		pagamento="L'attrazione non è a pagamento.";
 	    }
 
-	    locationpage.setLocationPage(att.getNome(),att.getTipo()+", "+att.getTipoAttrazione(),att.getResidenzaLocation().toString(),this.getMediaRecensioni(), att.getDescrizione(), pagamento);
+	    locationpage.setLocationPage(att.getNome(),att.getTipo()+", "+att.getTipoAttrazione(),att.getResidenzaLocation().toString(),att.getPartitaIva(),this.getMediaRecensioni(), att.getDescrizione(), pagamento);
 
 	}else if(this.locationDaVedere.getTipo().equals("Ristorante")) {
 

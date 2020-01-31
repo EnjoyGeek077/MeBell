@@ -32,6 +32,7 @@ public class LocationPage extends JFrame {
     private JLabel lblNomeLoc;
     private JLabel lblCategoria;
     private JLabel lblIndirizzo;
+    private JLabel lblPiva;
     private JTextArea txtrDescrizione;
     private JTextArea txtrServizi;
     private JLabel stella1;
@@ -146,72 +147,79 @@ public class LocationPage extends JFrame {
 
 	lblCategoria = new JLabel("Categoria:");
 	lblCategoria.setFont(new Font("Arial", Font.BOLD, 14));
+	
+	lblPiva = new JLabel("P.IVA");
 	GroupLayout gl_contentPane = new GroupLayout(contentPane);
 	gl_contentPane.setHorizontalGroup(
 		gl_contentPane.createParallelGroup(Alignment.TRAILING)
-		.addComponent(panel, GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)
-		.addGroup(gl_contentPane.createSequentialGroup()
-			.addComponent(panelIMG, GroupLayout.PREFERRED_SIZE, 196, GroupLayout.PREFERRED_SIZE)
-			.addPreferredGap(ComponentPlacement.RELATED)
-			.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addComponent(lblIndirizzo, GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE)
-					.addContainerGap())
-				.addComponent(lblNomeLoc, GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addComponent(stella1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(stella2, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(stella3, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(stella4, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(stella5, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(lblCategoria)
-					.addGap(240))))
-		.addGroup(gl_contentPane.createSequentialGroup()
-			.addContainerGap()
-			.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
-					.addComponent(btnBack, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 414, Short.MAX_VALUE)
-					.addComponent(btnVediRecensioni, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE))
-				.addComponent(txtrServizi, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 623, Short.MAX_VALUE)
-				.addComponent(txtrDescrizione, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 211, Short.MAX_VALUE))
-			.addGap(26))
-		);
+			.addComponent(panel, GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)
+			.addGroup(gl_contentPane.createSequentialGroup()
+				.addComponent(panelIMG, GroupLayout.PREFERRED_SIZE, 196, GroupLayout.PREFERRED_SIZE)
+				.addPreferredGap(ComponentPlacement.UNRELATED)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_contentPane.createSequentialGroup()
+						.addComponent(lblIndirizzo, GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE)
+						.addContainerGap())
+					.addComponent(lblNomeLoc, GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
+					.addGroup(gl_contentPane.createSequentialGroup()
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
+							.addComponent(lblPiva, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+								.addComponent(stella1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(stella2, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(stella3, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(stella4, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(stella5, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+								.addGap(18)
+								.addComponent(lblCategoria)))
+						.addGap(240))))
+			.addGroup(gl_contentPane.createSequentialGroup()
+				.addContainerGap()
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_contentPane.createSequentialGroup()
+						.addComponent(btnBack, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED, 414, Short.MAX_VALUE)
+						.addComponent(btnVediRecensioni, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE))
+					.addComponent(txtrServizi, GroupLayout.DEFAULT_SIZE, 623, Short.MAX_VALUE)
+					.addComponent(txtrDescrizione, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+				.addGap(26))
+	);
 	gl_contentPane.setVerticalGroup(
 		gl_contentPane.createParallelGroup(Alignment.LEADING)
-		.addGroup(gl_contentPane.createSequentialGroup()
-			.addComponent(panel, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
-			.addPreferredGap(ComponentPlacement.RELATED)
-			.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addComponent(panelIMG, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addComponent(lblNomeLoc, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(lblIndirizzo, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-							.addComponent(stella5, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
-							.addComponent(stella4, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
-							.addComponent(stella3, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
-							.addComponent(stella2, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
-							.addComponent(stella1))
-						.addComponent(lblCategoria))))
-			.addPreferredGap(ComponentPlacement.RELATED)
-			.addComponent(txtrDescrizione, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
-			.addPreferredGap(ComponentPlacement.RELATED)
-			.addComponent(txtrServizi, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
-			.addPreferredGap(ComponentPlacement.RELATED)
-			.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addComponent(btnBack)
-				.addComponent(btnVediRecensioni))
-			.addGap(13))
-		);
+			.addGroup(gl_contentPane.createSequentialGroup()
+				.addComponent(panel, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
+				.addPreferredGap(ComponentPlacement.RELATED)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+					.addComponent(panelIMG, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
+					.addGroup(gl_contentPane.createSequentialGroup()
+						.addComponent(lblNomeLoc, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(lblIndirizzo, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+						.addGap(18)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(stella5, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+								.addComponent(stella4, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+								.addComponent(stella3, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+								.addComponent(stella2, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+								.addComponent(stella1))
+							.addComponent(lblCategoria))
+						.addGap(23)
+						.addComponent(lblPiva)))
+				.addPreferredGap(ComponentPlacement.RELATED)
+				.addComponent(txtrDescrizione, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
+				.addPreferredGap(ComponentPlacement.RELATED)
+				.addComponent(txtrServizi, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
+				.addPreferredGap(ComponentPlacement.RELATED)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+					.addComponent(btnBack)
+					.addComponent(btnVediRecensioni))
+				.addGap(13))
+	);
 	panelIMG.setLayout(null);
 
 	JLabel labelImmagineLocation = new JLabel("");
@@ -238,12 +246,14 @@ public class LocationPage extends JFrame {
 	panel.setLayout(gl_panel);
 	contentPane.setLayout(gl_contentPane);
     }
-    public void setLocationPage(String nome,String categoria,String indirizzo,float voto,String descrizione,String servizi) {
+    public void setLocationPage(String nome,String categoria,String indirizzo,String piva,float voto,String descrizione,String servizi) {
 	lblNomeLoc.setText(nome);
 	lblCategoria.setText(categoria);
 	lblIndirizzo.setText(indirizzo);
+	lblPiva.setText("P.IVA:"+piva);
 	txtrDescrizione.setText(descrizione);
 	txtrServizi.setText(servizi);
+	
 	if(voto<1) {
 	    stella1.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/Stella0.png")));
 	    stella2.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/Stella0.png")));
