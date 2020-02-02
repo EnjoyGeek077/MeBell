@@ -6,7 +6,16 @@ public class Pizzeria {
     private String tipoForno;
 
 
-    public boolean isAsporto() {
+    public Pizzeria(String asporto, String tipoForno) {
+		if(asporto=="si") {
+			this.asporto=true;
+		}else {
+			this.asporto=false;
+		}
+		this.tipoForno=tipoForno;
+		
+	}
+	public boolean isAsporto() {
 	return asporto;
     }
     public void setAsporto(boolean asporto) {

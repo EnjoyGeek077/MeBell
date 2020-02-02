@@ -58,7 +58,7 @@ public class RistorazioneDAO{
 	    ResultSet rs = getBraceria.executeQuery();
 
 	    while(rs.next()) {
-	    	braceria = new Braceria();
+	    	braceria = new Braceria(rs.getString(2), rs.getString(3),rs.getString(4));
 	    }
 
 	    rs.close();
@@ -81,7 +81,7 @@ public class RistorazioneDAO{
 	    ResultSet rs = getSushiBar.executeQuery();
 
 	    while(rs.next()) {
-	    	sushiBar = new SushiBar();
+	    	sushiBar = new SushiBar(rs.getString(2), rs.getString(3));
 	    }
 
 	    rs.close();
@@ -104,7 +104,7 @@ public class RistorazioneDAO{
 	    ResultSet rs = getPizzeria.executeQuery();
 
 	    while(rs.next()) {
-	    	pizzeria = new Pizzeria();
+	    	pizzeria = new Pizzeria(rs.getString(2), rs.getString(3));
 	    }
 
 	    rs.close();

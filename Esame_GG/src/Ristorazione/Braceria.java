@@ -7,7 +7,28 @@ public class Braceria {
     private boolean tipoCarne;
 
 
-    public boolean isAsporto() {
+    public Braceria(String asporto, String alcoliciArtigianali, String tipoCarne) {
+    	if(asporto=="si") {
+			this.asporto=true;
+		}else {
+			this.asporto=false;
+		}
+    	
+    	if(alcoliciArtigianali=="si") {
+			this.alcoliciArtigianali=true;
+		}else {
+			this.alcoliciArtigianali=false;
+		}
+    	
+    	if(tipoCarne=="si") {
+			this.tipoCarne=true;
+		}else {
+			this.tipoCarne=false;
+		}
+	}
+    
+    
+	public boolean isAsporto() {
 	return asporto;
     }
     public void setAsporto(boolean asporto) {

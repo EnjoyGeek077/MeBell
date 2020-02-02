@@ -95,8 +95,8 @@ public class ServiziAlloggio {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("Servizi: WiFi: ").append(wi_fi).append(", day use: ").append(dayUse).append(", spa: ")
-                .append(spa).append(", piscina: ").append(piscina).append(", aria condizionata: ").append(ariaCondizionata)
+        builder.append("Servizi: WiFi: ").append(wi_fi).append(",\t day use: ").append(dayUse).append(",\t spa: ")
+                .append(spa).append(",\t piscina: ").append(piscina).append(", aria condizionata: ").append(ariaCondizionata)
                 .append(", accesso disabili: ").append(accessoDisabili).append(", accesso animali: ").append(accessoAnimali)
                 .append(", ascensore:").append(ascensore).append(", servizio lavanderia:").append(servizioLavanderia)
                 .append(", servizio ristorazione: ").append(servizioRistorazione).append(", tv stereo: ").append(tv_stereo)

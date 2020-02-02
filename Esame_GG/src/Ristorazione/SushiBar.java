@@ -5,8 +5,16 @@ public class SushiBar {
     private boolean allYouCanEat;
     private String tipoSushi;
 
-
-    public boolean isAllYouCanEat() {
+    public SushiBar(String allYouCanEat, String tipoSushi) {
+    	if(allYouCanEat=="si") {
+			this.allYouCanEat=true;
+		}else {
+			this.allYouCanEat=false;
+		}
+    	this.tipoSushi=tipoSushi;
+	}
+    
+	public boolean isAllYouCanEat() {
 	return allYouCanEat;
     }
     public void setAllYouCanEat(boolean allYouCanEat) {
