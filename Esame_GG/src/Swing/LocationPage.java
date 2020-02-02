@@ -235,6 +235,7 @@ public class LocationPage extends JFrame {
 	txtrDescrizione.setText("Descrizione...");
 
 	txtrInfoServizi = new JTextArea();
+	txtrInfoServizi.setTabSize(1);
 	scrollPaneInfo.setViewportView(txtrInfoServizi);
 	txtrInfoServizi.setLineWrap(true);
 	txtrInfoServizi.setRows(10);

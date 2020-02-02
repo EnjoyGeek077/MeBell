@@ -95,12 +95,12 @@ public class ServiziAlloggio {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("Servizi: WiFi: ").append(wi_fi).append(",\t day use: ").append(dayUse).append(",\t spa: ")
-                .append(spa).append(",\t piscina: ").append(piscina).append(", aria condizionata: ").append(ariaCondizionata)
-                .append(", accesso disabili: ").append(accessoDisabili).append(", accesso animali: ").append(accessoAnimali)
-                .append(", ascensore:").append(ascensore).append(", servizio lavanderia:").append(servizioLavanderia)
-                .append(", servizio ristorazione: ").append(servizioRistorazione).append(", tv stereo: ").append(tv_stereo)
-                .append(", parcheggio: ").append(parcheggio).append(".");
+        builder.append("Servizi:\nWiFi: ").append(wi_fi).append(",\tday use: ").append(dayUse).append(",\tspa: ")
+                .append(spa).append(",\npiscina: ").append(piscina).append(",\taria condizionata: ").append(ariaCondizionata)
+                .append(",\taccesso disabili: ").append(accessoDisabili).append(",\naccesso animali: ").append(accessoAnimali)
+                .append(",\tascensore:").append(ascensore).append(",\tservizio lavanderia:").append(servizioLavanderia)
+                .append(",\nservizio ristorazione: ").append(servizioRistorazione).append(",\ttv stereo: ").append(tv_stereo)
+                .append(",\tparcheggio: ").append(parcheggio).append(".");
 
         String s = builder.toString();
         s = s.replace("true", "disponibile");

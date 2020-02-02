@@ -4,7 +4,7 @@ public class Braceria {
 
     private boolean asporto;
     private boolean alcoliciArtigianali;
-    private boolean tipoCarne;
+    private String tipoCarne;
 
 
     public Braceria(String asporto, String alcoliciArtigianali, String tipoCarne) {
@@ -20,11 +20,7 @@ public class Braceria {
 			this.alcoliciArtigianali=false;
 		}
     	
-    	if(tipoCarne=="si") {
-			this.tipoCarne=true;
-		}else {
-			this.tipoCarne=false;
-		}
+    	this.setTipoCarne(tipoCarne);
 	}
     
     
@@ -40,10 +36,10 @@ public class Braceria {
     public void setAlcoliciArtigianali(boolean alcoliciArtigianali) {
 	this.alcoliciArtigianali = alcoliciArtigianali;
     }
-    public boolean isTipoCarne() {
-	return tipoCarne;
-    }
-    public void setTipoCarne(boolean tipoCarne) {
-	this.tipoCarne = tipoCarne;
-    }
+	public String getTipoCarne() {
+		return tipoCarne;
+	}
+	public void setTipoCarne(String tipoCarne) {
+		this.tipoCarne = tipoCarne;
+	}
 }
