@@ -37,6 +37,10 @@ import Entità.Utente;
 
 import Swing.Login;
 import Swing.Register;
+import Swing.VediRecensioni;
+import SwingDialog.EliminaRecensione;
+import SwingDialog.InserisciRecensione;
+import SwingDialog.ModificaRecensione;
 import Utility.ModelloTabella;
 
 public class Controller {
@@ -44,6 +48,11 @@ public class Controller {
     Register register;
     HomePage homepage;
     LocationPage locationpage;
+    VediRecensioni vedirecensioni;
+    
+    EliminaRecensione eliminarecensione;
+    ModificaRecensione modificarecensione;
+    InserisciRecensione inseriscirecensione;
 
     ModelloTabella model;
 
@@ -67,6 +76,11 @@ public class Controller {
 	register = new Register(this);
 	homepage = new HomePage(this);
 	locationpage = new LocationPage(this);
+	vedirecensioni = new VediRecensioni(this);
+	    
+	eliminarecensione = new EliminaRecensione(this);
+	modificarecensione = new ModificaRecensione(this);
+	inseriscirecensione = new InserisciRecensione(this);
 
 	location = new ArrayList<Location>();
 
@@ -411,5 +425,17 @@ public class Controller {
     }
     public void openLocationPage() {
 	locationpage.setVisible(true);
+    }
+    public void openVediRecensioni() {
+	vedirecensioni.setVisible(true);
+    }
+    public void openEliminaDialog() {
+	eliminarecensione.setVisible(true);
+    }
+    public void openModificaDialog() {
+	modificarecensione.setVisible(true);
+    }
+    public void openInserisciDialog() {
+	inseriscirecensione.setVisible(true);
     }
 }

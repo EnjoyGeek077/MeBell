@@ -44,9 +44,6 @@ public class LocationPage extends JFrame {
     private JLabel stella4;
     private JLabel stella5;
 
-    /**
-     * Create the frame.
-     */
     public LocationPage(Controller ctrl) {
 	setTitle("Location Page");
 	setMinimumSize(new Dimension(820, 482));
@@ -98,6 +95,12 @@ public class LocationPage extends JFrame {
 	lblNomeLoc.setFont(new Font("Arial", Font.BOLD, 20));
 
 	JButton btnVediRecensioni = new JButton("");
+	btnVediRecensioni.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+		    setVisible(false);
+		    controller.openVediRecensioni();
+		}
+	});
 	btnVediRecensioni.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	btnVediRecensioni.addMouseListener(new MouseAdapter() {
 	    @Override
@@ -141,103 +144,103 @@ public class LocationPage extends JFrame {
 
 	lblCategoria = new JLabel("Categoria:");
 	lblCategoria.setFont(new Font("Arial", Font.BOLD, 14));
-	
+
 	lblPiva = new JLabel("P.IVA");
-	
+
 	JScrollPane scrollPaneInfo = new JScrollPane();
 	JScrollPane scrollPaneDescrizione = new JScrollPane();
 
 	GroupLayout gl_contentPane = new GroupLayout(contentPane);
 	gl_contentPane.setHorizontalGroup(
 		gl_contentPane.createParallelGroup(Alignment.LEADING)
-			.addComponent(panel, GroupLayout.DEFAULT_SIZE, 794, Short.MAX_VALUE)
-			.addGroup(gl_contentPane.createSequentialGroup()
-				.addComponent(panelIMG, GroupLayout.PREFERRED_SIZE, 196, GroupLayout.PREFERRED_SIZE)
-				.addPreferredGap(ComponentPlacement.UNRELATED)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(lblPiva, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(stella1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(stella2, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(stella3, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(stella4, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(stella5, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(lblCategoria)))
+		.addComponent(panel, GroupLayout.DEFAULT_SIZE, 794, Short.MAX_VALUE)
+		.addGroup(gl_contentPane.createSequentialGroup()
+			.addComponent(panelIMG, GroupLayout.PREFERRED_SIZE, 196, GroupLayout.PREFERRED_SIZE)
+			.addPreferredGap(ComponentPlacement.UNRELATED)
+			.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+					.addComponent(lblPiva, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createSequentialGroup()
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-							.addComponent(lblIndirizzo, GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
-							.addComponent(lblNomeLoc, GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE))
-						.addGap(175)))
-				.addGap(46))
-			.addGroup(gl_contentPane.createSequentialGroup()
-				.addContainerGap()
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-					.addComponent(scrollPaneDescrizione, GroupLayout.DEFAULT_SIZE, 774, Short.MAX_VALUE)
-					.addGroup(gl_contentPane.createSequentialGroup()
-						.addComponent(btnBack, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED, 565, Short.MAX_VALUE)
-						.addComponent(btnVediRecensioni, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE)))
-				.addContainerGap())
-			.addGroup(gl_contentPane.createSequentialGroup()
-				.addContainerGap()
-				.addComponent(scrollPaneInfo, GroupLayout.DEFAULT_SIZE, 774, Short.MAX_VALUE)
-				.addContainerGap())
-	);
+						.addComponent(stella1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(stella2, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(stella3, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(stella4, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(stella5, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+						.addGap(18)
+						.addComponent(lblCategoria)))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblIndirizzo, GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
+						.addComponent(lblNomeLoc, GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE))
+					.addGap(175)))
+			.addGap(46))
+		.addGroup(gl_contentPane.createSequentialGroup()
+			.addContainerGap()
+			.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addComponent(scrollPaneDescrizione, GroupLayout.DEFAULT_SIZE, 774, Short.MAX_VALUE)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addComponent(btnBack, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 565, Short.MAX_VALUE)
+					.addComponent(btnVediRecensioni, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE)))
+			.addContainerGap())
+		.addGroup(gl_contentPane.createSequentialGroup()
+			.addContainerGap()
+			.addComponent(scrollPaneInfo, GroupLayout.DEFAULT_SIZE, 774, Short.MAX_VALUE)
+			.addContainerGap())
+		);
 	gl_contentPane.setVerticalGroup(
 		gl_contentPane.createParallelGroup(Alignment.LEADING)
-			.addGroup(gl_contentPane.createSequentialGroup()
-				.addComponent(panel, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
-				.addPreferredGap(ComponentPlacement.RELATED)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-					.addComponent(panelIMG, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
-					.addGroup(gl_contentPane.createSequentialGroup()
-						.addComponent(lblNomeLoc, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(lblIndirizzo, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-						.addGap(18)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(stella5, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
-								.addComponent(stella4, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
-								.addComponent(stella3, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
-								.addComponent(stella2, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
-								.addComponent(stella1))
-							.addComponent(lblCategoria))
-						.addGap(23)
-						.addComponent(lblPiva)))
-				.addPreferredGap(ComponentPlacement.UNRELATED)
-				.addComponent(scrollPaneInfo, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
-				.addPreferredGap(ComponentPlacement.RELATED)
-				.addComponent(scrollPaneDescrizione, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
-				.addPreferredGap(ComponentPlacement.RELATED)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-					.addComponent(btnBack)
-					.addComponent(btnVediRecensioni))
-				.addGap(13))
-	);
-	
-		txtrDescrizione = new JTextArea();
-		scrollPaneDescrizione.setViewportView(txtrDescrizione);
-		txtrDescrizione.setEditable(false);
-		txtrDescrizione.setRows(5);
-		txtrDescrizione.setBackground(Color.WHITE);
-		txtrDescrizione.setLineWrap(true);
-		txtrDescrizione.setFont(new Font("Arial", Font.PLAIN, 16));
-		txtrDescrizione.setText("Descrizione...");
-	
-		txtrInfoServizi = new JTextArea();
-		scrollPaneInfo.setViewportView(txtrInfoServizi);
-		txtrInfoServizi.setLineWrap(true);
-		txtrInfoServizi.setRows(10);
-		txtrInfoServizi.setEditable(false);
-		txtrInfoServizi.setFont(new Font("Arial", Font.PLAIN, 16));
-		txtrInfoServizi.setText("Informazioni e servizi...");
+		.addGroup(gl_contentPane.createSequentialGroup()
+			.addComponent(panel, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
+			.addPreferredGap(ComponentPlacement.RELATED)
+			.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addComponent(panelIMG, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addComponent(lblNomeLoc, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblIndirizzo, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+							.addComponent(stella5, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+							.addComponent(stella4, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+							.addComponent(stella3, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+							.addComponent(stella2, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+							.addComponent(stella1))
+						.addComponent(lblCategoria))
+					.addGap(23)
+					.addComponent(lblPiva)))
+			.addPreferredGap(ComponentPlacement.UNRELATED)
+			.addComponent(scrollPaneInfo, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
+			.addPreferredGap(ComponentPlacement.RELATED)
+			.addComponent(scrollPaneDescrizione, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+			.addPreferredGap(ComponentPlacement.RELATED)
+			.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addComponent(btnBack)
+				.addComponent(btnVediRecensioni))
+			.addGap(13))
+		);
+
+	txtrDescrizione = new JTextArea();
+	scrollPaneDescrizione.setViewportView(txtrDescrizione);
+	txtrDescrizione.setEditable(false);
+	txtrDescrizione.setRows(5);
+	txtrDescrizione.setBackground(Color.WHITE);
+	txtrDescrizione.setLineWrap(true);
+	txtrDescrizione.setFont(new Font("Arial", Font.PLAIN, 16));
+	txtrDescrizione.setText("Descrizione...");
+
+	txtrInfoServizi = new JTextArea();
+	scrollPaneInfo.setViewportView(txtrInfoServizi);
+	txtrInfoServizi.setLineWrap(true);
+	txtrInfoServizi.setRows(10);
+	txtrInfoServizi.setEditable(false);
+	txtrInfoServizi.setFont(new Font("Arial", Font.PLAIN, 16));
+	txtrInfoServizi.setText("Informazioni e servizi...");
 	panelIMG.setLayout(null);
 
 	labelImmagineLocation = new JLabel("");
@@ -264,7 +267,7 @@ public class LocationPage extends JFrame {
 	panel.setLayout(gl_panel);
 	contentPane.setLayout(gl_contentPane);
     }
-    
+
     public void setLocationPage(String nome,String categoria,String indirizzo,String piva,float voto,String descrizione,String informazioni,String servizi) {
 	lblNomeLoc.setText(nome);
 	lblCategoria.setText("Categoria: "+categoria);
@@ -272,7 +275,7 @@ public class LocationPage extends JFrame {
 	lblPiva.setText("P.IVA: "+piva);
 	txtrDescrizione.setText(descrizione);
 	txtrInfoServizi.setText(informazioni+"\n"+servizi);
-	
+
 	if(voto<1) {
 	    stella1.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/Stella0.png")));
 	    stella2.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/Stella0.png")));
