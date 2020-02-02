@@ -279,12 +279,12 @@ public class Controller {
 	ServiziAlloggioDAO serviziAll = new ServiziAlloggioDAO(this);
 	Alloggio all = allDAO.getAlloggio(this.IDlocationScelta, this.locationDaVedere);
 	ServiziAlloggio serviziAlloggio = serviziAll.getAlloggio(this.IDlocationScelta, this.locationDaVedere);
-
+	System.out.println(serviziAlloggio.toString());
 	all.setServiziAlloggio(serviziAlloggio);
 
 	Object alloggioSpecializzato = this.getAlloggiosSpecializzato(all);
 	
-	locationpage.setLocationPage(all.getNome(), all.getTipo()+", "+all.getTipoAlloggio(), all.getResidenzaLocation().toString(), all.getPartitaIva(), this.getMediaRecensioni(), all.getDescrizione(), alloggioSpecializzato.getClass().toString(), all.getServiziAlloggio().toString());
+	locationpage.setLocationPage(all.getNome(), all.getTipo()+", "+all.getTipoAlloggio(), all.getResidenzaLocation().toString(), all.getPartitaIva(), this.getMediaRecensioni(), all.getDescrizione(), alloggioSpecializzato.toString(), all.getServiziAlloggio().toString());
     }
     
     

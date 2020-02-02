@@ -274,7 +274,7 @@ public class LocationPage extends JFrame {
 	lblIndirizzo.setText(indirizzo);
 	lblPiva.setText("P.IVA: "+piva);
 	txtrDescrizione.setText(descrizione);
-	txtrInfoServizi.setText(informazioni+"\n"+servizi);
+	txtrInfoServizi.setText(informazioni+"\n\n"+servizi);
 
 	if(voto<1) {
 	    stella1.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/Stella0.png")));

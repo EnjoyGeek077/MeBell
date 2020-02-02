@@ -31,7 +31,7 @@ public class Appartemento extends Alloggio{
 
     @Override
     public String toString() {
-	String s="Informazioni: \n Numero vani:"+n_vani+", Numero Bagni:"+n_bagni+", Cucina:"+cucina+", Veranda:"+veranda;
+	String s="Informazioni: \nNumero vani:"+n_vani+", Numero Bagni:"+n_bagni+", Cucina:"+cucina+", Veranda:"+veranda;
 
 	s = s.replace("true", "si");
 	s = s.replace("false", "no");

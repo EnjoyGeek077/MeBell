@@ -19,7 +19,7 @@ public class Hotel extends Alloggio{
     @Override
     public String toString() {
 	
-	return "Informazioni \n Numero Camere:"+nCamere+", Numero Suite:"+nSuite+", Stelle:"+stelle;
+	return "Informazioni: \nNumero Camere:"+nCamere+", Numero Suite:"+nSuite+", Stelle:"+stelle;
     }
 
 
