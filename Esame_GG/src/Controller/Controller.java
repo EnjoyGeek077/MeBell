@@ -277,9 +277,8 @@ public class Controller {
 	
 	AlloggioDAO allDAO = new AlloggioDAO(this);
 	ServiziAlloggioDAO serviziAll = new ServiziAlloggioDAO(this);
-	Alloggio all = allDAO.getAlloggio(this.IDlocationScelta, this.locationDaVedere);
+	Alloggio all = allDAO.getAlloggio(this.locationDaVedere);
 	ServiziAlloggio serviziAlloggio = serviziAll.getAlloggio(this.IDlocationScelta, this.locationDaVedere);
-	System.out.println(serviziAlloggio.toString());
 	all.setServiziAlloggio(serviziAlloggio);
 
 	Object alloggioSpecializzato = this.getAlloggiosSpecializzato(all);

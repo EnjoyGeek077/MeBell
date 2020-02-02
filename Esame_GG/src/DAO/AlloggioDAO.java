@@ -19,13 +19,13 @@ public class AlloggioDAO {
 	controller=ctrl;
     }
 
-    public Alloggio getAlloggio(String cod, Location mainLoc) {
+    public Alloggio getAlloggio(Location mainLoc) {
 	String query = "SELECT * FROM alloggio WHERE cod=?";
 	Alloggio alloggio=null;
 
 	try {
 	    PreparedStatement getAlloggio = controller.getConnection().prepareStatement(query);
-	    getAlloggio.setString(1, cod);
+	    getAlloggio.setString(1, mainLoc.getCod());
 	    ResultSet rs = getAlloggio.executeQuery();
 
 	    while(rs.next()) {

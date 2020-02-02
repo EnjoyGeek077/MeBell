@@ -1,10 +1,20 @@
 package Ristorazione;
 
-public class Ristorazione {
-    
+import Entità.Location;
+
+public class Ristorazione extends Location{
+	
     private int prezzoMedio;
     private int nPosti;
     private String tipoRistorazione;
+	
+	public Ristorazione(Location mainLoc, int prezzomedio, int nPosti, String tipoRistorazione) {
+		super(mainLoc.getCod(), mainLoc.getNome(), mainLoc.getCod_residenza(), mainLoc.getTipo(), mainLoc.getPartitaIva(), mainLoc.getDescrizione(), mainLoc.getResidenzaLocation(), mainLoc.getRecensiondiLocation());
+
+		this.prezzoMedio=prezzomedio;
+		this.nPosti=nPosti;
+		this.tipoRistorazione=tipoRistorazione;
+	    }
 
 
     public int getPrezzoMedio() {
