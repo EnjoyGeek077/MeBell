@@ -8,7 +8,7 @@ public class Ristorazione extends Location{
     private int nPosti;
     private String tipoRistorazione;
     
-    private SushiBar sushiBar;
+    private SushiBar sushiBar; 
     private Pizzeria pizzeria;
     private Braceria braceria;
 
@@ -19,6 +19,25 @@ public class Ristorazione extends Location{
 		this.nPosti=nPosti;
 		this.tipoRistorazione=tipoRistorazione;
 	    }
+	
+	
+
+    @Override
+	public String toString() {
+	    String infoBraceria="Informazioni Braceria:\nAsporto: "+this.braceria.isAsporto()+", Serve alcolici artigianali: "+this.braceria.isAlcoliciArtigianali()+", Tipo Carne: "+this.braceria.getTipoCarne()+"\n";
+	    String infoPizzeria="Informazioni Pizzeria:\nAsporto: "+this.pizzeria.isAsporto()+", Tipo Forno: "+this.pizzeria.getTipoForno()+"\n";
+	    String infoSushiBar="Informazioni SushiBar:\nAllYouCanEat: "+this.sushiBar.isAllYouCanEat()+", Tipo sushi: "+this.sushiBar.getTipoSushi()+"\n";
+	   
+	    String StringaReturn="";
+	    
+	    
+	    StringaReturn=StringaReturn.replace("true", "si");
+	    StringaReturn=StringaReturn.replace("false", "no");
+	    
+	    return StringaReturn;
+	}
+
+
 
     public int getPrezzoMedio() {
 	return prezzoMedio;

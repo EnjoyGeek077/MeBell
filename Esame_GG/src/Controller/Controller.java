@@ -34,7 +34,10 @@ import Swing.HomePage;
 import Swing.LocationPage;
 import Entità.Location;
 import Entità.Utente;
-
+import Ristorazione.Braceria;
+import Ristorazione.Pizzeria;
+import Ristorazione.Ristorazione;
+import Ristorazione.SushiBar;
 import Swing.Login;
 import Swing.Register;
 import Swing.VediRecensioni;
@@ -49,7 +52,7 @@ public class Controller {
     HomePage homepage;
     LocationPage locationpage;
     VediRecensioni vedirecensioni;
-    
+
     EliminaRecensione eliminarecensione;
     ModificaRecensione modificarecensione;
     InserisciRecensione inseriscirecensione;
@@ -77,7 +80,7 @@ public class Controller {
 	homepage = new HomePage(this);
 	locationpage = new LocationPage(this);
 	vedirecensioni = new VediRecensioni(this);
-	    
+
 	eliminarecensione = new EliminaRecensione(this);
 	modificarecensione = new ModificaRecensione(this);
 	inseriscirecensione = new InserisciRecensione(this);
@@ -269,26 +272,38 @@ public class Controller {
 
 	}else if(this.locationDaVedere.getTipo().equals("Ristorante")) {
 
+	    this.setRistorazioneInLabel();
+
 	}
 
     }
 
     private void setAlloggioLabel() {
-	
+
 	AlloggioDAO allDAO = new AlloggioDAO(this);
 	ServiziAlloggioDAO serviziAll = new ServiziAlloggioDAO(this);
 	Alloggio all = allDAO.getAlloggio(this.locationDaVedere);
 	ServiziAlloggio serviziAlloggio = serviziAll.getAlloggio(this.IDlocationScelta, this.locationDaVedere);
 	all.setServiziAlloggio(serviziAlloggio);
 
-	Object alloggioSpecializzato = this.getAlloggiosSpecializzato(all);
-	
+	Object alloggioSpecializzato = this.getAlloggiosSpecializzato(all, allDAO);
+
 	locationpage.setLocationPage(all.getNome(), all.getTipo()+", "+all.getTipoAlloggio(), all.getResidenzaLocation().toString(), all.getPartitaIva(), this.getMediaRecensioni(), all.getDescrizione(), alloggioSpecializzato.toString(), all.getServiziAlloggio().toString());
     }
-    
-    
-    private void setAttrazioneInLabel() {
+
+    private void setRistorazioneInLabel() {
+
+	RistorazioneDAO ristDAO = new RistorazioneDAO(this);
+	Ristorazione rist = ristDAO.getRistorazione(locationDaVedere);
+	this.setAttributiTipoRistorazione(rist, ristDAO);
 	
+	String informazioni="Informazioni: \nNumero posti: "+rist.getnPosti()+", Prezzo medio:"+rist.getPrezzoMedio();
+	locationpage.setLocationPage(rist.getNome(), rist.getTipo()+", "+rist.getTipoRistorazione(), rist.getResidenzaLocation().toString(), rist.getPartitaIva(), this.getMediaRecensioni(), rist.getDescrizione(),informazioni , rist.toString());
+
+    }
+
+    private void setAttrazioneInLabel() {
+
 	AttrazioneDAO attDAO = new AttrazioneDAO(this);
 	Attrazione att = attDAO.getAttrazione(this.IDlocationScelta, this.locationDaVedere);
 
@@ -300,13 +315,41 @@ public class Controller {
 	    pagamento="L'attrazione non è a pagamento.";
 	}
 
-	locationpage.setLocationPage(att.getNome(),att.getTipo()+", "+att.getTipoAttrazione(),att.getResidenzaLocation().toString(),att.getPartitaIva(),this.getMediaRecensioni(), att.getDescrizione(), pagamento, "Nessun servizio");
+	locationpage.setLocationPage(att.getNome(), att.getTipo()+", "+att.getTipoAttrazione(), att.getResidenzaLocation().toString(), att.getPartitaIva(), this.getMediaRecensioni(), att.getDescrizione(), pagamento, "Nessun servizio");
     }
 
-    public Object getAlloggiosSpecializzato(Alloggio alloggioScelto) {
+    public void setAttributiTipoRistorazione(Ristorazione ristorante, RistorazioneDAO ristoranteDaSpecificare) {
+
+	String tipoRistorante=ristorante.getTipoRistorazione();
+	Braceria brace = ristoranteDaSpecificare.getBraceria(ristorante);
+	Pizzeria pizza = ristoranteDaSpecificare.getPizzeria(ristorante);
+	SushiBar sushibar = ristoranteDaSpecificare.getSushiBar(ristorante);
+
+	ristorante.setBraceria(brace);
+	ristorante.setPizzeria(pizza);
+	ristorante.setSushiBar(sushibar);
+
+	/*if(tipoRistorante.equals("Elenco Completo")) {
+	    
+	}else if(tipoRistorante.equals("Braceria")) {
+	    
+	}else if(tipoRistorante.equals("SushiBar")) {
+
+	}else if(tipoRistorante.equals("Pizzeria")) {
+
+	}else if(tipoRistorante.equals("Brace e Sushi")) {
+
+	}else if(tipoRistorante.equals("Pizza e Brace")) {
+
+	}else if(tipoRistorante.equals("Pizza e Sushi")) {
+
+	}*/
+
+    }
+
+    public Object getAlloggiosSpecializzato(Alloggio alloggioScelto, AlloggioDAO alloggioDaSpecificare) {
 
 	Object tipoAlloggio = null;
-	AlloggioDAO alloggioDaSpecificare = new AlloggioDAO(this);
 
 	if(alloggioScelto.getTipoAlloggio().equals("Hotel")) {
 	    tipoAlloggio=alloggioDaSpecificare.getAlloggioHotel(alloggioScelto);
