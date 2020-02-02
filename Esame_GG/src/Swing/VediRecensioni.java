@@ -77,21 +77,21 @@ public class VediRecensioni extends JFrame {
 	    }
 	});
 
-	JLabel lblFiltri = new JLabel("Filtri");
+	JLabel lblFiltri = new JLabel("Filtri:");
 	lblFiltri.setFont(new Font("Arial", Font.BOLD, 15));
 	
 	JScrollPane scrollPaneTestoRecensione = new JScrollPane();
 	GroupLayout gl_contentPane = new GroupLayout(contentPane);
 	gl_contentPane.setHorizontalGroup(
 		gl_contentPane.createParallelGroup(Alignment.TRAILING)
-			.addComponent(panel, GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)
+			.addComponent(panel, GroupLayout.DEFAULT_SIZE, 496, Short.MAX_VALUE)
 			.addGroup(gl_contentPane.createSequentialGroup()
-				.addComponent(scrollPaneTabellaRecensioni, GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
+				.addComponent(scrollPaneTabellaRecensioni, GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
 				.addPreferredGap(ComponentPlacement.RELATED)
 				.addComponent(lblFiltri, GroupLayout.PREFERRED_SIZE, 161, GroupLayout.PREFERRED_SIZE)
 				.addContainerGap())
 			.addGroup(gl_contentPane.createSequentialGroup()
-				.addComponent(scrollPaneTestoRecensione, GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
+				.addComponent(scrollPaneTestoRecensione, GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
 				.addPreferredGap(ComponentPlacement.RELATED)
 				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
 					.addComponent(btnInserisciNuovaRecensione)
@@ -104,19 +104,25 @@ public class VediRecensioni extends JFrame {
 			.addGroup(gl_contentPane.createSequentialGroup()
 				.addComponent(panel, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
 				.addPreferredGap(ComponentPlacement.UNRELATED)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-					.addComponent(scrollPaneTabellaRecensioni, GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
-					.addComponent(lblFiltri))
-				.addGap(34)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-					.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+					.addComponent(lblFiltri)
+					.addComponent(scrollPaneTabellaRecensioni, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE))
+				.addGap(18)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
+					.addGroup(gl_contentPane.createSequentialGroup()
 						.addComponent(btnEliminaRecensione)
 						.addPreferredGap(ComponentPlacement.RELATED)
 						.addComponent(btnModificaRecensione)
 						.addPreferredGap(ComponentPlacement.RELATED)
 						.addComponent(btnInserisciNuovaRecensione))
-					.addComponent(scrollPaneTestoRecensione)))
+					.addComponent(scrollPaneTestoRecensione, 0, 0, Short.MAX_VALUE)))
 	);
+	
+	JTextArea textAreaRecensione = new JTextArea();
+	textAreaRecensione.setRows(5);
+	textAreaRecensione.setText("Recensione...");
+	textAreaRecensione.setFont(new Font("Arial", Font.PLAIN, 16));
+	scrollPaneTestoRecensione.setViewportView(textAreaRecensione);
 
 	table = new JTable();
 	table.addMouseListener(new MouseAdapter() {
