@@ -19,73 +19,73 @@ public class ServiziAlloggio {
 
     public ServiziAlloggio(String string, String string2, String string3, String string4, String string5, String string6, String string7, String string8, String string9, String string10, String string11, String string12) {
 	
-	if(string=="si") {
+	if(string.equals("si")) {
 	    wi_fi=true;
 	}else {
 	    wi_fi=false;
 	}
 
-	if(string2=="si") {
+	if(string2.equals("si")) {
 	    dayUse=true;
 	}else {
 	    dayUse=false;
 	} 
 	
-	if(string3=="si") {
+	if(string3.equals("si")) {
 	    spa=true;
 	}else {
 	    spa=false;
 	}
 
-	if(string4=="si") {
+	if(string4.equals("si")) {
 	    piscina=true;
 	}else {
 	    piscina=false;
 	}
 
-	if(string5=="si") {
+	if(string5.equals("si")) {
 	    ariaCondizionata=true;
 	}else {
 	    ariaCondizionata=false;
 	}
 
-	if(string6=="si") {
+	if(string6.equals("si")) {
 	    accessoDisabili=true;
 	}else {
 	    accessoDisabili=false;
 	}
 
-	if(string7=="si") {
+	if(string7.equals("si")) {
 	    accessoAnimali=true;
 	}else {
 	    accessoAnimali=false;
 	}
 
-	if(string8=="si") {
+	if(string8.equals("si")) {
 	    ascensore=true;
 	}else {
 	    ascensore=false;
 	}
 
-	if(string9=="si") {
+	if(string9.equals("si")) {
 	    servizioLavanderia=true;
 	}else {
 	    servizioLavanderia=false;
 	}
 
-	if(string10=="si") {
+	if(string10.equals("si")) {
 	    servizioRistorazione=true;
 	}else {
 	    servizioRistorazione=false;
 	}
 
-	if(string11=="si") {
+	if(string11.equals("si")) {
 	    tv_stereo=true;
 	}else {
 	    tv_stereo=false;
 	}
 
-	if(string12=="si") {
+	if(string12.equals("si")) {
 	    parcheggio=true;
 	}else {
 	    parcheggio=false;
@@ -95,12 +95,12 @@ public class ServiziAlloggio {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("ServiziAlloggio [wi_fi=").append(wi_fi).append(", dayUse=").append(dayUse).append(", spa=")
-                .append(spa).append(", piscina=").append(piscina).append(", ariaCondizionata=").append(ariaCondizionata)
-                .append(", accessoDisabili=").append(accessoDisabili).append(", accessoAnimali=").append(accessoAnimali)
-                .append(", ascenzore=").append(ascensore).append(", servizioLavanderia=").append(servizioLavanderia)
-                .append(", servizioRistorazione=").append(servizioRistorazione).append(", tv_stereo=").append(tv_stereo)
-                .append(", parcheggio=").append(parcheggio).append("]");
+        builder.append("Servizi: WiFi: ").append(wi_fi).append(", day use: ").append(dayUse).append(", spa: ")
+                .append(spa).append(", piscina: ").append(piscina).append(", aria condizionata: ").append(ariaCondizionata)
+                .append(", accesso disabili: ").append(accessoDisabili).append(", accesso animali: ").append(accessoAnimali)
+                .append(", ascensore:").append(ascensore).append(", servizio lavanderia:").append(servizioLavanderia)
+                .append(", servizio ristorazione: ").append(servizioRistorazione).append(", tv stereo: ").append(tv_stereo)
+                .append(", parcheggio: ").append(parcheggio).append(".");
 
         String s = builder.toString();
         s = s.replace("true", "disponibile");
