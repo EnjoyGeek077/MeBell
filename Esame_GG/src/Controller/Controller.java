@@ -298,7 +298,7 @@ public class Controller {
 	this.setAttributiTipoRistorazione(rist, ristDAO);
 	
 	String informazioni="Informazioni: \nNumero posti: "+rist.getnPosti()+", Prezzo medio:"+rist.getPrezzoMedio();
-	locationpage.setLocationPage(rist.getNome(), rist.getTipo()+", "+rist.getTipoRistorazione(), rist.getResidenzaLocation().toString(), rist.getPartitaIva(), this.getMediaRecensioni(), rist.getDescrizione(),informazioni , rist.toString());
+	locationpage.setLocationPage(rist.getNome(), rist.getTipo()+", "+rist.getTipoRistorazione(), rist.getResidenzaLocation().toString(), rist.getPartitaIva(), this.getMediaRecensioni(), rist.getDescrizione(), informazioni, rist.toString());
 
     }
 

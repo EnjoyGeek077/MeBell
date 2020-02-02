@@ -29,7 +29,7 @@ public class Ristorazione extends Location{
 	    String infoSushiBar="Informazioni SushiBar:\nAllYouCanEat: "+this.sushiBar.isAllYouCanEat()+", Tipo sushi: "+this.sushiBar.getTipoSushi()+"\n";
 	   
 	    String StringaReturn="";
-	    
+	     
 	    
 	    StringaReturn=StringaReturn.replace("true", "si");
 	    StringaReturn=StringaReturn.replace("false", "no");
