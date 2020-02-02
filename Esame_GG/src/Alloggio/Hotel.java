@@ -15,10 +15,10 @@ public class Hotel extends Alloggio{
 	this.stelle=stelle;
     }
 
-    
+
     @Override
     public String toString() {
-	
+
 	return "Informazioni: \nNumero Camere:"+nCamere+", Numero Suite:"+nSuite+", Stelle:"+stelle;
     }
 

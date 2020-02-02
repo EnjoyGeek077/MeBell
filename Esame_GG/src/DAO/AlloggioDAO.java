@@ -64,7 +64,7 @@ public class AlloggioDAO {
 	return hotel;
 
     }
-    
+
     public BeB getAlloggioBeB(Alloggio alloggio) {
 	String query="SELECT * FROM beb WHERE cod=?";
 	BeB beb=null;
@@ -87,7 +87,7 @@ public class AlloggioDAO {
 	return beb;
 
     }
-    
+
     public Appartemento getAlloggioAppartamento(Alloggio alloggio) {
 	String query="SELECT * FROM appartamento WHERE cod=?";
 	Appartemento appartamento=null;

@@ -6,7 +6,7 @@ public class SushiBar {
     private String tipoSushi;
 
     public SushiBar(String allYouCanEat, String tipoSushi) {
-    	if(allYouCanEat=="si") {
+    	if(allYouCanEat.contentEquals("si")) {
 			this.allYouCanEat=true;
 		}else {
 			this.allYouCanEat=false;

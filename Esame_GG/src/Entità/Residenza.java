@@ -19,7 +19,7 @@ public class Residenza {
 	this.setCap(cap);
 	this.setComune(comune);
 	this.setCod_res(cod_res);
-	
+
     }
 
 

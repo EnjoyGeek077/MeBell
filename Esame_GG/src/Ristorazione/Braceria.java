@@ -8,23 +8,24 @@ public class Braceria {
 
 
     public Braceria(String asporto, String alcoliciArtigianali, String tipoCarne) {
-    	if(asporto=="si") {
-			this.asporto=true;
-		}else {
-			this.asporto=false;
-		}
-    	
-    	if(alcoliciArtigianali=="si") {
-			this.alcoliciArtigianali=true;
-		}else {
-			this.alcoliciArtigianali=false;
-		}
-    	
-    	this.setTipoCarne(tipoCarne);
+
+	if(asporto.equals("si")) {
+	    this.asporto=true;
+	}else {
+	    this.asporto=false;
 	}
-    
-    
-	public boolean isAsporto() {
+
+	if(alcoliciArtigianali.equals("si")) {
+	    this.alcoliciArtigianali=true;
+	}else {
+	    this.alcoliciArtigianali=false;
+	}
+
+	this.setTipoCarne(tipoCarne);
+    }
+
+
+    public boolean isAsporto() {
 	return asporto;
     }
     public void setAsporto(boolean asporto) {
@@ -36,10 +37,10 @@ public class Braceria {
     public void setAlcoliciArtigianali(boolean alcoliciArtigianali) {
 	this.alcoliciArtigianali = alcoliciArtigianali;
     }
-	public String getTipoCarne() {
-		return tipoCarne;
-	}
-	public void setTipoCarne(String tipoCarne) {
-		this.tipoCarne = tipoCarne;
-	}
+    public String getTipoCarne() {
+	return tipoCarne;
+    }
+    public void setTipoCarne(String tipoCarne) {
+	this.tipoCarne = tipoCarne;
+    }
 }

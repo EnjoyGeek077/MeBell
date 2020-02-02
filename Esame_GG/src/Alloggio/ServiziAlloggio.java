@@ -18,7 +18,7 @@ public class ServiziAlloggio {
 
 
     public ServiziAlloggio(String string, String string2, String string3, String string4, String string5, String string6, String string7, String string8, String string9, String string10, String string11, String string12) {
-	
+
 	if(string.equals("si")) {
 	    wi_fi=true;
 	}else {
@@ -30,7 +30,7 @@ public class ServiziAlloggio {
 	}else {
 	    dayUse=false;
 	} 
-	
+
 	if(string3.equals("si")) {
 	    spa=true;
 	}else {
@@ -91,23 +91,23 @@ public class ServiziAlloggio {
 	    parcheggio=false;
 	}
     }
-    
+
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Servizi:\nWiFi: ").append(wi_fi).append(",\tday use: ").append(dayUse).append(",\tspa: ")
-                .append(spa).append(",\npiscina: ").append(piscina).append(",\taria condizionata: ").append(ariaCondizionata)
-                .append(",\taccesso disabili: ").append(accessoDisabili).append(",\naccesso animali: ").append(accessoAnimali)
-                .append(",\tascensore:").append(ascensore).append(",\tservizio lavanderia:").append(servizioLavanderia)
-                .append(",\nservizio ristorazione: ").append(servizioRistorazione).append(",\ttv stereo: ").append(tv_stereo)
-                .append(",\tparcheggio: ").append(parcheggio).append(".");
+	StringBuilder builder = new StringBuilder();
+	builder.append("Servizi:\nWiFi: ").append(wi_fi).append(",\tday use: ").append(dayUse).append(",\tspa: ")
+	.append(spa).append(",\npiscina: ").append(piscina).append(",\taria condizionata: ").append(ariaCondizionata)
+	.append(",\taccesso disabili: ").append(accessoDisabili).append(",\naccesso animali: ").append(accessoAnimali)
+	.append(",\tascensore:").append(ascensore).append(",\tservizio lavanderia:").append(servizioLavanderia)
+	.append(",\nservizio ristorazione: ").append(servizioRistorazione).append(",\ttv stereo: ").append(tv_stereo)
+	.append(",\tparcheggio: ").append(parcheggio).append(".");
 
-        String s = builder.toString();
-        s = s.replace("true", "disponibile");
-        s = s.replace("false", "non disponibile");
-        return s;
+	String s = builder.toString();
+	s = s.replace("true", "disponibile");
+	s = s.replace("false", "non disponibile");
+	return s;
     }
-    
+
 
     public boolean isWi_fi() {
 	return wi_fi;

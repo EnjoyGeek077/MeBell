@@ -24,7 +24,7 @@ public class BeB extends Alloggio{
 
     @Override
     public String toString() {
-	
+
 	String s="Informazioni: \nNumero Camere:"+nCamere+", Stelle:"+stelle+", Bagno in coumune:"+bagnoInComune;
 	s = s.replace("true", "si");
 	s = s.replace("false", "no");

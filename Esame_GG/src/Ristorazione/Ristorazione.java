@@ -41,8 +41,6 @@ public class Ristorazione extends Location{
 	}
 
 
-
-
 	StringaReturn=StringaReturn.replace("true", "si");
 	StringaReturn=StringaReturn.replace("false", "no");
 
