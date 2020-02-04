@@ -23,6 +23,8 @@ import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Cursor;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Login extends JFrame {
 
@@ -52,6 +54,15 @@ public class Login extends JFrame {
 	textUsername.setColumns(10);
 
 	textPassword = new JPasswordField();
+	textPassword.addKeyListener(new KeyAdapter() {
+		@Override
+		public void keyPressed(KeyEvent e) {
+			if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+				String pass = new String(textPassword.getPassword());
+				controller.loginTry(textUsername.getText(),pass);
+			   }
+		}
+	});
 
 	JButton btnLogin = new JButton("");
 	btnLogin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

@@ -80,7 +80,7 @@ public class Register extends JFrame {
 	textUserN = new JTextField();
 	textUserN.addKeyListener(new KeyAdapter() {
 	    @Override
-	    public void keyPressed(KeyEvent e) {
+	    public void keyReleased(KeyEvent e) {
 
 		if(!controller.controlloUsername(textUserN)) {
 		    lblControlloUsername.setForeground(Color.RED); 
@@ -99,7 +99,7 @@ public class Register extends JFrame {
 	passwordField = new JPasswordField();
 	passwordField.addKeyListener(new KeyAdapter() {
 	    @Override
-	    public void keyPressed(KeyEvent e) {
+	    public void keyReleased(KeyEvent e) {
 
 		if(!controller.controlloPass(passwordField)) {
 		    lblControlloPassword.setForeground(Color.RED); 

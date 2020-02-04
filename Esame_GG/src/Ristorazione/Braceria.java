@@ -10,15 +10,15 @@ public class Braceria {
     public Braceria(String asporto, String alcoliciArtigianali, String tipoCarne) {
 
 	if(asporto.equals("si")) {
-	    this.asporto=true;
+	    setAsporto(true);
 	}else {
-	    this.asporto=false;
+	    setAsporto(false);
 	}
 
 	if(alcoliciArtigianali.equals("si")) {
-	    this.alcoliciArtigianali=true;
+	    setAlcoliciArtigianali(true);
 	}else {
-	    this.alcoliciArtigianali=false;
+	    setAlcoliciArtigianali(false);
 	}
 
 	this.setTipoCarne(tipoCarne);

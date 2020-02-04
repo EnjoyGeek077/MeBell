@@ -15,8 +15,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import Alloggio.Alloggio;
-import Alloggio.ServiziAlloggio;
+import Alloggio.*;
 import Attrazione.Attrazione;
 
 import java.util.ArrayList;
@@ -31,16 +30,11 @@ import Swing.HomePage;
 import Swing.LocationPage;
 import Entità.Location;
 import Entità.Utente;
-import Ristorazione.Braceria;
-import Ristorazione.Pizzeria;
-import Ristorazione.Ristorazione;
-import Ristorazione.SushiBar;
+import Ristorazione.*;
 import Swing.Login;
 import Swing.Register;
 import Swing.VediRecensioni;
-import SwingDialog.EliminaRecensione;
-import SwingDialog.InserisciRecensione;
-import SwingDialog.ModificaRecensione;
+import SwingDialog.*;
 import Utility.ModelloTabella;
 
 public class Controller {
