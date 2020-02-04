@@ -48,11 +48,23 @@ public class EliminaRecensione extends JDialog {
 	});
 	btnRifiuto.setBounds(351, 266, 89, 23);
 	panel.add(btnRifiuto);
-
-	JLabel lblEliminareLaRecensione = new JLabel("Eliminare la recensione?");
-	lblEliminareLaRecensione.setForeground(new Color(255, 255, 255));
-	lblEliminareLaRecensione.setFont(new Font("Arial", Font.BOLD, 18));
-	lblEliminareLaRecensione.setBounds(10, 11, 430, 14);
-	panel.add(lblEliminareLaRecensione);
+	
+	JPanel panelTitle = new JPanel();
+	panelTitle.setBackground(new Color(255, 0, 0));
+	panelTitle.setBounds(0, 0, 450, 46);
+	panel.add(panelTitle);
+	panelTitle.setLayout(null);
+	
+		JLabel lblEliminareLaRecensione = new JLabel("Eliminare la recensione?");
+		lblEliminareLaRecensione.setBounds(116, 21, 217, 14);
+		panelTitle.add(lblEliminareLaRecensione);
+		lblEliminareLaRecensione.setForeground(new Color(255, 255, 255));
+		lblEliminareLaRecensione.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 18));
+		
+		JLabel lblAvvertenza = new JLabel("<html>Ehi ciao "+controller.getUtente()+", <br/> stai per eliminare la recensione alla location "+controller.getLocationDaVedere().getNome()+"<br/> vuoi procedere?");
+		lblAvvertenza.setForeground(Color.WHITE);
+		lblAvvertenza.setFont(new Font("Arial Black", Font.BOLD, 18));
+		lblAvvertenza.setBounds(10, 57, 430, 161);
+		panel.add(lblAvvertenza);
     }
 }

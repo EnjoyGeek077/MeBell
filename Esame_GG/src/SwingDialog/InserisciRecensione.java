@@ -42,12 +42,6 @@ public class InserisciRecensione extends JDialog {
 	contentPanel.add(panel);
 	panel.setLayout(null);
 	
-	JLabel lblInserisciRecensione = new JLabel("Inserisci Recensione");
-	lblInserisciRecensione.setFont(new Font("Arial", Font.BOLD, 18));
-	lblInserisciRecensione.setForeground(new Color(255, 255, 255));
-	lblInserisciRecensione.setBounds(10, 11, 430, 14);
-	panel.add(lblInserisciRecensione);
-	
 	JButton btnAnnulla = new JButton("");
 	btnAnnulla.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
@@ -148,11 +142,23 @@ public class InserisciRecensione extends JDialog {
 	panel.add(stella5);
 	
 	JLabel lblDescrizione = new JLabel("Descrizione");
+	lblDescrizione.setFont(new Font("Arial", Font.BOLD, 15));
 	lblDescrizione.setBounds(10, 100, 89, 14);
 	panel.add(lblDescrizione);
 	
 	JLabel lblTitoloRecensione = new JLabel("Titolo Recensione");
+	lblTitoloRecensione.setFont(new Font("Arial", Font.BOLD, 15));
 	lblTitoloRecensione.setBounds(10, 41, 146, 14);
 	panel.add(lblTitoloRecensione);
+	
+	JPanel panelTitle = new JPanel();
+	panelTitle.setBackground(Color.RED);
+	panelTitle.setBounds(0, 0, 450, 30);
+	panel.add(panelTitle);
+	
+	JLabel label = new JLabel("Inserisci Recensione");
+	label.setForeground(Color.WHITE);
+	label.setFont(new Font("Arial", Font.BOLD, 18));
+	panelTitle.add(label);
     }
 }
