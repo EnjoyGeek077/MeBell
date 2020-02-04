@@ -38,6 +38,28 @@ public class RecensioneDAO {
 	return mediaLocale;
     }
 
+    public boolean esisteRecensione(String username, String LocationCOD) {
+
+	String query="SELECT * FROM recensione WHERE creatore=? && cod_locale=?";
+
+	try {
+	    PreparedStatement getRecensione = controller.getConnection().prepareStatement(query);
+	    getRecensione.setString(1, username);
+	    getRecensione.setString(2, LocationCOD);
+	    ResultSet rs = getRecensione.executeQuery();
+
+	    if(!rs.next()) {
+		return false;
+	    }
+
+	} catch (SQLException e) {
+	    e.printStackTrace();
+	}
+
+	return true;
+
+    }
+
     public ArrayList<Recensione> getAllRecensioniDiLocation(String ID){
 
 	String query = "SELECT * FROM recensione WHERE cod_locale=?";
@@ -63,56 +85,81 @@ public class RecensioneDAO {
     }
 
     public void inserisciRecensione(Recensione recensione) throws SQLException {
-    	String query = "Insert into recensione values(?,?,?,?,?)";
-    	
-    	try {
-    		PreparedStatement inserisciRecensione = controller.getConnection().prepareStatement(query);
-			inserisciRecensione.setString(1, recensione.getCod());
-			inserisciRecensione.setString(2, recensione.getCreatore());
-			inserisciRecensione.setInt(3, recensione.getVoto());
-			inserisciRecensione.setString(4, recensione.getTitolo());
-			inserisciRecensione.setString(5, recensione.getTesto());
-			inserisciRecensione.executeUpdate();
-			
-		} catch (SQLException e) {
-			throw e;
-		}	
+	String query = "INSERT INTO recensione VALUES(?,?,?,?,?)";
+
+	try {
+	    PreparedStatement inserisciRecensione = controller.getConnection().prepareStatement(query);
+	    inserisciRecensione.setString(1, recensione.getCod());
+	    inserisciRecensione.setString(2, recensione.getCreatore());
+	    inserisciRecensione.setInt(3, recensione.getVoto());
+	    inserisciRecensione.setString(4, recensione.getTitolo());
+	    inserisciRecensione.setString(5, recensione.getTesto());
+	    inserisciRecensione.executeUpdate();
+
+	} catch (SQLException e) {
+	    throw e;
+	}	
     }
-    
-    public void rimuoviRecensione(String codLoc,String Username) throws SQLException {
-    	String query = "delete from recensione where (cod_locale=? && creatore=?)";
-    	
-    	try {
-    		PreparedStatement rimuoviRecensione = controller.getConnection().prepareStatement(query);
-			rimuoviRecensione.setString(1, codLoc);
-			rimuoviRecensione.setString(2, Username);
-			
-			if(rimuoviRecensione.executeUpdate()<1) {
-				throw new SQLException();
-			}
-			
-		} catch (SQLException e) {
-			throw e;
-		}	
+
+    public void rimuoviRecensione(String codLoc, String Username) throws SQLException {
+	String query = "DELETE FROM recensione WHERE (cod_locale=? && creatore=?)";
+
+	try {
+	    PreparedStatement rimuoviRecensione = controller.getConnection().prepareStatement(query);
+	    rimuoviRecensione.setString(1, codLoc);
+	    rimuoviRecensione.setString(2, Username);
+
+	    if(rimuoviRecensione.executeUpdate()<1) {
+		throw new SQLException();
+	    }
+
+	} catch (SQLException e) {
+	    throw e;
+	}	
     }
-    
-    public void AggiornaRecensione(Recensione recensione) throws SQLException {
-    	String query = "update recensione set voto=?,titolo=?,testo=? where (cod_locale=? && creatore=?)";
-    	
-    	try {
-    		PreparedStatement inserisciRecensione = controller.getConnection().prepareStatement(query);
-    		inserisciRecensione.setInt(3, recensione.getVoto());
-    		inserisciRecensione.setString(4, recensione.getTitolo());
-			inserisciRecensione.setString(5, recensione.getTesto());
-			inserisciRecensione.setString(1, recensione.getCod());
-			inserisciRecensione.setString(2, recensione.getCreatore());
-			
-			if(inserisciRecensione.executeUpdate()<1) {
-				throw new SQLException();
-			}
-			
-		} catch (SQLException e) {
-			throw e;
-		}	
+
+    public void aggiornaRecensione(Recensione recensione) throws SQLException {
+	String query = "UPDATE recensione SET voto=?,titolo=?,testo=? where (cod_locale=? && creatore=?)";
+
+	try {
+	    PreparedStatement inserisciRecensione = controller.getConnection().prepareStatement(query);
+	    inserisciRecensione.setInt(3, recensione.getVoto());
+	    inserisciRecensione.setString(4, recensione.getTitolo());
+	    inserisciRecensione.setString(5, recensione.getTesto());
+	    inserisciRecensione.setString(1, recensione.getCod());
+	    inserisciRecensione.setString(2, recensione.getCreatore());
+
+	    if(inserisciRecensione.executeUpdate()<1) {
+		throw new SQLException();
+	    }
+
+	} catch (SQLException e) {
+	    throw e;
+	}	
+    }
+
+    public Recensione getRecensioneUtenteLoggato(String username, String LocationCOD) {
+	String query="SELECT * FROM recensione WHERE creatore=? && cod_locale=?";
+	Recensione recensioneUtente = null;
+
+	try {
+	    PreparedStatement getRecensione = controller.getConnection().prepareStatement(query);
+	    getRecensione.setString(1, username);
+	    getRecensione.setString(2, LocationCOD);
+	    ResultSet rs = getRecensione.executeQuery();
+
+	    while(rs.next()) {
+		recensioneUtente = new Recensione(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5));
+	    }
+
+	    rs.close();
+	    getRecensione.close();
+
+	} catch (SQLException e) {
+	    e.printStackTrace();
+	}
+
+	return recensioneUtente;
+
     }
 }
