@@ -40,7 +40,7 @@ public class RecensioneDAO {
 
     public boolean esisteRecensione(String username, String LocationCOD) {
 
-	String query="SELECT * FROM recensione WHERE creatore=? && cod_locale=?";
+	String query="SELECT * FROM recensione WHERE creatore=? AND cod_locale=?";
 
 	try {
 	    PreparedStatement getRecensione = controller.getConnection().prepareStatement(query);
@@ -102,7 +102,7 @@ public class RecensioneDAO {
     }
 
     public void rimuoviRecensione(String codLoc, String Username) throws SQLException {
-	String query = "DELETE FROM recensione WHERE (cod_locale=? && creatore=?)";
+	String query = "DELETE FROM recensione WHERE (cod_locale=? AND creatore=?)";
 
 	try {
 	    PreparedStatement rimuoviRecensione = controller.getConnection().prepareStatement(query);
@@ -119,7 +119,7 @@ public class RecensioneDAO {
     }
 
     public void aggiornaRecensione(Recensione recensione) throws SQLException {
-	String query = "UPDATE recensione SET voto=?,titolo=?,testo=? where (cod_locale=? && creatore=?)";
+	String query = "UPDATE recensione SET voto=?,titolo=?,testo=? where (cod_locale=? AND creatore=?)";
 
 	try {
 	    PreparedStatement inserisciRecensione = controller.getConnection().prepareStatement(query);
@@ -130,7 +130,7 @@ public class RecensioneDAO {
 	    inserisciRecensione.setString(2, recensione.getCreatore());
 
 	    if(inserisciRecensione.executeUpdate()<1) {
-		throw new SQLException();
+	    	throw new SQLException();
 	    }
 
 	} catch (SQLException e) {
@@ -139,7 +139,7 @@ public class RecensioneDAO {
     }
 
     public Recensione getRecensioneUtenteLoggato(String username, String LocationCOD) {
-	String query="SELECT * FROM recensione WHERE creatore=? && cod_locale=?";
+	String query="SELECT * FROM recensione WHERE creatore=? AND cod_locale=?";
 	Recensione recensioneUtente = null;
 
 	try {
@@ -147,9 +147,10 @@ public class RecensioneDAO {
 	    getRecensione.setString(1, username);
 	    getRecensione.setString(2, LocationCOD);
 	    ResultSet rs = getRecensione.executeQuery();
+	    
 
 	    while(rs.next()) {
-		recensioneUtente = new Recensione(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5));
+	    	recensioneUtente = new Recensione(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5));
 	    }
 
 	    rs.close();

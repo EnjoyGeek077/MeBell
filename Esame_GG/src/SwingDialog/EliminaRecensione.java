@@ -16,10 +16,11 @@ import java.awt.Font;
 
 public class EliminaRecensione extends JDialog {
 
-    private final JPanel contentPanel = new JPanel();
+    private JPanel contentPanel = new JPanel();
     private Controller controller;
+    private JLabel lblAvvertenza;
 
-    public EliminaRecensione(Controller ctrl) {
+	public EliminaRecensione(Controller ctrl) {
 	setUndecorated(true);
 	controller=ctrl;
 	setBounds(100, 100, 450, 300);
@@ -35,6 +36,14 @@ public class EliminaRecensione extends JDialog {
 	panel.setLayout(null);
 	{
 	    JButton btnVaBene = new JButton("V");
+	    btnVaBene.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    		controller.eliminaRecensione();
+	    		setVisible(false);
+	    		controller.update();
+	    		controller.openVediRecensioni();
+	    	}
+	    });
 	    btnVaBene.setBounds(10, 266, 89, 23);
 	    panel.add(btnVaBene);
 	}
@@ -61,10 +70,18 @@ public class EliminaRecensione extends JDialog {
 		lblEliminareLaRecensione.setForeground(new Color(255, 255, 255));
 		lblEliminareLaRecensione.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 18));
 		
-		JLabel lblAvvertenza = new JLabel("<html>Ehi ciao "+controller.getUtente()+", <br/> stai per eliminare la recensione alla location "+controller.getLocationDaVedere().getNome()+"<br/> vuoi procedere?");
+		lblAvvertenza = new JLabel("");
 		lblAvvertenza.setForeground(Color.WHITE);
 		lblAvvertenza.setFont(new Font("Arial Black", Font.BOLD, 18));
 		lblAvvertenza.setBounds(10, 57, 430, 161);
 		panel.add(lblAvvertenza);
     }
+	
+
+    public JLabel getLblAvvertenza() {
+		return lblAvvertenza;
+	}
+	public void setLblAvvertenza(String text) {
+		this.lblAvvertenza.setText(text);
+	}
 }

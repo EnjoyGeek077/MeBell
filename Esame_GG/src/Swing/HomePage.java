@@ -38,11 +38,11 @@ public class HomePage extends JFrame {
     private JPanel contentPane;
     private Controller controller;    
     private JTextField textNomeLocale;
+    private JLabel lblLoggatoCome;
+	int filtro_media_voto=5;
+    private ModelloTabella model= new ModelloTabella();
 
-    int filtro_media_voto=5;
-    ModelloTabella model= new ModelloTabella();
-
-    public HomePage(Controller ctrl) {
+	public HomePage(Controller ctrl) {
 	setMinimumSize(new Dimension(780, 413));
 	setTitle("HomePage");
 	controller = ctrl;
@@ -259,7 +259,7 @@ public class HomePage extends JFrame {
 	btnStella5.setContentAreaFilled(false);
 	btnStella5.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
 	
-	JLabel lblLoggatoCome = new JLabel("Loggato come: "+controller.getUtente().getUsername());
+	lblLoggatoCome = new JLabel("Loggato come: ");
 	lblLoggatoCome.setFont(new Font("Arial", Font.BOLD, 16));
 
 	GroupLayout gl_contentPane = new GroupLayout(contentPane);
@@ -387,4 +387,17 @@ public class HomePage extends JFrame {
 	panel.setLayout(gl_panel);
 	contentPane.setLayout(gl_contentPane);
     }
+	
+	public ModelloTabella getModel() {
+		return model;
+	}
+	public void setModel(ModelloTabella model) {
+		this.model = model;
+	}
+	public JLabel getLblLoggatoCome() {
+		return lblLoggatoCome;
+	}
+	public void setLblLoggatoCome(String utente) {
+		this.lblLoggatoCome.setText("Loggato come: "+utente);
+	}
 }

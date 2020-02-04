@@ -48,10 +48,7 @@ public class Controller {
     ModificaRecensione modificarecensione;
     InserisciRecensione inseriscirecensione;
 
-    ModelloTabella modelTabellaLocation;
-    ModelloTabella modelTabellaRecensioni;
-
-    private Utente utente=null;
+    private Utente utente;
     private String IDlocationScelta;
     private Location locationDaVedere;
     private int filtroMediaVoto;
@@ -59,9 +56,7 @@ public class Controller {
     private ArrayList<Residenza> residenze;
 
     public static void main(String[] args) {
-
-	Controller ctrl = new Controller();
-
+    	Controller ctrl = new Controller();
     }
 
     public Controller() {
@@ -104,6 +99,7 @@ public class Controller {
 	if (utente!=null && utente.getPassword().equals(pass)) {
 	    JOptionPane.showMessageDialog(null, "Login effettuato, ciao"+" "+this.utente.getUsername(), "Esito login", JOptionPane.INFORMATION_MESSAGE);	
 	    login.setVisible(false);
+		homepage.setLblLoggatoCome(utente.getUsername());
 	    homepage.setVisible(true);
 	}else {
 	    JOptionPane.showMessageDialog(null, "Username o password errate", "Errore", JOptionPane.ERROR_MESSAGE);
@@ -202,35 +198,49 @@ public class Controller {
     }
 
     public void riempiTabellaRecensioni() {
-
+    	ModelloTabella model = vedirecensioni.getModel();
+    	model.getDataVector().removeAllElements();
 	for(Recensione r : this.locationDaVedere.getRecensiondiLocation()) {
-
-	    modelTabellaRecensioni.addRow(new Object[] {r.getCreatore(), r.getTitolo(), r.getVoto()});
-	    vedirecensioni.setModel(modelTabellaRecensioni);
+		model.addRow(new Object[] {r.getCreatore(), r.getTitolo(), r.getVoto()});
 	}
-
-	vedirecensioni.getModel().fireTableDataChanged();
+	model.fireTableDataChanged();
+	vedirecensioni.setModel(model);
     }
 
     public boolean getLocationFromTable(JTable tabella) {
 
-	String cod_locale;
-	int rowSelected;
+    	String cod_locale;
+    	int rowSelected;
 
-	if(!tabella.getSelectionModel().isSelectionEmpty()) {
+    	if(!tabella.getSelectionModel().isSelectionEmpty()) {
 
-	    rowSelected=tabella.getSelectedRow();
-	    cod_locale=(String) tabella.getValueAt(rowSelected, 1);
-	    this.setLocationScelta(cod_locale);
-	    this.homepage.setVisible(false);
-	    this.openLocationPage();
-	    return true;
+    		rowSelected=tabella.getSelectedRow();
+    		cod_locale=(String) tabella.getValueAt(rowSelected, 1);
+    		this.setLocationScelta(cod_locale);
+    		this.homepage.setVisible(false);
+    		this.openLocationPage();
+    		return true;
 
-	}else {
-	    JOptionPane.showMessageDialog(null, "Selzeziona una riga", "Error", JOptionPane.ERROR_MESSAGE);
-	    return false;
-	}
+    	}else {
+    		JOptionPane.showMessageDialog(null, "Selzeziona una riga", "Error", JOptionPane.ERROR_MESSAGE);
+    		return false;
+    	}
     }
+    
+
+	public void getTestoRecensioneDaTab(JTable table) {
+		String username;
+		int rowSelected;
+		
+		if(!table.getSelectionModel().isSelectionEmpty()) {
+			rowSelected = table.getSelectedRow();
+			username=(String) table.getValueAt(rowSelected, 0);
+			RecensioneDAO recDao =new RecensioneDAO(this);
+			Recensione recensionePresa = recDao.getRecensioneUtenteLoggato(username, locationDaVedere.getCod());
+			vedirecensioni.setTextAreaRecensione(recensionePresa.getTesto());
+		}
+		
+	}
 
     public ArrayList<String> getComuni() {
 	ResidenzaDAO resDAO = new ResidenzaDAO(this);
@@ -239,12 +249,12 @@ public class Controller {
 
     public void getLocationInformation() {
 
-	LocationDAO locDAO = new LocationDAO(this);
-	ResidenzaDAO resDAO = new ResidenzaDAO(this);
-	RecensioneDAO recDAO = new RecensioneDAO(this);
-	this.locationDaVedere=locDAO.getLocationFromID(IDlocationScelta);
-	this.locationDaVedere.setResidenzaLocation(resDAO.getResidenzaFromID(this.locationDaVedere.getCod_residenza()));
-	this.locationDaVedere.setRecensiondiLocation(recDAO.getAllRecensioniDiLocation(IDlocationScelta));
+    	LocationDAO locDAO = new LocationDAO(this);
+    	ResidenzaDAO resDAO = new ResidenzaDAO(this);
+    	RecensioneDAO recDAO = new RecensioneDAO(this);
+    	this.locationDaVedere=locDAO.getLocationFromID(IDlocationScelta);
+    	this.locationDaVedere.setResidenzaLocation(resDAO.getResidenzaFromID(this.locationDaVedere.getCod_residenza()));
+    	this.locationDaVedere.setRecensiondiLocation(recDAO.getAllRecensioniDiLocation(IDlocationScelta));
 
     }
 
@@ -359,6 +369,25 @@ public class Controller {
 	return controllo;
     }
 
+    public void eliminaRecensione() {
+		RecensioneDAO recDAO = new RecensioneDAO(this);
+		try {
+			recDAO.rimuoviRecensione(locationDaVedere.getCod(), utente.getUsername());
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "Errore durante la cancellazione", "Error", JOptionPane.ERROR_MESSAGE);
+			e.printStackTrace();
+		}
+		
+		
+	}
+    
+    public void update() {
+    	this.getLocationInformation();
+    	this.aggiornaLocationPage();
+		this.riempiTabellaRecensioni();
+		this.aggiornaTable(homepage.getModel());
+
+    }
 
     //Get connessione
     public Connection getConnection() {
@@ -465,6 +494,7 @@ public class Controller {
     }
     public void openVediRecensioni() {
 	vedirecensioni.setVisible(true);
+	eliminarecensione.setLblAvvertenza("<html>Ehi ciao "+utente.getUsername()+", <br/> stai per eliminare la recensione alla location "+locationDaVedere.getNome()+"<br/> vuoi procedere?");
     }
     public void openEliminaDialog() {
 	eliminarecensione.setVisible(true);
@@ -475,4 +505,7 @@ public class Controller {
     public void openInserisciDialog() {
 	inseriscirecensione.setVisible(true);
     }
+
+	
+
 }
