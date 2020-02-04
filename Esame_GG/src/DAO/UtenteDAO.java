@@ -1,15 +1,9 @@
 package DAO;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
-import java.sql.Statement;
 
-import javax.swing.JOptionPane;
-
-import Connessione.DatabaseConnection;
 import Controller.Controller;
 import Entità.Utente;
 

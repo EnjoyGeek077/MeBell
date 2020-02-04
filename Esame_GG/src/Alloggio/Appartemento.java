@@ -1,7 +1,5 @@
 package Alloggio;
 
-import Entità.Location;
-
 public class Appartemento extends Alloggio{
 
     private int n_vani;

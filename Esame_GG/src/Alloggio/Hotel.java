@@ -1,7 +1,5 @@
 package Alloggio;
 
-import Entità.Location;
-
 public class Hotel extends Alloggio{
 
     private int nCamere;

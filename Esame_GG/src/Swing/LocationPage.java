@@ -1,8 +1,5 @@
 package Swing;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -20,7 +17,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import java.awt.Dimension;
-import javax.swing.JTextPane;
 import javax.swing.JTextArea;
 import java.awt.event.MouseAdapter;
 import javax.swing.JScrollPane;

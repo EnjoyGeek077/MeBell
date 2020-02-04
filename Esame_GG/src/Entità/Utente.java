@@ -11,10 +11,10 @@ public class Utente {
 
     public Utente(String user, String first, String last, String passw) {
 
-	username=user;
-	nome=first;
-	cognome=last;
-	password=passw;
+	setUsername(user);
+	setNome(first);
+	setCognome(last);
+	setPassword(passw);
 
     }
 
@@ -33,14 +33,6 @@ public class Utente {
 	this.cognome = cognome;
     }
 
-    public String getUsername() {
-	return username;
-    }
-
-    public void setNickname(String nickname) {
-	this.username = nickname;
-    }
-
     public String getPassword() {
 	return password;
     }
@@ -48,5 +40,13 @@ public class Utente {
     public void setPassword(String password) {
 	this.password = password;
     }
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
 }

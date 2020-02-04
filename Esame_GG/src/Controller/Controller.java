@@ -1,8 +1,6 @@
 package Controller;
 
 import java.awt.Color;
-import java.awt.Image;
-import java.lang.reflect.Array;
 import java.sql.Connection;
 
 import java.sql.SQLException;
@@ -10,7 +8,6 @@ import java.sql.SQLIntegrityConstraintViolationException;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;

@@ -4,10 +4,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import Alloggio.Alloggio;
-import Alloggio.Appartemento;
-import Alloggio.BeB;
-import Alloggio.Hotel;
 import Controller.Controller;
 import Entità.Location;
 import Ristorazione.Braceria;
