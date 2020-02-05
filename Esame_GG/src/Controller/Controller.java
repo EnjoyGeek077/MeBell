@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
@@ -375,6 +376,18 @@ public class Controller {
 	return controllo;
     }
 
+    public void visualizzaOldRecensioneInDialog() {
+	
+	RecensioneDAO recDAO = new RecensioneDAO(this);
+	Recensione recensioneUtenteLoggato = recDAO.getRecensioneUtenteLoggato(utente.getUsername(), locationDaVedere.getCod());
+	
+	modificarecensione.setOldReview(recensioneUtenteLoggato.getTitolo(), recensioneUtenteLoggato.getTesto(), recensioneUtenteLoggato.getVoto());
+    }
+    
+    public void modificaRecensione(JTextField titolo, JTextArea testo, int voto) {
+	
+    }
+    
     public void eliminaRecensione() {
 	RecensioneDAO recDAO = new RecensioneDAO(this);
 	try {
