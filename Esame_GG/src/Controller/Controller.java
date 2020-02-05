@@ -492,7 +492,7 @@ public class Controller {
 
     private void setDynamicLabel() {
 	homepage.setLblLoggatoCome(utente.getUsername());
-	eliminarecensione.setLblAvvertenza("<html>Ehi ciao "+utente.getUsername()+", <br/> stai per eliminare la recensione alla location "+locationDaVedere.getNome()+"<br/> vuoi procedere?");
+	eliminarecensione.setLblAvvertenza("<html>Ehi ciao "+utente.getUsername()+", <br/> stai per eliminare la recensione alla location "+"<br/> vuoi procedere?");
     }
 
     public void updateSistema() {

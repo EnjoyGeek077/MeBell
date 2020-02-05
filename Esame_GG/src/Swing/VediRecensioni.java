@@ -35,6 +35,7 @@ public class VediRecensioni extends JFrame {
     ModelloTabella model= new ModelloTabella();
     private JTable table;
     private JTextArea textAreaRecensione;
+    private int filtro_media_voto;
 
     public VediRecensioni(Controller ctrl) {
 	setTitle("Vedi Recensioni");
@@ -61,7 +62,6 @@ public class VediRecensioni extends JFrame {
 	    public void actionPerformed(ActionEvent e) {
 		if(!controller.controlloSeHaRecensioni()) {
 		    setVisible(false);
-		    controller.visualizzaOldRecensioneInDialog();
 		    controller.openInserisciDialog();
 		    textAreaRecensione.setText("");
 		}else {
@@ -121,30 +121,97 @@ public class VediRecensioni extends JFrame {
 		}
 	});
 	
-	JButton button = new JButton("");
-	button.setIcon(new ImageIcon(VediRecensioni.class.getResource("/ButtonIcon/Stella1.png")));
-	button.setContentAreaFilled(false);
-	button.setBorder(null);
+	JButton btnStella1 = new JButton("");
+	JButton btnStella2 = new JButton("");
+	JButton btnStella3 = new JButton("");
+	JButton btnStella4 = new JButton("");
+	JButton btnStella5 = new JButton("");
 	
-	JButton button_1 = new JButton("");
-	button_1.setIcon(new ImageIcon(VediRecensioni.class.getResource("/ButtonIcon/Stella1.png")));
-	button_1.setContentAreaFilled(false);
-	button_1.setBorder(null);
+	btnStella1.addMouseListener(new MouseAdapter() {
+	    @Override
+	    public void mouseClicked(MouseEvent e) {
+		btnStella2.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
+		btnStella3.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
+		btnStella4.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
+		btnStella5.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
+
+		setFiltro_media_voto(1);
+
+	    }
+	});
+
+	btnStella2.addMouseListener(new MouseAdapter() {
+	    @Override
+	    public void mouseClicked(MouseEvent e) {
+		btnStella2.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
+		btnStella3.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
+		btnStella4.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
+		btnStella5.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
+
+		setFiltro_media_voto(2);
+
+	    }
+	});
+
+	btnStella3.addMouseListener(new MouseAdapter() {
+	    @Override
+	    public void mouseClicked(MouseEvent e) {
+		btnStella2.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
+		btnStella3.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
+		btnStella4.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
+		btnStella5.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
+
+		setFiltro_media_voto(3);
+
+	    }
+	});
+
+
+	btnStella4.addMouseListener(new MouseAdapter() {
+	    @Override
+	    public void mouseClicked(MouseEvent e) {
+		btnStella2.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
+		btnStella3.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
+		btnStella4.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
+		btnStella5.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
+
+		setFiltro_media_voto(4);
+
+	    }
+	});
+
+	btnStella5.addMouseListener(new MouseAdapter() {
+	    @Override
+	    public void mouseClicked(MouseEvent e) {
+		btnStella2.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
+		btnStella3.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
+		btnStella4.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
+		btnStella5.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
+
+		setFiltro_media_voto(5);
+
+	    }
+	});
 	
-	JButton button_2 = new JButton("");
-	button_2.setIcon(new ImageIcon(VediRecensioni.class.getResource("/ButtonIcon/Stella1.png")));
-	button_2.setContentAreaFilled(false);
-	button_2.setBorder(null);
+	btnStella1.setIcon(new ImageIcon(VediRecensioni.class.getResource("/ButtonIcon/Stella1.png")));
+	btnStella1.setContentAreaFilled(false);
+	btnStella1.setBorder(null);
+
+	btnStella2.setIcon(new ImageIcon(VediRecensioni.class.getResource("/ButtonIcon/Stella1.png")));
+	btnStella2.setContentAreaFilled(false);
+	btnStella2.setBorder(null);
 	
-	JButton button_3 = new JButton("");
-	button_3.setIcon(new ImageIcon(VediRecensioni.class.getResource("/ButtonIcon/Stella1.png")));
-	button_3.setContentAreaFilled(false);
-	button_3.setBorder(null);
+	btnStella3.setIcon(new ImageIcon(VediRecensioni.class.getResource("/ButtonIcon/Stella1.png")));
+	btnStella3.setContentAreaFilled(false);
+	btnStella3.setBorder(null);
 	
-	JButton button_4 = new JButton("");
-	button_4.setIcon(new ImageIcon(VediRecensioni.class.getResource("/ButtonIcon/Stella1.png")));
-	button_4.setContentAreaFilled(false);
-	button_4.setBorder(null);
+	btnStella4.setIcon(new ImageIcon(VediRecensioni.class.getResource("/ButtonIcon/Stella1.png")));
+	btnStella4.setContentAreaFilled(false);
+	btnStella4.setBorder(null);
+	
+	btnStella5.setIcon(new ImageIcon(VediRecensioni.class.getResource("/ButtonIcon/Stella1.png")));
+	btnStella5.setContentAreaFilled(false);
+	btnStella5.setBorder(null);
 	
 	JLabel label = new JLabel("");
 	label.setIcon(new ImageIcon(VediRecensioni.class.getResource("/ButtonIcon/ConfermaICON1.png")));
@@ -171,15 +238,15 @@ public class VediRecensioni extends JFrame {
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblFiltri, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(button, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnStella1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
 							.addGap(6)
-							.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnStella2, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
 							.addGap(6)
-							.addComponent(button_2, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnStella3, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
 							.addGap(6)
-							.addComponent(button_3, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnStella4, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
 							.addGap(6)
-							.addComponent(button_4, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(btnStella5, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)))
 					.addGroup(gl_contentPane.createSequentialGroup()
 						.addComponent(label)
 						.addGap(10))))
@@ -206,11 +273,11 @@ public class VediRecensioni extends JFrame {
 						.addComponent(lblFiltri)
 						.addGap(12)
 						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-							.addComponent(button, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-							.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-							.addComponent(button_2, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-							.addComponent(button_3, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-							.addComponent(button_4, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
+							.addComponent(btnStella1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnStella2, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnStella3, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnStella4, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnStella5, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
 						.addPreferredGap(ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
 						.addComponent(label)))
 				.addContainerGap())
@@ -277,4 +344,12 @@ public class VediRecensioni extends JFrame {
     public void setModel(ModelloTabella model) {
 	table.setModel(model);
     }
+
+	public int getFiltro_media_voto() {
+		return filtro_media_voto;
+	}
+
+	public void setFiltro_media_voto(int filtro_media_voto) {
+		this.filtro_media_voto = filtro_media_voto;
+	}
 }

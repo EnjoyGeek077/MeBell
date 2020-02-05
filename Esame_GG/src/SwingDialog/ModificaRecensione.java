@@ -155,10 +155,11 @@ public class ModificaRecensione extends JDialog {
 		JScrollPane scrollPaneNEW = new JScrollPane();
 		scrollPaneNEW.setBounds(10, 185, 430, 70);
 		panel.add(scrollPaneNEW);
-		textAreaRecensioneNEW.setLineWrap(true);
-		scrollPaneNEW.setViewportView(textAreaRecensioneNEW);
+		
 
 		textAreaRecensioneNEW = new JTextArea();
+		textAreaRecensioneNEW.setLineWrap(true);
+		scrollPaneNEW.setViewportView(textAreaRecensioneNEW);
 		scrollPaneNEW.setViewportView(textAreaRecensioneNEW);
 		textAreaRecensioneNEW.setText("Recensione NEW...");
 		textAreaRecensioneNEW.setRows(3);
