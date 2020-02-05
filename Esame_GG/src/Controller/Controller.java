@@ -388,7 +388,7 @@ public class Controller {
 	String getTitolo = titolo.getText();
 	String getTesto = testo.getText();
 	
-	Recensione recensioneNuova = new Recensione(locationDaVedere.getCod(), utente.getUsername(), voto, getTitolo, getTesto);
+	Recensione recensioneNuova = new Recensione(locationDaVedere.getCod(), utente.getUsername(), voto, null, getTitolo, getTesto);
 	RecensioneDAO recDAO = new RecensioneDAO(this);
 	
 	try {
@@ -404,7 +404,7 @@ public class Controller {
 	String getTitolo = titolo.getText();
 	String getTesto = testo.getText();
 
-	Recensione recensioneNuova = new Recensione(locationDaVedere.getCod(), utente.getUsername(), voto, getTitolo, getTesto);
+	Recensione recensioneNuova = new Recensione(locationDaVedere.getCod(), utente.getUsername(), voto, null, getTitolo, getTesto);
 	RecensioneDAO recDAO = new RecensioneDAO(this);
 
 	try {

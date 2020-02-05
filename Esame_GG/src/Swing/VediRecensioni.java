@@ -27,6 +27,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Cursor;
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class VediRecensioni extends JFrame {
 
@@ -217,6 +219,9 @@ public class VediRecensioni extends JFrame {
 	
 	JLabel label = new JLabel("");
 	label.setIcon(new ImageIcon(VediRecensioni.class.getResource("/ButtonIcon/ConfermaICON1.png")));
+	
+	JComboBox comboBox = new JComboBox();
+	comboBox.setModel(new DefaultComboBoxModel(new String[] {"Dal pi\u00F9 recente", "Dal meno recente"}));
 	GroupLayout gl_contentPane = new GroupLayout(contentPane);
 	gl_contentPane.setHorizontalGroup(
 		gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -234,11 +239,13 @@ public class VediRecensioni extends JFrame {
 					.addComponent(btnTornaAllaLocation, GroupLayout.PREFERRED_SIZE, 156, GroupLayout.PREFERRED_SIZE))
 				.addContainerGap())
 			.addGroup(gl_contentPane.createSequentialGroup()
-				.addComponent(scrollPaneTestoRecensione, GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
-				.addPreferredGap(ComponentPlacement.UNRELATED)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblFiltri, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
+				.addComponent(scrollPaneTestoRecensione, GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
+				.addPreferredGap(ComponentPlacement.RELATED)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(lblFiltri, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addComponent(btnStella1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
 							.addGap(6)
@@ -248,40 +255,46 @@ public class VediRecensioni extends JFrame {
 							.addGap(6)
 							.addComponent(btnStella4, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
 							.addGap(6)
-							.addComponent(btnStella5, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)))
-					.addGroup(gl_contentPane.createSequentialGroup()
-						.addComponent(label)
-						.addGap(10))))
+							.addComponent(btnStella5, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
+						.addComponent(label))
+					.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE))
+				.addContainerGap())
 	);
 	gl_contentPane.setVerticalGroup(
 		gl_contentPane.createParallelGroup(Alignment.LEADING)
 			.addGroup(gl_contentPane.createSequentialGroup()
-				.addComponent(panel, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
-				.addGap(11)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-					.addComponent(scrollPaneTabellaRecensioni, GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_contentPane.createSequentialGroup()
-						.addComponent(btnEliminaRecensione)
-						.addGap(7)
-						.addComponent(btnModificaRecensione)
-						.addGap(7)
-						.addComponent(btnInserisciNuovaRecensione)
-						.addGap(10)
-						.addComponent(btnTornaAllaLocation)))
-				.addGap(19)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-					.addComponent(scrollPaneTestoRecensione, GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
+						.addGap(11)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+							.addComponent(scrollPaneTabellaRecensioni, GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+							.addGroup(gl_contentPane.createSequentialGroup()
+								.addComponent(btnEliminaRecensione)
+								.addGap(7)
+								.addComponent(btnModificaRecensione)
+								.addGap(7)
+								.addComponent(btnInserisciNuovaRecensione)
+								.addGap(10)
+								.addComponent(btnTornaAllaLocation)))
+						.addGap(19)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+							.addComponent(scrollPaneTestoRecensione, GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+							.addGroup(gl_contentPane.createSequentialGroup()
+								.addGap(14)
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+									.addComponent(btnStella1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+									.addComponent(btnStella2, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+									.addComponent(btnStella3, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+									.addComponent(btnStella4, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+									.addComponent(btnStella5, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+								.addComponent(label))))
 					.addGroup(gl_contentPane.createSequentialGroup()
-						.addComponent(lblFiltri)
-						.addGap(12)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-							.addComponent(btnStella1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-							.addComponent(btnStella2, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-							.addComponent(btnStella3, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-							.addComponent(btnStella4, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-							.addComponent(btnStella5, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
-						.addPreferredGap(ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-						.addComponent(label)))
+						.addGap(204)
+						.addComponent(lblFiltri)))
 				.addContainerGap())
 	);
 
