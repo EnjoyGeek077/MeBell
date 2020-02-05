@@ -108,7 +108,8 @@ public class VediRecensioni extends JFrame {
 
 	JScrollPane scrollPaneTestoRecensione = new JScrollPane();
 	
-	JLabel lblFiltri = new JLabel("Filtri");
+	JLabel lblFiltri = new JLabel("Filtro");
+	lblFiltri.setFont(new Font("Arial", Font.PLAIN, 13));
 	
 	JButton btnTornaAllaLocation = new JButton("");
 	btnTornaAllaLocation.setBorder(null);
