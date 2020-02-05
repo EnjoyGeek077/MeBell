@@ -11,6 +11,8 @@ import Swing.LocationPage;
 
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -71,7 +73,19 @@ public class ModificaRecensione extends JDialog {
 		JButton btnConferma = new JButton("Conferma");
 		btnConferma.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			    controller.modificaRecensione(txtTitoloNEW, textAreaRecensioneNEW, votoDaModificare);
+				int n = JOptionPane.showConfirmDialog(
+					    null,
+					    "Sei sicuro di voler modificare la recensione",
+					    "Conferma modifica",
+					    JOptionPane.YES_NO_OPTION);
+				
+				if(n==0) {
+					controller.modificaRecensione(txtTitoloNEW, textAreaRecensioneNEW, votoDaModificare);
+					controller.updateSistema();
+					setVisible(false);
+					controller.openVediRecensioni();
+				}
+			    
 			}
 		});
 		btnConferma.setBounds(252, 266, 89, 23);

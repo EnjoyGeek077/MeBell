@@ -392,12 +392,17 @@ public class Controller {
 	
 	RecensioneDAO recDAO = new RecensioneDAO(this);
 	
-	try {
-	    recDAO.aggiornaRecensione(recensioneNuova);
-	} catch (SQLException e) {
-	    JOptionPane.showMessageDialog(null, "Errore durante la modifica", "Error", JOptionPane.ERROR_MESSAGE);
-	    e.printStackTrace();
-	}
+	
+	    try {
+			recDAO.aggiornaRecensione(recensioneNuova);
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "Errore durante la modifica", "Error", JOptionPane.ERROR_MESSAGE);
+		    e.printStackTrace();
+			
+		}
+	
+	    
+	
     }
     
     public void eliminaRecensione() {
