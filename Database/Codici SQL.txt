@@ -488,20 +488,6 @@ END;
 
 --
 
-create trigger update_recensione
-  after update of voto,titolo,testo on recensione
-  for each row
-  
-begin
-
-  update recensione r
-  set r.data=DEFAULT
-  where r.cod_locale=:old.cod_locale AND r.creatore=:old.creatore;
-
-END;
-
---
-
 create trigger update_sevizi_alloggio
   after update of cod on alloggio
   for each row 

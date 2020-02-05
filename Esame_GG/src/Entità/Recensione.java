@@ -6,9 +6,10 @@ public class Recensione {
     private String cod;
     private String creatore;
     private int voto;
+    private LocalDate dataRecensione;
     private String titolo;
     private String testo;
-    private LocalDate dataRecensione;
+
 
     public Recensione(String cod, String creatore, int voto, java.sql.Date date, String titolo, String testo) {
 
@@ -17,11 +18,11 @@ public class Recensione {
 	this.setVoto(voto);
 	this.setTitolo(titolo);
 	this.setTesto(testo);
-	if(!(date==null))
-		this.dataRecensione=date.toLocalDate();
-	
 
+	if(!(date==null))
+	    this.dataRecensione=date.toLocalDate();
     }
+
     public String getCod() {
 	return cod;
     }
@@ -40,6 +41,12 @@ public class Recensione {
     public void setVoto(int voto) {
 	this.voto = voto;
     }
+    public LocalDate getDataRecensione() {
+	return dataRecensione;
+    }
+    public void setDataRecensione(LocalDate dataRecensione) {
+	this.dataRecensione = dataRecensione;
+    }
     public String getTitolo() {
 	return titolo;
     }
@@ -52,10 +59,5 @@ public class Recensione {
     public void setTesto(String testo) {
 	this.testo = testo;
     }
-	public LocalDate getDataRecensione() {
-		return dataRecensione;
-	}
-	public void setDataRecensione(LocalDate dataRecensione) {
-		this.dataRecensione = dataRecensione;
-	}
+
 }

@@ -55,13 +55,13 @@ public class Login extends JFrame {
 
 	textPassword = new JPasswordField();
 	textPassword.addKeyListener(new KeyAdapter() {
-		@Override
-		public void keyPressed(KeyEvent e) {
-			if(e.getKeyCode() == KeyEvent.VK_ENTER) {
-				String pass = new String(textPassword.getPassword());
-				controller.loginTry(textUsername.getText(),pass);
-			   }
+	    @Override
+	    public void keyPressed(KeyEvent e) {
+		if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+		    String pass = new String(textPassword.getPassword());
+		    controller.loginTry(textUsername.getText(),pass);
 		}
+	    }
 	});
 
 	JButton btnLogin = new JButton("");

@@ -39,10 +39,11 @@ public class HomePage extends JFrame {
     private Controller controller;    
     private JTextField textNomeLocale;
     private JLabel lblLoggatoCome;
-	int filtro_media_voto=5;
+    
+    int filtro_media_voto=5;
     private ModelloTabella model= new ModelloTabella();
 
-	public HomePage(Controller ctrl) {
+    public HomePage(Controller ctrl) {
 	setMinimumSize(new Dimension(780, 413));
 	setTitle("HomePage");
 	controller = ctrl;
@@ -258,99 +259,99 @@ public class HomePage extends JFrame {
 	btnStella5.setBorder(null);
 	btnStella5.setContentAreaFilled(false);
 	btnStella5.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
-	
+
 	lblLoggatoCome = new JLabel("Loggato come: ");
 	lblLoggatoCome.setFont(new Font("Arial", Font.BOLD, 16));
 
 	GroupLayout gl_contentPane = new GroupLayout(contentPane);
 	gl_contentPane.setHorizontalGroup(
 		gl_contentPane.createParallelGroup(Alignment.TRAILING)
-			.addComponent(panel, GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE)
-			.addGroup(gl_contentPane.createSequentialGroup()
-				.addGap(10)
-				.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
-				.addGap(18)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-					.addGroup(gl_contentPane.createSequentialGroup()
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-							.addComponent(lblComune)
-							.addComponent(lblFiltri)
-							.addComponent(lblTipologia)
-							.addComponent(lblNomeLocale, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-						.addGap(19)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-							.addComponent(comboBox_FiltroTipologia, 0, 214, Short.MAX_VALUE)
-							.addComponent(comboBox_FiltroComune, Alignment.TRAILING, 0, 214, Short.MAX_VALUE)
-							.addComponent(textNomeLocale, GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)))
-					.addGroup(gl_contentPane.createSequentialGroup()
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-							.addComponent(lblMediaVoti, GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-							.addGroup(gl_contentPane.createSequentialGroup()
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(btnStella1)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(btnStella2)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(btnStella3)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(btnStella4)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(btnStella5)))
-						.addGap(99)))
-				.addContainerGap())
-			.addGroup(gl_contentPane.createSequentialGroup()
-				.addContainerGap()
-				.addComponent(lblLoggatoCome)
-				.addPreferredGap(ComponentPlacement.RELATED, 417, Short.MAX_VALUE)
-				.addComponent(btnVAI)
-				.addGap(35)
-				.addComponent(btnCerca)
-				.addContainerGap())
-	);
+		.addComponent(panel, GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE)
+		.addGroup(gl_contentPane.createSequentialGroup()
+			.addGap(10)
+			.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
+			.addGap(18)
+			.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(lblComune)
+						.addComponent(lblFiltri)
+						.addComponent(lblTipologia)
+						.addComponent(lblNomeLocale, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addGap(19)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(comboBox_FiltroTipologia, 0, 214, Short.MAX_VALUE)
+						.addComponent(comboBox_FiltroComune, Alignment.TRAILING, 0, 214, Short.MAX_VALUE)
+						.addComponent(textNomeLocale, GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblMediaVoti, GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnStella1)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnStella2)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnStella3)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnStella4)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnStella5)))
+					.addGap(99)))
+			.addContainerGap())
+		.addGroup(gl_contentPane.createSequentialGroup()
+			.addContainerGap()
+			.addComponent(lblLoggatoCome)
+			.addPreferredGap(ComponentPlacement.RELATED, 417, Short.MAX_VALUE)
+			.addComponent(btnVAI)
+			.addGap(35)
+			.addComponent(btnCerca)
+			.addContainerGap())
+		);
 	gl_contentPane.setVerticalGroup(
 		gl_contentPane.createParallelGroup(Alignment.LEADING)
-			.addGroup(gl_contentPane.createSequentialGroup()
-				.addComponent(panel, GroupLayout.PREFERRED_SIZE, 64, GroupLayout.PREFERRED_SIZE)
-				.addPreferredGap(ComponentPlacement.UNRELATED)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
-					.addGroup(gl_contentPane.createSequentialGroup()
-						.addComponent(lblFiltri)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+		.addGroup(gl_contentPane.createSequentialGroup()
+			.addComponent(panel, GroupLayout.PREFERRED_SIZE, 64, GroupLayout.PREFERRED_SIZE)
+			.addPreferredGap(ComponentPlacement.UNRELATED)
+			.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+				.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addComponent(lblFiltri)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(52)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblTipologia)
+								.addComponent(comboBox_FiltroTipologia, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addGap(18)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblNomeLocale)
+								.addComponent(textNomeLocale, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(16)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblComune)
+								.addComponent(comboBox_FiltroComune, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+					.addGap(11)
+					.addComponent(lblMediaVoti)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
+							.addComponent(btnStella2)
+							.addComponent(btnStella3)
 							.addGroup(gl_contentPane.createSequentialGroup()
-								.addGap(52)
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-									.addComponent(lblTipologia)
-									.addComponent(comboBox_FiltroTipologia, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addGap(18)
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-									.addComponent(lblNomeLocale)
-									.addComponent(textNomeLocale, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-							.addGroup(gl_contentPane.createSequentialGroup()
-								.addGap(16)
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-									.addComponent(lblComune)
-									.addComponent(comboBox_FiltroComune, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
-						.addGap(11)
-						.addComponent(lblMediaVoti)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
-								.addComponent(btnStella2)
-								.addComponent(btnStella3)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(btnStella1)
-									.addPreferredGap(ComponentPlacement.RELATED)))
-							.addComponent(btnStella4)
-							.addComponent(btnStella5))
-						.addPreferredGap(ComponentPlacement.RELATED, 71, Short.MAX_VALUE)))
-				.addPreferredGap(ComponentPlacement.RELATED)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-					.addComponent(btnCerca)
-					.addComponent(btnVAI)
-					.addComponent(lblLoggatoCome))
-				.addGap(5))
-	);
+								.addComponent(btnStella1)
+								.addPreferredGap(ComponentPlacement.RELATED)))
+						.addComponent(btnStella4)
+						.addComponent(btnStella5))
+					.addPreferredGap(ComponentPlacement.RELATED, 71, Short.MAX_VALUE)))
+			.addPreferredGap(ComponentPlacement.RELATED)
+			.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addComponent(btnCerca)
+				.addComponent(btnVAI)
+				.addComponent(lblLoggatoCome))
+			.addGap(5))
+		);
 
 
 	model.addColumn("Location");
@@ -373,31 +374,31 @@ public class HomePage extends JFrame {
 	GroupLayout gl_panel = new GroupLayout(panel);
 	gl_panel.setHorizontalGroup(
 		gl_panel.createParallelGroup(Alignment.LEADING)
-			.addGroup(gl_panel.createSequentialGroup()
-				.addContainerGap()
-				.addComponent(lblHomepage)
-				.addContainerGap(668, Short.MAX_VALUE))
-	);
+		.addGroup(gl_panel.createSequentialGroup()
+			.addContainerGap()
+			.addComponent(lblHomepage)
+			.addContainerGap(668, Short.MAX_VALUE))
+		);
 	gl_panel.setVerticalGroup(
 		gl_panel.createParallelGroup(Alignment.LEADING)
-			.addGroup(gl_panel.createSequentialGroup()
-				.addComponent(lblHomepage)
-				.addContainerGap(42, Short.MAX_VALUE))
-	);
+		.addGroup(gl_panel.createSequentialGroup()
+			.addComponent(lblHomepage)
+			.addContainerGap(42, Short.MAX_VALUE))
+		);
 	panel.setLayout(gl_panel);
 	contentPane.setLayout(gl_contentPane);
     }
-	
-	public ModelloTabella getModel() {
-		return model;
-	}
-	public void setModel(ModelloTabella model) {
-		this.model = model;
-	}
-	public JLabel getLblLoggatoCome() {
-		return lblLoggatoCome;
-	}
-	public void setLblLoggatoCome(String utente) {
-		this.lblLoggatoCome.setText("Loggato come: "+utente);
-	}
+
+    public ModelloTabella getModel() {
+	return model;
+    }
+    public void setModel(ModelloTabella model) {
+	this.model = model;
+    }
+    public JLabel getLblLoggatoCome() {
+	return lblLoggatoCome;
+    }
+    public void setLblLoggatoCome(String utente) {
+	this.lblLoggatoCome.setText("Loggato come: "+utente);
+    }
 }
