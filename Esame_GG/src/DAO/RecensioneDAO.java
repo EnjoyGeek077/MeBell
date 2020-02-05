@@ -88,7 +88,7 @@ public class RecensioneDAO {
     }
 
     public void inserisciRecensione(Recensione recensione) throws SQLException {
-	String query = "INSERT INTO recensione VALUES(?,?,?,?,?)";
+	String query = "INSERT INTO recensione(cod_locale,creatore,voto,titolo,testo) VALUES(?,?,?,?,?)";
 
 	try {
 	    PreparedStatement inserisciRecensione = controller.getConnection().prepareStatement(query);
