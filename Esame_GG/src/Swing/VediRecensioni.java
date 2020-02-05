@@ -79,6 +79,7 @@ public class VediRecensioni extends JFrame {
 	    public void actionPerformed(ActionEvent e) {
 		if(controller.controlloSeHaRecensioni()) {
 		    setVisible(false);
+		    controller.visualizzaOldRecensioneInDialog();
 		    controller.openModificaDialog();
 		    textAreaRecensione.setText("");
 		}else {

@@ -69,6 +69,11 @@ public class ModificaRecensione extends JDialog {
 	    }
 	    {
 		JButton btnConferma = new JButton("Conferma");
+		btnConferma.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			    controller.modificaRecensione(txtTitoloNEW, textAreaRecensioneNEW, votoDaModificare);
+			}
+		});
 		btnConferma.setBounds(252, 266, 89, 23);
 		panel.add(btnConferma);
 	    }
@@ -242,7 +247,7 @@ public class ModificaRecensione extends JDialog {
 	    }
 	    {
 		lblVotoNEW5 = new JLabel("");
-		lblVotoNEW3.addMouseListener(new MouseAdapter() {
+		lblVotoNEW5.addMouseListener(new MouseAdapter() {
 		    @Override
 		    public void mouseClicked(MouseEvent e) {
 

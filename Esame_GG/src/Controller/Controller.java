@@ -385,7 +385,19 @@ public class Controller {
     }
     
     public void modificaRecensione(JTextField titolo, JTextArea testo, int voto) {
+	String getTitolo = titolo.getText();
+	String getTesto = testo.getText();
 	
+	Recensione recensioneNuova = new Recensione(locationDaVedere.getCod(), utente.getUsername(), voto, getTitolo, getTesto);
+	
+	RecensioneDAO recDAO = new RecensioneDAO(this);
+	
+	try {
+	    recDAO.aggiornaRecensione(recensioneNuova);
+	} catch (SQLException e) {
+	    JOptionPane.showMessageDialog(null, "Errore durante la modifica", "Error", JOptionPane.ERROR_MESSAGE);
+	    e.printStackTrace();
+	}
     }
     
     public void eliminaRecensione() {
