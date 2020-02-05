@@ -22,6 +22,8 @@ import javax.swing.JTextArea;
 import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class ModificaRecensione extends JDialog {
 
@@ -31,8 +33,13 @@ public class ModificaRecensione extends JDialog {
     private JTextField txtTitoloNEW;
     private JTextArea textAreaRecensioneNEW;
     private JTextArea textAreaRecensioneOLD;
+    private JLabel lblTitoloCount;
+    private JLabel lblTestoCount;
 
     private int votoDaModificare = 1;
+    private boolean controlloTitolo=false;
+    private boolean controlloTesto=false;
+
     private JLabel lblVotoOLD1;
     private JLabel lblVotoOLD2;
     private JLabel lblVotoOLD3;
@@ -72,21 +79,21 @@ public class ModificaRecensione extends JDialog {
 	    {
 		JButton btnConferma = new JButton("Conferma");
 		btnConferma.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int n = JOptionPane.showConfirmDialog(
-					    null,
-					    "Sei sicuro di voler modificare la recensione",
-					    "Conferma modifica",
-					    JOptionPane.YES_NO_OPTION);
-				
-				if(n==0) {
-					controller.modificaRecensione(txtTitoloNEW, textAreaRecensioneNEW, votoDaModificare);
-					controller.updateSistema();
-					setVisible(false);
-					controller.openVediRecensioni();
-				}
-			    
+		    public void actionPerformed(ActionEvent e) {
+			int n = JOptionPane.showConfirmDialog(
+				null,
+				"Sei sicuro di voler modificare la recensione",
+				"Conferma modifica",
+				JOptionPane.YES_NO_OPTION);
+
+			if(n==0) {
+			    controller.modificaRecensione(txtTitoloNEW, textAreaRecensioneNEW, votoDaModificare);
+			    controller.updateSistema();
+			    setVisible(false);
+			    controller.openVediRecensioni();
 			}
+
+		    }
 		});
 		btnConferma.setBounds(252, 266, 89, 23);
 		panel.add(btnConferma);
@@ -165,7 +172,22 @@ public class ModificaRecensione extends JDialog {
 	    }
 	    {
 		txtTitoloNEW = new JTextField();
-		txtTitoloNEW.setText("Titolo NEW...");
+		txtTitoloNEW.addKeyListener(new KeyAdapter() {
+		    @Override
+		    public void keyPressed(KeyEvent e) {
+			controlloTitolo = controller.controlloTitolo(txtTitoloNEW.getText());
+			int countTitolo = controller.conteggioChar(txtTitoloNEW.getText());
+
+			if(controlloTitolo) {
+			    lblTitoloCount.setForeground(Color.BLACK);
+			    lblTitoloCount.setText("Titolo: "+countTitolo+"/25");
+			}else {
+			    lblTitoloCount.setForeground(Color.RED);
+			    lblTitoloCount.setText("Hai superato i 25 caratteri.");
+			}
+		    }
+		});
+		txtTitoloNEW.setText("");
 		txtTitoloNEW.setColumns(10);
 		txtTitoloNEW.setBounds(10, 154, 217, 20);
 		panel.add(txtTitoloNEW);
@@ -174,13 +196,27 @@ public class ModificaRecensione extends JDialog {
 		JScrollPane scrollPaneNEW = new JScrollPane();
 		scrollPaneNEW.setBounds(10, 185, 430, 70);
 		panel.add(scrollPaneNEW);
-		
+
 
 		textAreaRecensioneNEW = new JTextArea();
+		textAreaRecensioneNEW.addKeyListener(new KeyAdapter() {
+		    @Override
+		    public void keyPressed(KeyEvent e) {
+			controlloTesto = controller.controlloTitolo(txtTitoloNEW.getText());
+			int countTesto = controller.conteggioChar(txtTitoloNEW.getText());
+
+			if(controlloTitolo) {
+			    lblTitoloCount.setForeground(Color.BLACK);
+			    lblTitoloCount.setText("Titolo: "+countTesto+"/250");
+			}else {
+			    lblTitoloCount.setForeground(Color.RED);
+			    lblTitoloCount.setText("Hai superato i 250 caratteri.");
+			}
+		    }
+		});
 		textAreaRecensioneNEW.setLineWrap(true);
 		scrollPaneNEW.setViewportView(textAreaRecensioneNEW);
 		scrollPaneNEW.setViewportView(textAreaRecensioneNEW);
-		textAreaRecensioneNEW.setText("Recensione NEW...");
 		textAreaRecensioneNEW.setRows(3);
 	    }
 	    {
@@ -278,6 +314,16 @@ public class ModificaRecensione extends JDialog {
 		lblVotoNEW5.setBounds(361, 154, 21, 20);
 		panel.add(lblVotoNEW5);
 	    }
+
+	    lblTitoloCount = new JLabel("Titolo: 0/25");
+	    lblTitoloCount.setFont(new Font("Arial", Font.PLAIN, 13));
+	    lblTitoloCount.setBounds(10, 258, 157, 14);
+	    panel.add(lblTitoloCount);
+
+	    lblTestoCount = new JLabel("Testo: 0/250");
+	    lblTestoCount.setFont(new Font("Arial", Font.PLAIN, 13));
+	    lblTestoCount.setBounds(10, 275, 157, 14);
+	    panel.add(lblTestoCount);
 	}
     }
 
@@ -303,6 +349,30 @@ public class ModificaRecensione extends JDialog {
 
     public void setTextAreaRecensioneOLD(JTextArea textAreaRecensioneOLD) {
 	this.textAreaRecensioneOLD = textAreaRecensioneOLD;
+    }
+
+
+
+    public JLabel getLblTitoloCount() {
+	return lblTitoloCount;
+    }
+
+
+
+    public void setLblTitoloCount(JLabel lblTitoloCount) {
+	this.lblTitoloCount = lblTitoloCount;
+    }
+
+
+
+    public JLabel getLblTestoCount() {
+	return lblTestoCount;
+    }
+
+
+
+    public void setLblTestoCount(JLabel lblTestoCount) {
+	this.lblTestoCount = lblTestoCount;
     }
 
 

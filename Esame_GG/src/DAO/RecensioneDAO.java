@@ -127,8 +127,7 @@ public class RecensioneDAO {
 
     public void aggiornaRecensione(Recensione recensione)  throws SQLException{
 	String query = "UPDATE recensione SET voto=?,titolo=?,testo=? WHERE (cod_locale=? AND creatore=?)";
-//    	String query = "UPDATE recensione SET voto=5,titolo='ciao',testo='13' WHERE (cod_locale='"+recensione.getCod()+"' AND creatore="+recensione.getCreatore()+"')";
-System.out.println(recensione.getVoto()+recensione.getTitolo()+recensione.getTesto()+recensione.getCod()+recensione.getCreatore() );
+	
 	try {
 	    PreparedStatement updateRecensione = controller.getConnection().prepareStatement(query);
 	    updateRecensione.setInt(1, recensione.getVoto());
@@ -136,7 +135,7 @@ System.out.println(recensione.getVoto()+recensione.getTitolo()+recensione.getTes
 	    updateRecensione.setString(3, recensione.getTesto());
 	    updateRecensione.setString(4, recensione.getCod());
 	    updateRecensione.setString(5, recensione.getCreatore());
-//	    updateRecensione.executeUpdate();
+
 	    if(updateRecensione.executeUpdate()<1) {
 	    	throw new SQLException();
 	    }

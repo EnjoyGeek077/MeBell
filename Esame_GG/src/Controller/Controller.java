@@ -377,34 +377,59 @@ public class Controller {
     }
 
     public void visualizzaOldRecensioneInDialog() {
-	
+
 	RecensioneDAO recDAO = new RecensioneDAO(this);
 	Recensione recensioneUtenteLoggato = recDAO.getRecensioneUtenteLoggato(utente.getUsername(), locationDaVedere.getCod());
-	
+
 	modificarecensione.setOldReview(recensioneUtenteLoggato.getTitolo(), recensioneUtenteLoggato.getTesto(), recensioneUtenteLoggato.getVoto());
     }
+
+    public int conteggioChar(String stringaDaContare) {
+	
+	int conteggio=0;
+	
+	conteggio=stringaDaContare.length();
+	
+	return conteggio;	
+    }
     
+    public boolean controlloTitolo(String titolo) {
+	
+	if(titolo.length()<25 &&titolo.length()>3) {
+	    return true;
+	}else {
+	    return false;
+	}
+	
+    }
+    
+    public boolean controlloTesto(String testo) {
+	
+	if(testo.length()<250) {
+	    return true;
+	}else {
+	    return false;
+	}
+	
+	
+    }
     public void modificaRecensione(JTextField titolo, JTextArea testo, int voto) {
 	String getTitolo = titolo.getText();
 	String getTesto = testo.getText();
-	
+
 	Recensione recensioneNuova = new Recensione(locationDaVedere.getCod(), utente.getUsername(), voto, getTitolo, getTesto);
-	
 	RecensioneDAO recDAO = new RecensioneDAO(this);
-	
-	
-	    try {
-			recDAO.aggiornaRecensione(recensioneNuova);
-		} catch (SQLException e) {
-			JOptionPane.showMessageDialog(null, "Errore durante la modifica", "Error", JOptionPane.ERROR_MESSAGE);
-		    e.printStackTrace();
-			
-		}
-	
-	    
-	
+
+	try {
+	    recDAO.aggiornaRecensione(recensioneNuova);
+	} catch (SQLException e) {
+	    JOptionPane.showMessageDialog(null, "Errore durante la modifica", "Error", JOptionPane.ERROR_MESSAGE);
+	    e.printStackTrace();
+
+	}
+
     }
-    
+
     public void eliminaRecensione() {
 	RecensioneDAO recDAO = new RecensioneDAO(this);
 	try {
