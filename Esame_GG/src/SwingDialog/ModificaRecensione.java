@@ -178,7 +178,7 @@ public class ModificaRecensione extends JDialog {
 		txtTitoloNEW.addKeyListener(new KeyAdapter() {
 		    @Override
 		    public void keyReleased(KeyEvent e) {
-			controlloTitolo = controller.controlloTitolo(txtTitoloNEW.getText());
+			controlloTitolo = controller.controlloTitoloRecensione(txtTitoloNEW.getText());
 			int countTitolo = controller.conteggioChar(txtTitoloNEW.getText());
 
 			if(controlloTitolo) {
@@ -205,7 +205,7 @@ public class ModificaRecensione extends JDialog {
 		textAreaRecensioneNEW.addKeyListener(new KeyAdapter() {
 		    @Override
 		    public void keyReleased(KeyEvent e) {
-			controlloTesto = controller.controlloTesto(textAreaRecensioneNEW.getText());
+			controlloTesto = controller.controlloTestoRecensione(textAreaRecensioneNEW.getText());
 			int countTesto = controller.conteggioChar(textAreaRecensioneNEW.getText());
 
 			if(controlloTesto) {
