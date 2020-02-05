@@ -158,7 +158,7 @@ public class InserisciRecensione extends JDialog {
 	
 	JLabel label = new JLabel("Inserisci Recensione");
 	label.setForeground(Color.WHITE);
-	label.setFont(new Font("Arial", Font.BOLD, 18));
+	label.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 18));
 	panelTitle.add(label);
     }
 }

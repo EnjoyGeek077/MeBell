@@ -40,7 +40,7 @@ public class EliminaRecensione extends JDialog {
 	    	public void actionPerformed(ActionEvent e) {
 	    		controller.eliminaRecensione();
 	    		setVisible(false);
-	    		controller.update();
+	    		controller.updateSistema();
 	    		controller.openVediRecensioni();
 	    	}
 	    });
@@ -70,7 +70,7 @@ public class EliminaRecensione extends JDialog {
 		lblEliminareLaRecensione.setForeground(new Color(255, 255, 255));
 		lblEliminareLaRecensione.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 18));
 		
-		lblAvvertenza = new JLabel("");
+		lblAvvertenza = new JLabel("<html>Ehi ciao, <br/> stai per eliminare la recensione alla location <br/> vuoi procedere?");
 		lblAvvertenza.setForeground(Color.WHITE);
 		lblAvvertenza.setFont(new Font("Arial Black", Font.BOLD, 18));
 		lblAvvertenza.setBounds(10, 57, 430, 161);

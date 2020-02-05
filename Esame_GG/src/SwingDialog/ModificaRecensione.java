@@ -63,7 +63,7 @@ public class ModificaRecensione extends JDialog {
 	    	{
 	    		JLabel label = new JLabel("Modifica la recensione");
 	    		label.setForeground(Color.WHITE);
-	    		label.setFont(new Font("Arial", Font.BOLD, 18));
+	    		label.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 18));
 	    		panelTitle.add(label);
 	    	}
 	    }

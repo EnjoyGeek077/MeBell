@@ -159,7 +159,7 @@ public class VediRecensioni extends JFrame {
 	    @Override
 	    public void mouseClicked(MouseEvent e) {
 		controller.setCellNotEditable(table, model);
-		controller.getTestoRecensioneDaTab(table);
+		controller.getTestoRecensioneDaTable(table);
 	    }
 	});
 	model.addColumn("Username");
