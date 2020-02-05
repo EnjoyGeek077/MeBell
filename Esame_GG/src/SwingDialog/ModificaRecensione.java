@@ -77,24 +77,27 @@ public class ModificaRecensione extends JDialog {
 		panel.add(btnAnnulla);
 	    }
 	    {
-		JButton btnConferma = new JButton("Conferma");
-		btnConferma.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
-			int n = JOptionPane.showConfirmDialog(
-				null,
-				"Sei sicuro di voler modificare la recensione",
-				"Conferma modifica",
-				JOptionPane.YES_NO_OPTION);
+	    	JButton btnConferma = new JButton("Conferma");
+	    	btnConferma.addActionListener(new ActionListener() {
+	    		public void actionPerformed(ActionEvent e) {
+	    			if(controlloTesto && controlloTitolo) {
+	    				int n = JOptionPane.showConfirmDialog(
+	    						null,
+	    						"Sei sicuro di voler modificare la recensione",
+	    						"Conferma modifica",
+	    						JOptionPane.YES_NO_OPTION);
 
-			if(n==0) {
-			    controller.modificaRecensione(txtTitoloNEW, textAreaRecensioneNEW, votoDaModificare);
-			    controller.updateSistema();
-			    setVisible(false);
-			    controller.openVediRecensioni();
-			}
-
-		    }
-		});
+	    				if(n==0) {
+	    					controller.modificaRecensione(txtTitoloNEW, textAreaRecensioneNEW, votoDaModificare);
+	    					controller.updateSistema();
+	    					setVisible(false);
+	    					controller.openVediRecensioni();
+	    				}
+	    			}else {
+	    				JOptionPane.showMessageDialog(null, "Compila i campi", "Errore", JOptionPane.ERROR_MESSAGE);
+	    			}
+	    		}
+	    	});
 		btnConferma.setBounds(252, 266, 89, 23);
 		panel.add(btnConferma);
 	    }
@@ -174,7 +177,7 @@ public class ModificaRecensione extends JDialog {
 		txtTitoloNEW = new JTextField();
 		txtTitoloNEW.addKeyListener(new KeyAdapter() {
 		    @Override
-		    public void keyPressed(KeyEvent e) {
+		    public void keyReleased(KeyEvent e) {
 			controlloTitolo = controller.controlloTitolo(txtTitoloNEW.getText());
 			int countTitolo = controller.conteggioChar(txtTitoloNEW.getText());
 
@@ -183,7 +186,7 @@ public class ModificaRecensione extends JDialog {
 			    lblTitoloCount.setText("Titolo: "+countTitolo+"/25");
 			}else {
 			    lblTitoloCount.setForeground(Color.RED);
-			    lblTitoloCount.setText("Hai superato i 25 caratteri.");
+			    lblTitoloCount.setText("Hai superato i 25 caratteri o testo troppo corto.");
 			}
 		    }
 		});
@@ -201,16 +204,16 @@ public class ModificaRecensione extends JDialog {
 		textAreaRecensioneNEW = new JTextArea();
 		textAreaRecensioneNEW.addKeyListener(new KeyAdapter() {
 		    @Override
-		    public void keyPressed(KeyEvent e) {
-			controlloTesto = controller.controlloTitolo(txtTitoloNEW.getText());
-			int countTesto = controller.conteggioChar(txtTitoloNEW.getText());
+		    public void keyReleased(KeyEvent e) {
+			controlloTesto = controller.controlloTesto(textAreaRecensioneNEW.getText());
+			int countTesto = controller.conteggioChar(textAreaRecensioneNEW.getText());
 
-			if(controlloTitolo) {
-			    lblTitoloCount.setForeground(Color.BLACK);
-			    lblTitoloCount.setText("Titolo: "+countTesto+"/250");
+			if(controlloTesto) {
+			    lblTestoCount.setForeground(Color.BLACK);
+			    lblTestoCount.setText("Titolo: "+countTesto+"/250");
 			}else {
-			    lblTitoloCount.setForeground(Color.RED);
-			    lblTitoloCount.setText("Hai superato i 250 caratteri.");
+				lblTestoCount.setForeground(Color.RED);
+				lblTestoCount.setText("Hai superato i 250 caratteri.");
 			}
 		    }
 		});
