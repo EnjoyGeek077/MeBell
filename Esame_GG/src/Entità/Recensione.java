@@ -1,6 +1,6 @@
 package Entità;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 public class Recensione {
     private String cod;
@@ -8,16 +8,18 @@ public class Recensione {
     private int voto;
     private String titolo;
     private String testo;
-    private Date dataRecensione;
+    private LocalDate dataRecensione;
 
-    public Recensione(String cod, String creatore, int voto, Date date, String titolo, String testo) {
+    public Recensione(String cod, String creatore, int voto, java.sql.Date date, String titolo, String testo) {
 
 	this.setCod(cod);
 	this.setCreatore(creatore);
 	this.setVoto(voto);
 	this.setTitolo(titolo);
 	this.setTesto(testo);
-	this.setDataRecensione(date);
+	if(!(date==null))
+		this.dataRecensione=date.toLocalDate();
+	
 
     }
     public String getCod() {
@@ -50,10 +52,10 @@ public class Recensione {
     public void setTesto(String testo) {
 	this.testo = testo;
     }
-	public Date getDataRecensione() {
+	public LocalDate getDataRecensione() {
 		return dataRecensione;
 	}
-	public void setDataRecensione(Date dataRecensione) {
+	public void setDataRecensione(LocalDate dataRecensione) {
 		this.dataRecensione = dataRecensione;
 	}
 }
