@@ -77,27 +77,27 @@ public class ModificaRecensione extends JDialog {
 		panel.add(btnAnnulla);
 	    }
 	    {
-	    	JButton btnConferma = new JButton("Conferma");
-	    	btnConferma.addActionListener(new ActionListener() {
-	    		public void actionPerformed(ActionEvent e) {
-	    			if(controlloTesto && controlloTitolo) {
-	    				int n = JOptionPane.showConfirmDialog(
-	    						null,
-	    						"Sei sicuro di voler modificare la recensione",
-	    						"Conferma modifica",
-	    						JOptionPane.YES_NO_OPTION);
+		JButton btnConferma = new JButton("Conferma");
+		btnConferma.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+			if(controlloTesto && controlloTitolo) {
+			    int n = JOptionPane.showConfirmDialog(
+				    null,
+				    "Sei sicuro di voler modificare la recensione?",
+				    "Conferma modifica",
+				    JOptionPane.YES_NO_OPTION);
 
-	    				if(n==0) {
-	    					controller.modificaRecensione(txtTitoloNEW, textAreaRecensioneNEW, votoDaModificare);
-	    					controller.updateSistema();
-	    					setVisible(false);
-	    					controller.openVediRecensioni();
-	    				}
-	    			}else {
-	    				JOptionPane.showMessageDialog(null, "Compila i campi", "Errore", JOptionPane.ERROR_MESSAGE);
-	    			}
-	    		}
-	    	});
+			    if(n==0) {
+				controller.modificaRecensione(txtTitoloNEW, textAreaRecensioneNEW, votoDaModificare);
+				controller.updateSistema();
+				setVisible(false);
+				controller.openVediRecensioni();
+			    }
+			}else {
+			    JOptionPane.showMessageDialog(null, "Compila i campi", "Errore", JOptionPane.ERROR_MESSAGE);
+			}
+		    }
+		});
 		btnConferma.setBounds(252, 266, 89, 23);
 		panel.add(btnConferma);
 	    }
@@ -212,8 +212,8 @@ public class ModificaRecensione extends JDialog {
 			    lblTestoCount.setForeground(Color.BLACK);
 			    lblTestoCount.setText("Titolo: "+countTesto+"/250");
 			}else {
-				lblTestoCount.setForeground(Color.RED);
-				lblTestoCount.setText("Hai superato i 250 caratteri.");
+			    lblTestoCount.setForeground(Color.RED);
+			    lblTestoCount.setText("Hai superato i 250 caratteri.");
 			}
 		    }
 		});
@@ -320,12 +320,12 @@ public class ModificaRecensione extends JDialog {
 
 	    lblTitoloCount = new JLabel("Titolo: 0/25");
 	    lblTitoloCount.setFont(new Font("Arial", Font.PLAIN, 13));
-	    lblTitoloCount.setBounds(10, 258, 157, 14);
+	    lblTitoloCount.setBounds(10, 258, 232, 14);
 	    panel.add(lblTitoloCount);
 
 	    lblTestoCount = new JLabel("Testo: 0/250");
 	    lblTestoCount.setFont(new Font("Arial", Font.PLAIN, 13));
-	    lblTestoCount.setBounds(10, 275, 157, 14);
+	    lblTestoCount.setBounds(10, 275, 232, 14);
 	    panel.add(lblTestoCount);
 	}
     }

@@ -384,31 +384,18 @@ public class Controller {
 	modificarecensione.setOldReview(recensioneUtenteLoggato.getTitolo(), recensioneUtenteLoggato.getTesto(), recensioneUtenteLoggato.getVoto());
     }
 
-    public int conteggioChar(String stringaDaContare) {
+    public void inserisciRecensione(JTextField titolo, JTextArea testo, int voto){
+	String getTitolo = titolo.getText();
+	String getTesto = testo.getText();
 	
-	int conteggio=0;
+	Recensione recensioneNuova = new Recensione(locationDaVedere.getCod(), utente.getUsername(), voto, getTitolo, getTesto);
+	RecensioneDAO recDAO = new RecensioneDAO(this);
 	
-	conteggio=stringaDaContare.length();
-	
-	return conteggio;	
-    }
-    
-    public boolean controlloTitolo(String titolo) {
-	
-	if(titolo.length()<25 &&titolo.length()>3) {
-	    return true;
-	}else {
-	    return false;
-	}
-	
-    }
-    
-    public boolean controlloTesto(String testo) {
-	
-	if(testo.length()<250) {
-	    return true;
-	}else {
-	    return false;
+	try {
+	    recDAO.inserisciRecensione(recensioneNuova);
+	} catch (SQLException e) {
+	    JOptionPane.showMessageDialog(null, "Errore durante l'inserimento", "Error", JOptionPane.ERROR_MESSAGE);
+	    e.printStackTrace();
 	}
 	
 	
@@ -529,6 +516,36 @@ public class Controller {
 	indice_riga=tabella.getSelectedRow();
 	indice_colonna=tabella.getSelectedColumn();
 	modello.isCellEditable(indice_riga, indice_colonna);
+
+    }
+
+    public int conteggioChar(String stringaDaContare) {
+
+	int conteggio=0;
+
+	conteggio=stringaDaContare.length();
+
+	return conteggio;	
+    }
+
+    public boolean controlloTitolo(String titolo) {
+
+	if(titolo.length()<25 &&titolo.length()>3) {
+	    return true;
+	}else {
+	    return false;
+	}
+
+    }
+
+    public boolean controlloTesto(String testo) {
+
+	if(testo.length()<250) {
+	    return true;
+	}else {
+	    return false;
+	}
+
 
     }
 
