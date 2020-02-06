@@ -202,11 +202,28 @@ public class Controller {
     public void riempiTabellaRecensioni() {
 	ModelloTabella model = vedirecensioni.getModel();
 	model.getDataVector().removeAllElements();
+
 	for(Recensione r : this.locationDaVedere.getRecensiondiLocation()) {
 	    model.addRow(new Object[] {r.getCreatore(), r.getDataRecensione(), r.getTitolo(), r.getVoto()});
 	}
+
 	model.fireTableDataChanged();
 	vedirecensioni.setModel(model);
+    }
+
+    public void filtraRecensioni(ModelloTabella model, int votoFiltro, String timeFilter) {
+
+	if(!timeFilter.equals("Vedi tutte")) {
+
+	    ArrayList<Recensione> recensioniFiltrate = new ArrayList<Recensione>();
+
+	    for(Recensione r : locationDaVedere.getRecensiondiLocation()) {
+
+	    }
+
+	}else {
+	    this.riempiTabellaRecensioni();
+	}
     }
 
     public boolean getLocationFromTable(JTable tabella) {

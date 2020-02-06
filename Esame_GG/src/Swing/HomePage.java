@@ -39,7 +39,7 @@ public class HomePage extends JFrame {
     private Controller controller;    
     private JTextField textNomeLocale;
     private JLabel lblLoggatoCome;
-    
+
     int filtro_media_voto=5;
     private ModelloTabella model= new ModelloTabella();
 
