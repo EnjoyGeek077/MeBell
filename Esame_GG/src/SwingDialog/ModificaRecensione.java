@@ -71,6 +71,7 @@ public class ModificaRecensione extends JDialog {
 		    public void actionPerformed(ActionEvent e) {
 			setVisible(false);
 			controller.openVediRecensioni();
+			controller.resetCampiInsertModify(textAreaRecensioneNEW, txtTitoloNEW, lblTitoloCount, lblTestoCount, controlloTitolo, controlloTesto);
 		    }
 		});
 		btnAnnulla.setBounds(351, 266, 89, 23);

@@ -40,7 +40,7 @@ public class VediRecensioni extends JFrame {
 
     private JTextArea textAreaRecensione;
 
-    private int filtro_media_voto=5;
+    private int filtro_media_voto=0;
     private JComboBox comboBoxTimeFilter;
 
     public VediRecensioni(Controller ctrl) {
@@ -272,28 +272,28 @@ public class VediRecensioni extends JFrame {
 	    }
 	});
 
-	btnStella1.setIcon(new ImageIcon(VediRecensioni.class.getResource("/ButtonIcon/Stella1.png")));
+	btnStella1.setIcon(new ImageIcon(VediRecensioni.class.getResource("/ButtonIcon/Stella0.png")));
 	btnStella1.setContentAreaFilled(false);
 	btnStella1.setBorder(null);
 
-	btnStella2.setIcon(new ImageIcon(VediRecensioni.class.getResource("/ButtonIcon/Stella1.png")));
+	btnStella2.setIcon(new ImageIcon(VediRecensioni.class.getResource("/ButtonIcon/Stella0.png")));
 	btnStella2.setContentAreaFilled(false);
 	btnStella2.setBorder(null);
 
-	btnStella3.setIcon(new ImageIcon(VediRecensioni.class.getResource("/ButtonIcon/Stella1.png")));
+	btnStella3.setIcon(new ImageIcon(VediRecensioni.class.getResource("/ButtonIcon/Stella0.png")));
 	btnStella3.setContentAreaFilled(false);
 	btnStella3.setBorder(null);
 
-	btnStella4.setIcon(new ImageIcon(VediRecensioni.class.getResource("/ButtonIcon/Stella1.png")));
+	btnStella4.setIcon(new ImageIcon(VediRecensioni.class.getResource("/ButtonIcon/Stella0.png")));
 	btnStella4.setContentAreaFilled(false);
 	btnStella4.setBorder(null);
 
-	btnStella5.setIcon(new ImageIcon(VediRecensioni.class.getResource("/ButtonIcon/Stella1.png")));
+	btnStella5.setIcon(new ImageIcon(VediRecensioni.class.getResource("/ButtonIcon/Stella0.png")));
 	btnStella5.setContentAreaFilled(false);
 	btnStella5.setBorder(null);
 
 	comboBoxTimeFilter = new JComboBox();
-	comboBoxTimeFilter.setModel(new DefaultComboBoxModel(new String[] {"Vedi tutte", "Dalla pi\u00F9 recente", "Dalla meno recente"}));
+	comboBoxTimeFilter.setModel(new DefaultComboBoxModel(new String[] {"Dalla pi\u00F9 recente", "Dalla meno recente"}));
 
 	JButton buttonFiltra = new JButton("");
 	buttonFiltra.addActionListener(new ActionListener() {
@@ -304,6 +304,15 @@ public class VediRecensioni extends JFrame {
 	buttonFiltra.setContentAreaFilled(false);
 	buttonFiltra.setBorder(null);
 	buttonFiltra.setIcon(new ImageIcon(VediRecensioni.class.getResource("/ButtonIcon/ConfermaICON1.png")));
+
+	JButton btnAzzera = new JButton("aZZERA");
+	btnAzzera.addActionListener(new ActionListener() {
+	    public void actionPerformed(ActionEvent e) {
+		filtro_media_voto=0;
+		controller.resetFiltroRec(btnStella1, btnStella2, btnStella3, btnStella4, btnStella5);
+		controller.riempiTabellaRecensioni();
+	    }
+	});
 	GroupLayout gl_contentPane = new GroupLayout(contentPane);
 	gl_contentPane.setHorizontalGroup(
 		gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -312,35 +321,40 @@ public class VediRecensioni extends JFrame {
 			.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addComponent(scrollPaneTestoRecensione, GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
 				.addComponent(scrollPaneTabellaRecensioni, GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE))
-			.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-			.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+			.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
+					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-							.addGroup(gl_contentPane.createSequentialGroup()
-								.addGap(3)
-								.addComponent(btnEliminaRecensione))
-							.addComponent(btnModificaRecensione, GroupLayout.PREFERRED_SIZE, 156, GroupLayout.PREFERRED_SIZE))
-						.addComponent(btnInserisciNuovaRecensione)
-						.addComponent(btnTornaAllaLocation, GroupLayout.PREFERRED_SIZE, 156, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
-							.addComponent(comboBoxTimeFilter, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addGroup(gl_contentPane.createSequentialGroup()
-								.addComponent(btnStella1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-								.addGap(6)
-								.addComponent(btnStella2, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-								.addGap(6)
-								.addComponent(btnStella3, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-								.addGap(6)
-								.addComponent(btnStella4, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-								.addGap(6)
-								.addComponent(btnStella5, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))))
-					.addContainerGap())
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+									.addGroup(gl_contentPane.createSequentialGroup()
+										.addGap(3)
+										.addComponent(btnEliminaRecensione))
+									.addComponent(btnModificaRecensione, GroupLayout.PREFERRED_SIZE, 156, GroupLayout.PREFERRED_SIZE))
+								.addComponent(btnInserisciNuovaRecensione)
+								.addComponent(btnTornaAllaLocation, GroupLayout.PREFERRED_SIZE, 156, GroupLayout.PREFERRED_SIZE)
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
+									.addComponent(comboBoxTimeFilter, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+									.addGroup(gl_contentPane.createSequentialGroup()
+										.addComponent(btnStella1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+										.addGap(6)
+										.addComponent(btnStella2, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+										.addGap(6)
+										.addComponent(btnStella3, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+										.addGap(6)
+										.addComponent(btnStella4, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+										.addGap(6)
+										.addComponent(btnStella5, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))))
+							.addContainerGap())
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(lblFiltri, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
+							.addGap(50))))
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addComponent(lblFiltri, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
-					.addGap(50))
-				.addGroup(gl_contentPane.createSequentialGroup()
+					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(buttonFiltra)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnAzzera)
 					.addContainerGap())))
 		);
 	gl_contentPane.setVerticalGroup(
@@ -374,7 +388,9 @@ public class VediRecensioni extends JFrame {
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(comboBoxTimeFilter, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(buttonFiltra))))
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(btnAzzera)
+								.addComponent(buttonFiltra)))))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(204)
 					.addComponent(lblFiltri)
@@ -460,5 +476,4 @@ public class VediRecensioni extends JFrame {
     public void setComboBoxTimeFilter(JComboBox comboBoxTimeFilter) {
 	this.comboBoxTimeFilter = comboBoxTimeFilter;
     }
-
 }

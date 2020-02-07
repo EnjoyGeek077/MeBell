@@ -8,6 +8,7 @@ import java.sql.SQLIntegrityConstraintViolationException;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
@@ -37,6 +38,7 @@ import Swing.Register;
 import Swing.VediRecensioni;
 import SwingDialog.*;
 import Utility.ModelloTabella;
+import oracle.net.aso.j;
 
 public class Controller {
     Login login;
@@ -511,6 +513,31 @@ public class Controller {
 
 	controlloPass.setForeground(Color.BLACK);
 	controlloPass.setText("Il campo conterrà A-Z, a-z, 0-9 e almeno un @#$%.");
+
+    }
+    
+    public void resetCampiInsertModify(JTextArea testo, JTextField titolo, JLabel titoloCount, JLabel testoCount, boolean controlloTitolo, boolean controlloTesto){
+	
+	controlloTitolo=false;
+	controlloTesto=false;
+	
+	testoCount.setText("Testo: 0/25");
+	testoCount.setForeground(Color.BLACK);
+	titoloCount.setText("Titolo: 0/250");
+	titoloCount.setForeground(Color.BLACK);
+	
+	testo.setText("");
+	titolo.setText("");
+	
+    }
+    
+    public void resetFiltroRec(JButton star1, JButton star2, JButton star3, JButton star4, JButton star5) {
+
+	star1.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
+	star2.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
+	star3.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
+	star4.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
+	star5.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
 
     }
 
