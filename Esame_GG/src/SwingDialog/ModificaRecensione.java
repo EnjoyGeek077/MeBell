@@ -66,7 +66,10 @@ public class ModificaRecensione extends JDialog {
 	    contentPanel.add(panel);
 	    panel.setLayout(null);
 	    {
-		JButton btnAnnulla = new JButton("Annulla");
+		JButton btnAnnulla = new JButton("");
+		btnAnnulla.setContentAreaFilled(false);
+		btnAnnulla.setBorder(null);
+		btnAnnulla.setIcon(new ImageIcon(ModificaRecensione.class.getResource("/ButtonIcon/AnnullaICON1.png")));
 		btnAnnulla.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 			setVisible(false);
@@ -74,11 +77,32 @@ public class ModificaRecensione extends JDialog {
 			controller.resetCampiInsertModify(textAreaRecensioneNEW, txtTitoloNEW, lblTitoloCount, lblTestoCount, controlloTitolo, controlloTesto);
 		    }
 		});
+		btnAnnulla.addMouseListener(new MouseAdapter() {
+		    @Override
+		    public void mouseEntered(MouseEvent e) {
+		    	btnAnnulla.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/AnnullaICON2.png")));
+		    }
+		    @Override
+		    public void mouseExited(MouseEvent e) {
+		    	btnAnnulla.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/AnnullaICON1.png")));
+		    }
+		    @Override
+		    public void mousePressed(MouseEvent e) {
+		    	btnAnnulla.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/AnnullaICON3.png")));
+		    }
+		    @Override
+		    public void mouseReleased(MouseEvent e) {
+		    	btnAnnulla.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/AnnullaICON1.png")));
+		    }
+		});
 		btnAnnulla.setBounds(351, 266, 89, 23);
 		panel.add(btnAnnulla);
 	    }
 	    {
-		JButton btnConferma = new JButton("Conferma");
+		JButton btnConferma = new JButton("");
+		btnConferma.setContentAreaFilled(false);
+		btnConferma.setBorder(null);
+		btnConferma.setIcon(new ImageIcon(ModificaRecensione.class.getResource("/ButtonIcon/ConfermaVerdeICON1.png")));
 		btnConferma.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 			if(controlloTesto && controlloTitolo) {
@@ -97,6 +121,24 @@ public class ModificaRecensione extends JDialog {
 			}else {
 			    JOptionPane.showMessageDialog(null, "Compila i campi", "Errore", JOptionPane.ERROR_MESSAGE);
 			}
+		    }
+		});
+		btnConferma.addMouseListener(new MouseAdapter() {
+		    @Override
+		    public void mouseEntered(MouseEvent e) {
+		    	btnConferma.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/ConfermaVerdeICON2.png")));
+		    }
+		    @Override
+		    public void mouseExited(MouseEvent e) {
+		    	btnConferma.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/ConfermaVerdeICON1.png")));
+		    }
+		    @Override
+		    public void mousePressed(MouseEvent e) {
+		    	btnConferma.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/ConfermaVerdeICON3.png")));
+		    }
+		    @Override
+		    public void mouseReleased(MouseEvent e) {
+		    	btnConferma.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/ConfermaVerdeICON1.png")));
 		    }
 		});
 		btnConferma.setBounds(252, 266, 89, 23);
@@ -203,6 +245,7 @@ public class ModificaRecensione extends JDialog {
 
 
 		textAreaRecensioneNEW = new JTextArea();
+		textAreaRecensioneNEW.setLineWrap(true);
 		textAreaRecensioneNEW.addKeyListener(new KeyAdapter() {
 		    @Override
 		    public void keyReleased(KeyEvent e) {
@@ -218,7 +261,6 @@ public class ModificaRecensione extends JDialog {
 			}
 		    }
 		});
-		textAreaRecensioneNEW.setLineWrap(true);
 		scrollPaneNEW.setViewportView(textAreaRecensioneNEW);
 		scrollPaneNEW.setViewportView(textAreaRecensioneNEW);
 		textAreaRecensioneNEW.setRows(3);

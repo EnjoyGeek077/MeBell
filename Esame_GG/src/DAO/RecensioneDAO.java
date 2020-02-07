@@ -126,7 +126,7 @@ public class RecensioneDAO {
     }
 
     public void aggiornaRecensione(Recensione recensione)  throws SQLException{
-	String query = "UPDATE recensione SET voto=?,titolo=?,testo=? WHERE (cod_locale=? AND creatore=?)";
+	String query = "UPDATE recensione SET voto=?,titolo=?,testo=?,data=CURRENT_TIMESTAMP WHERE (cod_locale=? AND creatore=?)";
 
 	try {
 	    PreparedStatement updateRecensione = controller.getConnection().prepareStatement(query);

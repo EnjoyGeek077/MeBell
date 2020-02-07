@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
+import javax.swing.ImageIcon;
 
 public class EliminaRecensione extends JDialog {
 
@@ -35,7 +36,10 @@ public class EliminaRecensione extends JDialog {
 	contentPanel.add(panel);
 	panel.setLayout(null);
 	{
-	    JButton btnVaBene = new JButton("V");
+	    JButton btnVaBene = new JButton("");
+	    btnVaBene.setIcon(new ImageIcon(EliminaRecensione.class.getResource("/Icons/Ok-icon.png")));
+	    btnVaBene.setContentAreaFilled(false);
+	    btnVaBene.setBorder(null);
 	    btnVaBene.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 		    controller.eliminaRecensione();
@@ -44,18 +48,21 @@ public class EliminaRecensione extends JDialog {
 		    controller.openVediRecensioni();
 		}
 	    });
-	    btnVaBene.setBounds(10, 266, 89, 23);
+	    btnVaBene.setBounds(20, 216, 89, 73);
 	    panel.add(btnVaBene);
 	}
 
-	JButton btnRifiuto = new JButton("X");
+	JButton btnRifiuto = new JButton("");
+	btnRifiuto.setIcon(new ImageIcon(EliminaRecensione.class.getResource("/Icons/Close-2-icon.png")));
+	btnRifiuto.setContentAreaFilled(false);
+	btnRifiuto.setBorder(null);
 	btnRifiuto.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
 		setVisible(false);
 		controller.openVediRecensioni();
 	    }
 	});
-	btnRifiuto.setBounds(351, 266, 89, 23);
+	btnRifiuto.setBounds(351, 216, 89, 73);
 	panel.add(btnRifiuto);
 
 	JPanel panelTitle = new JPanel();
