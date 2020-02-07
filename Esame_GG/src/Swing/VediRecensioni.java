@@ -303,6 +303,7 @@ public class VediRecensioni extends JFrame {
 	comboBoxTimeFilter.setModel(new DefaultComboBoxModel(new String[] {"Dalla pi\u00F9 recente", "Dalla meno recente"}));
 
 	JButton buttonFiltra = new JButton("");
+	buttonFiltra.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	buttonFiltra.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
 		controller.filtraRecensioni(model, filtro_media_voto, comboBoxTimeFilter.getSelectedItem().toString());
@@ -332,6 +333,7 @@ public class VediRecensioni extends JFrame {
 	buttonFiltra.setIcon(new ImageIcon(VediRecensioni.class.getResource("/ButtonIcon/CercaICON1.png")));
 
 	JButton btnAzzera = new JButton("");
+	btnAzzera.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	btnAzzera.setContentAreaFilled(false);
 	btnAzzera.setBorder(null);
 	btnAzzera.setIcon(new ImageIcon(VediRecensioni.class.getResource("/ButtonIcon/AzzeraICON1.png")));

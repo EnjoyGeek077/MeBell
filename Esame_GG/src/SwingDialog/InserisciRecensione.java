@@ -27,6 +27,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
+import java.awt.Cursor;
 
 public class InserisciRecensione extends JDialog {
 
@@ -64,6 +65,7 @@ public class InserisciRecensione extends JDialog {
 	panel.setLayout(null);
 
 	JButton btnAnnulla = new JButton("");
+	btnAnnulla.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	btnAnnulla.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
 		controller.openVediRecensioni();
@@ -119,6 +121,7 @@ public class InserisciRecensione extends JDialog {
 	panel.add(btnAnnulla);
 
 	JButton btnConferma = new JButton("");
+	btnConferma.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	btnConferma.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
 		if(controlloTesto && controlloTitolo) {
@@ -185,6 +188,7 @@ public class InserisciRecensione extends JDialog {
 	textTitolo.setColumns(10);
 
 	stella1 = new JButton("");
+	stella1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	stella1.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
 
@@ -204,6 +208,7 @@ public class InserisciRecensione extends JDialog {
 	panel.add(stella1);
 
 	stella2 = new JButton("");
+	stella2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	stella2.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
 
@@ -222,6 +227,7 @@ public class InserisciRecensione extends JDialog {
 	panel.add(stella2);
 
 	stella3 = new JButton("");
+	stella3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	stella3.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
 
@@ -240,6 +246,7 @@ public class InserisciRecensione extends JDialog {
 	panel.add(stella3);
 
 	stella4 = new JButton("");
+	stella4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	stella4.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
 
@@ -258,6 +265,7 @@ public class InserisciRecensione extends JDialog {
 	panel.add(stella4);
 
 	stella5 = new JButton("");
+	stella5.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	stella5.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
 

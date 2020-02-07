@@ -14,6 +14,7 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.ImageIcon;
+import java.awt.Cursor;
 
 public class EliminaRecensione extends JDialog {
 
@@ -37,6 +38,7 @@ public class EliminaRecensione extends JDialog {
 	panel.setLayout(null);
 	{
 	    JButton btnVaBene = new JButton("");
+	    btnVaBene.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	    btnVaBene.setIcon(new ImageIcon(EliminaRecensione.class.getResource("/Icons/V-ICON.png")));
 	    btnVaBene.setContentAreaFilled(false);
 	    btnVaBene.setBorder(null);
@@ -48,12 +50,13 @@ public class EliminaRecensione extends JDialog {
 		    controller.openVediRecensioni();
 		}
 	    });
-	    btnVaBene.setBounds(20, 216, 89, 73);
+	    btnVaBene.setBounds(10, 216, 89, 73);
 	    panel.add(btnVaBene);
 	}
 
 	JButton btnRifiuto = new JButton("");
-	btnRifiuto.setIcon(new ImageIcon(EliminaRecensione.class.getResource("/Icons/X-ICON")));
+	btnRifiuto.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+	btnRifiuto.setIcon(new ImageIcon(EliminaRecensione.class.getResource("/Icons/X-ICON.png")));
 	btnRifiuto.setContentAreaFilled(false);
 	btnRifiuto.setBorder(null);
 	btnRifiuto.addActionListener(new ActionListener() {

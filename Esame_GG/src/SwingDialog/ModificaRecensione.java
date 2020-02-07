@@ -24,6 +24,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.Cursor;
 
 public class ModificaRecensione extends JDialog {
 
@@ -67,6 +68,7 @@ public class ModificaRecensione extends JDialog {
 	    panel.setLayout(null);
 	    {
 		JButton btnAnnulla = new JButton("");
+		btnAnnulla.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnAnnulla.setContentAreaFilled(false);
 		btnAnnulla.setBorder(null);
 		btnAnnulla.setIcon(new ImageIcon(ModificaRecensione.class.getResource("/ButtonIcon/AnnullaICON1.png")));
@@ -100,9 +102,10 @@ public class ModificaRecensione extends JDialog {
 	    }
 	    {
 		JButton btnConferma = new JButton("");
+		btnConferma.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnConferma.setContentAreaFilled(false);
 		btnConferma.setBorder(null);
-		btnConferma.setIcon(new ImageIcon(ModificaRecensione.class.getResource("/ButtonIcon/ConfermaVerdeICON1.png")));
+		btnConferma.setIcon(new ImageIcon(ModificaRecensione.class.getResource("/ButtonIcon/ConfermaICON1.png")));
 		btnConferma.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 			if(controlloTesto && controlloTitolo) {
@@ -126,19 +129,19 @@ public class ModificaRecensione extends JDialog {
 		btnConferma.addMouseListener(new MouseAdapter() {
 		    @Override
 		    public void mouseEntered(MouseEvent e) {
-			btnConferma.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/ConfermaVerdeICON2.png")));
+			btnConferma.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/ConfermaICON2.png")));
 		    }
 		    @Override
 		    public void mouseExited(MouseEvent e) {
-			btnConferma.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/ConfermaVerdeICON1.png")));
+			btnConferma.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/ConfermaICON1.png")));
 		    }
 		    @Override
 		    public void mousePressed(MouseEvent e) {
-			btnConferma.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/ConfermaVerdeICON3.png")));
+			btnConferma.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/ConfermaICON3.png")));
 		    }
 		    @Override
 		    public void mouseReleased(MouseEvent e) {
-			btnConferma.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/ConfermaVerdeICON1.png")));
+			btnConferma.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/ConfermaICON1.png")));
 		    }
 		});
 		btnConferma.setBounds(252, 266, 89, 23);
@@ -267,6 +270,7 @@ public class ModificaRecensione extends JDialog {
 	    }
 	    {
 		lblVotoNEW1 = new JLabel("");
+		lblVotoNEW1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblVotoNEW1.addMouseListener(new MouseAdapter() {
 		    @Override
 		    public void mouseClicked(MouseEvent e) {
@@ -286,6 +290,7 @@ public class ModificaRecensione extends JDialog {
 	    }
 	    {
 		lblVotoNEW2 = new JLabel("");
+		lblVotoNEW2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblVotoNEW2.addMouseListener(new MouseAdapter() {
 		    @Override
 		    public void mouseClicked(MouseEvent e) {
@@ -305,6 +310,7 @@ public class ModificaRecensione extends JDialog {
 	    }
 	    {
 		lblVotoNEW3 = new JLabel("");
+		lblVotoNEW3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblVotoNEW3.addMouseListener(new MouseAdapter() {
 		    @Override
 		    public void mouseClicked(MouseEvent e) {
@@ -324,6 +330,7 @@ public class ModificaRecensione extends JDialog {
 	    }
 	    {
 		lblVotoNEW4 = new JLabel("");
+		lblVotoNEW4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblVotoNEW4.addMouseListener(new MouseAdapter() {
 		    @Override
 		    public void mouseClicked(MouseEvent e) {
@@ -343,6 +350,7 @@ public class ModificaRecensione extends JDialog {
 	    }
 	    {
 		lblVotoNEW5 = new JLabel("");
+		lblVotoNEW5.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblVotoNEW5.addMouseListener(new MouseAdapter() {
 		    @Override
 		    public void mouseClicked(MouseEvent e) {
