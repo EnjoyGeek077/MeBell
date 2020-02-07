@@ -37,7 +37,7 @@ public class EliminaRecensione extends JDialog {
 	panel.setLayout(null);
 	{
 	    JButton btnVaBene = new JButton("");
-	    btnVaBene.setIcon(new ImageIcon(EliminaRecensione.class.getResource("/Icons/Ok-icon.png")));
+	    btnVaBene.setIcon(new ImageIcon(EliminaRecensione.class.getResource("/Icons/V-ICON.png")));
 	    btnVaBene.setContentAreaFilled(false);
 	    btnVaBene.setBorder(null);
 	    btnVaBene.addActionListener(new ActionListener() {
@@ -53,7 +53,7 @@ public class EliminaRecensione extends JDialog {
 	}
 
 	JButton btnRifiuto = new JButton("");
-	btnRifiuto.setIcon(new ImageIcon(EliminaRecensione.class.getResource("/Icons/Close-2-icon.png")));
+	btnRifiuto.setIcon(new ImageIcon(EliminaRecensione.class.getResource("/Icons/X-ICON")));
 	btnRifiuto.setContentAreaFilled(false);
 	btnRifiuto.setBorder(null);
 	btnRifiuto.addActionListener(new ActionListener() {
