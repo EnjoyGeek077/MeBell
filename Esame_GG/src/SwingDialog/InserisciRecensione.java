@@ -292,12 +292,12 @@ public class InserisciRecensione extends JDialog {
 
 	lblCountTitolo = new JLabel("Titolo:");
 	lblCountTitolo.setFont(new Font("Arial", Font.PLAIN, 15));
-	lblCountTitolo.setBounds(10, 218, 46, 14);
+	lblCountTitolo.setBounds(10, 218, 291, 14);
 	panel.add(lblCountTitolo);
 
 	lblCountTesto = new JLabel("Testo:");
 	lblCountTesto.setFont(new Font("Arial", Font.PLAIN, 15));
-	lblCountTesto.setBounds(10, 243, 46, 14);
+	lblCountTesto.setBounds(10, 243, 291, 14);
 	panel.add(lblCountTesto);
     }
 

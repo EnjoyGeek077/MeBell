@@ -214,18 +214,33 @@ public class Controller {
     }
 
     public void filtraRecensioni(ModelloTabella model, int votoFiltro, String timeFilter) {
-
-	if(!timeFilter.equals("Vedi tutte")) {
-
-	    ArrayList<Recensione> recensioniFiltrate = new ArrayList<Recensione>();
-
-	    for(Recensione r : locationDaVedere.getRecensiondiLocation()) {
-
-	    }
-
-	}else {
-	    this.riempiTabellaRecensioni();
-	}
+    	model.getDataVector().removeAllElements();
+    	ArrayList<Recensione> recensioniFiltrate = new ArrayList<Recensione>();
+    	
+    	if(votoFiltro==0) {
+    		recensioniFiltrate=locationDaVedere.getRecensiondiLocation();
+    	}else {
+    		for(Recensione r : locationDaVedere.getRecensiondiLocation()) {
+    			if(r.getVoto()==votoFiltro) {
+    				recensioniFiltrate.add(r);
+    			}
+    		}
+    	}
+    	
+    	if(timeFilter.equals("Dalla più recente")) {
+    		
+    		for(Recensione r : recensioniFiltrate) {
+    			model.addRow(new Object[] {r.getCreatore(), r.getDataRecensione(), r.getTitolo(), r.getVoto()});
+    		}
+    	}else {
+    		int lunghezza = recensioniFiltrate.size()-1;
+    		Recensione r;
+    		for(int l= lunghezza;l>=0; l--) {
+    			r=recensioniFiltrate.get(l);
+    			model.addRow(new Object[] {r.getCreatore(), r.getDataRecensione(), r.getTitolo(), r.getVoto()});
+    		}
+    	}
+    	model.fireTableDataChanged();
     }
 
     public boolean getLocationFromTable(JTable tabella) {

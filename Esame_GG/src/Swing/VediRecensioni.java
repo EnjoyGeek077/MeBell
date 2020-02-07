@@ -209,6 +209,7 @@ public class VediRecensioni extends JFrame {
 	btnStella1.addMouseListener(new MouseAdapter() {
 	    @Override
 	    public void mouseClicked(MouseEvent e) {
+	    btnStella1.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
 		btnStella2.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
 		btnStella3.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
 		btnStella4.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
@@ -222,6 +223,7 @@ public class VediRecensioni extends JFrame {
 	btnStella2.addMouseListener(new MouseAdapter() {
 	    @Override
 	    public void mouseClicked(MouseEvent e) {
+	    btnStella1.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
 		btnStella2.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
 		btnStella3.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
 		btnStella4.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
@@ -235,6 +237,7 @@ public class VediRecensioni extends JFrame {
 	btnStella3.addMouseListener(new MouseAdapter() {
 	    @Override
 	    public void mouseClicked(MouseEvent e) {
+	    	btnStella1.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
 		btnStella2.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
 		btnStella3.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
 		btnStella4.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
@@ -249,6 +252,7 @@ public class VediRecensioni extends JFrame {
 	btnStella4.addMouseListener(new MouseAdapter() {
 	    @Override
 	    public void mouseClicked(MouseEvent e) {
+	    	btnStella1.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
 		btnStella2.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
 		btnStella3.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
 		btnStella4.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
@@ -262,6 +266,7 @@ public class VediRecensioni extends JFrame {
 	btnStella5.addMouseListener(new MouseAdapter() {
 	    @Override
 	    public void mouseClicked(MouseEvent e) {
+	    	btnStella1.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
 		btnStella2.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
 		btnStella3.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
 		btnStella4.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella1.png")));
