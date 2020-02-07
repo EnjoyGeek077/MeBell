@@ -26,6 +26,7 @@ import javax.swing.ImageIcon;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JScrollPane;
+import javax.swing.SwingConstants;
 
 public class InserisciRecensione extends JDialog {
 
@@ -66,6 +67,7 @@ public class InserisciRecensione extends JDialog {
 	btnAnnulla.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
 		controller.openVediRecensioni();
+		controller.resetCampiInsertModify(textRecensione, textTitolo, lblCountTitolo, lblCountTesto, controlloTitolo, controlloTitolo);
 	    }
 	});
 	btnAnnulla.setBorder(null);
@@ -173,7 +175,7 @@ public class InserisciRecensione extends JDialog {
 		    lblCountTitolo.setText("Titolo: "+countTitolo+"/25");
 		}else {
 		    lblCountTitolo.setForeground(Color.RED);
-		    lblCountTitolo.setText("Hai superato i 25 caratteri o testo troppo corto.");
+		    lblCountTitolo.setText("Hai superato i 25 caratteri o testo corto.");
 		}
 
 	    }
@@ -222,6 +224,7 @@ public class InserisciRecensione extends JDialog {
 	stella3 = new JButton("");
 	stella3.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
+		
 		voto=3;
 		stella1.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/Stella1.png")));
 		stella2.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/Stella1.png")));
@@ -239,6 +242,7 @@ public class InserisciRecensione extends JDialog {
 	stella4 = new JButton("");
 	stella4.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
+		
 		voto=4;
 		stella1.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/Stella1.png")));
 		stella2.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/Stella1.png")));
@@ -256,6 +260,7 @@ public class InserisciRecensione extends JDialog {
 	stella5 = new JButton("");
 	stella5.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
+		
 		voto=5;
 		stella1.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/Stella1.png")));
 		stella2.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/Stella1.png")));
@@ -271,13 +276,15 @@ public class InserisciRecensione extends JDialog {
 	panel.add(stella5);
 
 	JLabel lblDescrizione = new JLabel("Descrizione");
+	lblDescrizione.setHorizontalAlignment(SwingConstants.CENTER);
 	lblDescrizione.setFont(new Font("Arial", Font.BOLD, 15));
-	lblDescrizione.setBounds(10, 100, 89, 14);
+	lblDescrizione.setBounds(142, 100, 146, 14);
 	panel.add(lblDescrizione);
 
 	JLabel lblTitoloRecensione = new JLabel("Titolo Recensione");
+	lblTitoloRecensione.setHorizontalAlignment(SwingConstants.CENTER);
 	lblTitoloRecensione.setFont(new Font("Arial", Font.BOLD, 15));
-	lblTitoloRecensione.setBounds(10, 41, 146, 14);
+	lblTitoloRecensione.setBounds(142, 41, 146, 14);
 	panel.add(lblTitoloRecensione);
 
 	JPanel panelTitle = new JPanel();
@@ -292,12 +299,12 @@ public class InserisciRecensione extends JDialog {
 
 	lblCountTitolo = new JLabel("Titolo:");
 	lblCountTitolo.setFont(new Font("Arial", Font.PLAIN, 15));
-	lblCountTitolo.setBounds(10, 218, 291, 14);
+	lblCountTitolo.setBounds(10, 218, 298, 14);
 	panel.add(lblCountTitolo);
 
 	lblCountTesto = new JLabel("Testo:");
 	lblCountTesto.setFont(new Font("Arial", Font.PLAIN, 15));
-	lblCountTesto.setBounds(10, 243, 291, 14);
+	lblCountTesto.setBounds(10, 243, 298, 14);
 	panel.add(lblCountTesto);
     }
 

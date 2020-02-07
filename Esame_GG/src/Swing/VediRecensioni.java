@@ -304,6 +304,7 @@ public class VediRecensioni extends JFrame {
 	buttonFiltra.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
 		controller.filtraRecensioni(model, filtro_media_voto, comboBoxTimeFilter.getSelectedItem().toString());
+		textAreaRecensione.setText("");
 	    }
 	});
 	buttonFiltra.setContentAreaFilled(false);
@@ -314,6 +315,8 @@ public class VediRecensioni extends JFrame {
 	btnAzzera.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
 		filtro_media_voto=0;
+		textAreaRecensione.setText("");
+		comboBoxTimeFilter.setSelectedIndex(0);
 		controller.resetFiltroRec(btnStella1, btnStella2, btnStella3, btnStella4, btnStella5);
 		controller.riempiTabellaRecensioni();
 	    }
@@ -407,7 +410,6 @@ public class VediRecensioni extends JFrame {
 	textAreaRecensione.setEditable(false);
 	textAreaRecensione.setLineWrap(true);
 	textAreaRecensione.setRows(5);
-	textAreaRecensione.setText("Recensione...");
 	textAreaRecensione.setFont(new Font("Arial", Font.PLAIN, 16));
 	scrollPaneTestoRecensione.setViewportView(textAreaRecensione);
 

@@ -187,7 +187,7 @@ public class ModificaRecensione extends JDialog {
 			    lblTitoloCount.setText("Titolo: "+countTitolo+"/25");
 			}else {
 			    lblTitoloCount.setForeground(Color.RED);
-			    lblTitoloCount.setText("Hai superato i 25 caratteri o testo troppo corto.");
+			    lblTitoloCount.setText("Hai superato i 25 caratteri o testo corto.");
 			}
 		    }
 		});
