@@ -43,6 +43,7 @@ public class RecensioneDAO {
 	String query="SELECT * FROM recensione WHERE creatore=? AND cod_locale=?";
 
 	try {
+	    
 	    PreparedStatement getRecensione = controller.getConnection().prepareStatement(query);
 	    getRecensione.setString(1, username);
 	    getRecensione.setString(2, LocationCOD);
@@ -65,10 +66,11 @@ public class RecensioneDAO {
 
     public ArrayList<Recensione> getAllRecensioniDiLocation(String codLocale){
 
-	String query = "SELECT * FROM recensione WHERE cod_locale=? order by data desc";
+	String query = "SELECT * FROM recensione WHERE cod_locale=? ORDER BY data DESC";
 	ArrayList<Recensione> recensioniLocation = new ArrayList<Recensione>();
 
 	try {
+	    
 	    PreparedStatement getRecensioni = controller.getConnection().prepareStatement(query);
 	    getRecensioni.setString(1, codLocale);
 	    ResultSet rs = getRecensioni.executeQuery();
@@ -91,6 +93,7 @@ public class RecensioneDAO {
 	String query = "INSERT INTO recensione(cod_locale,creatore,voto,titolo,testo) VALUES(?,?,?,?,?)";
 
 	try {
+	    
 	    PreparedStatement inserisciRecensione = controller.getConnection().prepareStatement(query);
 	    inserisciRecensione.setString(1, recensione.getCod());
 	    inserisciRecensione.setString(2, recensione.getCreatore());
@@ -110,6 +113,7 @@ public class RecensioneDAO {
 	String query = "DELETE FROM recensione WHERE (cod_locale=? AND creatore=?)";
 
 	try {
+	    
 	    PreparedStatement rimuoviRecensione = controller.getConnection().prepareStatement(query);
 	    rimuoviRecensione.setString(1, codLoc);
 	    rimuoviRecensione.setString(2, Username);
@@ -129,6 +133,7 @@ public class RecensioneDAO {
 	String query = "UPDATE recensione SET voto=?,titolo=?,testo=?,data=CURRENT_TIMESTAMP WHERE (cod_locale=? AND creatore=?)";
 
 	try {
+	    
 	    PreparedStatement updateRecensione = controller.getConnection().prepareStatement(query);
 	    updateRecensione.setInt(1, recensione.getVoto());
 	    updateRecensione.setString(2, recensione.getTitolo());
@@ -153,6 +158,7 @@ public class RecensioneDAO {
 	Recensione recensioneUtente = null;
 
 	try {
+	    
 	    PreparedStatement getRecensione = controller.getConnection().prepareStatement(query);
 	    getRecensione.setString(1, username);
 	    getRecensione.setString(2, LocationCOD);

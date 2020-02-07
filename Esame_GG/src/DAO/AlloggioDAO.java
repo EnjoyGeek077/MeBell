@@ -24,6 +24,7 @@ public class AlloggioDAO {
 	Alloggio alloggio=null;
 
 	try {
+
 	    PreparedStatement getAlloggio = controller.getConnection().prepareStatement(query);
 	    getAlloggio.setString(1, mainLoc.getCod());
 	    ResultSet rs = getAlloggio.executeQuery();
@@ -47,6 +48,7 @@ public class AlloggioDAO {
 	Hotel hotel=null;
 
 	try {
+
 	    PreparedStatement getHotel = controller.getConnection().prepareStatement(query);
 	    getHotel.setString(1, alloggio.getCod());
 	    ResultSet rs = getHotel.executeQuery();
@@ -70,6 +72,7 @@ public class AlloggioDAO {
 	BeB beb=null;
 
 	try {
+
 	    PreparedStatement getBEB = controller.getConnection().prepareStatement(query);
 	    getBEB.setString(1, alloggio.getCod());
 	    ResultSet rs = getBEB.executeQuery();
@@ -93,6 +96,7 @@ public class AlloggioDAO {
 	Appartemento appartamento=null;
 
 	try {
+
 	    PreparedStatement getAppartamento = controller.getConnection().prepareStatement(query);
 	    getAppartamento.setString(1, alloggio.getCod());
 	    ResultSet rs = getAppartamento.executeQuery();

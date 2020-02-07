@@ -214,33 +214,37 @@ public class Controller {
     }
 
     public void filtraRecensioni(ModelloTabella model, int votoFiltro, String timeFilter) {
-    	model.getDataVector().removeAllElements();
-    	ArrayList<Recensione> recensioniFiltrate = new ArrayList<Recensione>();
-    	
-    	if(votoFiltro==0) {
-    		recensioniFiltrate=locationDaVedere.getRecensiondiLocation();
-    	}else {
-    		for(Recensione r : locationDaVedere.getRecensiondiLocation()) {
-    			if(r.getVoto()==votoFiltro) {
-    				recensioniFiltrate.add(r);
-    			}
-    		}
-    	}
-    	
-    	if(timeFilter.equals("Dalla più recente")) {
-    		
-    		for(Recensione r : recensioniFiltrate) {
-    			model.addRow(new Object[] {r.getCreatore(), r.getDataRecensione(), r.getTitolo(), r.getVoto()});
-    		}
-    	}else {
-    		int lunghezza = recensioniFiltrate.size()-1;
-    		Recensione r;
-    		for(int l= lunghezza;l>=0; l--) {
-    			r=recensioniFiltrate.get(l);
-    			model.addRow(new Object[] {r.getCreatore(), r.getDataRecensione(), r.getTitolo(), r.getVoto()});
-    		}
-    	}
-    	model.fireTableDataChanged();
+	model.getDataVector().removeAllElements();
+	ArrayList<Recensione> recensioniFiltrate = new ArrayList<Recensione>();
+
+	if(votoFiltro==0) {
+	    recensioniFiltrate=locationDaVedere.getRecensiondiLocation();
+	}else {
+	    for(Recensione r : locationDaVedere.getRecensiondiLocation()) {
+		if(r.getVoto()==votoFiltro) {
+		    recensioniFiltrate.add(r);
+		}
+	    }
+	}
+
+	if(timeFilter.equals("Dalla più recente")) {
+
+	    for(Recensione r : recensioniFiltrate) {
+		model.addRow(new Object[] {r.getCreatore(), r.getDataRecensione(), r.getTitolo(), r.getVoto()});
+	    }
+
+	}else {
+
+	    int lunghezza = recensioniFiltrate.size()-1;
+	    Recensione r;
+
+	    for(int l= lunghezza;l>=0; l--) {
+		r=recensioniFiltrate.get(l);
+		model.addRow(new Object[] {r.getCreatore(), r.getDataRecensione(), r.getTitolo(), r.getVoto()});
+	    }
+	}
+
+	model.fireTableDataChanged();
     }
 
     public boolean getLocationFromTable(JTable tabella) {
@@ -274,6 +278,7 @@ public class Controller {
 	    vedirecensioni.setTextAreaRecensione(recensionePresa.getTesto());
 	}
     }
+
     public ArrayList<String> getComuni() {
 	ResidenzaDAO resDAO = new ResidenzaDAO(this);
 	return resDAO.getAllComuni();
@@ -305,6 +310,7 @@ public class Controller {
     }
 
     public void aggiornaLocationPage(){
+
 	if(this.locationDaVedere.getTipo().equals("Alloggio")) {
 
 	    this.setAlloggioLabel();
@@ -359,6 +365,7 @@ public class Controller {
 
 	String informazioni="Informazioni: \nNumero posti: "+rist.getnPosti()+", Prezzo medio:"+rist.getPrezzoMedio();
 	locationpage.setLocationPage(rist.getNome(), rist.getTipo()+", "+rist.getTipoRistorazione().replace("Elenco completo", "Braceria, Pizzeria, Sushi Bar"), rist.getResidenzaLocation().toString(), rist.getPartitaIva(), this.getMediaRecensioni(), rist.getDescrizione(),informazioni , rist.toString());
+
     }
 
     public void setAttributiTipoRistorazione(Ristorazione ristorante, RistorazioneDAO ristoranteDaSpecificare) {
@@ -423,8 +430,8 @@ public class Controller {
 	    e.printStackTrace();
 	}
 
-
     }
+
     public void modificaRecensione(JTextField titolo, JTextArea testo, int voto) {
 	String getTitolo = titolo.getText();
 	String getTesto = testo.getText();
@@ -438,10 +445,12 @@ public class Controller {
 	    JOptionPane.showMessageDialog(null, "Errore durante la modifica", "Error", JOptionPane.ERROR_MESSAGE);
 	    e.printStackTrace();
 	}
+
     }
 
     public void eliminaRecensione() {
 	RecensioneDAO recDAO = new RecensioneDAO(this);
+
 	try {
 	    recDAO.rimuoviRecensione(locationDaVedere.getCod(), utente.getUsername());
 	} catch (SQLException e) {
@@ -530,22 +539,22 @@ public class Controller {
 	controlloPass.setText("Il campo conterrà A-Z, a-z, 0-9 e almeno un @#$%.");
 
     }
-    
+
     public void resetCampiInsertModify(JTextArea testo, JTextField titolo, JLabel titoloCount, JLabel testoCount, boolean controlloTitolo, boolean controlloTesto){
-	
+
 	controlloTitolo=false;
 	controlloTesto=false;
-	
+
 	testoCount.setText("Testo: 0/25");
 	testoCount.setForeground(Color.BLACK);
 	titoloCount.setText("Titolo: 0/250");
 	titoloCount.setForeground(Color.BLACK);
-	
+
 	testo.setText("");
 	titolo.setText("");
-	
+
     }
-    
+
     public void resetFiltroRec(JButton star1, JButton star2, JButton star3, JButton star4, JButton star5) {
 
 	star1.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));

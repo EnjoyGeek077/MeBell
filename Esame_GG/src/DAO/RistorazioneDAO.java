@@ -23,6 +23,7 @@ public class RistorazioneDAO{
 	Ristorazione ristorazione=null;
 
 	try {
+	    
 	    PreparedStatement getRistorazione = controller.getConnection().prepareStatement(query);
 	    getRistorazione.setString(1, mainLoc.getCod());
 	    ResultSet rs = getRistorazione.executeQuery();
@@ -47,6 +48,7 @@ public class RistorazioneDAO{
 	Braceria braceria=null;
 
 	try {
+	    
 	    PreparedStatement getBraceria = controller.getConnection().prepareStatement(query);
 	    getBraceria.setString(1, ristorazione.getCod());
 	    ResultSet rs = getBraceria.executeQuery();
@@ -69,6 +71,7 @@ public class RistorazioneDAO{
 	SushiBar sushiBar=null;
 
 	try {
+	    
 	    PreparedStatement getSushiBar = controller.getConnection().prepareStatement(query);
 	    getSushiBar.setString(1, ristorazione.getCod());
 	    ResultSet rs = getSushiBar.executeQuery();
@@ -92,6 +95,7 @@ public class RistorazioneDAO{
 	Pizzeria pizzeria=null;
 
 	try {
+	    
 	    PreparedStatement getPizzeria = controller.getConnection().prepareStatement(query);
 	    getPizzeria.setString(1, ristorazione.getCod());
 	    ResultSet rs = getPizzeria.executeQuery();

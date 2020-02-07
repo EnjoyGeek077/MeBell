@@ -80,19 +80,19 @@ public class ModificaRecensione extends JDialog {
 		btnAnnulla.addMouseListener(new MouseAdapter() {
 		    @Override
 		    public void mouseEntered(MouseEvent e) {
-		    	btnAnnulla.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/AnnullaICON2.png")));
+			btnAnnulla.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/AnnullaICON2.png")));
 		    }
 		    @Override
 		    public void mouseExited(MouseEvent e) {
-		    	btnAnnulla.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/AnnullaICON1.png")));
+			btnAnnulla.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/AnnullaICON1.png")));
 		    }
 		    @Override
 		    public void mousePressed(MouseEvent e) {
-		    	btnAnnulla.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/AnnullaICON3.png")));
+			btnAnnulla.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/AnnullaICON3.png")));
 		    }
 		    @Override
 		    public void mouseReleased(MouseEvent e) {
-		    	btnAnnulla.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/AnnullaICON1.png")));
+			btnAnnulla.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/AnnullaICON1.png")));
 		    }
 		});
 		btnAnnulla.setBounds(351, 266, 89, 23);
@@ -126,19 +126,19 @@ public class ModificaRecensione extends JDialog {
 		btnConferma.addMouseListener(new MouseAdapter() {
 		    @Override
 		    public void mouseEntered(MouseEvent e) {
-		    	btnConferma.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/ConfermaVerdeICON2.png")));
+			btnConferma.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/ConfermaVerdeICON2.png")));
 		    }
 		    @Override
 		    public void mouseExited(MouseEvent e) {
-		    	btnConferma.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/ConfermaVerdeICON1.png")));
+			btnConferma.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/ConfermaVerdeICON1.png")));
 		    }
 		    @Override
 		    public void mousePressed(MouseEvent e) {
-		    	btnConferma.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/ConfermaVerdeICON3.png")));
+			btnConferma.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/ConfermaVerdeICON3.png")));
 		    }
 		    @Override
 		    public void mouseReleased(MouseEvent e) {
-		    	btnConferma.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/ConfermaVerdeICON1.png")));
+			btnConferma.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/ConfermaVerdeICON1.png")));
 		    }
 		});
 		btnConferma.setBounds(252, 266, 89, 23);

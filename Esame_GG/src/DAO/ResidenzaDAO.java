@@ -33,6 +33,7 @@ public class ResidenzaDAO {
 	    ResultSet rs = getRes.executeQuery();
 
 	    while(rs.next()) {
+
 		Residenza res = new Residenza(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
 		residenze_trovate.add(res);
 	    }
@@ -53,6 +54,7 @@ public class ResidenzaDAO {
 	ArrayList<String> Comuni = new ArrayList<String>();
 
 	try {
+
 	    PreparedStatement getCom;
 	    getCom = controller.getConnection().prepareStatement(query);
 	    ResultSet rs= getCom.executeQuery();
@@ -80,6 +82,7 @@ public class ResidenzaDAO {
 	Residenza residenzaGet = null;
 
 	try {
+
 	    PreparedStatement getRes;
 	    getRes = controller.getConnection().prepareStatement(query);
 	    getRes.setString(1, cod_res);

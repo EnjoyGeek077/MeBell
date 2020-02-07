@@ -21,6 +21,7 @@ public class AttrazioneDAO {
 	Attrazione att=null;
 
 	try {
+	    
 	    PreparedStatement getAttrazione = controller.getConnection().prepareStatement(query);
 	    getAttrazione.setString(1, cod);
 	    ResultSet rs = getAttrazione.executeQuery();

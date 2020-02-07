@@ -224,7 +224,7 @@ public class InserisciRecensione extends JDialog {
 	stella3 = new JButton("");
 	stella3.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
-		
+
 		voto=3;
 		stella1.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/Stella1.png")));
 		stella2.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/Stella1.png")));
@@ -242,7 +242,7 @@ public class InserisciRecensione extends JDialog {
 	stella4 = new JButton("");
 	stella4.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
-		
+
 		voto=4;
 		stella1.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/Stella1.png")));
 		stella2.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/Stella1.png")));
@@ -260,7 +260,7 @@ public class InserisciRecensione extends JDialog {
 	stella5 = new JButton("");
 	stella5.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
-		
+
 		voto=5;
 		stella1.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/Stella1.png")));
 		stella2.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/Stella1.png")));

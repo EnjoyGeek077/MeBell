@@ -38,8 +38,6 @@ public class Location {
 
     }
 
-
-
     public String getCod() {
 	return cod;
     }
