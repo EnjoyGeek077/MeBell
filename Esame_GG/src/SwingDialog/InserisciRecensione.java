@@ -108,7 +108,7 @@ public class InserisciRecensione extends JDialog {
 
 		if(controlloTesto) {
 		    lblCountTesto.setForeground(Color.BLACK);
-		    lblCountTesto.setText("Titolo: "+countTesto+"/250");
+		    lblCountTesto.setText("Testo: "+countTesto+"/250");
 		}else {
 		    lblCountTesto.setForeground(Color.RED);
 		    lblCountTesto.setText("Hai superato i 250 caratteri.");
@@ -305,12 +305,12 @@ public class InserisciRecensione extends JDialog {
 	label.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 18));
 	panelTitle.add(label);
 
-	lblCountTitolo = new JLabel("Titolo:");
+	lblCountTitolo = new JLabel("Titolo: 0/25");
 	lblCountTitolo.setFont(new Font("Arial", Font.PLAIN, 15));
 	lblCountTitolo.setBounds(10, 218, 298, 14);
 	panel.add(lblCountTitolo);
 
-	lblCountTesto = new JLabel("Testo:");
+	lblCountTesto = new JLabel("Testo: 0/250");
 	lblCountTesto.setFont(new Font("Arial", Font.PLAIN, 15));
 	lblCountTesto.setBounds(10, 243, 298, 14);
 	panel.add(lblCountTesto);

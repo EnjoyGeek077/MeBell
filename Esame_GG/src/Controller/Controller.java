@@ -587,7 +587,7 @@ public class Controller {
 
     public boolean controlloTitoloRecensione(String titolo) {
 
-	if(titolo.length()<25 &&titolo.length()>3) {
+	if(titolo.length()<25 && titolo.length()>3) {
 	    return true;
 	}else {
 	    return false;

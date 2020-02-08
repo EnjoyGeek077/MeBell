@@ -1,6 +1,6 @@
 --Creazione tabelle
 create table utente(username varchar(15) primary key, nome varchar(25) not null, cognome varchar(25) not null, password varchar(15) not null );
-create table recensione(cod_locale char(7) not null, creatore varchar(15) not null, voto int not null, data DATE default CURRENT_TIMESTAMP, titolo varchar(25) not null, testo varchar(250) );
+create table recensione(cod_locale char(7) not null, creatore varchar(15) not null, voto int not null, data DATE default CURRENT_TIMESTAMP, titolo varchar(25) not null, testo varchar(250) default 'Non esiste testo' );
 create table location(cod char(7) primary key, nome varchar(25) not null, cod_res char(5) not null, tipo_location varchar(25) not null, check (tipo_location='Alloggio' OR tipo_location='Attrazione' OR tipo_location='Ristorante'), partita_iva char(11) not null, descrizione varchar(100) default 'Nessuna Descrizione' );
 
 create table residenza(via varchar(25) not null, n_civico varchar(5) not null, cap char(5) not null, comune varchar(25) not null, cod_residenza char(5) primary key );

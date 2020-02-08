@@ -500,7 +500,13 @@ public class VediRecensioni extends JFrame {
     }
 
     public void setTextAreaRecensione(String recensione) {
-	this.textAreaRecensione.setText(recensione);
+
+	if(recensione.equals("") || recensione==null) {
+	    this.textAreaRecensione.setText("Non esiste testo");
+	}else {
+	    this.textAreaRecensione.setText(recensione);
+	}
+
     }
 
     public ModelloTabella getModel() {
