@@ -16,7 +16,7 @@ public class ResidenzaDAO {
 	controller = ctrl;
     }
 
-    public ArrayList<Residenza> getResidenze(String comune) throws SQLException{
+    public ArrayList<Residenza> getResidenze(String comune){
 
 	String query ="";
 	ArrayList<Residenza> residenze_trovate = new ArrayList<Residenza>();
@@ -42,13 +42,13 @@ public class ResidenzaDAO {
 	    getRes.close();
 
 	} catch (SQLException e) {
-	    throw e;
+	    e.printStackTrace();
 	}
 
 	return residenze_trovate;
     }
 
-    public ArrayList<String> getAllComuni() throws SQLException{
+    public ArrayList<String> getAllComuni(){
 
 	String query = "SELECT DISTINCT comune from residenza";
 	ArrayList<String> Comuni = new ArrayList<String>();
@@ -70,14 +70,14 @@ public class ResidenzaDAO {
 	    getCom.close();
 
 	} catch (SQLException e) {
-	    throw e;
+	    e.printStackTrace();
 	}
 
 	return Comuni;
 
     }
 
-    public Residenza getResidenzaFromID(String cod_res) throws SQLException {
+    public Residenza getResidenzaFromID(String cod_res) {
 	String query="SELECT * FROM residenza WHERE cod_residenza=?";
 	Residenza residenzaGet = null;
 
@@ -98,7 +98,7 @@ public class ResidenzaDAO {
 	    getRes.close();
 
 	} catch (SQLException e) {
-		throw e;
+	    e.printStackTrace();
 	}
 
 	return residenzaGet;

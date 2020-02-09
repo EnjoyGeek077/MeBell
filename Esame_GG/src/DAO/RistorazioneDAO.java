@@ -12,107 +12,107 @@ import Ristorazione.Ristorazione;
 import Ristorazione.SushiBar;
 
 public class RistorazioneDAO{
-	Controller controller;
+    Controller controller;
 
-	public RistorazioneDAO(Controller ctrl) {
-		controller=ctrl;
+    public RistorazioneDAO(Controller ctrl) {
+	controller=ctrl;
+    }
+
+    public Ristorazione getRistorazione(Location mainLoc) {
+	String query = "SELECT * FROM ristorazione WHERE cod=?";
+	Ristorazione ristorazione=null;
+
+	try {
+	    
+	    PreparedStatement getRistorazione = controller.getConnection().prepareStatement(query);
+	    getRistorazione.setString(1, mainLoc.getCod());
+	    ResultSet rs = getRistorazione.executeQuery();
+
+	    while(rs.next()) {
+		ristorazione = new Ristorazione(mainLoc, rs.getInt(2), rs.getInt(3), rs.getString(4));
+	    }
+
+	    rs.close();
+	    getRistorazione.close();
+
+	} catch (SQLException e) {
+	    e.printStackTrace();
 	}
 
-	public Ristorazione getRistorazione(Location mainLoc) throws SQLException {
-		String query = "SELECT * FROM ristorazione WHERE cod=?";
-		Ristorazione ristorazione=null;
+	return ristorazione;
+    }
 
-		try {
 
-			PreparedStatement getRistorazione = controller.getConnection().prepareStatement(query);
-			getRistorazione.setString(1, mainLoc.getCod());
-			ResultSet rs = getRistorazione.executeQuery();
+    public Braceria getBraceria(Ristorazione ristorazione) {
+	String query="SELECT * FROM braceria WHERE cod=?";
+	Braceria braceria=null;
 
-			while(rs.next()) {
-				ristorazione = new Ristorazione(mainLoc, rs.getInt(2), rs.getInt(3), rs.getString(4));
-			}
+	try {
+	    
+	    PreparedStatement getBraceria = controller.getConnection().prepareStatement(query);
+	    getBraceria.setString(1, ristorazione.getCod());
+	    ResultSet rs = getBraceria.executeQuery();
 
-			rs.close();
-			getRistorazione.close();
+	    while(rs.next()) {
+		braceria = new Braceria(rs.getString(2), rs.getString(3),rs.getString(4));
+	    }
 
-		} catch (SQLException e) {
-			throw e;
-		}
+	    rs.close();
+	    getBraceria.close();
 
-		return ristorazione;
+	} catch (SQLException e) {
+	    e.printStackTrace();
 	}
+	return braceria;
+    }
 
+    public SushiBar getSushiBar(Ristorazione ristorazione) {
+	String query="SELECT * FROM sushibar WHERE cod=?";
+	SushiBar sushiBar=null;
 
-	public Braceria getBraceria(Ristorazione ristorazione) throws SQLException {
-		String query="SELECT * FROM braceria WHERE cod=?";
-		Braceria braceria=null;
+	try {
+	    
+	    PreparedStatement getSushiBar = controller.getConnection().prepareStatement(query);
+	    getSushiBar.setString(1, ristorazione.getCod());
+	    ResultSet rs = getSushiBar.executeQuery();
 
-		try {
+	    while(rs.next()) {
+		sushiBar = new SushiBar(rs.getString(2), rs.getString(3));
+	    }
 
-			PreparedStatement getBraceria = controller.getConnection().prepareStatement(query);
-			getBraceria.setString(1, ristorazione.getCod());
-			ResultSet rs = getBraceria.executeQuery();
+	    rs.close();
+	    getSushiBar.close();
 
-			while(rs.next()) {
-				braceria = new Braceria(rs.getString(2), rs.getString(3),rs.getString(4));
-			}
-
-			rs.close();
-			getBraceria.close();
-
-		} catch (SQLException e) {
-			throw e;
-		}
-		return braceria;
+	} catch (SQLException e) {
+	    e.printStackTrace();
 	}
+	return sushiBar;
 
-	public SushiBar getSushiBar(Ristorazione ristorazione) throws SQLException {
-		String query="SELECT * FROM sushibar WHERE cod=?";
-		SushiBar sushiBar=null;
+    }
 
-		try {
+    public Pizzeria getPizzeria(Ristorazione ristorazione) {
+	String query="SELECT * FROM pizzeria WHERE cod=?";
+	Pizzeria pizzeria=null;
 
-			PreparedStatement getSushiBar = controller.getConnection().prepareStatement(query);
-			getSushiBar.setString(1, ristorazione.getCod());
-			ResultSet rs = getSushiBar.executeQuery();
+	try {
+	    
+	    PreparedStatement getPizzeria = controller.getConnection().prepareStatement(query);
+	    getPizzeria.setString(1, ristorazione.getCod());
+	    ResultSet rs = getPizzeria.executeQuery();
 
-			while(rs.next()) {
-				sushiBar = new SushiBar(rs.getString(2), rs.getString(3));
-			}
+	    while(rs.next()) {
+		pizzeria = new Pizzeria(rs.getString(2), rs.getString(3));
+	    }
 
-			rs.close();
-			getSushiBar.close();
+	    rs.close();
+	    getPizzeria.close();
 
-		} catch (SQLException e) {
-			throw e;
-		}
-		return sushiBar;
-
+	} catch (SQLException e) {
+	    e.printStackTrace();
 	}
+	return pizzeria;
 
-	public Pizzeria getPizzeria(Ristorazione ristorazione) throws SQLException {
-		String query="SELECT * FROM pizzeria WHERE cod=?";
-		Pizzeria pizzeria=null;
-
-		try {
-
-			PreparedStatement getPizzeria = controller.getConnection().prepareStatement(query);
-			getPizzeria.setString(1, ristorazione.getCod());
-			ResultSet rs = getPizzeria.executeQuery();
-
-			while(rs.next()) {
-				pizzeria = new Pizzeria(rs.getString(2), rs.getString(3));
-			}
-
-			rs.close();
-			getPizzeria.close();
-
-		} catch (SQLException e) {
-			throw e;
-		}
-		return pizzeria;
-
-	}
+    }
 
 }
 

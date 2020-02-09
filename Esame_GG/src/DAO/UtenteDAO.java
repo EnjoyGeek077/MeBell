@@ -6,7 +6,6 @@ import java.sql.SQLException;
 
 import Controller.Controller;
 import Entità.Utente;
-import Exception.LoginExeption;
 
 
 public class UtenteDAO {
@@ -36,36 +35,29 @@ public class UtenteDAO {
 	}
     }
 
-    public Utente trovaUtente(String user, String pass) throws LoginExeption, SQLException {
+    public Utente trovaUtente(String user) {
 
-    	String query = "SELECT * FROM utente WHERE (username = ? AND password = ?)";
+	String query = "SELECT * FROM utente WHERE username = ?";
 
-    	try {
+	try {
 
-    		PreparedStatement inserisciUtente = controller.getConnection().prepareStatement(query);
-    		inserisciUtente.setString(1, user);
-    		inserisciUtente.setString(2, pass);
-    		ResultSet rs = inserisciUtente.executeQuery();
-    		Utente usr=null;
-    		while(rs.next()) {
-    			usr = new Utente(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
-    		}
-			rs.close();
-			inserisciUtente.close();
-    		if(usr==null) {
-    			throw new LoginExeption();
-    		} else {
-    			return usr;
-    		}
+	    PreparedStatement inserisciUtente = controller.getConnection().prepareStatement(query);
+	    inserisciUtente.setString(1, user);
+	    ResultSet rs = inserisciUtente.executeQuery();
 
-    		
+	    while(rs.next()) {
+		Utente usr = new Utente(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
+		return usr;
+	    }
 
-    	} catch (SQLException e) {
-    		e.printStackTrace();
-    		throw (e);
-    	}
+	    rs.close();
+	    inserisciUtente.close();
 
+	} catch (SQLException e) {
+	    e.printStackTrace();
+	}
 
+	return null;
     }
 
 }

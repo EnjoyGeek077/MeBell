@@ -16,7 +16,7 @@ public class LocationDAO {
 	controller = ctrl;
     }
 
-    public ArrayList<Location> getLocations(String tipologia, String comune, String nome) throws SQLException {
+    public ArrayList<Location> getLocations(String tipologia, String comune, String nome) {
 
 	boolean SqlInjectionRisk=false;
 	String query = "SELECT * FROM location";
@@ -49,8 +49,9 @@ public class LocationDAO {
 
 	}
 
+
 	try {
-		
+
 	    PreparedStatement getLoc = controller.getConnection().prepareStatement(query);
 
 	    if(SqlInjectionRisk) {
@@ -68,13 +69,13 @@ public class LocationDAO {
 	    getLoc.close();
 
 	} catch (SQLException e) {
-	    throw e;
+	    e.printStackTrace();
 	}
 
 	return locations;
     }
 
-    public Location getLocationFromID(String ID) throws SQLException {
+    public Location getLocationFromID(String ID) {
 
 	Location location=null;
 	String query="SELECT * FROM location WHERE cod=?";
@@ -93,7 +94,7 @@ public class LocationDAO {
 	    getLoc.close();
 
 	} catch (SQLException e) {
-		throw e;
+	    e.printStackTrace();
 	}
 
 	return location;
