@@ -16,7 +16,7 @@ public class AttrazioneDAO {
 	controller=ctrl;
     }
 
-    public Attrazione getAttrazione(String cod, Location mainLoc) {
+    public Attrazione getAttrazione(String cod, Location mainLoc) throws SQLException {
 	String query = "SELECT * FROM attrazione WHERE cod=?";
 	Attrazione att=null;
 
@@ -34,7 +34,7 @@ public class AttrazioneDAO {
 	    getAttrazione.close();
 
 	} catch (SQLException e) {
-	    e.printStackTrace();
+		throw e;
 	}
 
 	return att;

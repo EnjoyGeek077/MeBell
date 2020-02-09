@@ -153,7 +153,7 @@ public class RecensioneDAO {
 	}	
     }
 
-    public Recensione getRecensioneUtenteLoggato(String username, String LocationCOD) {
+    public Recensione getRecensioneUtenteLoggato(String username, String LocationCOD) throws SQLException {
 	String query="SELECT * FROM recensione WHERE creatore=? AND cod_locale=?";
 	Recensione recensioneUtente = null;
 
@@ -173,7 +173,7 @@ public class RecensioneDAO {
 	    getRecensione.close();
 
 	} catch (SQLException e) {
-	    e.printStackTrace();
+	    throw e;
 	}
 
 	return recensioneUtente;
