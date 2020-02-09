@@ -645,6 +645,4 @@ public class Controller {
 	inseriscirecensione.setVisible(true);
     }
 
-
-
 }
