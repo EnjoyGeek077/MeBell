@@ -663,12 +663,20 @@ public class Controller {
 
     }
 
-    public void resetFiltroHomepage(JComboBox comboBox_FiltroTipologia, JComboBox comboBox_FiltroComune, JTextField textNomeLocale, int filtro_media_voto) {
+    public void resetFiltroHomepage(JComboBox comboBox_FiltroTipologia, JComboBox comboBox_FiltroComune, JTextField textNomeLocale) {
 
 	comboBox_FiltroTipologia.setSelectedIndex(0);
 	comboBox_FiltroComune.setSelectedIndex(0);
 	textNomeLocale.setText("");
-	filtro_media_voto=0;
+	homepage.setFiltro_media_voto(0);
+
+    }
+
+    public void resettaCampiVediRecensioni(float media, JTextArea textAreaRecensione, JComboBox comboBoxTimeFilter ) {
+
+	media=0;
+	textAreaRecensione.setText("");
+	comboBoxTimeFilter.setSelectedIndex(0);
 
     }
 
@@ -762,11 +770,5 @@ public class Controller {
     public void openInserisciDialog() {
 	inseriscirecensione.setVisible(true);
     }
-
-	public void resettaCampiVediRecensioni(float media, JTextArea textAreaRecensione, JComboBox comboBoxTimeFilter ) {
-			media=0;
-			textAreaRecensione.setText("");
-			comboBoxTimeFilter.setSelectedIndex(0);
-		}
 
 }

@@ -58,6 +58,7 @@ public class HomePage extends JFrame {
 	setContentPane(contentPane);
 
 	JTable table = new JTable();
+	table.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	table.addMouseListener(new MouseAdapter() {
 	    @Override
 	    public void mouseClicked(MouseEvent e) {
@@ -69,6 +70,7 @@ public class HomePage extends JFrame {
 	panel.setBackground(new Color(255, 102, 0));
 
 	JScrollPane scrollPane = new JScrollPane();
+	scrollPane.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 
 	JLabel lblFiltri = new JLabel("Filtri:");
 	lblFiltri.setFont(new Font("Arial Black", Font.BOLD, 18));
@@ -270,13 +272,14 @@ public class HomePage extends JFrame {
 	lblLoggatoCome.setFont(new Font("Arial", Font.BOLD, 16));
 
 	JButton btnAzzera = new JButton("");
+	btnAzzera.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	btnAzzera.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/AzzeraICON1.png")));
 	btnAzzera.setBorder(null);
 	btnAzzera.setContentAreaFilled(false);
 	btnAzzera.addActionListener(new ActionListener() {
 	    public void actionPerformed(ActionEvent e) {
 
-		controller.resetFiltroHomepage(comboBox_FiltroTipologia, comboBox_FiltroComune, textNomeLocale, filtro_media_voto);
+		controller.resetFiltroHomepage(comboBox_FiltroTipologia, comboBox_FiltroComune, textNomeLocale);
 		controller.resetFiltroRec(btnStella1, btnStella2, btnStella3, btnStella4, btnStella5);
 		controller.getFilterLocation("Tutti", "Tutti", "", filtro_media_voto);
 		controller.aggiornaTable(model);
@@ -426,7 +429,7 @@ public class HomePage extends JFrame {
 
 		if(n==0) {
 		    setVisible(false);
-		    controller.resetFiltroHomepage(comboBox_FiltroTipologia, comboBox_FiltroComune, textNomeLocale, 0);
+		    controller.resetFiltroHomepage(comboBox_FiltroTipologia, comboBox_FiltroComune, textNomeLocale);
 		    controller.resetFiltroRec(btnStella1, btnStella2, btnStella3, btnStella4, btnStella5);
 		    controller.logOut();
 		}
@@ -465,16 +468,23 @@ public class HomePage extends JFrame {
 
 
 
-    public ModelloTabella getModel() {
-	return model;
-    }
-    public void setModel(ModelloTabella model) {
-	this.model = model;
-    }
     public JLabel getLblLoggatoCome() {
 	return lblLoggatoCome;
     }
     public void setLblLoggatoCome(String utente) {
 	this.lblLoggatoCome.setText("Loggato come: "+utente);
     }
+    public int getFiltro_media_voto() {
+	return filtro_media_voto;
+    }
+    public void setFiltro_media_voto(int filtro_media_voto) {
+	this.filtro_media_voto = filtro_media_voto;
+    }
+    public ModelloTabella getModel() {
+	return model;
+    }
+    public void setModel(ModelloTabella model) {
+	this.model = model;
+    }
+
 }
