@@ -2443,7 +2443,7 @@
 											"top": 262,
 											"width": 161.4970703125,
 											"height": 13,
-											"text": "-Codice_Hotel: Char[10]",
+											"text": "-Codice_Alloggio: Char[10]",
 											"horizontalAlignment": 0
 										},
 										{
@@ -10020,7 +10020,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFvdoYpnBrQ1MY="
 							},
-							"name": "Codice_Hotel",
+							"name": "Codice_Alloggio",
 							"visibility": "private",
 							"type": "Char",
 							"multiplicity": "10"
