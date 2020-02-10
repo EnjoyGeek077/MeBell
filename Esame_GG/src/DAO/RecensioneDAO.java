@@ -17,7 +17,7 @@ public class RecensioneDAO {
 	controller = ctrl;
     }
 
-    public float getMediaVotoLocale(String codLocale) {
+    public float getMediaVotoLocale(String codLocale) throws SQLException {
 
 	float mediaLocale=0.0f;
 
@@ -32,13 +32,13 @@ public class RecensioneDAO {
 	    cst.close();
 
 	} catch (SQLException e) {
-	    e.printStackTrace();
+		throw e;
 	}
 
 	return mediaLocale;
     }
 
-    public boolean esisteRecensione(String username, String LocationCOD) {
+    public boolean esisteRecensione(String username, String LocationCOD) throws SQLException {
 
 	String query="SELECT * FROM recensione WHERE creatore=? AND cod_locale=?";
 
@@ -57,14 +57,14 @@ public class RecensioneDAO {
 	    getRecensione.close();
 
 	} catch (SQLException e) {
-	    e.printStackTrace();
+		throw e;
 	}
 
 	return true;
 
     }
 
-    public ArrayList<Recensione> getAllRecensioniDiLocation(String codLocale){
+    public ArrayList<Recensione> getAllRecensioniDiLocation(String codLocale) throws SQLException{
 
 	String query = "SELECT * FROM recensione WHERE cod_locale=? ORDER BY data DESC";
 	ArrayList<Recensione> recensioniLocation = new ArrayList<Recensione>();
@@ -84,7 +84,7 @@ public class RecensioneDAO {
 	    getRecensioni.close();
 
 	} catch (SQLException e) {
-	    e.printStackTrace();
+		throw e;
 	}
 	return recensioniLocation;
     }
@@ -105,7 +105,7 @@ public class RecensioneDAO {
 	    inserisciRecensione.close();
 
 	} catch (SQLException e) {
-	    throw e;
+		throw e;
 	}	
     }
 
@@ -153,7 +153,7 @@ public class RecensioneDAO {
 	}	
     }
 
-    public Recensione getRecensioneUtenteLoggato(String username, String LocationCOD) {
+    public Recensione getRecensioneUtenteLoggato(String username, String LocationCOD) throws SQLException {
 	String query="SELECT * FROM recensione WHERE creatore=? AND cod_locale=?";
 	Recensione recensioneUtente = null;
 
@@ -173,7 +173,7 @@ public class RecensioneDAO {
 	    getRecensione.close();
 
 	} catch (SQLException e) {
-	    e.printStackTrace();
+		throw e;
 	}
 
 	return recensioneUtente;

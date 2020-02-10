@@ -194,6 +194,8 @@ public class Register extends JFrame {
 	    public void actionPerformed(ActionEvent e) {
 		setVisible(false);
 		controller.openLogin();
+		controller.resetCampiReg(textFirstN,textLastN,textUserN,passwordField,passwordFieldR);
+	    controller.resetControlliReg(controlloUsername, controlloPassword, lblControlloUsername, lblControlloPassword);
 	    }
 	});
 

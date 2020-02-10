@@ -18,7 +18,7 @@ public class RistorazioneDAO{
 	controller=ctrl;
     }
 
-    public Ristorazione getRistorazione(Location mainLoc) {
+    public Ristorazione getRistorazione(Location mainLoc) throws SQLException {
 	String query = "SELECT * FROM ristorazione WHERE cod=?";
 	Ristorazione ristorazione=null;
 
@@ -36,14 +36,14 @@ public class RistorazioneDAO{
 	    getRistorazione.close();
 
 	} catch (SQLException e) {
-	    e.printStackTrace();
+		throw e;
 	}
 
 	return ristorazione;
     }
 
 
-    public Braceria getBraceria(Ristorazione ristorazione) {
+    public Braceria getBraceria(Ristorazione ristorazione) throws SQLException {
 	String query="SELECT * FROM braceria WHERE cod=?";
 	Braceria braceria=null;
 
@@ -61,12 +61,12 @@ public class RistorazioneDAO{
 	    getBraceria.close();
 
 	} catch (SQLException e) {
-	    e.printStackTrace();
+		throw e;
 	}
 	return braceria;
     }
 
-    public SushiBar getSushiBar(Ristorazione ristorazione) {
+    public SushiBar getSushiBar(Ristorazione ristorazione) throws SQLException {
 	String query="SELECT * FROM sushibar WHERE cod=?";
 	SushiBar sushiBar=null;
 
@@ -84,13 +84,13 @@ public class RistorazioneDAO{
 	    getSushiBar.close();
 
 	} catch (SQLException e) {
-	    e.printStackTrace();
+		throw e;
 	}
 	return sushiBar;
 
     }
 
-    public Pizzeria getPizzeria(Ristorazione ristorazione) {
+    public Pizzeria getPizzeria(Ristorazione ristorazione) throws SQLException {
 	String query="SELECT * FROM pizzeria WHERE cod=?";
 	Pizzeria pizzeria=null;
 
@@ -108,7 +108,7 @@ public class RistorazioneDAO{
 	    getPizzeria.close();
 
 	} catch (SQLException e) {
-	    e.printStackTrace();
+		throw e;
 	}
 	return pizzeria;
 

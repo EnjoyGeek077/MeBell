@@ -15,7 +15,7 @@ public class ServiziAlloggioDAO {
 	controller=ctrl;
     }
 
-    public ServiziAlloggio getAlloggio(String cod, Location mainLoc) {
+    public ServiziAlloggio getAlloggio(String cod, Location mainLoc) throws SQLException {
 	String query = "SELECT * FROM servizi_alloggio WHERE cod=?";
 	ServiziAlloggio serviziAlloggio=null;
 
@@ -34,7 +34,7 @@ public class ServiziAlloggioDAO {
 	    getAttrazione.close();
 
 	} catch (SQLException e) {
-	    e.printStackTrace();
+		throw e;
 	}
 
 

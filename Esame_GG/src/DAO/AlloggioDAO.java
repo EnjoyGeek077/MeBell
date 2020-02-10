@@ -19,7 +19,7 @@ public class AlloggioDAO {
 	controller=ctrl;
     }
 
-    public Alloggio getAlloggio(Location mainLoc) {
+    public Alloggio getAlloggio(Location mainLoc) throws SQLException {
 	String query = "SELECT * FROM alloggio WHERE cod=?";
 	Alloggio alloggio=null;
 
@@ -37,13 +37,13 @@ public class AlloggioDAO {
 	    getAlloggio.close();
 
 	} catch (SQLException e) {
-	    e.printStackTrace();
+	    throw e;
 	}
 
 	return alloggio;
     }
 
-    public Hotel getAlloggioHotel(Alloggio alloggio) {
+    public Hotel getAlloggioHotel(Alloggio alloggio) throws SQLException {
 	String query="SELECT * FROM hotel WHERE cod=?";
 	Hotel hotel=null;
 
@@ -61,13 +61,13 @@ public class AlloggioDAO {
 	    getHotel.close();
 
 	} catch (SQLException e) {
-	    e.printStackTrace();
+		throw e;
 	}
 	return hotel;
 
     }
 
-    public BeB getAlloggioBeB(Alloggio alloggio) {
+    public BeB getAlloggioBeB(Alloggio alloggio) throws SQLException {
 	String query="SELECT * FROM beb WHERE cod=?";
 	BeB beb=null;
 
@@ -85,13 +85,13 @@ public class AlloggioDAO {
 	    getBEB.close();
 
 	} catch (SQLException e) {
-	    e.printStackTrace();
+		throw e;
 	}
 	return beb;
 
     }
 
-    public Appartemento getAlloggioAppartamento(Alloggio alloggio) {
+    public Appartemento getAlloggioAppartamento(Alloggio alloggio) throws SQLException {
 	String query="SELECT * FROM appartamento WHERE cod=?";
 	Appartemento appartamento=null;
 
@@ -109,7 +109,7 @@ public class AlloggioDAO {
 	    getAppartamento.close();
 
 	} catch (SQLException e) {
-	    e.printStackTrace();
+		throw e;
 	}
 	return appartamento;
 

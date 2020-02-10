@@ -23,6 +23,7 @@ import javax.swing.JTextArea;
 import java.awt.event.MouseAdapter;
 import javax.swing.JScrollPane;
 import java.awt.Cursor;
+import javax.swing.ScrollPaneConstants;
 
 public class LocationPage extends JFrame {
 
@@ -147,6 +148,7 @@ public class LocationPage extends JFrame {
 	lblPiva = new JLabel("P.IVA");
 
 	JScrollPane scrollPaneInfo = new JScrollPane();
+	scrollPaneInfo.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 	JScrollPane scrollPaneDescrizione = new JScrollPane();
 
 	GroupLayout gl_contentPane = new GroupLayout(contentPane);
