@@ -1,11 +1,13 @@
 package Controller;
 
 import java.awt.Color;
+import java.awt.TextArea;
 import java.sql.Connection;
 
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 
+import javax.swing.AbstractButton;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -760,5 +762,11 @@ public class Controller {
     public void openInserisciDialog() {
 	inseriscirecensione.setVisible(true);
     }
+
+	public void resettaCampiVediRecensioni(float media, JTextArea textAreaRecensione, JComboBox comboBoxTimeFilter ) {
+			media=0;
+			textAreaRecensione.setText("");
+			comboBoxTimeFilter.setSelectedIndex(0);
+		}
 
 }

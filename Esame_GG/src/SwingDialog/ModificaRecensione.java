@@ -119,6 +119,7 @@ public class ModificaRecensione extends JDialog {
 				controller.modificaRecensione(txtTitoloNEW, textAreaRecensioneNEW, votoDaModificare);
 				controller.updateSistema();
 				setVisible(false);
+				controller.resetCampiInsertModify(textAreaRecensioneNEW, txtTitoloNEW, lblTitoloCount, lblTestoCount, controlloTitolo, controlloTesto);
 				controller.openVediRecensioni();
 			    }
 			}else {
