@@ -387,6 +387,7 @@ public class VediRecensioni extends JFrame {
 
 	table.setModel(model);
 	table.setRowHeight(25);
+	table.getTableHeader().setReorderingAllowed(false);
 	table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 	scrollPaneTabellaRecensioni.setViewportView(table);
 

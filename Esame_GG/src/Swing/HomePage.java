@@ -274,17 +274,8 @@ public class HomePage extends JFrame {
 		btnAzzera.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				comboBox_FiltroTipologia.setSelectedIndex(0);
-				comboBox_FiltroComune.setSelectedIndex(0);
-				textNomeLocale.setText("");
-				filtro_media_voto=0;
-
-				btnStella1.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
-				btnStella2.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
-				btnStella3.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
-				btnStella4.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
-				btnStella5.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/Stella0.png")));
-
+				controller.resetFiltroHomepage(comboBox_FiltroTipologia, comboBox_FiltroComune, textNomeLocale, filtro_media_voto);
+				controller.resetFiltroRec(btnStella1, btnStella2, btnStella3, btnStella4, btnStella5);
 				controller.getFilterLocation("Tutti", "Tutti", "", filtro_media_voto);
 				controller.aggiornaTable(model);
 
@@ -411,6 +402,7 @@ public class HomePage extends JFrame {
 
 		table.setModel(model);
 		table.setRowHeight(25);
+		table.getTableHeader().setReorderingAllowed(false);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.getColumn("Location").setCellRenderer(new myTableCellRenderer());
 		scrollPane.setViewportView(table);
@@ -419,20 +411,42 @@ public class HomePage extends JFrame {
 		JLabel lblHomepage = new JLabel("HomePage");
 		lblHomepage.setForeground(new Color(255, 255, 255));
 		lblHomepage.setFont(new Font("Arial", Font.BOLD, 18));
+		
+		JLabel labelLogOut = new JLabel("");
+		labelLogOut.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			    setVisible(false);
+			    controller.logOut();
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+			    labelLogOut.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/LogOutICON2.png")));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+			    labelLogOut.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/LogOutICON1.png")));
+			}
+		});
+		labelLogOut.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		labelLogOut.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/LogOutICON1.png")));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
-				gl_panel.createParallelGroup(Alignment.LEADING)
+			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(lblHomepage)
-						.addContainerGap(668, Short.MAX_VALUE))
-				);
+					.addContainerGap()
+					.addComponent(lblHomepage)
+					.addPreferredGap(ComponentPlacement.RELATED, 600, Short.MAX_VALUE)
+					.addComponent(labelLogOut))
+		);
 		gl_panel.setVerticalGroup(
-				gl_panel.createParallelGroup(Alignment.LEADING)
+			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblHomepage)
-						.addContainerGap(42, Short.MAX_VALUE))
-				);
+						.addComponent(labelLogOut))
+					.addContainerGap(19, Short.MAX_VALUE))
+		);
 		panel.setLayout(gl_panel);
 		contentPane.setLayout(gl_contentPane);
 	}
