@@ -89,11 +89,14 @@ public class Controller {
     public void aggiungiUtente(String user, String first, String last, String pass) {
 	Utente utente = new Utente(user,first,last,pass);
 	UtenteDAO utenteDAO = new UtenteDAO(this);
+
 	try {
 	    utenteDAO.inserisciUtente(utente);
 	    JOptionPane.showMessageDialog(null, "Registrazione avvenuta con successo", "Esito registrazione", JOptionPane.INFORMATION_MESSAGE);
+
 	} catch (SQLIntegrityConstraintViolationException e) {
 	    JOptionPane.showMessageDialog(null, "Il nome utente risulta già registrato", "Error", JOptionPane.ERROR_MESSAGE);
+
 	} catch (Exception e) {
 	    JOptionPane.showMessageDialog(null, "Errore con il database", "Error", JOptionPane.ERROR_MESSAGE);
 	}
@@ -111,24 +114,28 @@ public class Controller {
 	    homepage.setVisible(true);
 	    getFilterLocation("Tutti", "Tutti", "", 0);
 	    aggiornaTable(homepage.getModel());
+
 	} catch (LoginExeption e) {
 	    JOptionPane.showMessageDialog(null, "Username o password errate", "Errore", JOptionPane.ERROR_MESSAGE);
 	    utente=null;
+
 	}catch (SQLException e) {
 	    stampaErroreDB();
 	    utente=null;
+
 	}
     }
 
     public boolean isPassEqual(char[] password, char[] password2) {
 	String psw = new String(password);
 	String psw2 = new String(password2);
+
 	if(psw.equals(psw2)) {
 	    return true;
 	}
+
 	return false;
     }
-
 
     public boolean controlloPass(JPasswordField passField) {
 
@@ -156,9 +163,11 @@ public class Controller {
 	ResidenzaDAO resDAO = new ResidenzaDAO(this);
 
 	this.filtroMediaVoto=mediaVoto;
+
 	try {
 	    this.residenze=resDAO.getResidenze(comune);
 	    this.location=locDAO.getLocations(tipologia, comune, nome);
+
 	} catch (SQLException e) {
 	    stampaErroreDB();
 	}
@@ -171,6 +180,7 @@ public class Controller {
 
 	RecensioneDAO recDAO = new RecensioneDAO(this);
 	modello.getDataVector().removeAllElements();
+
 	try {
 	    for(Location l : location) {
 
@@ -208,6 +218,7 @@ public class Controller {
 		}
 	    }
 	    modello.fireTableDataChanged();
+
 	} catch (SQLException e) {
 	    stampaErroreDB();
 	}
@@ -271,6 +282,7 @@ public class Controller {
 	    this.homepage.setVisible(false);
 	    this.openLocationPage();
 	    return true;
+
 	}else {
 	    JOptionPane.showMessageDialog(null, "Selzeziona una riga", "Error", JOptionPane.ERROR_MESSAGE);
 	    return false;
@@ -287,9 +299,11 @@ public class Controller {
 	    username=(String) table.getValueAt(rowSelected, 0);
 	    RecensioneDAO recDao =new RecensioneDAO(this);
 	    Recensione recensionePresa;
+
 	    try {
 		recensionePresa = recDao.getRecensioneUtenteLoggato(username, locationDaVedere.getCod());
 		vedirecensioni.setTextAreaRecensione(recensionePresa.getTesto());
+
 	    } catch (SQLException e) {
 		stampaErroreDB();
 	    }
@@ -299,8 +313,10 @@ public class Controller {
 
     public ArrayList<String> getComuni() {
 	ResidenzaDAO resDAO = new ResidenzaDAO(this);
+
 	try {
 	    return resDAO.getAllComuni();
+
 	} catch (SQLException e) {
 	    stampaErroreDB();
 	    return null;
@@ -316,6 +332,7 @@ public class Controller {
 	    this.locationDaVedere=locDAO.getLocationFromID(IDlocationScelta);
 	    this.locationDaVedere.setResidenzaLocation(resDAO.getResidenzaFromID(this.locationDaVedere.getCod_residenza()));
 	    this.locationDaVedere.setRecensiondiLocation(recDAO.getAllRecensioniDiLocation(IDlocationScelta));
+
 	} catch (SQLException e) {
 	    stampaErroreDB();
 	}
@@ -361,6 +378,7 @@ public class Controller {
 	AlloggioDAO allDAO = new AlloggioDAO(this);
 	ServiziAlloggioDAO serviziAll = new ServiziAlloggioDAO(this);
 	Alloggio all;
+
 	try {
 	    all = allDAO.getAlloggio(this.locationDaVedere);
 	    ServiziAlloggio serviziAlloggio = serviziAll.getAlloggio(this.IDlocationScelta, this.locationDaVedere);
@@ -369,6 +387,7 @@ public class Controller {
 	    Object alloggioSpecializzato = this.getAlloggiosSpecializzato(all, allDAO);
 
 	    locationpage.setLocationPage(all.getNome(), all.getTipo()+", "+all.getTipoAlloggio(), all.getResidenzaLocation().toString(), all.getPartitaIva(), this.getMediaRecensioni(), all.getDescrizione(), alloggioSpecializzato.toString(), all.getServiziAlloggio().toString());
+
 	} catch (SQLException e) {
 	    stampaErroreDB();
 	}
@@ -380,6 +399,7 @@ public class Controller {
 
 	AttrazioneDAO attDAO = new AttrazioneDAO(this);
 	Attrazione att;
+
 	try {
 	    att = attDAO.getAttrazione(this.IDlocationScelta, this.locationDaVedere);
 
@@ -401,6 +421,7 @@ public class Controller {
 
 	RistorazioneDAO ristDAO = new RistorazioneDAO(this);
 	Ristorazione rist;
+
 	try {
 	    rist = ristDAO.getRistorazione(locationDaVedere);
 	    this.setAttributiTipoRistorazione(rist, ristDAO);
@@ -417,6 +438,7 @@ public class Controller {
     public void setAttributiTipoRistorazione(Ristorazione ristorante, RistorazioneDAO ristoranteDaSpecificare) {
 
 	Braceria brace;
+
 	try {
 	    brace = ristoranteDaSpecificare.getBraceria(ristorante);
 	    Pizzeria pizza = ristoranteDaSpecificare.getPizzeria(ristorante);
@@ -425,6 +447,7 @@ public class Controller {
 	    ristorante.setBraceria(brace);
 	    ristorante.setPizzeria(pizza);
 	    ristorante.setSushiBar(sushibar);
+
 	} catch (SQLException e) {
 	    stampaErroreDB();
 	}
@@ -435,6 +458,7 @@ public class Controller {
     public Object getAlloggiosSpecializzato(Alloggio alloggioScelto, AlloggioDAO alloggioDaSpecificare) {
 
 	Object tipoAlloggio = null;
+
 	try {
 	    if(alloggioScelto.getTipoAlloggio().equals("Hotel")) {
 		tipoAlloggio=alloggioDaSpecificare.getAlloggioHotel(alloggioScelto);
@@ -459,8 +483,10 @@ public class Controller {
 
 	RecensioneDAO recDAO = new RecensioneDAO(this);
 	boolean controllo = false;
+
 	try {
 	    controllo = recDAO.esisteRecensione(utente.getUsername(), locationDaVedere.getCod());
+
 	} catch (SQLException e) {
 	    stampaErroreDB();
 	}
@@ -472,9 +498,11 @@ public class Controller {
 
 	RecensioneDAO recDAO = new RecensioneDAO(this);
 	Recensione recensioneUtenteLoggato;
+
 	try {
 	    recensioneUtenteLoggato = recDAO.getRecensioneUtenteLoggato(utente.getUsername(), locationDaVedere.getCod());
 	    modificarecensione.setOldReview(recensioneUtenteLoggato.getTitolo(), recensioneUtenteLoggato.getTesto(), recensioneUtenteLoggato.getVoto());
+
 	} catch (SQLException e) {
 	    stampaErroreDB();
 	}
@@ -491,6 +519,7 @@ public class Controller {
 
 	try {
 	    recDAO.inserisciRecensione(recensioneNuova);
+
 	} catch (SQLException e) {
 	    JOptionPane.showMessageDialog(null, "Errore durante l'inserimento", "Error", JOptionPane.ERROR_MESSAGE);
 	    e.printStackTrace();
@@ -507,6 +536,7 @@ public class Controller {
 
 	try {
 	    recDAO.aggiornaRecensione(recensioneNuova);
+
 	} catch (SQLException e) {
 	    JOptionPane.showMessageDialog(null, "Errore durante la modifica", "Error", JOptionPane.ERROR_MESSAGE);
 	    e.printStackTrace();
@@ -519,6 +549,7 @@ public class Controller {
 
 	try {
 	    recDAO.rimuoviRecensione(locationDaVedere.getCod(), utente.getUsername());
+
 	} catch (SQLException e) {
 	    JOptionPane.showMessageDialog(null, "Errore durante la cancellazione", "Error", JOptionPane.ERROR_MESSAGE);
 	    e.printStackTrace();
@@ -537,6 +568,7 @@ public class Controller {
 	    } else {
 		return DatabaseConnection.getConnect();
 	    }
+
 	} catch (SQLException e) {
 	    JOptionPane.showMessageDialog(null, "Connessione non riuscita, controllare il collegamento\nSe il problema persiste contattare gli amministratori", "Errore SQL", JOptionPane.ERROR_MESSAGE);
 	    return null;
@@ -630,7 +662,7 @@ public class Controller {
     }
 
     public void resetFiltroHomepage(JComboBox comboBox_FiltroTipologia, JComboBox comboBox_FiltroComune, JTextField textNomeLocale, int filtro_media_voto) {
-	
+
 	comboBox_FiltroTipologia.setSelectedIndex(0);
 	comboBox_FiltroComune.setSelectedIndex(0);
 	textNomeLocale.setText("");
@@ -652,7 +684,6 @@ public class Controller {
     public int conteggioChar(String stringaDaContare) {
 
 	int conteggio=0;
-
 	conteggio=stringaDaContare.length();
 
 	return conteggio;	
@@ -675,13 +706,15 @@ public class Controller {
 	}else {
 	    return false;
 	}
-
-
     }
 
     private void setDynamicLabelEliminaRecensione() {
 	homepage.setLblLoggatoCome(utente.getUsername());
 	eliminarecensione.setLblAvvertenza("<html>Ehi ciao "+utente.getUsername()+", <br/> stai per eliminare la recensione alla location "+"<br/> vuoi procedere?");
+    }
+
+    private void stampaErroreDB() {
+	JOptionPane.showMessageDialog(null, "Errore generico con il database.\nRiprovare o contattare gli amministratori", "Errore", JOptionPane.ERROR_MESSAGE);
     }
 
     public void updateSistema() {
@@ -700,7 +733,7 @@ public class Controller {
 	this.utente=null;
 	login.setVisible(true);
     }
-    
+
     //Open frame
 
     public void openRegister() {
@@ -726,9 +759,6 @@ public class Controller {
     }
     public void openInserisciDialog() {
 	inseriscirecensione.setVisible(true);
-    }
-    private void stampaErroreDB() {
-	JOptionPane.showMessageDialog(null, "Errore generico con il database.\nRiprovare o contattare gli amministratori", "Errore", JOptionPane.ERROR_MESSAGE);
     }
 
 }

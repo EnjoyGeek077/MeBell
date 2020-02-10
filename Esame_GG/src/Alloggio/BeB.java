@@ -30,8 +30,6 @@ public class BeB extends Alloggio{
 	return s;
     }
 
-
-
     public int getnCamere() {
 	return nCamere;
     }

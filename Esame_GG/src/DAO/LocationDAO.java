@@ -69,7 +69,7 @@ public class LocationDAO {
 	    getLoc.close();
 
 	} catch (SQLException e) {
-		throw e;
+	    throw e;
 	}
 
 	return locations;
@@ -94,7 +94,7 @@ public class LocationDAO {
 	    getLoc.close();
 
 	} catch (SQLException e) {
-		throw e;
+	    throw e;
 	}
 
 	return location;

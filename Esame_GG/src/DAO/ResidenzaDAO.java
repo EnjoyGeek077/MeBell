@@ -42,7 +42,7 @@ public class ResidenzaDAO {
 	    getRes.close();
 
 	} catch (SQLException e) {
-		throw e;
+	    throw e;
 	}
 
 	return residenze_trovate;
@@ -70,7 +70,7 @@ public class ResidenzaDAO {
 	    getCom.close();
 
 	} catch (SQLException e) {
-		throw e;
+	    throw e;
 	}
 
 	return Comuni;
@@ -98,7 +98,7 @@ public class ResidenzaDAO {
 	    getRes.close();
 
 	} catch (SQLException e) {
-		throw e;
+	    throw e;
 	}
 
 	return residenzaGet;

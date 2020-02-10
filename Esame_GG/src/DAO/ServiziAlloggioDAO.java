@@ -34,7 +34,7 @@ public class ServiziAlloggioDAO {
 	    getAttrazione.close();
 
 	} catch (SQLException e) {
-		throw e;
+	    throw e;
 	}
 
 

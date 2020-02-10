@@ -61,8 +61,9 @@ public class AlloggioDAO {
 	    getHotel.close();
 
 	} catch (SQLException e) {
-		throw e;
+	    throw e;
 	}
+
 	return hotel;
 
     }
@@ -85,8 +86,9 @@ public class AlloggioDAO {
 	    getBEB.close();
 
 	} catch (SQLException e) {
-		throw e;
+	    throw e;
 	}
+
 	return beb;
 
     }
@@ -109,8 +111,9 @@ public class AlloggioDAO {
 	    getAppartamento.close();
 
 	} catch (SQLException e) {
-		throw e;
+	    throw e;
 	}
+
 	return appartamento;
 
     }
