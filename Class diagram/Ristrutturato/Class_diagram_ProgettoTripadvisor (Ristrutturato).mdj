@@ -1756,7 +1756,7 @@
 											"top": 525,
 											"width": 164.5185546875,
 											"height": 13,
-											"text": "-Prezzo_Medio",
+											"text": "-Prezzo_Medio: INT",
 											"horizontalAlignment": 0
 										},
 										{
@@ -9770,7 +9770,7 @@
 							},
 							"name": "Prezzo_Medio",
 							"visibility": "private",
-							"type": ""
+							"type": "INT"
 						},
 						{
 							"_type": "UMLAttribute",
