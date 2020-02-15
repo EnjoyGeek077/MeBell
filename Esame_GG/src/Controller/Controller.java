@@ -691,6 +691,15 @@ public class Controller {
 
     }
 
+    public void setImgLocation() {
+
+	String pathICON = "/LocationIMG/"+this.IDlocationScelta+".png";
+
+	Icon Icona = new ImageIcon(getClass().getResource(pathICON));
+
+	locationpage.setLabelImmagineLocation(Icona);
+    }
+
     public int conteggioChar(String stringaDaContare) {
 
 	int conteggio=0;

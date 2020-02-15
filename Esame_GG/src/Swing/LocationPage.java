@@ -9,9 +9,13 @@ import Utility.ModelloTabella;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.Icon;
+
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -316,6 +320,13 @@ public class LocationPage extends JFrame {
 	    stella5.setIcon(new ImageIcon(LocationPage.class.getResource("/ButtonIcon/Stella1.png")));
 	}
 
+    }
 
+    public JLabel getLabelImmagineLocation() {
+        return labelImmagineLocation;
+    }
+
+    public void setLabelImmagineLocation(Icon icon) {
+        this.labelImmagineLocation.setIcon(icon);;
     }
 }

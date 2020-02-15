@@ -139,6 +139,7 @@ public class HomePage extends JFrame {
 		if(controllo) {
 		    controller.getLocationInformation();
 		    controller.aggiornaLocationPage();
+		    controller.setImgLocation();
 		}
 	    }
 	});
