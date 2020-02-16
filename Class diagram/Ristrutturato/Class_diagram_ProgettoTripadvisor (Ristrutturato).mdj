@@ -1019,7 +1019,7 @@
 											"top": 425,
 											"width": 262,
 											"height": 13,
-											"text": "-Descrizione: VarChar[100]",
+											"text": "-Descrizione: VarChar[250]",
 											"horizontalAlignment": 0
 										}
 									],
@@ -9525,7 +9525,7 @@
 							"name": "Descrizione",
 							"visibility": "private",
 							"type": "VarChar",
-							"multiplicity": "100"
+							"multiplicity": "250"
 						}
 					]
 				},

@@ -106,6 +106,7 @@ public class Controller {
 
     public void loginTry(String user, String pass) {
 	UtenteDAO stdDAO = new UtenteDAO(this);
+	
 	try {
 	    utente = stdDAO.trovaUtente(user,pass);
 	    JOptionPane.showMessageDialog(null, "Login effettuato, ciao"+" "+this.utente.getUsername(), "Esito login", JOptionPane.INFORMATION_MESSAGE);	
@@ -184,7 +185,7 @@ public class Controller {
 	modello.getDataVector().removeAllElements();
 
 	try {
-	    for(Location l : location) {
+	    for(Location l : location) { 
 
 		for(Residenza r : residenze) {
 
@@ -290,7 +291,6 @@ public class Controller {
 	    return false;
 	}
     }
-
 
     public void getTestoRecensioneDaTable(JTable table) {
 	String username;
