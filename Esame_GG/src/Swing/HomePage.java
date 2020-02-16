@@ -58,6 +58,7 @@ public class HomePage extends JFrame {
 	setContentPane(contentPane);
 
 	JTable table = new JTable();
+	table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 	table.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	table.addMouseListener(new MouseAdapter() {
 	    @Override

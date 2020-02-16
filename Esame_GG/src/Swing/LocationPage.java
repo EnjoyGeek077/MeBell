@@ -250,6 +250,7 @@ public class LocationPage extends JFrame {
 	panelIMG.setLayout(null);
 
 	labelImmagineLocation = new JLabel("");
+	labelImmagineLocation.setIcon(new ImageIcon("C:\\Users\\fedegar\\Desktop\\test.png"));
 	labelImmagineLocation.setBounds(10, 11, 176, 161);
 	panelIMG.add(labelImmagineLocation);
 
