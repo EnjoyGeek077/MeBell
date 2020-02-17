@@ -39,7 +39,7 @@ public class ModificaRecensione extends JDialog {
 
     private int votoDaModificare = 1;
     private boolean controlloTitolo=false;
-    private boolean controlloTesto=false;
+    private boolean controlloTesto=true;
 
     private JLabel lblVotoOLD1;
     private JLabel lblVotoOLD2;

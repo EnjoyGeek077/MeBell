@@ -38,7 +38,7 @@ public class InserisciRecensione extends JDialog {
 
     private int voto=5;
     boolean controlloTitolo=false;
-    boolean controlloTesto=false;
+    boolean controlloTesto=true;
 
     private JLabel lblCountTitolo;
     private JLabel lblCountTesto;
