@@ -771,7 +771,8 @@ public class Controller {
 	vedirecensioni.setVisible(true);
     }
     public void openEliminaDialog() {
-	eliminarecensione.setVisible(true);
+    	eliminarecensione.setLblAvvertenza("<html>Ehi ciao, "+utente.getUsername()+"<br/> stai per eliminare la recensione alla location "+locationDaVedere.getNome()+"<br/> vuoi procedere?");
+    	eliminarecensione.setVisible(true);
     }
     public void openModificaDialog() {
 	modificarecensione.setVisible(true);
