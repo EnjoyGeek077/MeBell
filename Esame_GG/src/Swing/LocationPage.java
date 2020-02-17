@@ -250,27 +250,33 @@ public class LocationPage extends JFrame {
 	panelIMG.setLayout(null);
 
 	labelImmagineLocation = new JLabel("");
-	labelImmagineLocation.setIcon(new ImageIcon("C:\\Users\\fedegar\\Desktop\\test.png"));
 	labelImmagineLocation.setBounds(10, 11, 176, 161);
 	panelIMG.add(labelImmagineLocation);
 
 	JLabel lblLocationPage = new JLabel("Location Page");
 	lblLocationPage.setForeground(new Color(255, 255, 255));
 	lblLocationPage.setFont(new Font("Arial", Font.BOLD, 18));
+	
+	JLabel label = new JLabel("");
+	label.setIcon(new ImageIcon(LocationPage.class.getResource("/Icons/MeBell.png")));
 	GroupLayout gl_panel = new GroupLayout(panel);
 	gl_panel.setHorizontalGroup(
 		gl_panel.createParallelGroup(Alignment.LEADING)
-		.addGroup(gl_panel.createSequentialGroup()
-			.addContainerGap()
-			.addComponent(lblLocationPage)
-			.addContainerGap(493, Short.MAX_VALUE))
-		);
+			.addGroup(gl_panel.createSequentialGroup()
+				.addContainerGap()
+				.addComponent(lblLocationPage)
+				.addPreferredGap(ComponentPlacement.RELATED, 365, Short.MAX_VALUE)
+				.addComponent(label, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
+				.addGap(95))
+	);
 	gl_panel.setVerticalGroup(
 		gl_panel.createParallelGroup(Alignment.LEADING)
-		.addGroup(gl_panel.createSequentialGroup()
-			.addComponent(lblLocationPage)
-			.addContainerGap(39, Short.MAX_VALUE))
-		);
+			.addGroup(gl_panel.createSequentialGroup()
+				.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+					.addComponent(lblLocationPage)
+					.addComponent(label))
+				.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+	);
 	panel.setLayout(gl_panel);
 	contentPane.setLayout(gl_contentPane);
     }

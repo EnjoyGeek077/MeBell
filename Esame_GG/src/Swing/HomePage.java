@@ -447,23 +447,29 @@ public class HomePage extends JFrame {
 	});
 	labelLogOut.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	labelLogOut.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/LogOutICON1.png")));
+	
+	JLabel Logo = new JLabel("");
+	Logo.setIcon(new ImageIcon(HomePage.class.getResource("/Icons/MeBell.png")));
 	GroupLayout gl_panel = new GroupLayout(panel);
 	gl_panel.setHorizontalGroup(
 		gl_panel.createParallelGroup(Alignment.LEADING)
-		.addGroup(gl_panel.createSequentialGroup()
-			.addContainerGap()
-			.addComponent(lblHomepage)
-			.addPreferredGap(ComponentPlacement.RELATED, 600, Short.MAX_VALUE)
-			.addComponent(labelLogOut))
-		);
+			.addGroup(gl_panel.createSequentialGroup()
+				.addContainerGap()
+				.addComponent(lblHomepage)
+				.addPreferredGap(ComponentPlacement.RELATED, 359, Short.MAX_VALUE)
+				.addComponent(Logo)
+				.addGap(55)
+				.addComponent(labelLogOut))
+	);
 	gl_panel.setVerticalGroup(
 		gl_panel.createParallelGroup(Alignment.LEADING)
-		.addGroup(gl_panel.createSequentialGroup()
-			.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-				.addComponent(lblHomepage)
-				.addComponent(labelLogOut))
-			.addContainerGap(19, Short.MAX_VALUE))
-		);
+			.addGroup(gl_panel.createSequentialGroup()
+				.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+					.addComponent(lblHomepage)
+					.addComponent(labelLogOut)
+					.addComponent(Logo, GroupLayout.PREFERRED_SIZE, 64, GroupLayout.PREFERRED_SIZE))
+				.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+	);
 	panel.setLayout(gl_panel);
 	contentPane.setLayout(gl_contentPane);
     }
