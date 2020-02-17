@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import Alloggio.ServiziAlloggio;
 import Controller.Controller;
-import Entità.Location;
+import Entita.Location;
 
 public class ServiziAlloggioDAO {
     Controller controller;

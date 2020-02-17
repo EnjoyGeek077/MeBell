@@ -9,7 +9,7 @@ import Alloggio.Appartemento;
 import Alloggio.BeB;
 import Alloggio.Hotel;
 import Controller.Controller;
-import Entità.Location;
+import Entita.Location;
 
 public class AlloggioDAO {
 

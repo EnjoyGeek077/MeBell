@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Controller.Controller;
-import Entità.Residenza;
+import Entita.Residenza;
 
 
 public class ResidenzaDAO {

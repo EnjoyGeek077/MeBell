@@ -29,12 +29,9 @@ import java.util.regex.Pattern;
 
 import Connessione.DatabaseConnection;
 import DAO.*;
-
-import Entità.*;
+import Entita.*;
 import Swing.HomePage;
 import Swing.LocationPage;
-import Entità.Location;
-import Entità.Utente;
 import Exception.LoginExeption;
 import Ristorazione.*;
 import Swing.Login;

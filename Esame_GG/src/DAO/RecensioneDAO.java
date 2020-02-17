@@ -8,7 +8,7 @@ import java.sql.Types;
 import java.util.ArrayList;
 
 import Controller.Controller;
-import Entità.Recensione;
+import Entita.Recensione;
 
 public class RecensioneDAO {
     Controller controller;

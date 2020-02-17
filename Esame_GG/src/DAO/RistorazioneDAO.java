@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import Controller.Controller;
-import Entità.Location;
+import Entita.Location;
 import Ristorazione.Braceria;
 import Ristorazione.Pizzeria;
 import Ristorazione.Ristorazione;

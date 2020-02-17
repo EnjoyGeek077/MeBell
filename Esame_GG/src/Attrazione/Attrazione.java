@@ -1,6 +1,6 @@
 package Attrazione;
 
-import Entità.Location;
+import Entita.Location;
 
 public class Attrazione extends Location{
 

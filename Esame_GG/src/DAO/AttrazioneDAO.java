@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import Attrazione.Attrazione;
 import Controller.Controller;
-import Entità.Location;
+import Entita.Location;
 
 public class AttrazioneDAO {
 

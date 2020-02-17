@@ -1,6 +1,6 @@
 package Ristorazione;
 
-import Entità.Location;
+import Entita.Location;
 
 public class Ristorazione extends Location{
 

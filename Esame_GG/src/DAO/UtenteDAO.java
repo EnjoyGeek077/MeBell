@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import Controller.Controller;
-import Entità.Utente;
+import Entita.Utente;
 import Exception.LoginExeption;
 
 

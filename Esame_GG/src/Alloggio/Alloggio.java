@@ -1,6 +1,6 @@
 package Alloggio;
 
-import Entità.Location;
+import Entita.Location;
 
 public class Alloggio extends Location{
 
