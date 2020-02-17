@@ -256,27 +256,27 @@ public class LocationPage extends JFrame {
 	JLabel lblLocationPage = new JLabel("Location Page");
 	lblLocationPage.setForeground(new Color(255, 255, 255));
 	lblLocationPage.setFont(new Font("Arial", Font.BOLD, 18));
-	
+
 	JLabel label = new JLabel("");
 	label.setIcon(new ImageIcon(LocationPage.class.getResource("/Icons/MeBell.png")));
 	GroupLayout gl_panel = new GroupLayout(panel);
 	gl_panel.setHorizontalGroup(
 		gl_panel.createParallelGroup(Alignment.LEADING)
-			.addGroup(gl_panel.createSequentialGroup()
-				.addContainerGap()
-				.addComponent(lblLocationPage)
-				.addPreferredGap(ComponentPlacement.RELATED, 365, Short.MAX_VALUE)
-				.addComponent(label, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
-				.addGap(95))
-	);
+		.addGroup(gl_panel.createSequentialGroup()
+			.addContainerGap()
+			.addComponent(lblLocationPage)
+			.addPreferredGap(ComponentPlacement.RELATED, 365, Short.MAX_VALUE)
+			.addComponent(label, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
+			.addGap(95))
+		);
 	gl_panel.setVerticalGroup(
 		gl_panel.createParallelGroup(Alignment.LEADING)
-			.addGroup(gl_panel.createSequentialGroup()
-				.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-					.addComponent(lblLocationPage)
-					.addComponent(label))
-				.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-	);
+		.addGroup(gl_panel.createSequentialGroup()
+			.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+				.addComponent(lblLocationPage)
+				.addComponent(label))
+			.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
 	panel.setLayout(gl_panel);
 	contentPane.setLayout(gl_contentPane);
     }
@@ -330,10 +330,10 @@ public class LocationPage extends JFrame {
     }
 
     public JLabel getLabelImmagineLocation() {
-        return labelImmagineLocation;
+	return labelImmagineLocation;
     }
 
     public void setLabelImmagineLocation(Icon icon) {
-        this.labelImmagineLocation.setIcon(icon);;
+	this.labelImmagineLocation.setIcon(icon);;
     }
 }

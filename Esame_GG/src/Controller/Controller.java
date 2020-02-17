@@ -106,7 +106,7 @@ public class Controller {
 
     public void loginTry(String user, String pass) {
 	UtenteDAO stdDAO = new UtenteDAO(this);
-	
+
 	try {
 	    utente = stdDAO.trovaUtente(user,pass);
 	    JOptionPane.showMessageDialog(null, "Login effettuato, ciao"+" "+this.utente.getUsername(), "Esito login", JOptionPane.INFORMATION_MESSAGE);	
