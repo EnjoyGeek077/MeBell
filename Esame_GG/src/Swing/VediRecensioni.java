@@ -512,7 +512,7 @@ public class VediRecensioni extends JFrame {
 
     public void setTextAreaRecensione(String recensione) {
 
-	if(recensione.equals("") || recensione==null) {
+	if(recensione==null || recensione.equals("")) {
 	    this.textAreaRecensione.setText("Non esiste testo");
 	}else {
 	    this.textAreaRecensione.setText(recensione);
