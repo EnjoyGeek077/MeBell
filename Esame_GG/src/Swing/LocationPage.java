@@ -56,16 +56,16 @@ public class LocationPage extends JFrame {
 	controller=ctrl;
 	setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 	this.addWindowListener(new java.awt.event.WindowAdapter() {
-		@Override
-		public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-			if (JOptionPane.showConfirmDialog(null, 
-					"Sei sicuro di chiudere il programma?", "Chiusura del programma", 
-					JOptionPane.YES_NO_OPTION,
-					JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
-				DatabaseConnection.Disconnessione();
-				System.exit(0);
-			}
+	    @Override
+	    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+		if (JOptionPane.showConfirmDialog(null, 
+			"Sei sicuro di chiudere il programma?", "Chiusura del programma", 
+			JOptionPane.YES_NO_OPTION,
+			JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
+		    DatabaseConnection.Disconnessione();
+		    System.exit(0);
 		}
+	    }
 	});
 	setBounds(100, 100, 820, 482);
 	contentPane = new JPanel();

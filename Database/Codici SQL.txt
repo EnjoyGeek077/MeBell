@@ -488,6 +488,20 @@ END;
 
 --
 
+create trigger check_dates
+  before insert or update on recensione
+  for each row
+
+begin
+
+  IF(:new.data >=SYSDATE) then
+    :new.data:=SYSDATE;
+  END IF;
+
+END;
+
+--
+
 create trigger update_sevizi_alloggio
   after update of cod on alloggio
   for each row 

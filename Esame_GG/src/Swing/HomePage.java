@@ -53,18 +53,18 @@ public class HomePage extends JFrame {
 
 	setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 	this.addWindowListener(new java.awt.event.WindowAdapter() {
-		@Override
-		public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-			if (JOptionPane.showConfirmDialog(null, 
-					"Sei sicuro di chiudere il programma?", "Chiusura del programma", 
-					JOptionPane.YES_NO_OPTION,
-					JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
-				DatabaseConnection.Disconnessione();
-				System.exit(0);
-			}
+	    @Override
+	    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+		if (JOptionPane.showConfirmDialog(null, 
+			"Sei sicuro di chiudere il programma?", "Chiusura del programma", 
+			JOptionPane.YES_NO_OPTION,
+			JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
+		    DatabaseConnection.Disconnessione();
+		    System.exit(0);
 		}
+	    }
 	});
-	
+
 	setBounds(100, 100, 780, 413);
 	contentPane = new JPanel();
 	contentPane.setMinimumSize(new Dimension(651, 413));
@@ -462,8 +462,8 @@ public class HomePage extends JFrame {
 	labelLogOut.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	labelLogOut.setIcon(new ImageIcon(HomePage.class.getResource("/ButtonIcon/LogOutICON1.png")));
 
-    
-	
+
+
 	JLabel Logo = new JLabel("");
 	Logo.setIcon(new ImageIcon(HomePage.class.getResource("/Icons/MeBell.png")));
 	GroupLayout gl_panel = new GroupLayout(panel);
