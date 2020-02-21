@@ -191,7 +191,9 @@ public class Controller {
 			media=recDAO.getMediaVotoLocale(l.getCod());
 
 			if(media>=filtro) {
-
+				
+				media = (float) (Math.floor(media * 100) / 100);
+				
 			    if(l.getTipo().equals("Alloggio")) {
 				Icon Icona = new ImageIcon(getClass().getResource("/Icons/HotelICON.png"));
 				JLabel labelIMG = new JLabel();

@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Connessione.DatabaseConnection;
 import Controller.Controller;
 import Utility.ModelloTabella;
 
@@ -48,7 +49,21 @@ public class VediRecensioni extends JFrame {
 	setTitle("Vedi Recensioni");
 	setMinimumSize(new Dimension(522, 360));
 	controller=ctrl;
-	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	
+	setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+	this.addWindowListener(new java.awt.event.WindowAdapter() {
+	    @Override
+	    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+		if (JOptionPane.showConfirmDialog(null, 
+			"Sei sicuro di chiudere il programma?", "Chiusura del programma", 
+			JOptionPane.YES_NO_OPTION,
+			JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
+		    DatabaseConnection.Disconnessione();
+		    System.exit(0);
+		}
+	    }
+	});
+	
 	setBounds(100, 100, 522, 360);
 	contentPane = new JPanel();
 	contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
