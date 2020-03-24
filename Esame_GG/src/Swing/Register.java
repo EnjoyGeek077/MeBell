@@ -41,6 +41,7 @@ public class Register extends JFrame {
     private boolean controlloPassword=false;
 
     public Register(Controller ctrl) {
+    	setName("Register");
 	setTitle("Register");
 	controller = ctrl;
 
@@ -58,6 +59,9 @@ public class Register extends JFrame {
 		}
 	    }
 	});
+	
+	ImageIcon Icona = new ImageIcon(getClass().getResource("/Icons/LOGO.png"));
+	this.setIconImage(Icona.getImage());
 	setBounds(100, 100, 650, 430);
 	contentPane = new JPanel();
 	contentPane.setMinimumSize(new Dimension(533, 430));

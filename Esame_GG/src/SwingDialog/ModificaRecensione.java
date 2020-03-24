@@ -53,6 +53,7 @@ public class ModificaRecensione extends JDialog {
     private JLabel lblVotoNEW5;
 
     public ModificaRecensione(Controller ctrl) {
+    	setName("Modify");
 	controller=ctrl;
 	setUndecorated(true);
 	setBounds(100, 100, 450, 300);

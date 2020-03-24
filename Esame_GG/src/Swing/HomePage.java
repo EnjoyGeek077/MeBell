@@ -47,6 +47,7 @@ public class HomePage extends JFrame {
     private ModelloTabella model= new ModelloTabella();
 
     public HomePage(Controller ctrl) {
+    	setName("Homepage");
 	setMinimumSize(new Dimension(780, 413));
 	setTitle("HomePage");
 	controller = ctrl;
@@ -65,7 +66,9 @@ public class HomePage extends JFrame {
 	    }
 	});
 
-	setBounds(100, 100, 780, 413);
+	ImageIcon Icona = new ImageIcon(getClass().getResource("/Icons/LOGO.png"));
+	this.setIconImage(Icona.getImage());
+	setBounds(100, 100, 1100, 413);
 	contentPane = new JPanel();
 	contentPane.setMinimumSize(new Dimension(651, 413));
 	contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

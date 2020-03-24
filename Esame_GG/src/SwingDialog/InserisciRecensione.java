@@ -50,6 +50,7 @@ public class InserisciRecensione extends JDialog {
     private JButton stella5;
 
     public InserisciRecensione(Controller ctrl) {
+    	setName("Insert");
 	controller=ctrl;
 	setUndecorated(true);
 	setBounds(100, 100, 450, 300);

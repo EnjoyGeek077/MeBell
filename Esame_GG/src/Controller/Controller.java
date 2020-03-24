@@ -66,6 +66,8 @@ public class Controller {
     public Controller() {
 
 	login = new Login(this);
+
+	login.setLocationRelativeTo(null);
 	login.setVisible(true);
 
 	register = new Register(this);
@@ -755,28 +757,36 @@ public class Controller {
     //Open frame
 
     public void openRegister() {
+	register.setLocationRelativeTo(null);
 	register.setVisible(true);
     }
     public void openLogin() {
+	login.setLocationRelativeTo(null);
 	login.setVisible(true);
     }
     public void openHomePage() {
+	homepage.setLocationRelativeTo(null);
 	homepage.setVisible(true);
     }
     public void openLocationPage() {
+	locationpage.setLocationRelativeTo(null);
 	locationpage.setVisible(true);
     }
     public void openVediRecensioni() {
+	vedirecensioni.setLocationRelativeTo(null);
 	vedirecensioni.setVisible(true);
     }
     public void openEliminaDialog() {
 	eliminarecensione.setLblAvvertenza("<html>Ehi ciao, "+utente.getUsername()+"<br/> stai per eliminare la recensione alla location "+locationDaVedere.getNome()+"<br/> vuoi procedere?");
+	eliminarecensione.setLocationRelativeTo(null);
 	eliminarecensione.setVisible(true);
     }
     public void openModificaDialog() {
+	modificarecensione.setLocationRelativeTo(null);
 	modificarecensione.setVisible(true);
     }
     public void openInserisciDialog() {
+	inseriscirecensione.setLocationRelativeTo(null);
 	inseriscirecensione.setVisible(true);
     }
 

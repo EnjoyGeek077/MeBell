@@ -8,6 +8,7 @@ import Connessione.DatabaseConnection;
 import Controller.Controller;
 
 import javax.swing.GroupLayout;
+import javax.swing.Icon;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -21,6 +22,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Cursor;
@@ -35,6 +37,7 @@ public class Login extends JFrame {
     private Controller controller;
 
     public Login(Controller ctrl) {
+    	setName("Login");
 	setTitle("Login");
 	controller= ctrl;
 
@@ -52,6 +55,9 @@ public class Login extends JFrame {
 		}
 	    }
 	});
+	
+	ImageIcon Icona = new ImageIcon(getClass().getResource("/Icons/LOGO.png"));
+	this.setIconImage(Icona.getImage());
 	setBounds(100, 100, 400, 320);
 	contentPane = new JPanel();
 	contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

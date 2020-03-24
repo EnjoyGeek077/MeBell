@@ -46,6 +46,7 @@ public class VediRecensioni extends JFrame {
     private JComboBox comboBoxTimeFilter;
 
     public VediRecensioni(Controller ctrl) {
+    	setName("Vedi_Review");
 	setTitle("Vedi Recensioni");
 	setMinimumSize(new Dimension(522, 360));
 	controller=ctrl;
@@ -61,7 +62,11 @@ public class VediRecensioni extends JFrame {
 		    System.exit(0);
 		}
 	    }
-	});	setBounds(100, 100, 522, 360);
+	});
+	
+	ImageIcon Icona = new ImageIcon(getClass().getResource("/Icons/LOGO.png"));
+	this.setIconImage(Icona.getImage());
+	setBounds(100, 100, 585, 387);
 	contentPane = new JPanel();
 	contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 	setContentPane(contentPane);

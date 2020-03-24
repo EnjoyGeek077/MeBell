@@ -51,6 +51,7 @@ public class LocationPage extends JFrame {
     private JLabel stella5;
 
     public LocationPage(Controller ctrl) {
+    	setName("Location_Page");
 	setTitle("Location Page");
 	setMinimumSize(new Dimension(820, 482));
 	controller=ctrl;
@@ -67,7 +68,10 @@ public class LocationPage extends JFrame {
 		}
 	    }
 	});
-	setBounds(100, 100, 820, 482);
+	
+	ImageIcon Icona = new ImageIcon(getClass().getResource("/Icons/LOGO.png"));
+	this.setIconImage(Icona.getImage());
+	setBounds(100, 100, 855, 572);
 	contentPane = new JPanel();
 	contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 	setContentPane(contentPane);
