@@ -253,7 +253,7 @@ public class Controller {
 		}
 	    }
 	}
-
+	
 	if(timeFilter.equals("Dalla più recente")) {
 
 	    for(Recensione r : recensioniFiltrate) {
@@ -673,9 +673,10 @@ public class Controller {
 
     }
 
-    public void resettaCampiVediRecensioni(float media, JTextArea textAreaRecensione, JComboBox comboBoxTimeFilter ) {
+    public void resettaCampiVediRecensioni(int media, JTextArea textAreaRecensione, JComboBox comboBoxTimeFilter ) {
 
 	media=0;
+	vedirecensioni.setFiltro_media_voto(0);;
 	textAreaRecensione.setText("");
 	comboBoxTimeFilter.setSelectedIndex(0);
 
