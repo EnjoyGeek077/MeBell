@@ -37,7 +37,7 @@ public class Login extends JFrame {
     private Controller controller;
 
     public Login(Controller ctrl) {
-    	setName("Login");
+	setName("Login");
 	setTitle("Login");
 	controller= ctrl;
 
@@ -55,7 +55,7 @@ public class Login extends JFrame {
 		}
 	    }
 	});
-	
+
 	ImageIcon Icona = new ImageIcon(getClass().getResource("/Icons/LOGO.png"));
 	this.setIconImage(Icona.getImage());
 	setBounds(100, 100, 400, 320);

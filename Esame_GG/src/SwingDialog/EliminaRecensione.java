@@ -23,7 +23,7 @@ public class EliminaRecensione extends JDialog {
     private JLabel lblAvvertenza;
 
     public EliminaRecensione(Controller ctrl) {
-    	setName("Delete");
+	setName("Delete");
 	setUndecorated(true);
 	controller=ctrl;
 	setBounds(100, 100, 450, 300);

@@ -47,7 +47,7 @@ public class HomePage extends JFrame {
     private ModelloTabella model= new ModelloTabella();
 
     public HomePage(Controller ctrl) {
-    	setName("Homepage");
+	setName("Homepage");
 	setMinimumSize(new Dimension(780, 413));
 	setTitle("HomePage");
 	controller = ctrl;

@@ -253,7 +253,7 @@ public class Controller {
 		}
 	    }
 	}
-	
+
 	if(timeFilter.equals("Dalla più recente")) {
 
 	    for(Recensione r : recensioniFiltrate) {
