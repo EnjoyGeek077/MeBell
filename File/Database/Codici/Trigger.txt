@@ -48,7 +48,6 @@ ELSIF :new.tipo_location='Attrazione' THEN
 
 	insert into attrazione(cod) values (:new.cod);
 
-
 END IF;
 
 END;
@@ -379,6 +378,7 @@ begin
 END;
 
 --
+
 create trigger update_sevizi_alloggio
   after update of cod on alloggio
   for each row 
